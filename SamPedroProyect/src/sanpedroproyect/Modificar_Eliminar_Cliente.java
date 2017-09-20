@@ -12,6 +12,7 @@ import com.sun.glass.events.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import static sanpedroproyect.Ingreso_Nuevo_Cliente.Nombre;
 
 /**
@@ -128,8 +129,6 @@ Cliente c = new Cliente();
         jLabel8 = new javax.swing.JLabel();
         txt_dir = new javax.swing.JTextField();
         txt_correo = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txt_apellido = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txt_ciu = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -176,8 +175,6 @@ Cliente c = new Cliente();
 
         jLabel8.setText("Correo");
 
-        jLabel9.setText("Apellido");
-
         jLabel6.setText("Ciudad");
         jLabel6.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel6.setMinimumSize(new java.awt.Dimension(439, 14));
@@ -219,28 +216,23 @@ Cliente c = new Cliente();
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_cliente)
                     .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_ciu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtcedu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(jLabel10)
-                        .addGap(38, 38, 38)
-                        .addComponent(lbl_cliente))
+                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addContainerGap(464, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,14 +240,12 @@ Cliente c = new Cliente();
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(lbl_cliente))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtcedu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -358,7 +348,6 @@ Cliente c = new Cliente();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Nombre = txt_nombre.getText();
-        Apellido = txt_apellido.getText();
         Cedula = txtcedu.getText();
         Direccion = txt_dir.getText();
         Telefono = txt_fono.getText();
@@ -366,7 +355,8 @@ Cliente c = new Cliente();
         Correo = txt_correo.getText();
         Nota = txt_nota.getText();
         id_cliente = Integer.parseInt(lbl_cliente.getText());
-        c.Modificar_Cliente();
+        String msj = c.Modificar_Cliente();
+        JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Modificaciòn Exitosa" , JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txt_nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyPressed
@@ -386,7 +376,7 @@ Cliente c = new Cliente();
                rs =pst.executeQuery();
                if (rs.next()){
                    
-                   txt_apellido.setText(rs.getString("Apellido"));
+                   
                    txt_ciu.setText(rs.getString("Ciudad"));
                    txt_dir.setText(rs.getString("Direccion"));
                    txt_correo.setText(rs.getString("Correo"));
@@ -412,7 +402,8 @@ Cliente c = new Cliente();
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         id_cliente = Integer.parseInt(lbl_cliente.getText());
-        c.Eliminar_Cliente();
+        String msj = c.Eliminar_Cliente();
+        JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Eliminado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -463,7 +454,6 @@ Cliente c = new Cliente();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -471,7 +461,6 @@ Cliente c = new Cliente();
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lbl_cliente;
-    private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_ciu;
     private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_dir;

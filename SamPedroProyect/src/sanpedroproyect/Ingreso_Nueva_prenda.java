@@ -188,7 +188,7 @@ Prenda p = new Prenda();
         Precio = txt_precio.getText();
         Talla = txt_talla.getText();
         String msj = p.Ingresar_Prenda();
-        JOptionPane.showMessageDialog(null,"Guardado Exitoso", "InfoBox: " + msj , JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
        
     }//GEN-LAST:event_btn_guardar_nuevaprendaActionPerformed
 

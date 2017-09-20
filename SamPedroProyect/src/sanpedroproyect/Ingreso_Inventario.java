@@ -12,6 +12,7 @@ import com.sun.glass.events.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -264,7 +265,8 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         // TODO add your handling code here:
         Cantidad =  Integer.parseInt(txt_cant.getText());
         Codigo_Producto = Integer.parseInt(txt_codigo_busqueda.getText());
-        i.Ingresar_Inventario();
+        String msj = i.Ingresar_Inventario();
+        JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btn_guadar_inventarioActionPerformed
 
     /**

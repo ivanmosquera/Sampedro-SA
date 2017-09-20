@@ -30,12 +30,12 @@ public class Cliente {
             pst = cn.prepareStatement(sql);
             pst.setString(1,cliente.getCedula());
             pst.setString(2,cliente.getNombre());
-            pst.setString(3,cliente.getApellido());
-            pst.setString(4,cliente.getCorreo());
-            pst.setString(5,cliente.getTelefono());
-            pst.setString(6,cliente.getDireccion());
-            pst.setString(7,cliente.getCiudad());
-            pst.setString(8,cliente.getNota());
+            pst.setString(3,cliente.getCorreo());
+            pst.setString(4,cliente.getTelefono());
+            pst.setString(5,cliente.getDireccion());
+            pst.setString(6,cliente.getCiudad());
+            pst.setString(7,cliente.getNota());
+            pst.setString(8,"ACTIVO");
             pst.execute();
             resul = "Ingresado Correctamente";
             System.out.println(resul);
@@ -55,27 +55,23 @@ public class Cliente {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "UPDATE `San Pedro`.`cliente` SET `Cedula`= ? , `Nombre`= ? , `Apellido`= ?, `Correo`= ?, `Telefono`= ? , `Direccion`= ? , `Ciudad`= ? , `Nota`= ?   WHERE `id_Cliente`= ?;";
+        String sql = "UPDATE `San Pedro`.`cliente` SET `Cedula`= ? , `Nombre`= ? , `Correo`= ?, `Telefono`= ? , `Direccion`= ? , `Ciudad`= ? , `Nota`= ?   WHERE `id_Cliente`= ?;";
         try{
             pst = cn.prepareStatement(sql);
             pst.setString(1,mod.getCedula());
             pst.setString(2,mod.getNombre());
-            pst.setString(3,mod.getApellido());
-            pst.setString(4,mod.getCorreo());
-            pst.setString(5,mod.getTelefono());
-            pst.setString(6,mod.getDireccion());
-            pst.setString(7,mod.getCiudad());
-            pst.setString(8,mod.getNota());
-            pst.setInt(9,mod.getId_cliente());
+            pst.setString(3,mod.getCorreo());
+            pst.setString(4,mod.getTelefono());
+            pst.setString(5,mod.getDireccion());
+            pst.setString(6,mod.getCiudad());
+            pst.setString(7,mod.getNota());
+            pst.setInt(8,mod.getId_cliente());
             pst.execute();
             resul = "Modificado Correctamente";
             System.out.println(resul);
             
         }catch(SQLException e){
             resul = "Error : "+e; 
-            System.out.println(resul);
-            System.out.println(pst);
-            System.out.println(cliente.getCedula());
         }
         
         return resul;
@@ -83,16 +79,17 @@ public class Cliente {
     }
     
     public static String Eliminar_Cliente(){
-        String resul = null , lats = null;
+String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "DELETE FROM cliente WHERE id_Cliente = ? ";
+        String sql = "UPDATE `San Pedro`.`cliente` SET `Estado`= ?  WHERE `id_Cliente`= ?;";
         try{
             pst = cn.prepareStatement(sql);
-            pst.setInt(1,mod.getId_cliente());
+            pst.setString(1,"ELIMINADO");
+            pst.setInt(2,mod.getId_cliente());
             pst.execute();
-            resul = "Eliminado Correcatmente";
+            resul = "ELIMINADO CORRECTAMENTE";
             System.out.println(resul);
             
         }catch(SQLException e){
