@@ -5,6 +5,7 @@
  */
 package sanpedroproyect;
 
+import Class.Factura;
 import DATABASE.ConnectionDB;
 import com.sun.glass.events.KeyEvent;
 import java.sql.Connection;
@@ -16,12 +17,23 @@ import java.sql.ResultSet;
  * @author Pantheon
  */
 public class GUI_Factura extends javax.swing.JFrame {
+    
+    static Integer Codigo;
+    Factura factura = new Factura();
 
     /**
      * Creates new form GUI_Factura
      */
     public GUI_Factura() {
         initComponents();
+    }
+    
+    public Integer getCodigo() {
+        return Codigo;
+    }
+
+    public void setCodigo(Integer Codigo) {
+        this.Codigo = Codigo;
     }
 
     /**
@@ -265,6 +277,11 @@ public class GUI_Factura extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Imprimir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Limpiar");
 
@@ -423,6 +440,10 @@ public class GUI_Factura extends javax.swing.JFrame {
         } 
         
     }//GEN-LAST:event_txt_clienteKeyPressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Factura.cargar_Productos();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

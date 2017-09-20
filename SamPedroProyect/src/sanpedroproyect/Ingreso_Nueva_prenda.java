@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
  * @author Pantheon
  */
 public class Ingreso_Nueva_prenda extends javax.swing.JFrame {
-static String Codigo , Detalle , Talla , Precio;
+static String Codigo , Detalle , Talla;
+static float Precio;
 Prenda p = new Prenda();
 
     public String getCodigo() {
@@ -41,11 +42,11 @@ Prenda p = new Prenda();
         this.Talla = Talla;
     }
 
-    public String getPrecio() {
+    public float getPrecio() {
         return Precio;
     }
 
-    public void setPrecio(String Precio) {
+    public void setPrecio(float Precio) {
         this.Precio = Precio;
     }
 
@@ -185,7 +186,7 @@ Prenda p = new Prenda();
         // TODO add your handling code here:
         Codigo = txt_codigo.getText();
         Detalle = txt_detalle.getText();
-        Precio = txt_precio.getText();
+        Precio = Float.parseFloat(txt_precio.getText());
         Talla = txt_talla.getText();
         String msj = p.Ingresar_Prenda();
         JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);

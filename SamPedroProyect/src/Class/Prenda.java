@@ -21,6 +21,23 @@ import sanpedroproyect.Ingreso_Nuevo_Cliente;
  * @author kleberstevendiazcoello
  */
 public class Prenda {
+    
+    private int Codigo;
+    private String Detalle;
+    private String Talla;
+    private float Precio;
+
+    public Prenda() {
+        
+    }
+    
+    public Prenda(int Codigo, String Detalle, String Talla, float Precio) {
+        this.Codigo = Codigo;
+        this.Detalle = Detalle;
+        this.Talla = Talla;
+        this.Precio = Precio;
+    }
+    
     static Ingreso_Nueva_prenda  pr = new Ingreso_Nueva_prenda();
     public static String Ingresar_Prenda(){
         String resul = null , lats = null;
@@ -41,7 +58,7 @@ public class Prenda {
             pst = cn.prepareStatement(sql);
             pst.setString(1,pr.getCodigo());
             pst.setString(2,pr.getDetalle());
-            pst.setString(3,pr.getPrecio());
+            pst.setFloat(3, pr.getPrecio());
             pst.setString(4,pr.getTalla());
             pst.setInt(5, 1);
             pst.setInt(6, 1);
