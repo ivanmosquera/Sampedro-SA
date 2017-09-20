@@ -6,12 +6,15 @@
 package sanpedroproyect;
 
 import Class.Factura;
+import Class.Operaciones;
 import Class.Prenda;
 import DATABASE.ConnectionDB;
 import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyAdapter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.text.JTextComponent;
 
 /**
  *
@@ -22,12 +25,68 @@ public class GUI_Factura extends javax.swing.JFrame {
     static Integer Codigo;
     Factura factura = new Factura();
     Prenda [] prenda = null;
+    Operaciones op = new Operaciones();
 
     /**
      * Creates new form GUI_Factura
      */
     public GUI_Factura() {
         initComponents();
+          cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent e) {
+                 //To change body of generated methods, choose Tools | Templates.
+                String cadena = cbx_Nombre.getEditor().getItem().toString();
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    System.out.println("Aplasto ENter");
+                        String resul = null , lats = null;
+                        ConnectionDB cc = new ConnectionDB();
+                        Connection cn = cc.getConnection();
+                        PreparedStatement pst =null;
+                        ResultSet rs = null;
+                        String Desc;
+                        try{
+                           String sql = ("SELECT * FROM cliente where Nombre = ?");
+                           pst = cn.prepareStatement(sql);
+                           pst.setString(1, cadena);
+                           rs =pst.executeQuery();
+                           if (rs.next()){
+
+                               txt_cedula.setText(rs.getString("Cedula"));
+                               txt_dir.setText(rs.getString("Direccion"));
+                               txt_mail.setText(rs.getString("Correo"));
+                               txt_telefono.setText(rs.getString("Telefono"));
+                          
+                           }
+
+
+
+                        } catch (Exception ex){
+                            System.out.println(ex);
+                        }
+                    
+                }
+                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                    cbx_Nombre.setModel(op.geLista(cadena));
+                    if(cbx_Nombre.getItemCount()>0){
+                        cbx_Nombre.showPopup();
+                        if(e.getKeyCode()!=8){
+                            ((JTextComponent)cbx_Nombre.getEditor().getEditorComponent()).select(cadena.length(),cbx_Nombre.getEditor().getItem().toString().length());
+                            
+                            
+                        }else{
+                            cbx_Nombre.getEditor().setItem(cadena);
+                            
+                        }
+                            
+                    }else{
+                        cbx_Nombre.addItem(cadena);
+                    }
+                }
+            }
+          
+        });
     }
     
     public Integer getCodigo() {
@@ -58,7 +117,6 @@ public class GUI_Factura extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txt_cliente = new javax.swing.JTextField();
         txt_mail = new javax.swing.JTextField();
         txt_cedula = new javax.swing.JTextField();
         txt_vendedor = new javax.swing.JTextField();
@@ -70,6 +128,7 @@ public class GUI_Factura extends javax.swing.JFrame {
         txt_dir = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txt_telefono = new javax.swing.JTextField();
+        cbx_Nombre = new javax.swing.JComboBox();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -134,12 +193,6 @@ public class GUI_Factura extends javax.swing.JFrame {
 
         jLabel6.setText("Vendedor");
 
-        txt_cliente.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_clienteKeyPressed(evt);
-            }
-        });
-
         jLabel8.setText("Forma De Pago");
 
         Combo_FORMA_PAGO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta Credito", "Tarjeta Débito"}));
@@ -149,6 +202,8 @@ public class GUI_Factura extends javax.swing.JFrame {
         jLabel9.setText("Mail");
 
         jLabel16.setText("Telefono");
+
+        cbx_Nombre.setEditable(true);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -164,7 +219,9 @@ public class GUI_Factura extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txt_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(cbx_Nombre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -187,7 +244,6 @@ public class GUI_Factura extends javax.swing.JFrame {
                                         .addComponent(jLabel16)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txt_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))))))
-                    .addComponent(txt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(460, 460, 460))
@@ -198,9 +254,9 @@ public class GUI_Factura extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(btn_consumidor_final))
+                    .addComponent(btn_consumidor_final)
+                    .addComponent(cbx_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -401,48 +457,6 @@ public class GUI_Factura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_clienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_clienteKeyPressed
-        // TODO add your handling code here:
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            System.out.println("Aplasto ENter");
-            String resul = null , lats = null;
-            ConnectionDB cc = new ConnectionDB();
-            Connection cn = cc.getConnection();
-            PreparedStatement pst =null;
-            ResultSet rs = null;
-            String Desc;
-            try{
-               String sql = ("SELECT * FROM cliente where Nombre = ?");
-               pst = cn.prepareStatement(sql);
-               pst.setString(1, txt_cliente.getText());
-               rs =pst.executeQuery();
-               if (rs.next()){
-            
-                   txt_cedula.setText(rs.getString("Cedula"));
-                   txt_dir.setText(rs.getString("Direccion"));
-                   txt_mail.setText(rs.getString("Correo"));
-                   txt_telefono.setText(rs.getString("Telefono"));
-                   
-                   System.out.println(rs.getString("Direccion"));
-                   System.out.println(rs.getString("Correo"));
-                   
-                   
-               }
-
-
-
-            } catch (Exception e){
-                System.out.println(e);
-            }
-        
-        
-       
-       
-        
-        } 
-        
-    }//GEN-LAST:event_txt_clienteKeyPressed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         prenda = Factura.cargar_Productos();
         //Factura.cargar_Productos();
@@ -486,6 +500,7 @@ public class GUI_Factura extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combo_FORMA_PAGO;
     private javax.swing.JButton btn_consumidor_final;
+    private javax.swing.JComboBox cbx_Nombre;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -524,7 +539,6 @@ public class GUI_Factura extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txt_cedula;
-    private javax.swing.JTextField txt_cliente;
     private javax.swing.JTextField txt_dir;
     private javax.swing.JTextField txt_mail;
     private javax.swing.JTextField txt_telefono;

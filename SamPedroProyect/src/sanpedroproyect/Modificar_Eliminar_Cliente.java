@@ -137,6 +137,9 @@ Cliente c = new Cliente();
                                txt_dir.setText(rs.getString("Direccion"));
                                txt_correo.setText(rs.getString("Correo"));
                                txt_fono.setText(rs.getString("Telefono"));
+                               txt_nota.setText(rs.getString("Nota"));
+                               txt_ciu.setText(rs.getString("Ciudad"));
+                               lbl_cliente.setText(rs.getString("id_Cliente"));
                            }
 
 
@@ -144,6 +147,7 @@ Cliente c = new Cliente();
                         } catch (Exception ex){
                             System.out.println(ex);
                         }
+                    
                 }
                 if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
                     cbx_Nombre.setModel(op.geLista(cadena));
