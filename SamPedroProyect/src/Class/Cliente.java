@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import sanpedroproyect.Ingreso_Nuevo_Cliente;
+import sanpedroproyect.Modificar_Eliminar_Cliente;
 
 /**
  *
@@ -18,6 +19,7 @@ import sanpedroproyect.Ingreso_Nuevo_Cliente;
  */
 public class Cliente {
     static Ingreso_Nuevo_Cliente cliente = new Ingreso_Nuevo_Cliente();
+    static Modificar_Eliminar_Cliente mod = new Modificar_Eliminar_Cliente();
     public static String Ingresar_cliente(){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -47,5 +49,61 @@ public class Cliente {
         
         return resul;
     }
+    
+    public static String Modificar_Cliente(){
+       String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql = "UPDATE `San Pedro`.`cliente` SET `Cedula`= ? , `Nombre`= ? , `Apellido`= ?, `Correo`= ?, `Telefono`= ? , `Direccion`= ? , `Ciudad`= ? , `Nota`= ?   WHERE `id_Cliente`= ?;";
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,mod.getCedula());
+            pst.setString(2,mod.getNombre());
+            pst.setString(3,mod.getApellido());
+            pst.setString(4,mod.getCorreo());
+            pst.setString(5,mod.getTelefono());
+            pst.setString(6,mod.getDireccion());
+            pst.setString(7,mod.getCiudad());
+            pst.setString(8,mod.getNota());
+            pst.setInt(9,mod.getId_cliente());
+            pst.execute();
+            resul = "Modificado Correctamente";
+            System.out.println(resul);
+            
+        }catch(SQLException e){
+            resul = "Error : "+e; 
+            System.out.println(resul);
+            System.out.println(pst);
+            System.out.println(cliente.getCedula());
+        }
+        
+        return resul;
+        
+    }
+    
+    public static String Eliminar_Cliente(){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql = "DELETE FROM cliente WHERE id_Cliente = ? ";
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1,mod.getId_cliente());
+            pst.execute();
+            resul = "Eliminado Correcatmente";
+            System.out.println(resul);
+            
+        }catch(SQLException e){
+            resul = "Error : "+e; 
+            System.out.println(resul);
+        }
+        
+        return resul;
+        
+        
+    }
+    
     
 }
