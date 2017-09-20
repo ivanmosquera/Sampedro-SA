@@ -22,10 +22,10 @@ import sanpedroproyect.Ingreso_Nuevo_Cliente;
  */
 public class Prenda {
     
-    private int Codigo;
-    private String Detalle;
-    private String Talla;
-    private float Precio;
+    public int Codigo;
+    public String Detalle;
+    public String Talla;
+    public float Precio;
 
     public Prenda() {
         

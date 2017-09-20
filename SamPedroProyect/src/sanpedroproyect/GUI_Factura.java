@@ -6,6 +6,7 @@
 package sanpedroproyect;
 
 import Class.Factura;
+import Class.Prenda;
 import DATABASE.ConnectionDB;
 import com.sun.glass.events.KeyEvent;
 import java.sql.Connection;
@@ -20,6 +21,7 @@ public class GUI_Factura extends javax.swing.JFrame {
     
     static Integer Codigo;
     Factura factura = new Factura();
+    Prenda [] prenda = null;
 
     /**
      * Creates new form GUI_Factura
@@ -442,7 +444,8 @@ public class GUI_Factura extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_clienteKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Factura.cargar_Productos();
+        prenda = Factura.cargar_Productos();
+        //Factura.cargar_Productos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
