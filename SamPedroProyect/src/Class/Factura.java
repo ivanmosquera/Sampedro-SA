@@ -12,7 +12,7 @@ import java.sql.ResultSet; //necesario para realizar consultas SELECT
 import java.sql.SQLException;
 import java.sql.Statement;
 import sanpedroproyect.GUI_Factura;
-import org.fife.ui.autocomplete.*;
+//import org.fife.ui.autocomplete.*;
 /**
  *
  * @author Ivan Mosquera

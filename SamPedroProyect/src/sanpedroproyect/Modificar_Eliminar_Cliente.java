@@ -7,12 +7,15 @@
 package sanpedroproyect;
 
 import Class.Cliente;
+import Class.Operaciones;
 import DATABASE.ConnectionDB;
 import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyAdapter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.text.JTextComponent;
 import static sanpedroproyect.Ingreso_Nuevo_Cliente.Nombre;
 
 /**
@@ -21,8 +24,8 @@ import static sanpedroproyect.Ingreso_Nuevo_Cliente.Nombre;
  */
 public class Modificar_Eliminar_Cliente extends javax.swing.JFrame {
 static String Cedula,Nombre,Apellido,Correo,Telefono,Direccion,Ciudad,Nota;
- static int id_cliente;
-
+static int id_cliente;
+Operaciones op = new Operaciones();
 Cliente c = new Cliente();
 
     public int getId_cliente() {
@@ -109,7 +112,63 @@ Cliente c = new Cliente();
      */
     public Modificar_Eliminar_Cliente() {
         initComponents();
+        cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent e) {
+                 //To change body of generated methods, choose Tools | Templates.
+                String cadena = cbx_Nombre.getEditor().getItem().toString();
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    System.out.println("Aplasto ENter");
+                        String resul = null , lats = null;
+                        ConnectionDB cc = new ConnectionDB();
+                        Connection cn = cc.getConnection();
+                        PreparedStatement pst =null;
+                        ResultSet rs = null;
+                        String Desc;
+                        try{
+                           String sql = ("SELECT * FROM cliente where Nombre = ?");
+                           pst = cn.prepareStatement(sql);
+                           pst.setString(1, cadena);
+                           rs =pst.executeQuery();
+                           if (rs.next()){
+
+                               txtcedu.setText(rs.getString("Cedula"));
+                               txt_dir.setText(rs.getString("Direccion"));
+                               txt_correo.setText(rs.getString("Correo"));
+                               txt_fono.setText(rs.getString("Telefono"));
+                           }
+
+
+
+                        } catch (Exception ex){
+                            System.out.println(ex);
+                        }
+                }
+                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                    cbx_Nombre.setModel(op.geLista(cadena));
+                    if(cbx_Nombre.getItemCount()>0){
+                        cbx_Nombre.showPopup();
+                        if(e.getKeyCode()!=8){
+                            ((JTextComponent)cbx_Nombre.getEditor().getEditorComponent()).select(cadena.length(),cbx_Nombre.getEditor().getItem().toString().length());
+                            
+                            
+                        }else{
+                            cbx_Nombre.getEditor().setItem(cadena);
+                            
+                        }
+                            
+                    }else{
+                        cbx_Nombre.addItem(cadena);
+                    }
+                }
+            }
+          
+        });
+        
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -138,9 +197,9 @@ Cliente c = new Cliente();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         lbl_cliente = new javax.swing.JLabel();
+        cbx_Nombre = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -197,15 +256,11 @@ Cliente c = new Cliente();
         jLabel5.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel5.setMinimumSize(new java.awt.Dimension(439, 14));
 
-        txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_nombreKeyPressed(evt);
-            }
-        });
-
         jLabel10.setText("Codigo");
 
         lbl_cliente.setText("Codigo_Cliente");
+
+        cbx_Nombre.setEditable(true);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -222,26 +277,29 @@ Cliente c = new Cliente();
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel10))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_cliente)
-                    .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_ciu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcedu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_cliente)
+                        .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_ciu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtcedu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cbx_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)))
                 .addContainerGap(464, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(cbx_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(lbl_cliente))
@@ -347,7 +405,7 @@ Cliente c = new Cliente();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Nombre = txt_nombre.getText();
+        Nombre = cbx_Nombre.getSelectedItem().toString();
         Cedula = txtcedu.getText();
         Direccion = txt_dir.getText();
         Telefono = txt_fono.getText();
@@ -358,46 +416,6 @@ Cliente c = new Cliente();
         String msj = c.Modificar_Cliente();
         JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Modificaciòn Exitosa" , JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txt_nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyPressed
-        // TODO add your handling code here:
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            System.out.println("Aplasto ENter");
-            String resul = null , lats = null;
-            ConnectionDB cc = new ConnectionDB();
-            Connection cn = cc.getConnection();
-            PreparedStatement pst =null;
-            ResultSet rs = null;
-            String Desc;
-            try{
-               String sql = ("SELECT * FROM cliente where Nombre = ? ");
-               pst = cn.prepareStatement(sql);
-               pst.setString(1, txt_nombre.getText());
-               rs =pst.executeQuery();
-               if (rs.next()){
-                   
-                   
-                   txt_ciu.setText(rs.getString("Ciudad"));
-                   txt_dir.setText(rs.getString("Direccion"));
-                   txt_correo.setText(rs.getString("Correo"));
-                   txt_fono.setText(rs.getString("Telefono"));
-                   txt_nota.setText(rs.getString("Nota"));
-                   txtcedu.setText(rs.getString("Cedula"));
-                   lbl_cliente.setText(rs.getString("id_Cliente"));
-               }
-
-
-
-            } catch (Exception e){
-                System.out.println(e);
-            }
-        
-        
-       
-       
-        
-        } 
-    }//GEN-LAST:event_txt_nombreKeyPressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -442,6 +460,7 @@ Cliente c = new Cliente();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cbx_Nombre;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -465,7 +484,6 @@ Cliente c = new Cliente();
     private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_dir;
     private javax.swing.JTextField txt_fono;
-    private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextArea txt_nota;
     private javax.swing.JTextField txtcedu;
     // End of variables declaration//GEN-END:variables

@@ -113,16 +113,21 @@
                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbl_cliente" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_correo" min="-2" pref="178" max="-2" attributes="0"/>
-                      <Component id="txt_ciu" min="-2" pref="178" max="-2" attributes="0"/>
-                      <Component id="txt_dir" min="-2" pref="178" max="-2" attributes="0"/>
-                      <Component id="txt_fono" min="-2" pref="178" max="-2" attributes="0"/>
-                      <Component id="txtcedu" min="-2" pref="178" max="-2" attributes="0"/>
-                      <Component id="txt_nombre" min="-2" pref="178" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="224" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="lbl_cliente" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_correo" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Component id="txt_ciu" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Component id="txt_dir" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Component id="txt_fono" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Component id="txtcedu" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="224" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="cbx_Nombre" min="-2" pref="186" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="464" max="32767" attributes="0"/>
               </Group>
@@ -131,12 +136,12 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbx_Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_cliente" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -255,11 +260,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_nombre">
-          <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nombreKeyPressed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="text" type="java.lang.String" value="Codigo"/>
@@ -268,6 +268,14 @@
         <Component class="javax.swing.JLabel" name="lbl_cliente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Codigo_Cliente"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbx_Nombre">
+          <Properties>
+            <Property name="editable" type="boolean" value="true"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
