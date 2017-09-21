@@ -40,6 +40,29 @@ public class Operaciones {
         return modelo;
     
 }   
+        public DefaultComboBoxModel geLista_Producto(String Cadena){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        String sql  =  "SELECT Descripcion From producto WHERE Descripcion LIKE '"+Cadena+"%';";
+        try{
+           pst = cn.prepareStatement(sql); 
+           rs = pst.executeQuery();
+           while(rs.next()){
+               modelo.addElement(rs.getString("Descripcion"));
+               
+           }
+        }catch(Exception e){
+            resul = "Error :" + e;
+            System.out.println(resul);
+        }
+        
+        return modelo;
+    
+}   
     
     
 }
