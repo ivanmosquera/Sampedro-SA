@@ -145,14 +145,14 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_producto = new javax.swing.JTable();
         btn_agregar_producto = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn_SalirProducto = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         txt_can = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_numFactura = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txt_fecha = new javax.swing.JTextField();
         Factura_panel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -173,19 +173,19 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel10 = new javax.swing.JLabel();
         txt_subtotal = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        txt_descto = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txt_vaucher = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        txt_iva = new javax.swing.JTextField();
+        txt_total = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txt_nota = new javax.swing.JTextArea();
         btn_imprimir = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_Limpiar = new javax.swing.JButton();
+        btn_Salir = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         Tabla_ventas = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
@@ -209,7 +209,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         ));
         jScrollPane2.setViewportView(tabla_producto);
 
-        btn_agregar_producto.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        btn_agregar_producto.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_agregar_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/anadir.png"))); // NOI18N
         btn_agregar_producto.setText("AGREGAR");
         btn_agregar_producto.addActionListener(new java.awt.event.ActionListener() {
@@ -218,11 +218,16 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             }
         });
 
-        jButton4.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
-        jButton4.setText("SALIR");
+        btn_SalirProducto.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_SalirProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
+        btn_SalirProducto.setText("SALIR");
+        btn_SalirProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SalirProductoActionPerformed(evt);
+            }
+        });
 
-        jLabel18.setFont(new java.awt.Font("MT Extra", 0, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel18.setText("Cantidad");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -248,7 +253,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_agregar_producto)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_SalirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
         jPanel3Layout.setVerticalGroup(
@@ -265,7 +270,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                         .addGap(42, 42, 42)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_agregar_producto)
-                            .addComponent(jButton4)))
+                            .addComponent(btn_SalirProducto)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -289,10 +294,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel1.setText("Factura Num.");
 
-        jLabel2.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel2.setText("Fecha");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -303,11 +308,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 .addGap(6, 6, 6)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_numFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -316,67 +321,67 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_numFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6))
         );
 
         Factura_panel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel3.setText("Cliente");
 
-        jLabel4.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel4.setText("Dirección");
 
-        jLabel5.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel5.setText("Cédula/RUC");
 
-        jLabel6.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel6.setText("Vendedor");
 
-        jLabel8.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel8.setText("Forma De Pago");
 
         Combo_FORMA_PAGO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta Credito", "Tarjeta Débito"}));
 
-        btn_consumidor_final.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        btn_consumidor_final.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_consumidor_final.setText("Consumidor Final");
 
-        jLabel9.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel9.setText("Mail");
 
-        jLabel16.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel16.setText("Telefono");
 
         cbx_Nombre.setEditable(true);
 
-        jLabel10.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel10.setText("Subtotal");
 
         txt_subtotal.setEditable(false);
 
-        jLabel11.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel11.setText("Descuento");
 
-        jLabel12.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel12.setText("Vaucher");
 
-        jLabel15.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel15.setText("I.V.A");
 
-        jLabel13.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel13.setText("Total");
 
-        jLabel14.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel14.setText("NOTA :");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txt_nota.setColumns(20);
+        txt_nota.setRows(5);
+        jScrollPane1.setViewportView(txt_nota);
 
-        btn_imprimir.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        btn_imprimir.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresora.png"))); // NOI18N
         btn_imprimir.setText("Imprimir");
         btn_imprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -387,17 +392,27 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             }
         });
 
-        jButton2.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escoba.png"))); // NOI18N
-        jButton2.setText("Limpiar");
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_Limpiar.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escoba.png"))); // NOI18N
+        btn_Limpiar.setText("Limpiar");
+        btn_Limpiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Limpiar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LimpiarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
-        jButton3.setText("Salir");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_Salir.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
+        btn_Salir.setText("Salir");
+        btn_Salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SalirActionPerformed(evt);
+            }
+        });
 
         Tabla_ventas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -409,7 +424,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         ));
         jScrollPane3.setViewportView(Tabla_ventas);
 
-        jButton5.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tienda-online.png"))); // NOI18N
         jButton5.setText("Agregar Producto");
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -474,7 +489,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                             .addGroup(Factura_panelLayout.createSequentialGroup()
                                 .addGap(41, 41, 41)
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(Factura_panelLayout.createSequentialGroup()
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -483,8 +498,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                             .addGroup(Factura_panelLayout.createSequentialGroup()
                                 .addGap(45, 45, 45)
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_vaucher, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,18 +510,18 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                         .addGap(27, 27, 27)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_descto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(81, 81, 81)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Limpiar)
+                .addGap(60, 60, 60)
+                .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95))
             .addGroup(Factura_panelLayout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         Factura_panelLayout.setVerticalGroup(
             Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -553,32 +568,32 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                         .addGap(19, 19, 19)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_descto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Factura_panelLayout.createSequentialGroup()
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel12)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_vaucher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel15)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(25, 25, 25)
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel13)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(20, 20, 20)
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel14)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_Limpiar, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btn_imprimir, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addComponent(btn_Salir)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -680,6 +695,43 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         Dialog_buscar_pro.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LimpiarActionPerformed
+        // TODO add your handling code here:
+        txt_numFactura.setText("");
+        txt_fecha.setText("");
+        txt_cedula.setText("");
+        txt_dir.setText("");
+        txt_can.setText("");
+        txt_mail.setText("");
+        txt_subtotal.setText("");
+        sub_total = 0;
+        txt_telefono.setText("");
+        txt_vendedor.setText("");
+        txt_descto.setText("");
+        txt_iva.setText("");
+        txt_vaucher.setText("");
+        txt_total.setText("");
+        txt_nota.setText("");
+        cbx_Nombre.removeAllItems();
+        Tabla_ventas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "TOTAL"
+            }
+        ));
+        
+    }//GEN-LAST:event_btn_LimpiarActionPerformed
+
+    private void btn_SalirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirProductoActionPerformed
+        Dialog_buscar_pro.dispose();
+    }//GEN-LAST:event_btn_SalirProductoActionPerformed
+
+    private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
+        System.exit(0); 
+    }//GEN-LAST:event_btn_SalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -725,14 +777,14 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private javax.swing.JDialog Dialog_buscar_pro;
     private javax.swing.JPanel Factura_panel;
     private javax.swing.JTable Tabla_ventas;
+    private javax.swing.JButton btn_Limpiar;
+    private javax.swing.JButton btn_Salir;
+    private javax.swing.JButton btn_SalirProducto;
     private javax.swing.JButton btn_agregar_producto;
     private javax.swing.JButton btn_consumidor_final;
     private javax.swing.JButton btn_imprimir;
     private javax.swing.JComboBox cbx_Nombre;
     private javax.swing.JComboBox cmb_producto;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -757,20 +809,20 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTable tabla_producto;
     private javax.swing.JTextField txt_can;
     private javax.swing.JTextField txt_cedula;
+    private javax.swing.JTextField txt_descto;
     private javax.swing.JTextField txt_dir;
+    private javax.swing.JTextField txt_fecha;
+    private javax.swing.JTextField txt_iva;
     private javax.swing.JTextField txt_mail;
+    private javax.swing.JTextArea txt_nota;
+    private javax.swing.JTextField txt_numFactura;
     private javax.swing.JTextField txt_subtotal;
     private javax.swing.JTextField txt_telefono;
+    private javax.swing.JTextField txt_total;
+    private javax.swing.JTextField txt_vaucher;
     private javax.swing.JTextField txt_vendedor;
     // End of variables declaration//GEN-END:variables
 
@@ -790,7 +842,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     
     
     private void priceInvoice(){
-        String sourcefile = "/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/FACTURA_IMPRIMIR.jrxml";
+        String sourcefile = "C:\\Users\\Ivan Mosquera\\Desktop\\BOUTIQUE\\Sampedro-SA\\SamPedroProyect\\src\\sanpedroproyect\\FACTURA_IMPRIMIR.jrxml";
         DefaultTableModel order_list = new DefaultTableModel();
         String codigo,descripcion,precio,talla,cantidad,total;
         InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/FACTURA_IMPRIMIR.jrxml");

@@ -49,7 +49,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btn_agregar_producto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="btn_SalirProducto" min="-2" pref="114" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -69,7 +69,7 @@
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btn_agregar_producto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_SalirProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -123,7 +123,7 @@
             <Component class="javax.swing.JButton" name="btn_agregar_producto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="MT Extra" size="14" style="1"/>
+                  <Font name="Bookman Old Style" size="14" style="1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagenes/anadir.png"/>
@@ -134,21 +134,24 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_agregar_productoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="btn_SalirProducto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="MT Extra" size="14" style="1"/>
+                  <Font name="Bookman Old Style" size="14" style="1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagenes/cancelar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="SALIR"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_SalirProductoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="MT Extra" size="14" style="0"/>
+                  <Font name="Bookman Old Style" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cantidad"/>
               </Properties>
@@ -215,11 +218,11 @@
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="105" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="96" max="-2" attributes="0"/>
+                  <Component id="txt_numFactura" min="-2" pref="96" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="41" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" min="-2" pref="72" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" pref="47" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="txt_fecha" min="-2" pref="72" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -230,9 +233,9 @@
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_numFactura" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_fecha" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               </Group>
@@ -243,22 +246,22 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Factura Num."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txt_numFactura">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Fecha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="txt_fecha">
         </Component>
       </SubComponents>
     </Container>
@@ -335,7 +338,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField10" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
+                                      <Component id="txt_total" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jScrollPane1" min="-2" pref="305" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
@@ -347,8 +350,8 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField9" min="-2" pref="38" max="-2" attributes="0"/>
-                                      <Component id="jTextField8" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <Component id="txt_iva" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <Component id="txt_vaucher" min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -365,14 +368,14 @@
                           <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txt_subtotal" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
-                              <Component id="jTextField12" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="txt_descto" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="80" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="80" max="-2" attributes="0"/>
+                  <Component id="btn_Limpiar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                  <Component id="btn_Salir" min="-2" pref="80" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
@@ -380,7 +383,7 @@
                   <Component id="jScrollPane3" min="-2" pref="827" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -440,24 +443,24 @@
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_descto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_vaucher" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_iva" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_total" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -465,17 +468,17 @@
                                       <Component id="jScrollPane1" min="-2" pref="73" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton2" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_Limpiar" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_imprimir" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_Salir" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="79" max="32767" attributes="0"/>
+                  <EmptySpace pref="88" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -484,7 +487,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cliente"/>
           </Properties>
@@ -492,7 +495,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
           </Properties>
@@ -500,7 +503,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="C&#xe9;dula/RUC"/>
           </Properties>
@@ -508,7 +511,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Vendedor"/>
           </Properties>
@@ -524,7 +527,7 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Forma De Pago"/>
           </Properties>
@@ -543,7 +546,7 @@
         <Component class="javax.swing.JButton" name="btn_consumidor_final">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Consumidor Final"/>
           </Properties>
@@ -551,7 +554,7 @@
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Mail"/>
           </Properties>
@@ -561,7 +564,7 @@
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Telefono"/>
           </Properties>
@@ -579,7 +582,7 @@
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Subtotal"/>
           </Properties>
@@ -592,39 +595,39 @@
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Descuento"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField12">
+        <Component class="javax.swing.JTextField" name="txt_descto">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Vaucher"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField8">
+        <Component class="javax.swing.JTextField" name="txt_vaucher">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="I.V.A"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField9">
+        <Component class="javax.swing.JTextField" name="txt_iva">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField10">
+        <Component class="javax.swing.JTextField" name="txt_total">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Total"/>
           </Properties>
@@ -632,7 +635,7 @@
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="NOTA :"/>
           </Properties>
@@ -644,7 +647,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="txt_nota">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -655,7 +658,7 @@
         <Component class="javax.swing.JButton" name="btn_imprimir">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/impresora.png"/>
@@ -668,10 +671,10 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_imprimirActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btn_Limpiar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/escoba.png"/>
@@ -680,11 +683,14 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_LimpiarActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btn_Salir">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/salida (2).png"/>
@@ -693,6 +699,9 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_SalirActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
           <AuxValues>
@@ -720,7 +729,7 @@
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="MT Extra" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/tienda-online.png"/>

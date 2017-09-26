@@ -74,9 +74,9 @@ Prenda p = new Prenda();
         txt_detalle = new javax.swing.JTextField();
         txt_talla = new javax.swing.JTextField();
         txt_precio = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_limpiarIngresoPrenda = new javax.swing.JButton();
         btn_guardar_nuevaprenda = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_salirIngresoPrenda = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -86,22 +86,29 @@ Prenda p = new Prenda();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel3.setText("Descripcion");
 
-        jLabel4.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel4.setText("Talla");
 
-        jLabel5.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel5.setText("Precio");
         jLabel5.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel5.setMinimumSize(new java.awt.Dimension(439, 14));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escoba.png"))); // NOI18N
-        jButton1.setText("Limpiar");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_limpiarIngresoPrenda.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_limpiarIngresoPrenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escoba.png"))); // NOI18N
+        btn_limpiarIngresoPrenda.setText("Limpiar");
+        btn_limpiarIngresoPrenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_limpiarIngresoPrenda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_limpiarIngresoPrenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarIngresoPrendaActionPerformed(evt);
+            }
+        });
 
+        btn_guardar_nuevaprenda.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_guardar_nuevaprenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
         btn_guardar_nuevaprenda.setText("Guardar");
         btn_guardar_nuevaprenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -112,15 +119,21 @@ Prenda p = new Prenda();
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
-        jButton3.setText("Salir");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_salirIngresoPrenda.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_salirIngresoPrenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
+        btn_salirIngresoPrenda.setText("Salir");
+        btn_salirIngresoPrenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_salirIngresoPrenda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_salirIngresoPrenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salirIngresoPrendaActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel2.setText("Codigo");
 
-        jLabel1.setFont(new java.awt.Font("MT Extra", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel1.setText("Ingresar Nueva Prenda");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -149,7 +162,7 @@ Prenda p = new Prenda();
                             .addComponent(txt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 98, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(98, 98, 98))
             .addComponent(jSeparator2)
@@ -157,9 +170,9 @@ Prenda p = new Prenda();
                 .addGap(55, 55, 55)
                 .addComponent(btn_guardar_nuevaprenda)
                 .addGap(79, 79, 79)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_limpiarIngresoPrenda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_salirIngresoPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
@@ -189,8 +202,8 @@ Prenda p = new Prenda();
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
+                    .addComponent(btn_limpiarIngresoPrenda)
+                    .addComponent(btn_salirIngresoPrenda)
                     .addComponent(btn_guardar_nuevaprenda))
                 .addGap(46, 46, 46))
         );
@@ -219,6 +232,17 @@ Prenda p = new Prenda();
         JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
        
     }//GEN-LAST:event_btn_guardar_nuevaprendaActionPerformed
+
+    private void btn_salirIngresoPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirIngresoPrendaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btn_salirIngresoPrendaActionPerformed
+
+    private void btn_limpiarIngresoPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarIngresoPrendaActionPerformed
+        txt_codigo.setText("");
+        txt_detalle.setText("");
+        txt_precio.setText("");
+        txt_talla.setText("");
+    }//GEN-LAST:event_btn_limpiarIngresoPrendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,8 +281,8 @@ Prenda p = new Prenda();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardar_nuevaprenda;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btn_limpiarIngresoPrenda;
+    private javax.swing.JButton btn_salirIngresoPrenda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

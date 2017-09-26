@@ -118,7 +118,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         btn_buscar_Producto = new javax.swing.JButton();
         btn_guadar_inventario = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_salirInventario = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -210,23 +210,23 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel2.setText("Codigo");
 
-        jLabel3.setFont(new java.awt.Font("MT Extra", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel3.setText("Producto");
 
         lbl_descripcion.setFont(new java.awt.Font("MT Extra", 0, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel5.setText("Talla");
 
         lbl_talla.setFont(new java.awt.Font("MT Extra", 0, 14)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("MT Extra", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel7.setText("Cantidad a Ingresar");
 
-        jLabel8.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel8.setText("Usuario");
 
         jLabel9.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
@@ -240,6 +240,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
             }
         });
 
+        btn_guadar_inventario.setFont(new java.awt.Font("Bookman Old Style", 1, 13)); // NOI18N
         btn_guadar_inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
         btn_guadar_inventario.setText("Guardar");
         btn_guadar_inventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -250,16 +251,22 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
-        jButton2.setText("Salir");
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_salirInventario.setFont(new java.awt.Font("Bookman Old Style", 1, 13)); // NOI18N
+        btn_salirInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
+        btn_salirInventario.setText("Salir");
+        btn_salirInventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_salirInventario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_salirInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salirInventarioActionPerformed(evt);
+            }
+        });
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
 
         jSeparator4.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel4.setFont(new java.awt.Font("MT Extra", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel4.setText("INGRESO INVENTARIO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -312,7 +319,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
                         .addGap(207, 207, 207)
                         .addComponent(btn_guadar_inventario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(124, 124, 124)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_salirInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabel8)))
@@ -338,7 +345,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(jLabel5)
                         .addComponent(lbl_talla, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -351,7 +358,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_guadar_inventario)
-                    .addComponent(jButton2))
+                    .addComponent(btn_salirInventario))
                 .addGap(25, 25, 25))
         );
 
@@ -412,6 +419,10 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_buscar_ProductoActionPerformed
 
+    private void btn_salirInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirInventarioActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btn_salirInventarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -452,8 +463,8 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
     private javax.swing.JButton btn_agregar_producto;
     private javax.swing.JButton btn_buscar_Producto;
     private javax.swing.JButton btn_guadar_inventario;
+    private javax.swing.JButton btn_salirInventario;
     private javax.swing.JComboBox cmb_producto;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

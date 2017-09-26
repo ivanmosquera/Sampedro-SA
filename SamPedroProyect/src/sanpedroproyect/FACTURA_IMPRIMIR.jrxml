@@ -22,7 +22,7 @@
 			<staticText>
 				<reportElement x="176" y="0" width="184" height="44" uuid="e032084a-6e29-43af-a9f4-eda3614c5a8f"/>
 				<textElement>
-					<font fontName="MT Extra" size="24" isBold="true"/>
+					<font fontName="Bookman Old Style" size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SAM PEDRO]]></text>
 			</staticText>
