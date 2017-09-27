@@ -31,9 +31,9 @@ public class Reporte_Operaciones {
         int col;
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
-        String sql  =  "SELECT p.Descripcion,Talla,Precio,Cantidad,Fecha,Hora,e.Descripcion From inventario i"
-                + ",producto p , estado e Where"
-                + " id_Producto = fk_Producto and id_Estado = fk_Estado; ";
+        String sql  =  "SELECT p.Descripcion,Talla,Precio,Cantidad,Mov,Fecha,Hora From inventario i"
+                + ",producto p Where"
+                + " id_Producto = fk_Producto";
         
         try {
             pst = cn.prepareStatement(sql);
@@ -137,5 +137,191 @@ public class Reporte_Operaciones {
         
         return modelo;
     }
+     
+     
+     
+     public DefaultTableModel consultar_inventario_filter_nombre(String Nombre ){
+       String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+  
+        
+        
+        String sql  =   "SELECT p.Descripcion,Talla,Precio,Cantidad,Mov,Fecha,Hora From inventario i"
+                + ",producto p Where"
+                + " id_Producto = fk_Producto and Descripcion = '"+Nombre+"';";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+            for(int i = 1;i<=col;i++){
+                modelo.addColumn(rsmd.getColumnName(i));}
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    
+                }
+                modelo.addRow(filas);
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+         
+     }
+     
+     public DefaultTableModel consultar_inventario_filter_talla(String Nombre,String talla ){
+       String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+  
+        
+        
+        String sql  =   "SELECT p.Descripcion,Talla,Precio,Cantidad,Mov,Fecha,Hora From inventario i"
+                + ",producto p Where"
+                + " id_Producto = fk_Producto and Descripcion = '"+Nombre+"' and Talla = '"+talla+"';";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+            for(int i = 1;i<=col;i++){
+                modelo.addColumn(rsmd.getColumnName(i));}
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    
+                }
+                modelo.addRow(filas);
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+         
+     }
+     
+        
+     public DefaultTableModel consultar_inventario_filter_Categoria(String Nombre,String Categoria ){
+       String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+  
+        
+        
+        String sql  =   "SELECT p.Descripcion,Talla,Precio,Cantidad,Mov,Fecha,Hora From inventario i"
+                + ",producto p Where"
+                + " id_Producto = fk_Producto and Descripcion = '"+Nombre+"' and Categoria = '"+Categoria+"';";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+            for(int i = 1;i<=col;i++){
+                modelo.addColumn(rsmd.getColumnName(i));}
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    
+                }
+                modelo.addRow(filas);
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+         
+     }
+     
+     
+     
+        
+     public DefaultTableModel consultar_inventario_filter_talla_categoria(String Nombre,String talla,String categoria ){
+       String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+  
+        
+        
+        String sql  =   "SELECT p.Descripcion,Talla,Precio,Cantidad,Mov,Fecha,Hora From inventario i"
+                + ",producto p Where"
+                + " id_Producto = fk_Producto and Descripcion = '"+Nombre+"' and Talla = '"+talla+"' and Categoria = '"+categoria+"';";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+            for(int i = 1;i<=col;i++){
+                modelo.addColumn(rsmd.getColumnName(i));}
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    
+                }
+                modelo.addRow(filas);
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+         
+     }
+     
+     
+     
+     
    
 }
