@@ -937,6 +937,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             para.put("TELEFONO",txt_telefono.getText());
             para.put("SUBTOTAL", txt_subtotal.getText());
             para.put("TOTAL", txt_total.getText());
+            para.put("NOTA",txt_nota.getText());
             
             order_list = (DefaultTableModel) Tabla_ventas.getModel();
             int numero_filas = order_list.getRowCount();
