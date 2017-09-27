@@ -55,6 +55,7 @@ Prenda p = new Prenda();
      */
     public Ingreso_Nueva_prenda() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

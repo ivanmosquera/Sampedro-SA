@@ -7,6 +7,7 @@ package sanpedroproyect;
 
 import Class.Cliente;
 import javax.swing.JOptionPane;
+import static sanpedroproyect.Modificar_Eliminar_Cliente.Nombre;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
      */
     public Ingreso_Nuevo_Cliente() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public String getCedula() {
@@ -139,6 +141,11 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         btn_nc_guardar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_nc_guardar1.setMaximumSize(new java.awt.Dimension(60, 65));
         btn_nc_guardar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_nc_guardar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nc_guardar1ActionPerformed(evt);
+            }
+        });
 
         btn_salirCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
         btn_salirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
@@ -308,6 +315,20 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         txt_fono1.setText("");
         txt_nota1.setText("");
     }//GEN-LAST:event_btn_limpiarClienteActionPerformed
+
+    private void btn_nc_guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nc_guardar1ActionPerformed
+        // TODO add your handling code here:
+        Nombre = txt_nombre1.getText();
+        Cedula = txtcedu1.getText();
+        Direccion = txt_dir1.getText();
+        Telefono = txt_fono1.getText();
+        Ciudad = txt_ciu1.getText();
+        Correo = txt_correo1.getText();
+        Nota = txt_nota1.getText();
+        
+        String msj = c.Ingresar_cliente();
+        JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btn_nc_guardar1ActionPerformed
 
     /**
      * @param args the command line arguments

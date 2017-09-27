@@ -22,6 +22,7 @@ public class Reporte_Inventario extends javax.swing.JFrame {
     Reporte_Operaciones rop = new Reporte_Operaciones();
     public Reporte_Inventario() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

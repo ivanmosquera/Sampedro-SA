@@ -29,6 +29,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.print.PrinterJob;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import net.sf.jasperreports.engine.JRException;
@@ -57,14 +59,17 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     static double total = 0;
     double sub_total = 0.0;
     double iva = 0;
+    double desc = 0;
+    String stotal;
 
     /**
      * Creates new form GUI_Factura
      */
     public GUI_Factura() {
         initComponents();
-          cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
-          
+        this.setLocationRelativeTo(null);
+        cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+        
           
             @Override
             public void keyReleased(java.awt.event.KeyEvent e) {
@@ -119,6 +124,45 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             }
           
         });
+        txt_descto.getDocument().addDocumentListener(new DocumentListener() {
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                desc = (Double.parseDouble(txt_descto.getText()));
+                sub_total =Double.parseDouble(txt_subtotal.getText());
+                total = sub_total - ((sub_total * desc)/100) ;
+                stotal = (String.valueOf(total));
+                txt_total.setText(stotal);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if(txt_descto.getText().isEmpty()){
+                    desc = 0;
+                }else{
+                   desc = (Double.parseDouble(txt_descto.getText()));
+                }
+                sub_total =Double.parseDouble(txt_subtotal.getText());
+                total = sub_total - ((sub_total * desc)/100);
+                stotal = (String.valueOf(total));
+                txt_total.setText(stotal);
+                if(txt_descto.getText().isEmpty()){
+                    txt_total.setText(txt_subtotal.getText());
+                }
+ 
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+              
+            } ); 
+        
+        
+        
+     
+        
+        
     }
     
     public Integer getCodigo() {
@@ -348,6 +392,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         btn_consumidor_final.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_consumidor_final.setText("Consumidor Final");
+        btn_consumidor_final.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consumidor_finalActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel9.setText("Mail");
@@ -732,6 +781,37 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         System.exit(0); 
     }//GEN-LAST:event_btn_SalirActionPerformed
 
+    private void btn_consumidor_finalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consumidor_finalActionPerformed
+        // TODO add your handling code here:
+            String resul = null , lats = null;
+                        ConnectionDB cc = new ConnectionDB();
+                        Connection cn = cc.getConnection();
+                        PreparedStatement pst =null;
+                        ResultSet rs = null;
+                        String Desc;
+                        try{
+                           String sql = ("SELECT * FROM cliente where Nombre = ?");
+                           pst = cn.prepareStatement(sql);
+                           pst.setString(1, "Consumidor Final");
+                           rs =pst.executeQuery();
+                           if (rs.next()){
+                               cbx_Nombre.getEditor().setItem(rs.getString("Nombre"));
+                               txt_cedula.setText(rs.getString("Cedula"));
+                               txt_dir.setText(rs.getString("Direccion"));
+                               txt_mail.setText(rs.getString("Correo"));
+                               txt_telefono.setText(rs.getString("Telefono"));
+                          
+                           }
+                            
+
+
+
+                        } catch (Exception ex){
+                            System.out.println(ex);
+                        }
+                        cc.desconectar();
+    }//GEN-LAST:event_btn_consumidor_finalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -842,7 +922,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     
     
     private void priceInvoice(){
-        String sourcefile = "C:\\Users\\Ivan Mosquera\\Desktop\\BOUTIQUE\\Sampedro-SA\\SamPedroProyect\\src\\sanpedroproyect\\FACTURA_IMPRIMIR.jrxml";
+        String sourcefile = "/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/FACTURA_IMPRIMIR.jrxml";
         DefaultTableModel order_list = new DefaultTableModel();
         String codigo,descripcion,precio,talla,cantidad,total;
         InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/FACTURA_IMPRIMIR.jrxml");
@@ -856,7 +936,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             para.put("DIRECCION", txt_dir.getText());
             para.put("TELEFONO",txt_telefono.getText());
             para.put("SUBTOTAL", txt_subtotal.getText());
-            para.put("TOTAL", "1000");
+            para.put("TOTAL", txt_total.getText());
             
             order_list = (DefaultTableModel) Tabla_ventas.getModel();
             int numero_filas = order_list.getRowCount();
