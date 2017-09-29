@@ -378,9 +378,15 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
 
     private void btn_guadar_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guadar_inventarioActionPerformed
         // TODO add your handling code here:
+        int totalbuscado = 0;
+        int nuevototal = 0;
         Cantidad =  Integer.parseInt(txt_cant.getText());
         Codigo_Producto = Integer.parseInt(txt_codigo_busqueda.getText());
         String msj = i.Ingresar_Inventario();
+        totalbuscado = i.get_cantidad_total_producto(Codigo_Producto);
+        nuevototal = (totalbuscado + Cantidad);
+        String test = i.Incremeneto_total_producto(Codigo_Producto,nuevototal);
+        System.out.println("Test :" + test );
         JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btn_guadar_inventarioActionPerformed
 

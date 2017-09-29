@@ -7,6 +7,7 @@
 package sanpedroproyect;
 
 import Class.Operaciones;
+import Class.Prenda;
 import Class.Reporte_Operaciones;
 import com.sun.glass.events.KeyEvent;
 import java.awt.event.KeyAdapter;
@@ -18,7 +19,7 @@ import javax.swing.text.JTextComponent;
  *
  * @author kleberstevendiazcoello
  */
-public class Reporte_Inventario extends javax.swing.JFrame {
+public class Inventario_Totales extends javax.swing.JFrame {
 
     /**
      * Creates new form Reporte_Inventario
@@ -26,7 +27,8 @@ public class Reporte_Inventario extends javax.swing.JFrame {
     Operaciones op = new Operaciones();
     DefaultTableModel modelotabla = new DefaultTableModel();
     Reporte_Operaciones rop = new Reporte_Operaciones();
-    public Reporte_Inventario() {
+    Prenda p = new Prenda();
+    public Inventario_Totales() {
         initComponents();
         this.setLocationRelativeTo(null);
              cb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
@@ -53,7 +55,11 @@ public class Reporte_Inventario extends javax.swing.JFrame {
                     }
                 }
             }
-            });           
+            });      
+             
+        String nombre_fil = cb_producto.getEditor().getItem().toString();
+        modelotabla = p.consultar_Producto_total(nombre_fil);
+        table_repor_inv.setModel(modelotabla);
  }
 
     /**
@@ -65,7 +71,6 @@ public class Reporte_Inventario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -75,10 +80,9 @@ public class Reporte_Inventario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cb_Talla = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        cb_mov = new javax.swing.JComboBox();
-
-        jButton1.setText("jButton1");
+        rb_Producto = new javax.swing.JRadioButton();
+        rb_talla = new javax.swing.JRadioButton();
+        rb_categoria = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,13 +92,13 @@ public class Reporte_Inventario extends javax.swing.JFrame {
 
         table_repor_inv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo", "Descripcion", "Talla", "Categoria", "Cantidad"
             }
         ));
         jScrollPane1.setViewportView(table_repor_inv);
@@ -117,9 +121,11 @@ public class Reporte_Inventario extends javax.swing.JFrame {
 
         cb_Talla.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "XS", "S", "M", "L", "XL","" }));
 
-        jLabel4.setText("Movimiento");
+        rb_Producto.setText("Por Producto");
 
-        cb_mov.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","INGRESO","SALIDA","SEPARADO"}));
+        rb_talla.setText("Por Talla");
+
+        rb_categoria.setText("Por Categoria");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,25 +139,26 @@ public class Reporte_Inventario extends javax.swing.JFrame {
                         .addContainerGap(43, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(247, 247, 247)
-                                .addComponent(jLabel1)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel1))
+                            .addComponent(rb_Producto)
+                            .addComponent(rb_talla))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Btn_consultar_report)
+                        .addGap(198, 198, 198))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rb_categoria)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cb_Talla, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Btn_consultar_report)
-                                .addGap(198, 198, 198))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cb_mov, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addComponent(jLabel2)
+                                .addGap(52, 52, 52)
+                                .addComponent(cb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(216, 216, 216)
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_Talla, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,19 +168,19 @@ public class Reporte_Inventario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(cb_Talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Btn_consultar_report)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Btn_consultar_report)
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(cb_mov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(cb_Talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45)
+                        .addComponent(rb_Producto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rb_talla)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rb_categoria)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(56, Short.MAX_VALUE))
         );
@@ -199,24 +206,11 @@ public class Reporte_Inventario extends javax.swing.JFrame {
         
         }
         String talla =  cb_Talla.getSelectedItem().toString();
-        String mov = cb_mov.getSelectedItem().toString();
         System.out.println("Talla : " + talla);
-        if(talla.equals("")&&mov.equals("")){ 
+        if(talla.equals("")){ 
             System.out.println("Entre Aqui");
             String nombre_fil = cb_producto.getEditor().getItem().toString();
             modelotabla = rop.consultar_inventario_filter_nombre(nombre_fil);
-            table_repor_inv.setModel(modelotabla);
-        
-        }else if(mov.equals("")){
-            String nombre_file = cb_producto.getEditor().getItem().toString();
-            String talla_fil = cb_Talla.getSelectedItem().toString();
-            modelotabla = rop.consultar_inventario_filter_talla(nombre_file, talla_fil);
-            table_repor_inv.setModel(modelotabla);
-            
-        }else{
-            String nombre_file = cb_producto.getEditor().getItem().toString();
-            String talla_fil = cb_Talla.getSelectedItem().toString();
-            modelotabla = rop.consultar_inventario_filter_talla_mov(nombre_file,talla_fil,mov );
             table_repor_inv.setModel(modelotabla);
         }
            
@@ -245,20 +239,20 @@ public class Reporte_Inventario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventario_Totales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventario_Totales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventario_Totales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventario_Totales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reporte_Inventario().setVisible(true);
+                new Inventario_Totales().setVisible(true);
             }
         });
     }
@@ -266,15 +260,15 @@ public class Reporte_Inventario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_consultar_report;
     private javax.swing.JComboBox cb_Talla;
-    private javax.swing.JComboBox cb_mov;
     private javax.swing.JComboBox cb_producto;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rb_Producto;
+    private javax.swing.JRadioButton rb_categoria;
+    private javax.swing.JRadioButton rb_talla;
     private javax.swing.JTable table_repor_inv;
     // End of variables declaration//GEN-END:variables
 }

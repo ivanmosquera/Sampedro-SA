@@ -115,6 +115,82 @@ public class Inventario {
     public void setTalla(String Talla) {
         this.Talla = Talla;
     }
+
+    public void Decremento_inventario_Separado(int codigo_a_guardar, int cantidad) {
+               
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String sql = "INSERT INTO inventario values(null,?,?,?,?,?,?,?)";
+         Date date = new Date();
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dia = dateFormat.format(date);
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1,codigo_a_guardar);
+            pst.setInt(2,cantidad);
+            pst.setString(3,"SEPARADO");
+            pst.setInt(4,1);
+            pst.setString(5,dia);
+            pst.setString(6,hora);
+            pst.setInt(7,1);
+            pst.execute();
+            resul = "Ingresado Correctamente";
+            System.out.println(resul);
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
     
+    public static String Incremeneto_total_producto(int codigop , int can){
+        
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String sql = "UPDATE `San Pedro`.`producto` SET `cantidad_total`= ? WHERE `id_Producto`= ?; ";
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1,can);
+            pst.setInt(2,codigop);
+            pst.execute();
+            System.out.println(resul);
+        } catch (Exception e){
+            resul = "Error " + e ;
+        } 
+        
+        
+         return resul;
+        
+    }
+    
+    
+    public static int get_cantidad_total_producto(int cod){
+         String resul = null , lats = null;
+         ConnectionDB cc = new ConnectionDB();
+         Connection cn = cc.getConnection();
+         PreparedStatement pst =null;
+         ResultSet rs = null;
+         int cantidad_ob = 0;
+           String Desc;
+        try{
+                String sql = ("SELECT cantidad_total FROM producto where id_Producto = ?");
+                pst = cn.prepareStatement(sql);
+                pst.setInt(1, cod);
+                rs =pst.executeQuery();
+                if (rs.next()){
+                    cantidad_ob = rs.getInt("cantidad_total");           
+                          
+                }
+            } catch (Exception ex){
+            System.out.println(ex);
+             }                    
+         return cantidad_ob;
+    }
 
 }
