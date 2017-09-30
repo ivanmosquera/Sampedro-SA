@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -59,11 +60,13 @@ public class Prenda {
         String dia = dateFormat.format(date);
         System.out.println(hora);
         System.out.println(dia);
+        String formattedString = String.format(java.util.Locale.US,"%.2f", pr.getPrecio());
+        float precio = Float.parseFloat(formattedString);
         try{
             pst = cn.prepareStatement(sql);
             pst.setString(1,pr.getCodigo());
             pst.setString(2,pr.getDetalle());
-            pst.setFloat(3, pr.getPrecio());
+            pst.setFloat(3, precio);
             pst.setString(4,pr.getTalla());
             pst.setInt(5, 1);
             pst.setInt(6, 1);

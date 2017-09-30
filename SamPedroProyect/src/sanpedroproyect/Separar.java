@@ -259,8 +259,6 @@ public class Separar extends javax.swing.JFrame {
         tabla_producto = new javax.swing.JTable();
         btn_agregar_producto = new javax.swing.JButton();
         btn_SalirProducto = new javax.swing.JButton();
-        jLabel18 = new javax.swing.JLabel();
-        txt_can = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         Factura_panel = new javax.swing.JPanel();
@@ -324,9 +322,6 @@ public class Separar extends javax.swing.JFrame {
             }
         });
 
-        jLabel18.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        jLabel18.setText("Cantidad");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -343,15 +338,11 @@ public class Separar extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel18)
-                .addGap(27, 27, 27)
-                .addComponent(txt_can, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(116, 116, 116)
                 .addComponent(btn_agregar_producto)
-                .addGap(18, 18, 18)
+                .addGap(55, 55, 55)
                 .addComponent(btn_SalirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,18 +353,11 @@ public class Separar extends javax.swing.JFrame {
                     .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_agregar_producto)
-                            .addComponent(btn_SalirProducto)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_can, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addGap(53, 53, 53)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_agregar_producto)
+                    .addComponent(btn_SalirProducto))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Dialog_buscar_proLayout = new javax.swing.GroupLayout(Dialog_buscar_pro.getContentPane());
@@ -540,8 +524,7 @@ public class Separar extends javax.swing.JFrame {
                             .addComponent(txt_vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                             .addComponent(cbx_Nombre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(199, 199, 199)
-                        .addComponent(jLabel7)
-                        .addGap(82, 82, 82))
+                        .addComponent(jLabel7))
                     .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -637,7 +620,7 @@ public class Separar extends javax.swing.JFrame {
                 descripcion = tabla_producto.getValueAt(fsel, 1).toString();
                 precio = tabla_producto.getValueAt(fsel, 2).toString();
                 talla = tabla_producto.getValueAt(fsel, 3).toString();
-                cantidad = txt_can.getText();
+                cantidad = "1";
                 Dialog_buscar_pro.setVisible(false);
                  x = (Double.parseDouble(precio)) * Integer.parseInt(cantidad);
                  importe = String.valueOf(x);
@@ -672,7 +655,6 @@ public class Separar extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         txt_cedula.setText("");
-        txt_can.setText("");
         txt_subtotal.setText("");
         sub_total = 0;
         txt_vendedor.setText("");
@@ -708,7 +690,7 @@ public class Separar extends javax.swing.JFrame {
         int cantidad = 0 ;
         int codigo_obtenido;
         float saldo = Float.parseFloat(txt_saldo.getText());
-        String s = separar.Separar_prenda(codigo_cliente,1,1,saldo,"2017-10-13",txt_nota.getText());   
+        String s = separar.Separar_prenda(codigo_cliente,1,1,saldo,"2017-09-30",txt_nota.getText());   
         System.out.println("" + s);
         
         codigo_obtenido = separar.Get_last_id_separado();
@@ -794,7 +776,6 @@ public class Separar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -807,7 +788,6 @@ public class Separar extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tabla_producto;
     private javax.swing.JTextField txt_abono;
-    private javax.swing.JTextField txt_can;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextArea txt_nota;
     private javax.swing.JTextField txt_saldo;

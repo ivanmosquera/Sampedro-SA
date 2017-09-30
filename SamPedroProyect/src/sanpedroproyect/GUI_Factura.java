@@ -201,7 +201,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 desc = (Double.parseDouble(txt_descto.getText()));
                 sub_total =Double.parseDouble(txt_subtotal.getText());
                 total = sub_total - ((sub_total * desc)/100) ;
-                stotal = (String.valueOf(total));
+                stotal = String.format(java.util.Locale.US,"%.2f", total);
                 txt_total.setText(stotal);
             }
 
@@ -214,7 +214,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 }
                 sub_total =Double.parseDouble(txt_subtotal.getText());
                 total = sub_total - ((sub_total * desc)/100);
-                stotal = (String.valueOf(total));
+                stotal = String.format(java.util.Locale.US,"%.2f", total);
                 txt_total.setText(stotal);
                 if(txt_descto.getText().isEmpty()){
                     txt_total.setText(txt_subtotal.getText());
@@ -783,8 +783,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         int fsel = tabla_producto.getSelectedRow();
         try {
             String codigo, descripcion, precio, cantidad,importe,talla;
-            double x;
-            double calcula = 0.0 , iva = 0.0;
+            float x;
+            float calcula;
+            float iva;
             
             if(fsel==-1){
                 JOptionPane.showMessageDialog(null,"Dese seleccionar un producto","Advertencia",JOptionPane.WARNING_MESSAGE);
@@ -797,18 +798,18 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 talla = tabla_producto.getValueAt(fsel, 3).toString();
                 cantidad = txt_can.getText();
                 Dialog_buscar_pro.setVisible(false);
-                 x = (Double.parseDouble(precio)) * Integer.parseInt(cantidad);
-                 importe = String.valueOf(x);
+                 x = (Float.parseFloat(precio)) * Integer.parseInt(cantidad);
+                 importe = String.format(java.util.Locale.US,"%.2f", x);
                  m = (DefaultTableModel) Tabla_ventas.getModel();
                  String filaElemento[] = {
                      codigo,descripcion,talla,cantidad,precio,importe
                  };
                  m.addRow(filaElemento);
-                 
-                 calcula = (Double.parseDouble(importe));
+                 calcula = (Float.parseFloat(importe));
                  sub_total = sub_total + calcula;
                  //iva = total * (0.12);
-                 txt_subtotal.setText(String.valueOf(sub_total));
+                 
+                 txt_subtotal.setText(String.format(java.util.Locale.US,"%.2f", sub_total));
                  
                  
             }

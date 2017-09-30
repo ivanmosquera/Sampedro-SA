@@ -14,18 +14,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author kleberstevendiazcoello
  */
-public class Reporte_Separados extends javax.swing.JFrame {
+public class Ver_Facturas extends javax.swing.JFrame {
 
     /**
      * Creates new form Reporte_Separados
      */
     DefaultTableModel m  = new DefaultTableModel();
     Reporte_Operaciones rp = new Reporte_Operaciones();
-    public Reporte_Separados() {
+    public Ver_Facturas() {
         initComponents();
         m = rp.consultar_Separados();
-        Tbl_separado.setDefaultRenderer(Object.class, new Mirender());
-        Tbl_separado.setModel(m);
+        Tbl_ver_facturas.setDefaultRenderer(Object.class, new Mirender());
+        Tbl_ver_facturas.setModel(m);
         
         
         
@@ -42,14 +42,14 @@ public class Reporte_Separados extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tbl_separado = new javax.swing.JTable();
+        Tbl_ver_facturas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        Tbl_separado.setModel(new javax.swing.table.DefaultTableModel(
+        Tbl_ver_facturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -60,7 +60,7 @@ public class Reporte_Separados extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(Tbl_separado);
+        jScrollPane1.setViewportView(Tbl_ver_facturas);
 
         jLabel1.setText("Reporte Separados");
 
@@ -119,26 +119,26 @@ public class Reporte_Separados extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Separados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ver_Facturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Separados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ver_Facturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Separados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ver_Facturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Separados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ver_Facturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reporte_Separados().setVisible(true);
+                new Ver_Facturas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tbl_separado;
+    private javax.swing.JTable Tbl_ver_facturas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
