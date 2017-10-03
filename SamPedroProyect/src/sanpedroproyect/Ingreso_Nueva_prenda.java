@@ -84,6 +84,7 @@ Prenda p = new Prenda();
         jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -222,7 +223,13 @@ Prenda p = new Prenda();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void limpiar(){
+        txt_codigo.setText("");
+        txt_detalle.setText("");
+        txt_precio.setText("");
+        txt_talla.setText("");
+    }
     private void btn_guardar_nuevaprendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_nuevaprendaActionPerformed
         // TODO add your handling code here:
         Codigo = txt_codigo.getText();
@@ -231,18 +238,20 @@ Prenda p = new Prenda();
         Talla = txt_talla.getText();
         String msj = p.Ingresar_Prenda();
         JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
-       
+        limpiar();
     }//GEN-LAST:event_btn_guardar_nuevaprendaActionPerformed
 
     private void btn_salirIngresoPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirIngresoPrendaActionPerformed
-        System.exit(0);
+        //System.exit(0);
+        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        ventana_menuPrincipal.setVisible(true);
+        ventana_menuPrincipal.setLocationRelativeTo(null);
+        ventana_menuPrincipal.setResizable(false);
+        dispose();
     }//GEN-LAST:event_btn_salirIngresoPrendaActionPerformed
 
     private void btn_limpiarIngresoPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarIngresoPrendaActionPerformed
-        txt_codigo.setText("");
-        txt_detalle.setText("");
-        txt_precio.setText("");
-        txt_talla.setText("");
+        limpiar();
     }//GEN-LAST:event_btn_limpiarIngresoPrendaActionPerformed
 
     /**

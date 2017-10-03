@@ -62,6 +62,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
         lbl_total_caja = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -105,6 +106,11 @@ public class Cierre_Caja extends javax.swing.JFrame {
         btn_salir.setText("Salir");
         btn_salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salirActionPerformed(evt);
+            }
+        });
 
         btn_imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresora.png"))); // NOI18N
         btn_imprimir.setText("Imprimir");
@@ -212,6 +218,14 @@ public class Cierre_Caja extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        ventana_menuPrincipal.setVisible(true);
+        ventana_menuPrincipal.setLocationRelativeTo(null);
+        ventana_menuPrincipal.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_btn_salirActionPerformed
 
     /**
      * @param args the command line arguments

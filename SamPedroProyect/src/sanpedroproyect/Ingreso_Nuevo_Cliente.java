@@ -121,6 +121,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -302,11 +303,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_salirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirClienteActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btn_salirClienteActionPerformed
-
-    private void btn_limpiarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarClienteActionPerformed
+    private void limpiar(){
         txt_nombre1.setText("");
         txtcedu1.setText("");
         txt_ciu1.setText("");
@@ -314,6 +311,18 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         txt_dir1.setText("");
         txt_fono1.setText("");
         txt_nota1.setText("");
+    }
+    private void btn_salirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirClienteActionPerformed
+        //System.exit(0);
+        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        ventana_menuPrincipal.setVisible(true);
+        ventana_menuPrincipal.setLocationRelativeTo(null);
+        ventana_menuPrincipal.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_btn_salirClienteActionPerformed
+
+    private void btn_limpiarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarClienteActionPerformed
+        limpiar();
     }//GEN-LAST:event_btn_limpiarClienteActionPerformed
 
     private void btn_nc_guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nc_guardar1ActionPerformed
@@ -328,6 +337,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         
         String msj = c.Ingresar_cliente();
         JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
+        limpiar();
     }//GEN-LAST:event_btn_nc_guardar1ActionPerformed
 
     /**

@@ -305,6 +305,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jButton5 = new javax.swing.JButton();
         btn_guardar_fact = new javax.swing.JButton();
 
+        Dialog_buscar_pro.setTitle("Buscar Producto");
+
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel17.setText("BUSCAR : ");
@@ -406,6 +408,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -861,7 +864,12 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     }//GEN-LAST:event_btn_SalirProductoActionPerformed
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
-        System.exit(0); 
+        //System.exit(0); 
+        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        ventana_menuPrincipal.setVisible(true);
+        ventana_menuPrincipal.setLocationRelativeTo(null);
+        ventana_menuPrincipal.setResizable(false);
+        dispose();
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     private void btn_consumidor_finalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consumidor_finalActionPerformed

@@ -285,6 +285,8 @@ public class Separar extends javax.swing.JFrame {
         txt_saldo = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
 
+        Dialog_buscar_pro.setTitle("Buscar Producto");
+
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel17.setText("BUSCAR : ");
@@ -372,6 +374,7 @@ public class Separar extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -572,14 +575,14 @@ public class Separar extends javax.swing.JFrame {
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Factura_panelLayout.createSequentialGroup()
                                 .addComponent(txt_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35))
                             .addGroup(Factura_panelLayout.createSequentialGroup()
                                 .addComponent(btn_Limpiar)
                                 .addGap(26, 26, 26)
                                 .addComponent(btn_Salir)))))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -602,7 +605,23 @@ public class Separar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void limpiar(){
+        txt_cedula.setText("");
+        txt_subtotal.setText("");
+        sub_total = 0;
+        txt_vendedor.setText("");
+        txt_abono.setText("");
+        txt_nota.setText("");
+        cbx_Nombre.removeAllItems();
+        Tabla_ventas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
+            },
+            new String [] {
+                "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "TOTAL"
+            }
+        ));
+    }
     private void btn_agregar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar_productoActionPerformed
         // TODO add your handling code here:
         int fsel = tabla_producto.getSelectedRow();
@@ -652,24 +671,7 @@ public class Separar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LimpiarActionPerformed
-        // TODO add your handling code here:
-
-        txt_cedula.setText("");
-        txt_subtotal.setText("");
-        sub_total = 0;
-        txt_vendedor.setText("");
-        txt_abono.setText("");
-        txt_nota.setText("");
-        cbx_Nombre.removeAllItems();
-        Tabla_ventas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "TOTAL"
-            }
-        ));
-        
+        limpiar();
     }//GEN-LAST:event_btn_LimpiarActionPerformed
 
     private void btn_SalirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirProductoActionPerformed
@@ -677,7 +679,12 @@ public class Separar extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_SalirProductoActionPerformed
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
-        System.exit(0); 
+        //System.exit(0); 
+        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        ventana_menuPrincipal.setVisible(true);
+        ventana_menuPrincipal.setLocationRelativeTo(null);
+        ventana_menuPrincipal.setResizable(false);
+        dispose();
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     private void btn_guardar_factActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_factActionPerformed
@@ -713,10 +720,7 @@ public class Separar extends javax.swing.JFrame {
                 
 
             }
-        
-        
-        
-        
+        limpiar();
     }//GEN-LAST:event_btn_guardar_factActionPerformed
 
     /**

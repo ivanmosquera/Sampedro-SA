@@ -209,6 +209,7 @@ Cliente c = new Cliente();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SAMPEDRO S.A.");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -418,7 +419,12 @@ Cliente c = new Cliente();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btn_salirModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirModificarClienteActionPerformed
-        System.exit(0);
+        //System.exit(0);
+        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        ventana_menuPrincipal.setVisible(true);
+        ventana_menuPrincipal.setLocationRelativeTo(null);
+        ventana_menuPrincipal.setResizable(false);
+        dispose();
     }//GEN-LAST:event_btn_salirModificarClienteActionPerformed
 
     /**

@@ -38,37 +38,81 @@ public class Main_Menu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btn_go_inventario = new javax.swing.JButton();
-        btn_go_Base = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        btn_go_Base1 = new javax.swing.JButton();
+        btn_go_registroFactura = new javax.swing.JButton();
+        btn_go_anulaciones = new javax.swing.JButton();
+        btn_go_separarPrenda = new javax.swing.JButton();
+        btn_go_reportes = new javax.swing.JButton();
+        btn_go_cierreCaja = new javax.swing.JButton();
+        btn_go_RegistroCliente = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        itemFactura_nuevaFactura = new javax.swing.JMenuItem();
+        itemFactura_verFacturas = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        itemCliente_registrarCliente = new javax.swing.JMenuItem();
+        itemCliente_modificar_eliminar = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        itemProducto_ingresarProducto = new javax.swing.JMenuItem();
+        itemProducto_separarPrenda = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        itemInventario_ingresoInventario = new javax.swing.JMenuItem();
+        itemInventario_inventariosTotales = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        itemConfig_registrarUsuario = new javax.swing.JMenuItem();
+        itemConfig_administrarRoles = new javax.swing.JMenuItem();
+        itemConfig_cerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SAMPEDRO S.A.");
+        setLocationByPlatform(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         btn_go_inventario.setText("Inventario");
+        btn_go_inventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_go_inventarioActionPerformed(evt);
+            }
+        });
 
-        btn_go_Base.setText("Nueva Factura");
+        btn_go_registroFactura.setText("Nueva Factura");
+        btn_go_registroFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_go_registroFacturaActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Anulaciones");
+        btn_go_anulaciones.setText("Anulaciones");
 
-        jButton4.setText("Separar Prenda");
+        btn_go_separarPrenda.setText("Separar Prenda");
+        btn_go_separarPrenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_go_separarPrendaActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Reportes");
+        btn_go_reportes.setText("Reportes");
+        btn_go_reportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_go_reportesActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Cierre De Caja");
+        btn_go_cierreCaja.setText("Cierre De Caja");
+        btn_go_cierreCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_go_cierreCajaActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("Configuracion/mandalo arriba");
-
-        btn_go_Base1.setText("Registro Cliente");
+        btn_go_RegistroCliente.setText("Registro Cliente");
+        btn_go_RegistroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_go_RegistroClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -77,14 +121,13 @@ public class Main_Menu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_go_Base, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_go_separarPrenda, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addComponent(btn_go_reportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_go_cierreCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_go_anulaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_go_registroFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_go_inventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_go_Base1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_go_RegistroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(519, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -93,27 +136,127 @@ public class Main_Menu extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(btn_go_inventario)
                 .addGap(9, 9, 9)
-                .addComponent(btn_go_Base1)
+                .addComponent(btn_go_RegistroCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_go_Base)
+                .addComponent(btn_go_registroFactura)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(btn_go_anulaciones)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btn_go_separarPrenda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
+                .addComponent(btn_go_reportes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6)
-                .addGap(12, 12, 12)
-                .addComponent(jButton7)
-                .addGap(37, 37, 37))
+                .addComponent(btn_go_cierreCaja)
+                .addGap(74, 74, 74))
         );
 
-        jMenu1.setText("File");
+        jMenu1.setText("Factura");
+
+        itemFactura_nuevaFactura.setText("Nueva Factura");
+        itemFactura_nuevaFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemFactura_nuevaFacturaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemFactura_nuevaFactura);
+
+        itemFactura_verFacturas.setText("Ver Facturas");
+        itemFactura_verFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemFactura_verFacturasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemFactura_verFacturas);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Producto");
+        jMenu2.setText("Cliente");
+
+        itemCliente_registrarCliente.setText("Registrar cliente");
+        itemCliente_registrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCliente_registrarClienteActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemCliente_registrarCliente);
+
+        itemCliente_modificar_eliminar.setText("Modificar/Eliminar cliente");
+        itemCliente_modificar_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCliente_modificar_eliminarActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemCliente_modificar_eliminar);
+
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Producto");
+
+        itemProducto_ingresarProducto.setText("Ingresar producto");
+        itemProducto_ingresarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemProducto_ingresarProductoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemProducto_ingresarProducto);
+
+        itemProducto_separarPrenda.setText("Separar prenda");
+        itemProducto_separarPrenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemProducto_separarPrendaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemProducto_separarPrenda);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu5.setText("Inventario");
+
+        itemInventario_ingresoInventario.setText("Ingreso Inventario");
+        itemInventario_ingresoInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemInventario_ingresoInventarioActionPerformed(evt);
+            }
+        });
+        jMenu5.add(itemInventario_ingresoInventario);
+
+        itemInventario_inventariosTotales.setText("Inventarios totales");
+        itemInventario_inventariosTotales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemInventario_inventariosTotalesActionPerformed(evt);
+            }
+        });
+        jMenu5.add(itemInventario_inventariosTotales);
+
+        jMenuBar1.add(jMenu5);
+
+        jMenu4.setText("Configuración");
+
+        itemConfig_registrarUsuario.setText("Registrar Usuario");
+        itemConfig_registrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemConfig_registrarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu4.add(itemConfig_registrarUsuario);
+
+        itemConfig_administrarRoles.setText("Administrar roles");
+        itemConfig_administrarRoles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemConfig_administrarRolesActionPerformed(evt);
+            }
+        });
+        jMenu4.add(itemConfig_administrarRoles);
+
+        itemConfig_cerrarSesion.setText("Cerrar sesión");
+        itemConfig_cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemConfig_cerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu4.add(itemConfig_cerrarSesion);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -132,6 +275,121 @@ public class Main_Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_go_separarPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_separarPrendaActionPerformed
+        Separar ventana_separar = new Separar();
+        ventana_separar.setVisible(true);
+        ventana_separar.setResizable(false);
+        dispose();
+        
+    }//GEN-LAST:event_btn_go_separarPrendaActionPerformed
+
+    private void btn_go_registroFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_registroFacturaActionPerformed
+        GUI_Factura ventana_factura = new GUI_Factura();
+        ventana_factura.setVisible(true);
+        ventana_factura.setResizable(false);
+        dispose();     
+    }//GEN-LAST:event_btn_go_registroFacturaActionPerformed
+
+    private void itemConfig_registrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_registrarUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemConfig_registrarUsuarioActionPerformed
+
+    private void itemConfig_administrarRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_administrarRolesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemConfig_administrarRolesActionPerformed
+
+    private void btn_go_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_inventarioActionPerformed
+        Ingreso_Inventario ventana_ingresoInventario = new Ingreso_Inventario();
+        ventana_ingresoInventario.setVisible(true);
+        ventana_ingresoInventario.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_btn_go_inventarioActionPerformed
+
+    private void btn_go_RegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_RegistroClienteActionPerformed
+        Ingreso_Nuevo_Cliente ventana_ingresoCliente = new Ingreso_Nuevo_Cliente();
+        ventana_ingresoCliente.setVisible(true);
+        ventana_ingresoCliente.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_btn_go_RegistroClienteActionPerformed
+
+    private void btn_go_cierreCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_cierreCajaActionPerformed
+        Cierre_Caja ventana_cierreCaja = new Cierre_Caja();
+        ventana_cierreCaja.setVisible(true);
+        ventana_cierreCaja.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_btn_go_cierreCajaActionPerformed
+
+    private void itemFactura_nuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFactura_nuevaFacturaActionPerformed
+        GUI_Factura ventana_factura = new GUI_Factura();
+        ventana_factura.setVisible(true);
+        ventana_factura.setResizable(false);
+        dispose(); 
+    }//GEN-LAST:event_itemFactura_nuevaFacturaActionPerformed
+
+    private void itemFactura_verFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFactura_verFacturasActionPerformed
+        Ver_Facturas ventana_verFacturas = new Ver_Facturas();
+        ventana_verFacturas.setVisible(true);
+        ventana_verFacturas.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_itemFactura_verFacturasActionPerformed
+
+    private void itemCliente_registrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCliente_registrarClienteActionPerformed
+        Ingreso_Nuevo_Cliente ventana_ingresoCliente = new Ingreso_Nuevo_Cliente();
+        ventana_ingresoCliente.setVisible(true);
+        ventana_ingresoCliente.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_itemCliente_registrarClienteActionPerformed
+
+    private void itemCliente_modificar_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCliente_modificar_eliminarActionPerformed
+        Modificar_Eliminar_Cliente ventana_modificar_eliminarCliente = new Modificar_Eliminar_Cliente();
+        ventana_modificar_eliminarCliente.setVisible(true);
+        ventana_modificar_eliminarCliente.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_itemCliente_modificar_eliminarActionPerformed
+
+    private void itemProducto_ingresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProducto_ingresarProductoActionPerformed
+        Ingreso_Nueva_prenda ventana_nuevaPrenda = new Ingreso_Nueva_prenda();
+        ventana_nuevaPrenda.setVisible(true);
+        ventana_nuevaPrenda.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_itemProducto_ingresarProductoActionPerformed
+
+    private void itemProducto_separarPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProducto_separarPrendaActionPerformed
+        Separar ventana_separar = new Separar();
+        ventana_separar.setVisible(true);
+        ventana_separar.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_itemProducto_separarPrendaActionPerformed
+
+    private void itemInventario_ingresoInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInventario_ingresoInventarioActionPerformed
+        Ingreso_Inventario ventana_ingresoInventario = new Ingreso_Inventario();
+        ventana_ingresoInventario.setVisible(true);
+        ventana_ingresoInventario.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_itemInventario_ingresoInventarioActionPerformed
+
+    private void itemInventario_inventariosTotalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInventario_inventariosTotalesActionPerformed
+        Inventario_Totales ventana_inventariosTotales = new Inventario_Totales();
+        ventana_inventariosTotales.setVisible(true);
+        ventana_inventariosTotales.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_itemInventario_inventariosTotalesActionPerformed
+
+    private void itemConfig_cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_cerrarSesionActionPerformed
+        Login ventana_login = new Login();
+        ventana_login.setVisible(true);
+        ventana_login.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_itemConfig_cerrarSesionActionPerformed
+
+    private void btn_go_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_reportesActionPerformed
+        Reportes ventana_reportes = new Reportes();
+        ventana_reportes.setVisible(true);
+        ventana_reportes.setResizable(false);
+        ventana_reportes.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_btn_go_reportesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,22 +422,36 @@ public class Main_Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main_Menu().setVisible(true);
+                
+                //new Main_Menu().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_go_Base;
-    private javax.swing.JButton btn_go_Base1;
+    private javax.swing.JButton btn_go_RegistroCliente;
+    private javax.swing.JButton btn_go_anulaciones;
+    private javax.swing.JButton btn_go_cierreCaja;
     private javax.swing.JButton btn_go_inventario;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btn_go_registroFactura;
+    private javax.swing.JButton btn_go_reportes;
+    private javax.swing.JButton btn_go_separarPrenda;
+    private javax.swing.JMenuItem itemCliente_modificar_eliminar;
+    private javax.swing.JMenuItem itemCliente_registrarCliente;
+    private javax.swing.JMenuItem itemConfig_administrarRoles;
+    private javax.swing.JMenuItem itemConfig_cerrarSesion;
+    private javax.swing.JMenuItem itemConfig_registrarUsuario;
+    private javax.swing.JMenuItem itemFactura_nuevaFactura;
+    private javax.swing.JMenuItem itemFactura_verFacturas;
+    private javax.swing.JMenuItem itemInventario_ingresoInventario;
+    private javax.swing.JMenuItem itemInventario_inventariosTotales;
+    private javax.swing.JMenuItem itemProducto_ingresarProducto;
+    private javax.swing.JMenuItem itemProducto_separarPrenda;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;

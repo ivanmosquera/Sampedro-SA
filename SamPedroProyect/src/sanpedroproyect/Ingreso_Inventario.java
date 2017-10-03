@@ -125,6 +125,8 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         txt_codigo_busqueda = new javax.swing.JTextField();
         txt_cant = new javax.swing.JTextField();
 
+        Dialog_buscar.setTitle("Buscar");
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("BUSCAR : ");
@@ -207,6 +209,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SAMPEDRO S.A.");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -426,7 +429,12 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscar_ProductoActionPerformed
 
     private void btn_salirInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirInventarioActionPerformed
-        System.exit(0);
+        //System.exit(0);
+        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        ventana_menuPrincipal.setVisible(true);
+        ventana_menuPrincipal.setLocationRelativeTo(null);
+        ventana_menuPrincipal.setResizable(false);
+        dispose();
     }//GEN-LAST:event_btn_salirInventarioActionPerformed
 
     /**
