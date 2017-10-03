@@ -9,6 +9,7 @@ package sanpedroproyect;
 import Class.Mirender;
 import Class.Reporte_Operaciones;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -23,10 +24,10 @@ public class Ver_Facturas extends javax.swing.JFrame {
     Reporte_Operaciones rp = new Reporte_Operaciones();
     public Ver_Facturas() {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        m = rp.consultar_Separados();
-        Tbl_ver_facturas.setDefaultRenderer(Object.class, new Mirender());
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        m = rp.consultar_Factura();
         Tbl_ver_facturas.setModel(m);
+        
         
         
         
@@ -51,6 +52,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        Tbl_ver_facturas = new javax.swing.JTable(){
+            public  boolean isCellEditable(int rowIndex , int colIndex){
+                return false;
+            }
+        };
         Tbl_ver_facturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -62,6 +68,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Tbl_ver_facturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tbl_ver_facturasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tbl_ver_facturas);
 
         jLabel1.setText("Reporte Separados");
@@ -103,6 +114,18 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Tbl_ver_facturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_ver_facturasMouseClicked
+        // TODO add your handling code here:
+        int index= Tbl_ver_facturas.getSelectedRow();
+        TableModel model = Tbl_ver_facturas.getModel();
+        int IDFACTURA = Integer.parseInt(model.getValueAt(index, 0).toString());
+        Detalle_Factura de = new Detalle_Factura(IDFACTURA);
+        de.setVisible(true);
+        de.setResizable(false);
+        de.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_Tbl_ver_facturasMouseClicked
 
     /**
      * @param args the command line arguments
