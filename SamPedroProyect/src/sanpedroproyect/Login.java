@@ -106,6 +106,7 @@ return resultado;
         btn_Salir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -117,7 +118,7 @@ return resultado;
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Usuario :");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(260, 80, 54, 17);
+        jLabel1.setBounds(235, 80, 80, 17);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Contraseña :");
@@ -130,7 +131,7 @@ return resultado;
             }
         });
         getContentPane().add(txt_usuario);
-        txt_usuario.setBounds(340, 80, 130, 22);
+        txt_usuario.setBounds(340, 80, 130, 28);
 
         txt_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +144,7 @@ return resultado;
             }
         });
         getContentPane().add(txt_password);
-        txt_password.setBounds(340, 130, 130, 22);
+        txt_password.setBounds(340, 130, 130, 28);
 
         btn_Aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accept.png"))); // NOI18N
         btn_Aceptar.setText("Aceptar");
@@ -168,7 +169,7 @@ return resultado;
         getContentPane().add(btn_Aceptar);
         btn_Aceptar.setBounds(240, 180, 130, 40);
 
-        btn_Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-Salida-48.png"))); // NOI18N
+        btn_Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_Salir.setText("Salir");
         btn_Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +188,8 @@ return resultado;
         jLabel4.setText("Inicio de Sesión");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(180, 10, 230, 29);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 580, 300);
 
         pack();
         setLocationRelativeTo(null);
@@ -294,6 +297,7 @@ return resultado;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txt_password;
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables

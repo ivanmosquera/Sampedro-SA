@@ -23,6 +23,7 @@ public class Reporte_Separados extends javax.swing.JFrame {
     Reporte_Operaciones rp = new Reporte_Operaciones();
     public Reporte_Separados() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         m = rp.consultar_Separados();
         Tbl_separado.setDefaultRenderer(Object.class, new Mirender());
         Tbl_separado.setModel(m);

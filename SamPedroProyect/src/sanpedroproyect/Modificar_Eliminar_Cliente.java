@@ -112,6 +112,7 @@ Cliente c = new Cliente();
      */
     public Modificar_Eliminar_Cliente() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 

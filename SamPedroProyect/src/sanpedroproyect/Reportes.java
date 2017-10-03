@@ -35,6 +35,9 @@ public class Reportes extends javax.swing.JFrame {
     Prenda p = new Prenda();
     public Reportes() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+
          /* TAB 1: REPORTE DE INVENTARIO */
             cb_producto_inv.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
@@ -253,7 +256,7 @@ public class Reportes extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(88, Short.MAX_VALUE))
+                        .addContainerGap(96, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -396,7 +399,7 @@ public class Reportes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(88, Short.MAX_VALUE))
+                        .addContainerGap(96, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -451,15 +454,13 @@ public class Reportes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 999, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

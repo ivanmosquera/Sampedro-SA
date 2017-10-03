@@ -21,6 +21,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
      */
     public Ingreso_Nuevo_Cliente() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
 

@@ -137,6 +137,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
      */
     public GUI_Factura() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
         
@@ -407,7 +408,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

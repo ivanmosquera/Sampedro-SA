@@ -28,6 +28,7 @@ public class Reporte_Inventario extends javax.swing.JFrame {
     Reporte_Operaciones rop = new Reporte_Operaciones();
     public Reporte_Inventario() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
              cb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 

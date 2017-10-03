@@ -45,6 +45,7 @@ public class Abonar extends javax.swing.JFrame {
     double x;
     public Abonar() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 

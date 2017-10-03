@@ -141,6 +141,7 @@ public class Separar extends javax.swing.JFrame {
     Double abono;
     public Separar() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
         

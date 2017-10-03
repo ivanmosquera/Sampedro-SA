@@ -30,6 +30,7 @@ public class Inventario_Totales extends javax.swing.JFrame {
     Prenda p = new Prenda();
     public Inventario_Totales() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
              cb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 

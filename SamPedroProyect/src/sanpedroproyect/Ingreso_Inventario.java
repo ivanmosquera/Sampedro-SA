@@ -52,6 +52,8 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
      */
     public Ingreso_Inventario() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+
          this.setLocationRelativeTo(null);
         cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 

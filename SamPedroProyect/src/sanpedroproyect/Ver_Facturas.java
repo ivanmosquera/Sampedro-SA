@@ -23,6 +23,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     Reporte_Operaciones rp = new Reporte_Operaciones();
     public Ver_Facturas() {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         m = rp.consultar_Separados();
         Tbl_ver_facturas.setDefaultRenderer(Object.class, new Mirender());
         Tbl_ver_facturas.setModel(m);

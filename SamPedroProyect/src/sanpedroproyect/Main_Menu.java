@@ -70,44 +70,70 @@ public class Main_Menu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btn_go_inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/portapapeles.png"))); // NOI18N
         btn_go_inventario.setText("Inventario");
+        btn_go_inventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_go_inventario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_go_inventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_go_inventarioActionPerformed(evt);
             }
         });
 
+        btn_go_registroFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/recepcion.png"))); // NOI18N
         btn_go_registroFactura.setText("Nueva Factura");
+        btn_go_registroFactura.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_go_registroFactura.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_go_registroFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_go_registroFacturaActionPerformed(evt);
             }
         });
 
+        btn_go_anulaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/archivo.png"))); // NOI18N
         btn_go_anulaciones.setText("Anulaciones");
+        btn_go_anulaciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_go_anulaciones.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_go_anulaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_go_anulacionesActionPerformed(evt);
+            }
+        });
 
+        btn_go_separarPrenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vestir.png"))); // NOI18N
         btn_go_separarPrenda.setText("Separar Prenda");
+        btn_go_separarPrenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_go_separarPrenda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_go_separarPrenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_go_separarPrendaActionPerformed(evt);
             }
         });
 
+        btn_go_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/analitica.png"))); // NOI18N
         btn_go_reportes.setText("Reportes");
+        btn_go_reportes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_go_reportes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_go_reportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_go_reportesActionPerformed(evt);
             }
         });
 
+        btn_go_cierreCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proyecto-de-ley.png"))); // NOI18N
         btn_go_cierreCaja.setText("Cierre De Caja");
+        btn_go_cierreCaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_go_cierreCaja.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_go_cierreCaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_go_cierreCajaActionPerformed(evt);
             }
         });
 
+        btn_go_RegistroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
         btn_go_RegistroCliente.setText("Registro Cliente");
+        btn_go_RegistroCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_go_RegistroCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_go_RegistroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_go_RegistroClienteActionPerformed(evt);
@@ -120,34 +146,35 @@ public class Main_Menu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_go_separarPrenda, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                    .addComponent(btn_go_reportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_go_cierreCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_go_anulaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_go_registroFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_go_inventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_go_RegistroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(519, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_go_inventario, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_go_RegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_go_registroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btn_go_reportes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_go_separarPrenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                        .addComponent(btn_go_cierreCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_go_anulaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(641, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addGap(82, 82, 82)
                 .addComponent(btn_go_inventario)
-                .addGap(9, 9, 9)
+                .addGap(18, 18, 18)
                 .addComponent(btn_go_RegistroCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btn_go_registroFactura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btn_go_anulaciones)
                 .addGap(18, 18, 18)
                 .addComponent(btn_go_separarPrenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btn_go_reportes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btn_go_cierreCaja)
-                .addGap(74, 74, 74))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Factura");
@@ -390,6 +417,10 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_reportes.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_btn_go_reportesActionPerformed
+
+    private void btn_go_anulacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_anulacionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_go_anulacionesActionPerformed
 
     /**
      * @param args the command line arguments
