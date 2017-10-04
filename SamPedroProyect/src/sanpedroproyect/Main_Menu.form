@@ -182,6 +182,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="lbl_user_name" min="-2" pref="144" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="btn_go_inventario" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                       <Component id="btn_go_RegistroCliente" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                       <Component id="btn_go_registroFactura" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
@@ -192,14 +197,19 @@
                           <Component id="btn_go_anulaciones" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="641" max="32767" attributes="0"/>
+                  <EmptySpace pref="506" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_user_name" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="btn_go_inventario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="btn_go_RegistroCliente" min="-2" max="-2" attributes="0"/>
@@ -309,6 +319,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_go_RegistroClienteActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Usuario Actual  : "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_user_name">
         </Component>
       </SubComponents>
     </Container>

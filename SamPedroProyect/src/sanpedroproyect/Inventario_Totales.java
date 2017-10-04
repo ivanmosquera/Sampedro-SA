@@ -84,6 +84,7 @@ public class Inventario_Totales extends javax.swing.JFrame {
         rb_Producto = new javax.swing.JRadioButton();
         rb_talla = new javax.swing.JRadioButton();
         rb_categoria = new javax.swing.JRadioButton();
+        btn_salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -129,6 +130,16 @@ public class Inventario_Totales extends javax.swing.JFrame {
 
         rb_categoria.setText("Por Categoria");
 
+        btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
+        btn_salir.setText("Salir");
+        btn_salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,7 +149,7 @@ public class Inventario_Totales extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(43, Short.MAX_VALUE))
+                        .addContainerGap(81, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -161,6 +172,10 @@ public class Inventario_Totales extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(cb_Talla, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(132, 132, 132))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +199,9 @@ public class Inventario_Totales extends javax.swing.JFrame {
                 .addComponent(rb_categoria)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(btn_salir)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,6 +241,16 @@ public class Inventario_Totales extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Btn_consultar_reportActionPerformed
 
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+        // TODO add your handling code here:
+        
+        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        ventana_menuPrincipal.setVisible(true);
+        ventana_menuPrincipal.setLocationRelativeTo(null);
+        ventana_menuPrincipal.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_btn_salirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,6 +288,7 @@ public class Inventario_Totales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_consultar_report;
+    private javax.swing.JButton btn_salir;
     private javax.swing.JComboBox cb_Talla;
     private javax.swing.JComboBox cb_producto;
     private javax.swing.JLabel jLabel1;

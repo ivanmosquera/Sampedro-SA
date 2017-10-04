@@ -14,12 +14,17 @@ import javax.swing.Icon;
  * @author Pantheon
  */
 public class Main_Menu extends javax.swing.JFrame {
-
+    static int codigo_usuario;
+    static String nombre_usuario;
+    Login l = new Login();
     /**
      * Creates new form Main_MEnu
      */
     public Main_Menu() {
         initComponents();
+        lbl_user_name.setText(l.getUsername());
+        nombre_usuario = l.getUsername();
+        codigo_usuario = l.getCodigo_usuario();
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         
@@ -44,6 +49,8 @@ public class Main_Menu extends javax.swing.JFrame {
         btn_go_reportes = new javax.swing.JButton();
         btn_go_cierreCaja = new javax.swing.JButton();
         btn_go_RegistroCliente = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lbl_user_name = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -140,6 +147,8 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Usuario Actual  : ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -147,6 +156,10 @@ public class Main_Menu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(27, 27, 27)
+                        .addComponent(lbl_user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btn_go_inventario, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_go_RegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_go_registroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,12 +168,16 @@ public class Main_Menu extends javax.swing.JFrame {
                         .addComponent(btn_go_separarPrenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                         .addComponent(btn_go_cierreCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_go_anulaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(641, Short.MAX_VALUE))
+                .addContainerGap(506, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lbl_user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addComponent(btn_go_inventario)
                 .addGap(18, 18, 18)
                 .addComponent(btn_go_RegistroCliente)
@@ -422,6 +439,23 @@ public class Main_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_go_anulacionesActionPerformed
 
+    public  int getCodigo_usuario() {
+        return codigo_usuario;
+    }
+
+    public void setCodigo_usuario(int codigo_usuario) {
+        Main_Menu.codigo_usuario = codigo_usuario;
+    }
+
+    public String getNombre_usuario() {
+        return nombre_usuario;
+    }
+
+    public void setNombre_usuario(String nombre_usuario) {
+        Main_Menu.nombre_usuario = nombre_usuario;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -478,6 +512,7 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemInventario_inventariosTotales;
     private javax.swing.JMenuItem itemProducto_ingresarProducto;
     private javax.swing.JMenuItem itemProducto_separarPrenda;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -486,5 +521,6 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbl_user_name;
     // End of variables declaration//GEN-END:variables
 }

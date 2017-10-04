@@ -23,12 +23,12 @@ import sanpedroproyect.GUI_Factura;
  */
 public class Factura {
     static GUI_Factura  fact = new GUI_Factura();
-    public static String Guardar_Factura(){
+    public static String Guardar_Factura(int user){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "INSERT INTO factura values(null,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO factura values(null,?,?,?,?,?,?,?,?,?,?)";
         Date date = new Date();
         ResultSet rs = null;
         //Caso 1: obtener la hora y salida por pantalla con formato:
@@ -50,6 +50,7 @@ public class Factura {
             pst.setFloat(7,0);
             pst.setFloat(8,0);
             pst.setFloat(9, fact.getTotal_static());
+            pst.setFloat(10, user);
             
             pst.execute();
             resul = "Ingresado Correctamente Factura";

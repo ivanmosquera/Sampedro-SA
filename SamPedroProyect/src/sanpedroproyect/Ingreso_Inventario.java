@@ -30,6 +30,8 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
     Operaciones op =  new Operaciones();
     Reporte_Operaciones rep = new Reporte_Operaciones();
    static int Codigo_Producto,Cantidad;
+   int USUARIO;
+   Main_Menu menu_Cod = new Main_Menu();
 
     public int getCodigo_Producto() {
         return Codigo_Producto;
@@ -53,8 +55,9 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
     public Ingreso_Inventario() {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-
+        USUARIO = menu_Cod.getCodigo_usuario();
          this.setLocationRelativeTo(null);
+         
         cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
             @Override
@@ -387,12 +390,18 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         int nuevototal = 0;
         Cantidad =  Integer.parseInt(txt_cant.getText());
         Codigo_Producto = Integer.parseInt(txt_codigo_busqueda.getText());
-        String msj = i.Ingresar_Inventario();
+        String msj = i.Ingresar_Inventario(USUARIO);
+        System.out.println("Test :" + msj );
         totalbuscado = i.get_cantidad_total_producto(Codigo_Producto);
         nuevototal = (totalbuscado + Cantidad);
         String test = i.Incremeneto_total_producto(Codigo_Producto,nuevototal);
         System.out.println("Test :" + test );
-        JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
+        if(msj.equals("Inventario Ingresado Correctamente")){
+          JOptionPane.showMessageDialog(null, "Inventario Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE); 
+          limpiar();
+        }else{
+          JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_guadar_inventarioActionPerformed
 
     private void btn_agregar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar_productoActionPerformed
@@ -439,6 +448,13 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_salirInventarioActionPerformed
 
+    public void limpiar(){
+        txt_cant.setText("");
+        lbl_descripcion.setText("");
+        lbl_talla.setText("");
+        txt_codigo_busqueda.setText("");
+                
+    }
     /**
      * @param args the command line arguments
      */

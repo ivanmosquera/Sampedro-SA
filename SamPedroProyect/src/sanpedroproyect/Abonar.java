@@ -43,10 +43,13 @@ public class Abonar extends javax.swing.JFrame {
     static int id_separado;
     Double saldo_g,abono, tot;
     double x;
+    int USUARIO;
+    Main_Menu menu_Cod = new Main_Menu();
     public Abonar() {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        USUARIO = menu_Cod.getCodigo_usuario();
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
             @Override
@@ -456,8 +459,9 @@ public class Abonar extends javax.swing.JFrame {
     private void btn_guardarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarproductoActionPerformed
         // TODO add your handling code here:
         sp.Ingreso_nuevo_saldo(id_separado,Float.parseFloat(txt_nuevo_saldo.getText()));
-        sp.Guardar_Abono(id_separado,Float.parseFloat(txt_abonar.getText()),1);
-                
+        sp.Guardar_Abono(id_separado,Float.parseFloat(txt_abonar.getText()),USUARIO);
+         
+        JOptionPane.showMessageDialog(null, "Aono Igresado Correctamente" , "ABONO INGRESADO" , JOptionPane.INFORMATION_MESSAGE);
         
         
     }//GEN-LAST:event_btn_guardarproductoActionPerformed

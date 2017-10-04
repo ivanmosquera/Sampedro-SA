@@ -63,6 +63,8 @@ public class Detalle_Factura extends javax.swing.JFrame {
     double iva = 0;
     double desc = 0;
     String stotal;
+    int USUARIO;
+    Main_Menu menu_Cod = new Main_Menu();
     
     static int codigo_cliente, id_estado;
     static float subtotal_static,Descuento_static,Voucher_static,Iva_static,Total_static;
@@ -87,7 +89,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
         ResultSet rs = null;
         String Desc;
         try{
-            String sql = ("SELECT * FROM cliente c , factura f where fk_cliente = id_Cliente and id_Factura = ?;");
+            String sql = ("SELECT * FROM cliente c , factura f , usuario where fk_cliente = id_Cliente and id_Factura = ? and fk_Usuario = id_Usuario;");
             pst = cn.prepareStatement(sql);
             pst.setInt(1, idFactura);
             rs =pst.executeQuery();
@@ -104,6 +106,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
                 txt_iva.setText(rs.getString("Iva"));
                 txt_vaucher.setText(rs.getString("Vaucher"));
                 txt_nota.setText(rs.getString("Nota"));
+                txt_vendedor.setText(rs.getString("Usuario"));
                           
                 }
 
@@ -560,7 +563,8 @@ public class Detalle_Factura extends javax.swing.JFrame {
         int codigo_a_guardar = 0;
         int cantidad = 0 ;
         int codigo_obtenido;
-        String s = factura.Eliminar_Factura(id_de_la_factura,1,"Porque si");     
+        String s = factura.Eliminar_Factura(id_de_la_factura,USUARIO,"Porque si");  //FALATA PONER MOTIVO   
+        factura.update_estado_factura(id_de_la_factura);
         System.out.println("" + s);
    
         /*Neceista el id para guardar todos los productos de una factura*/

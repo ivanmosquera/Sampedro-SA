@@ -216,7 +216,7 @@ public class SepararPrenda {
             pst.setInt(1,idseparado);
             pst.setFloat(2,valor);
             pst.setString(3,dia);
-            pst.setInt(4,1);
+            pst.setInt(4,user);
             pst.execute();
             resul = "Ingresado Correctamente";
 
