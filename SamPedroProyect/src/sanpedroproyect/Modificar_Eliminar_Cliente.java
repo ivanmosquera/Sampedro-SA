@@ -129,7 +129,7 @@ Cliente c = new Cliente();
                         ResultSet rs = null;
                         String Desc;
                         try{
-                           String sql = ("SELECT * FROM cliente where Nombre = ?");
+                           String sql = ("SELECT * FROM cliente where Nombre = ? Estado = 'ACTIVO' ");
                            pst = cn.prepareStatement(sql);
                            pst.setString(1, cadena);
                            rs =pst.executeQuery();
@@ -409,14 +409,26 @@ Cliente c = new Cliente();
         Nota = txt_nota.getText();
         id_cliente = Integer.parseInt(lbl_cliente.getText());
         String msj = c.Modificar_Cliente();
-        JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Modificaciòn Exitosa" , JOptionPane.INFORMATION_MESSAGE);
+        if(msj.equals("Cliente Modificado Correctamente")){
+          JOptionPane.showMessageDialog(null, "Cliente Modificado Correctamente" , "CLIENTE MODIFICADO" , JOptionPane.INFORMATION_MESSAGE); 
+          limpiar();
+        }else{
+          JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+        }
+        
+        limpiar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         id_cliente = Integer.parseInt(lbl_cliente.getText());
         String msj = c.Eliminar_Cliente();
-        JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Eliminado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
+        if(msj.equals("CLIENTE ELIMINADO CORRECTAMENTE")){
+          JOptionPane.showMessageDialog(null, "Cliente Eliminado Correctamente" , "CLIENTE ELIMINADO" , JOptionPane.INFORMATION_MESSAGE); 
+          limpiar();
+        }else{
+          JOptionPane.showMessageDialog(null, "Cliente no Eliminado" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btn_salirModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirModificarClienteActionPerformed
@@ -428,6 +440,16 @@ Cliente c = new Cliente();
         dispose();
     }//GEN-LAST:event_btn_salirModificarClienteActionPerformed
 
+    
+     private void limpiar(){
+        cbx_Nombre.getEditor().setItem("");
+        txtcedu.setText("");
+        txt_ciu.setText("");
+        txt_correo.setText("");
+        txt_dir.setText("");
+        txt_fono.setText("");
+        txt_nota.setText("");
+    }
     /**
      * @param args the command line arguments
      */

@@ -28,6 +28,8 @@ public class Reporte_Inventario extends javax.swing.JFrame {
     Reporte_Operaciones rop = new Reporte_Operaciones();
     public Reporte_Inventario() {
         initComponents();
+        modelotabla = rop.consultar_inventario();
+        table_repor_inv.setModel(modelotabla);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
              cb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
@@ -78,6 +80,7 @@ public class Reporte_Inventario extends javax.swing.JFrame {
         cb_Talla = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         cb_mov = new javax.swing.JComboBox();
+        jButton2 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -122,6 +125,14 @@ public class Reporte_Inventario extends javax.swing.JFrame {
 
         cb_mov.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","INGRESO","SALIDA","SEPARADO"}));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
+        jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -153,6 +164,10 @@ public class Reporte_Inventario extends javax.swing.JFrame {
                                     .addComponent(cb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cb_mov, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(400, 400, 400)
+                .addComponent(jButton2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +191,9 @@ public class Reporte_Inventario extends javax.swing.JFrame {
                         .addComponent(cb_Talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,6 +246,15 @@ public class Reporte_Inventario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Btn_consultar_reportActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        ventana_menuPrincipal.setVisible(true);
+        ventana_menuPrincipal.setLocationRelativeTo(null);
+        ventana_menuPrincipal.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -270,6 +296,7 @@ public class Reporte_Inventario extends javax.swing.JFrame {
     private javax.swing.JComboBox cb_mov;
     private javax.swing.JComboBox cb_producto;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

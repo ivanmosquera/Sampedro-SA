@@ -45,7 +45,7 @@ public class Prenda {
     }
     
     static Ingreso_Nueva_prenda  pr = new Ingreso_Nueva_prenda();
-    public static String Ingresar_Prenda(){
+    public static String Ingresar_Prenda(int usuario,int categoria){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -68,17 +68,17 @@ public class Prenda {
             pst.setString(2,pr.getDetalle());
             pst.setFloat(3, precio);
             pst.setString(4,pr.getTalla());
-            pst.setInt(5, 1);
-            pst.setInt(6, 1);
+            pst.setInt(5, categoria);
+            pst.setInt(6, usuario);
             pst.setString(7,dia);
             pst.setString(8,hora);
             pst.setInt(9, 0);
             pst.execute();
-            resul = "Ingresado Correctamente";
+            resul = "Prenda Ingresado Correctamente";
             System.out.println(resul);
             
         }catch(SQLException e){
-            resul = "Error : "+e; 
+            resul = "Prenda  Incorrectamente";
             System.out.println(resul);
             System.out.println(pst);
             

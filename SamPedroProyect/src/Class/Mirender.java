@@ -36,9 +36,7 @@ public class Mirender extends DefaultTableCellRenderer {
        
        
       JLabel label = (JLabel) super.getTableCellRendererComponent (table, value, isSelected, hasFocus, row, column);
-     Object fechasep = table.getValueAt(row, 1);
      Object fechaven = table.getValueAt(row, 2);
-     String separado = String.valueOf(fechasep);
      String vencido = String.valueOf(fechaven);
      System.out.println("Diaa Vencimiento " + vencido);
      DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -62,11 +60,13 @@ public class Mirender extends DefaultTableCellRenderer {
       Color c = Color.WHITE;
       if ( i == -1 )
       {
-       
+       label.setForeground(Color.RED);
        
       } else {
          // Restaurar los valores por defecto
+          label.setForeground(Color.BLACK);
       }
+      
 
       return label;
    }

@@ -24,13 +24,13 @@ public class Inventario {
      String Talla;
      static Ingreso_Inventario Nuevo_Inventario = new Ingreso_Inventario();
 
-    public static String Ingresar_Inventario() {
+    public static String Ingresar_Inventario(int usuario) {
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
         ResultSet rs = null;
-        String sql = "INSERT INTO inventario values(null,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO inventario values(null,?,?,?,?,?,?)";
          Date date = new Date();
         //Caso 1: obtener la hora y salida por pantalla con formato:
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
@@ -43,22 +43,21 @@ public class Inventario {
             pst.setInt(1, Nuevo_Inventario.getCodigo_Producto());
             pst.setInt(2,Nuevo_Inventario.getCantidad());
             pst.setString(3,"INGRESO");
-            pst.setInt(4,1);
+            pst.setInt(4,usuario);
             pst.setString(5,dia);
             pst.setString(6,hora);
-            pst.setInt(7,1);
             pst.execute();
-            resul = "Ingresado Correctamente";
+            resul = "Inventario Ingresado Correctamente";
             System.out.println(resul);
         } catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error Incremento " + e);
         }
         
        
        
        
         
-        return null;
+        return resul ;
     }
     
     public static String Decremento_inventario(int codigo,int cantidad){
@@ -68,7 +67,7 @@ public class Inventario {
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
         ResultSet rs = null;
-        String sql = "INSERT INTO inventario values(null,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO inventario values(null,?,?,?,?,?,?)";
          Date date = new Date();
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
         String hora = hourFormat.format(date);
@@ -82,12 +81,11 @@ public class Inventario {
             pst.setInt(4,1);
             pst.setString(5,dia);
             pst.setString(6,hora);
-            pst.setInt(7,1);
             pst.execute();
-            resul = "Ingresado Correctamente";
+            resul = "Decrementado Inventario correcto";
             System.out.println(resul);
         } catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error Decremento " + e);
         }
         
        
@@ -123,7 +121,7 @@ public class Inventario {
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
         ResultSet rs = null;
-        String sql = "INSERT INTO inventario values(null,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO inventario values(null,?,?,?,?,?,?)";
          Date date = new Date();
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
         String hora = hourFormat.format(date);
@@ -137,12 +135,11 @@ public class Inventario {
             pst.setInt(4,1);
             pst.setString(5,dia);
             pst.setString(6,hora);
-            pst.setInt(7,1);
             pst.execute();
             resul = "Ingresado Correctamente";
             System.out.println(resul);
         } catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error de decremento de inventario "+e);
         }
     }
     
@@ -160,8 +157,9 @@ public class Inventario {
             pst.setInt(2,codigop);
             pst.execute();
             System.out.println(resul);
+            resul = "Incremento a producto correcto" ;
         } catch (Exception e){
-            resul = "Error " + e ;
+            resul = "Error  de update producto" + e ;
         } 
         
         
@@ -191,6 +189,45 @@ public class Inventario {
             System.out.println(ex);
              }                    
          return cantidad_ob;
+    }
+    
+    
+    
+    
+        public static String Ingresar_Inventario_Anulacion(int codigo_a_guardar, int cantidad) {
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String sql = "INSERT INTO inventario values(null,?,?,?,?,?,?)";
+         Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dia = dateFormat.format(date);
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1, codigo_a_guardar);
+            pst.setInt(2,cantidad);
+            pst.setString(3,"DEVOLUCIÓN");
+            pst.setInt(4,1);
+            pst.setString(5,dia);
+            pst.setString(6,hora);
+            pst.execute();
+            resul = "Ingresado Correctamente Devlucion";
+            System.out.println(resul);
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        
+       
+       
+       
+        
+        return null;
     }
 
 }

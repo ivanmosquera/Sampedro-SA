@@ -22,16 +22,22 @@ public class Cierre_Caja extends javax.swing.JFrame {
      * Creates new form Reporte_Separados
      */
     DefaultTableModel m  = new DefaultTableModel();
+    DefaultTableModel a  = new DefaultTableModel();
     Reporte_Operaciones rp = new Reporte_Operaciones();
-    float total_ventas;
+    float total_ventas,total_anuladas;
     public Cierre_Caja() {
         initComponents();
         m = rp.consultar_Factura_fechaactual();
-        Tbl_separado.setModel(m);
+        Tbl_ventas_hoy.setModel(m);
         total_ventas = rp.getTotal();
         String total = String.format(java.util.Locale.US,"%.2f", total_ventas);
         lbl_ventas_hoy.setText(String.valueOf(total));
         
+        a = rp.consultar_Factura_fechaactual_anuladas();
+        tbl_anuladas_hoy.setModel(a);
+        total_anuladas = rp.getTotal_anuladas();
+        String totala = String.format(java.util.Locale.US,"%.2f", total_anuladas);
+        lbl_Anuladas_hoy.setText(String.valueOf(totala));
         
     }
 
@@ -46,14 +52,14 @@ public class Cierre_Caja extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tbl_separado = new javax.swing.JTable();
+        Tbl_ventas_hoy = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lbl_ventas_hoy = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_anuladas_hoy = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         lbl_Anuladas_hoy = new javax.swing.JLabel();
         btn_salir = new javax.swing.JButton();
@@ -66,7 +72,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        Tbl_separado.setModel(new javax.swing.table.DefaultTableModel(
+        Tbl_ventas_hoy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -77,7 +83,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(Tbl_separado);
+        jScrollPane1.setViewportView(Tbl_ventas_hoy);
 
         jLabel1.setText("Cierre De Caja");
 
@@ -87,7 +93,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
 
         jLabel4.setText("Anulaciones");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_anuladas_hoy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -98,7 +104,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tbl_anuladas_hoy);
 
         jLabel5.setText("Sumatoria Facturas Anuladas : ");
 
@@ -263,7 +269,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tbl_separado;
+    private javax.swing.JTable Tbl_ventas_hoy;
     private javax.swing.JButton btn_imprimir;
     private javax.swing.JButton btn_salir;
     private javax.swing.JLabel jLabel1;
@@ -275,9 +281,9 @@ public class Cierre_Caja extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_Anuladas_hoy;
     private javax.swing.JLabel lbl_total_caja;
     private javax.swing.JLabel lbl_ventas_hoy;
+    private javax.swing.JTable tbl_anuladas_hoy;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,7 +24,7 @@ public class Operaciones {
         PreparedStatement pst =null;
         ResultSet rs = null;
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        String sql  =  "SELECT Nombre From cliente WHERE Nombre LIKE '"+Cadena+"%';";
+        String sql  =  "SELECT Nombre From cliente WHERE Estado = 'ACTIVO' AND  Nombre LIKE '"+Cadena+"%' ";
         try{
            pst = cn.prepareStatement(sql); 
            rs = pst.executeQuery();
