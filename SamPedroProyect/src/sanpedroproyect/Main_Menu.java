@@ -319,7 +319,10 @@ public class Main_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_go_registroFacturaActionPerformed
 
     private void itemConfig_registrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_registrarUsuarioActionPerformed
-        // TODO add your handling code here:
+        Ingreso_Nuevo_Usuario ventana_ingresoUsuario = new Ingreso_Nuevo_Usuario();
+        ventana_ingresoUsuario.setVisible(true);
+        ventana_ingresoUsuario.setResizable(false);
+        dispose();
     }//GEN-LAST:event_itemConfig_registrarUsuarioActionPerformed
 
     private void itemConfig_administrarRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_administrarRolesActionPerformed

@@ -5,24 +5,34 @@
  */
 package Class;
 
+import static Class.Cliente.cliente;
+import DATABASE.ConnectionDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import sanpedroproyect.Ingreso_Nuevo_Usuario;
+
 /**
  *
  * @author Ivan Mosquera
  */
 public class Usuario {
+    static Ingreso_Nuevo_Usuario nuevo_usuario = new Ingreso_Nuevo_Usuario();
     public String usuario;
     public String contraseña;
     public String nombre;
     public String apellido;
+    public String cedula;
 
     public Usuario() {
     }
 
-    public Usuario(String usuario, String contraseña, String nombre, String apellido) {
+    public Usuario(String usuario, String contraseña, String nombre, String apellido, String cedula) {
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.cedula = cedula;
     }
 
     public String getUsuario() {
@@ -41,6 +51,12 @@ public class Usuario {
         return apellido;
     }
 
+    public String getCedula() {
+        return cedula;
+    }
+    
+    
+
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
@@ -56,6 +72,13 @@ public class Usuario {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+    
+    
+    
     
     
 }
