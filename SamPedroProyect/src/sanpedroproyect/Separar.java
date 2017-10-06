@@ -298,6 +298,7 @@ public class Separar extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         calendario_dia = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
 
         Dialog_buscar_pro.setTitle("Buscar Producto");
 
@@ -538,6 +539,17 @@ public class Separar extends javax.swing.JFrame {
 
         jLabel8.setText("Seleccione fecha de vencimiento : ");
 
+        jButton6.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton-x.png"))); // NOI18N
+        jButton6.setText("Quitar Producto");
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Factura_panelLayout = new javax.swing.GroupLayout(Factura_panel);
         Factura_panel.setLayout(Factura_panelLayout);
         Factura_panelLayout.setHorizontalGroup(
@@ -545,9 +557,14 @@ public class Separar extends javax.swing.JFrame {
             .addGroup(Factura_panelLayout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Factura_panelLayout.createSequentialGroup()
+                        .addGap(0, 5, Short.MAX_VALUE)
+                        .addComponent(jButton5)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(Factura_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -618,7 +635,10 @@ public class Separar extends javax.swing.JFrame {
                     .addComponent(txt_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 35, Short.MAX_VALUE)
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
+                    .addGroup(Factura_panelLayout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton6))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Factura_panelLayout.createSequentialGroup()
@@ -796,6 +816,33 @@ public class Separar extends javax.swing.JFrame {
         limpiar();
     }//GEN-LAST:event_btn_guardar_factActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        float x, subtotal,importe,subtotal_actual;
+        int fsel;
+        int resp;
+        int fil;
+        try {
+            fsel = Tabla_ventas.getSelectedRow();
+            if(fsel == -1 ){
+                JOptionPane.showMessageDialog(null,"Debe Seleccionar Producto a Eliminar","Advertencia",JOptionPane.WARNING_MESSAGE);
+
+            }else{
+                resp = JOptionPane.showConfirmDialog(null, "¿Está Seguro de Quitar el Producto?","Eliminar",JOptionPane.YES_NO_OPTION);
+                if(resp == JOptionPane.YES_OPTION){
+                    importe = Float.parseFloat(Tabla_ventas.getValueAt(fsel,5).toString());
+                    subtotal_actual = (Float.parseFloat(txt_subtotal.getText()) -  importe );
+                    txt_subtotal.setText(String.valueOf(subtotal_actual));
+                    m = (DefaultTableModel) Tabla_ventas.getModel();
+                    m.removeRow(fsel);
+
+                }
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"No se realizo correctamente la accion de quitar" + e,"Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -850,6 +897,7 @@ public class Separar extends javax.swing.JFrame {
     private javax.swing.JComboBox cbx_Nombre;
     private javax.swing.JComboBox cmb_producto;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

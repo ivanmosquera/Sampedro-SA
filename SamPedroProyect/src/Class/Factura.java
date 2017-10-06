@@ -23,12 +23,12 @@ import sanpedroproyect.GUI_Factura;
  */
 public class Factura {
     static GUI_Factura  fact = new GUI_Factura();
-    public static String Guardar_Factura(int user){
+    public static String Guardar_Factura(int id , int user){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "INSERT INTO factura values(null,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO factura values(?,?,?,?,?,?,?,?,?,?,?)";
         Date date = new Date();
         ResultSet rs = null;
         //Caso 1: obtener la hora y salida por pantalla con formato:
@@ -41,16 +41,17 @@ public class Factura {
         int id_ultimo;
         try{
             pst = cn.prepareStatement(sql);
-            pst.setInt(1,fact.getCodigo_cliente());
-            pst.setInt(2,1);
-            pst.setString(3,dia);
-            pst.setInt(4,1);
-            pst.setFloat(5,fact.getSubtotal_static());
-            pst.setFloat(6,fact.getDescuento_static());
-            pst.setFloat(7,0);
+            pst.setInt(1,id);
+            pst.setInt(2,fact.getCodigo_cliente());
+            pst.setInt(3,1);
+            pst.setString(4,dia);
+            pst.setInt(5,1);
+            pst.setFloat(6,fact.getSubtotal_static());
+            pst.setFloat(7,fact.getDescuento_static());
             pst.setFloat(8,0);
-            pst.setFloat(9, fact.getTotal_static());
-            pst.setFloat(10, user);
+            pst.setFloat(9,0);
+            pst.setFloat(10, fact.getTotal_static());
+            pst.setFloat(11, user);
             
             pst.execute();
             resul = "Ingresado Correctamente Factura";

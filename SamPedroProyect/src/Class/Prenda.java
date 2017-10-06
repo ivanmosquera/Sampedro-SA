@@ -138,4 +138,33 @@ public class Prenda {
         return modelo;
          
      }
+      
+      
+      
+      public int GetidCategoria(String nombre){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int id_c = 0;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+        try{
+            String sql = ("SELECT id_Categoria FROM categoria Where Nombre = ? ");
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,nombre);
+            rs =pst.executeQuery();
+            if (rs.next()){
+                  id_c = rs.getInt("id_Categoria");
+                }
+
+            
+                
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
+          System.out.println("Categoria id " +  id_c);
+          return id_c;
+      }
 }
