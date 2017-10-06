@@ -204,11 +204,8 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(jLabel13)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(119, 119, 119)
-                        .addComponent(txt_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel12))
+                .addGap(0, 431, Short.MAX_VALUE))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,16 +229,17 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                                             .addComponent(txt_dir1, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txt_ciu1, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txt_correo1, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtcedu1))))))
+                                            .addComponent(txtcedu1))
+                                        .addComponent(txt_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 101, Short.MAX_VALUE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
+                .addGap(94, 94, 94)
                 .addComponent(btn_nc_guardar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_limpiarCliente)
-                .addGap(40, 40, 40)
+                .addGap(73, 73, 73)
                 .addComponent(btn_salirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(102, 102, 102))
         );
@@ -337,7 +335,12 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         Nota = txt_nota1.getText();
         
         String msj = c.Ingresar_cliente();
-        JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
+        if(msj.equals("CORRECTO INGRESO CLIENTE")){
+          JOptionPane.showMessageDialog(null, "Cliente Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);  
+        }else{
+          JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+        }
+        
         limpiar();
     }//GEN-LAST:event_btn_nc_guardar1ActionPerformed
 

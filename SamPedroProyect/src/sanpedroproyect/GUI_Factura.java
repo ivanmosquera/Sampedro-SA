@@ -62,7 +62,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     double iva = 0;
     double desc = 0;
     String stotal;
-    
+    int USUARIO;
+    Main_Menu menu_Cod = new Main_Menu();
     static int codigo_cliente, id_estado;
     static float subtotal_static,Descuento_static,Voucher_static,Iva_static,Total_static;
 
@@ -139,6 +140,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        txt_vendedor.setText(menu_Cod.getNombre_usuario());
+        USUARIO = menu_Cod.getCodigo_usuario();
+        btn_imprimir.setToolTipText("Antes de Imprimir, Guarde la Factura");
+        btn_imprimir.setEnabled(false);
+        
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
         
           
@@ -460,6 +466,17 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel6.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel6.setText("Vendedor");
 
+        txt_mail.setEditable(false);
+
+        txt_cedula.setEditable(false);
+
+        txt_vendedor.setEditable(false);
+        txt_vendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_vendedorActionPerformed(evt);
+            }
+        });
+
         jLabel8.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel8.setText("Forma De Pago");
 
@@ -476,8 +493,12 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel9.setText("Mail");
 
+        txt_dir.setEditable(false);
+
         jLabel16.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel16.setText("Telefono");
+
+        txt_telefono.setEditable(false);
 
         cbx_Nombre.setEditable(true);
 
@@ -494,6 +515,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         jLabel15.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel15.setText("I.V.A");
+
+        txt_total.setEditable(false);
 
         jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel13.setText("Total");
@@ -914,7 +937,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         int codigo_a_guardar = 0;
         int cantidad = 0 ;
         int codigo_obtenido;
-        String s = factura.Guardar_Factura();     
+        String s = factura.Guardar_Factura(USUARIO);     
         System.out.println("" + s);
         
         codigo_obtenido = factura.Get_last_id_factura();
@@ -935,14 +958,19 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 nueva_cantidad = (cantidad_actual - cantidad) ;
                 inv.Incremeneto_total_producto(codigo_a_guardar , nueva_cantidad );
                 
-                
 
             }
         
-        
+        JOptionPane.showMessageDialog(null, "Factura Ingresada Correcatemente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
+        btn_imprimir.setEnabled(true);
+        limpiar();
         
         
     }//GEN-LAST:event_btn_guardar_factActionPerformed
+
+    private void txt_vendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vendedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vendedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1055,14 +1083,15 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     
     
     private void priceInvoice(){
-        String sourcefile = "/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/FACTURA_IMPRIMIR.jrxml";
+        //String sourcefile = "/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/FACTURA_IMPRIMIR.jrxml";
+        
         DefaultTableModel order_list = new DefaultTableModel();
         String codigo,descripcion,precio,talla,cantidad,total;
         InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/FACTURA_IMPRIMIR.jrxml");
         
         try {
             int i = 0;
-            JasperReport jr = JasperCompileManager.compileReport(sourcefile);
+            JasperReport jr = JasperCompileManager.compileReport(is);
             HashMap<String,Object> para = new HashMap<>();
             para.put("CLIENTE", cbx_Nombre.getEditor().getItem().toString());
             para.put("CEDULA", txt_cedula.getText());
@@ -1100,5 +1129,34 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             System.out.println("El ERROES ES ESTE "+ex);
         }
         
+    }
+    
+    
+    private void limpiar(){
+        cbx_Nombre.getEditor().setItem("");
+        txt_numFactura.setText("");
+        txt_fecha.setText("");
+        txt_cedula.setText("");
+        txt_dir.setText("");
+        txt_can.setText("");
+        txt_mail.setText("");
+        txt_subtotal.setText("0");
+        
+        txt_telefono.setText("");
+        txt_vendedor.setText("");
+        txt_descto.setText("0");
+        txt_iva.setText("0");
+        txt_vaucher.setText("0");
+        txt_total.setText("");
+        txt_nota.setText("");
+        cbx_Nombre.removeAllItems();
+        Tabla_ventas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "TOTAL"
+            }
+        ));
     }
 }

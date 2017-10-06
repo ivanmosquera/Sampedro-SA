@@ -37,16 +37,16 @@ public class Cliente {
             pst.setString(7,cliente.getNota());
             pst.setString(8,"ACTIVO");
             pst.execute();
-            resul = "Ingresado Correctamente";
-            System.out.println(resul);
+            resul = "CORRECTO INGRESO CLIENTE";
+           
             
         }catch(SQLException e){
-            resul = "Error : "+e; 
+            resul = "INCORRECTO INGRESO CLIENTE"; 
             System.out.println(resul);
             System.out.println(pst);
             System.out.println(cliente.getCedula());
         }
-        
+        cc.desconectar();
         return resul;
     }
     
@@ -67,19 +67,19 @@ public class Cliente {
             pst.setString(7,mod.getNota());
             pst.setInt(8,mod.getId_cliente());
             pst.execute();
-            resul = "Modificado Correctamente";
+            resul = "Cliente Modificado Correctamente";
             System.out.println(resul);
             
         }catch(SQLException e){
             resul = "Error : "+e; 
         }
-        
+        cc.desconectar();
         return resul;
         
     }
     
     public static String Eliminar_Cliente(){
-String resul = null , lats = null;
+        String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
@@ -89,14 +89,14 @@ String resul = null , lats = null;
             pst.setString(1,"ELIMINADO");
             pst.setInt(2,mod.getId_cliente());
             pst.execute();
-            resul = "ELIMINADO CORRECTAMENTE";
+            resul = "CLIENTE ELIMINADO CORRECTAMENTE";
             System.out.println(resul);
             
         }catch(SQLException e){
             resul = "Error : "+e; 
             System.out.println(resul);
         }
-        
+        cc.desconectar();
         return resul;
         
         

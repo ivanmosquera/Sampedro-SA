@@ -10,7 +10,8 @@ import javax.swing.JOptionPane;// importacion de las librerias de la opcion de m
 
 public class Login extends javax.swing.JFrame {
 
-    
+    static int Codigo_usuario;
+    static String username;
     public Login() {
         initComponents();
     }
@@ -26,7 +27,7 @@ public class Login extends javax.swing.JFrame {
         //String clave = String.valueOf(Login.jpassClave.getPassword());
 
         int resultado=0;
-
+        
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -39,6 +40,8 @@ public class Login extends javax.swing.JFrame {
            //pst.setString(1, cadena);
            rs =pst.executeQuery();
            if (rs.next()){
+               Codigo_usuario = rs.getInt("id_Usuario");
+               username = rs.getString("Usuario");
                JOptionPane.showMessageDialog(this,"Bienvenido");// mensaje
                dispose();
                Main_Menu ventana_menuPrincipal = new Main_Menu();
@@ -265,6 +268,25 @@ return resultado;
             }
         });
     }
+
+    public  int getCodigo_usuario() {
+        return Codigo_usuario;
+    }
+
+    public  void setCodigo_usuario(int Codigo_usuario) {
+        Login.Codigo_usuario = Codigo_usuario;
+    }
+
+    public  String getUsername() {
+        return username;
+    }
+
+    public  void setUsername(String username) {
+        Login.username = username;
+    }
+    
+    
+    
     /*
     private class Tiempo implements Runnable{// la creacion de una clase privada que la implementamos con runnable para que arranque en cuanto accedamos a ella 
         @Override

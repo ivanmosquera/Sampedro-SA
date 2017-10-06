@@ -23,12 +23,12 @@ import sanpedroproyect.GUI_Factura;
  */
 public class Factura {
     static GUI_Factura  fact = new GUI_Factura();
-    public static String Guardar_Factura(){
+    public static String Guardar_Factura(int user){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "INSERT INTO factura values(null,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO factura values(null,?,?,?,?,?,?,?,?,?,?)";
         Date date = new Date();
         ResultSet rs = null;
         //Caso 1: obtener la hora y salida por pantalla con formato:
@@ -50,16 +50,17 @@ public class Factura {
             pst.setFloat(7,0);
             pst.setFloat(8,0);
             pst.setFloat(9, fact.getTotal_static());
+            pst.setFloat(10, user);
             
             pst.execute();
-            resul = "Ingresado Correctamente";
+            resul = "Ingresado Correctamente Factura";
            
             
             
             
             
         }catch(SQLException e){
-            resul = "Error : "+e; 
+            resul = "Error Error en guardar Factura: "+e; 
             System.out.println(resul);
         }
         
@@ -90,7 +91,7 @@ public class Factura {
             
             
         }catch(SQLException e){
-            resul = "Error : "+e; 
+            resul = "Error en id factura: "+e; 
             System.out.println(resul);
         }
         
@@ -118,21 +119,88 @@ public class Factura {
             pst.setInt(3,cantidad);
             
             pst.execute();
-            resul = "Ingresado Correctamente";
+            resul = "Ingresado Correctamente Detalle Factura";
            
             
             
             
             
         }catch(SQLException e){
-            resul = "Error : "+e; 
+            resul = "Error  en detalle Factura: "+e; 
             System.out.println(resul);
         }
         
        cc.desconectar();
         return resul;      
         }
+     
+    public static String Eliminar_Factura(int id,int usuario,String Motivo){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql3 = "INSERT INTO anulacion values(?,?,?,?)";
+        Date date = new Date();
+        ResultSet rs = null;
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+        System.out.println(hora);
+        System.out.println(dia);
+
+        try{
+            pst = cn.prepareStatement(sql3);
+            pst.setInt(1,id);
+            pst.setString(2,Motivo);
+            pst.setInt(3,usuario);
+            pst.setString(4,dia);
+            
+            
+            
+            pst.execute();
+            resul = "Ingresado Correctamente Anulado";
+           
+            
+            
+            
+            
+        }catch(SQLException e){
+            resul = "Error  en detalle Factura: "+e; 
+            System.out.println(resul);
+        }
         
+       cc.desconectar();
+        return resul;      
+        }
+    
+        public static String update_estado_factura(int codigo){
+        
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String sql = "UPDATE `San Pedro`.`factura` SET `fk_Estado`= ? WHERE `id_Factura`= ? ";
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1,3);
+            pst.setInt(2,codigo);
+            pst.execute();
+             resul = "correcto update estado factura" ;
+            System.out.println(resul);
+            
+        } catch (Exception e){
+            resul = "Error  de update estado factura" + e ;
+        } 
+        
+        
+         return resul;
+        
+    }
+    
     
        
   }
