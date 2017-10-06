@@ -6,7 +6,12 @@
 package sanpedroproyect;
 
 import Class.Prenda;
+import DATABASE.ConnectionDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import static sanpedroproyect.Detalle_Factura.codigo_cliente;
 
 
 /**
@@ -60,6 +65,27 @@ Prenda p = new Prenda();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         USUARIO = menu_Cod.getCodigo_usuario();
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String Desc;
+        try{
+            String sql = ("SELECT Nombre FROM categoria ");
+            pst = cn.prepareStatement(sql);
+            rs =pst.executeQuery();
+            if (rs.next()){
+                    System.out.println(rs.getString("Nombre"));
+                    cmb_categoria.addItem(rs.getString("Nombre"));
+                }
+
+
+
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
+        
     }
 
     /**
@@ -88,7 +114,7 @@ Prenda p = new Prenda();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cmb_categoria = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -148,7 +174,11 @@ Prenda p = new Prenda();
         jLabel7.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel7.setText("Talla");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_categoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_categoriaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,7 +217,7 @@ Prenda p = new Prenda();
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txt_talla, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                                 .addComponent(txt_precio)))))
@@ -222,7 +252,7 @@ Prenda p = new Prenda();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -259,7 +289,8 @@ Prenda p = new Prenda();
         Detalle = txt_detalle.getText();
         Precio = Float.parseFloat(txt_precio.getText());
         Talla = txt_talla.getText();
-        String msj = p.Ingresar_Prenda(USUARIO,1);
+        int id_cat = p.GetidCategoria(cmb_categoria.getSelectedItem().toString());
+        String msj = p.Ingresar_Prenda(USUARIO,id_cat);
          if(msj.equals("Prenda Ingresado Correctamente")){
           JOptionPane.showMessageDialog(null, "Prenda Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE); 
           limpiar();
@@ -281,6 +312,10 @@ Prenda p = new Prenda();
     private void btn_limpiarIngresoPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarIngresoPrendaActionPerformed
         limpiar();
     }//GEN-LAST:event_btn_limpiarIngresoPrendaActionPerformed
+
+    private void cmb_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_categoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_categoriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,7 +356,7 @@ Prenda p = new Prenda();
     private javax.swing.JButton btn_guardar_nuevaprenda;
     private javax.swing.JButton btn_limpiarIngresoPrenda;
     private javax.swing.JButton btn_salirIngresoPrenda;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox cmb_categoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
