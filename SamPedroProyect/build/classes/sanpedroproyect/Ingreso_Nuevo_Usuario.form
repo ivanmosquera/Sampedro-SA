@@ -76,16 +76,14 @@
                                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="cb_selectRol" pref="214" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="btn_limpiarUsuario" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="68" max="32767" attributes="0"/>
-                                              <Component id="btn_salirUsuario" min="-2" pref="65" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="txt_password" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txt_usuario" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txt_cedula" alignment="1" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="btn_limpiarUsuario" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="68" max="32767" attributes="0"/>
+                                          <Component id="btn_salirUsuario" min="-2" pref="65" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="txt_password" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txt_usuario" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txt_cedula" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -234,7 +232,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cedula / RUC"/>
+            <Property name="text" type="java.lang.String" value="Cedula"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">

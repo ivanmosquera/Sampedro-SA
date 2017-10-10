@@ -125,7 +125,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
         jLabel12.setText("Nombre");
 
         jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        jLabel13.setText("Cedula / RUC");
+        jLabel13.setText("Cedula");
 
         jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel14.setText("Usuario");
@@ -177,14 +177,13 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
                                 .addGap(71, 71, 71)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cb_selectRol, 0, 214, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(btn_limpiarUsuario)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                                            .addComponent(btn_salirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(txt_password)
-                                        .addComponent(txt_usuario)
-                                        .addComponent(txt_cedula, javax.swing.GroupLayout.Alignment.TRAILING)))))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btn_limpiarUsuario)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                                        .addComponent(btn_salirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_password)
+                                    .addComponent(txt_usuario)
+                                    .addComponent(txt_cedula, javax.swing.GroupLayout.Alignment.TRAILING))))))
                 .addGap(104, 104, 104))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
