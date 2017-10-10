@@ -23,16 +23,18 @@ public class Usuario {
     public String nombre;
     public String apellido;
     public String cedula;
+    public int id_Rol;
 
     public Usuario() {
     }
 
-    public Usuario(String usuario, String contraseña, String nombre, String apellido, String cedula) {
+    public Usuario(String usuario, String contraseña, String nombre, String apellido, String cedula, int id_Rol) {
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
+        this.id_Rol = id_Rol;
     }
 
     public String getUsuario() {
@@ -54,6 +56,11 @@ public class Usuario {
     public String getCedula() {
         return cedula;
     }
+
+    public int getId_Rol() {
+        return id_Rol;
+    }
+    
     
     
 
@@ -76,6 +83,11 @@ public class Usuario {
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
+
+    public void setId_Rol(int id_Rol) {
+        this.id_Rol = id_Rol;
+    }
+    
     
     
     

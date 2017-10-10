@@ -8,6 +8,7 @@ import Class.Usuario;
 import DATABASE.ConnectionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import org.hsqldb.Library;
@@ -26,6 +27,26 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String Desc;
+        try{
+            String sql = ("SELECT * FROM rol ");
+            pst = cn.prepareStatement(sql);
+            rs =pst.executeQuery();
+            while (rs.next()){
+                    System.out.println(rs.getString("Detalle"));
+                    cb_selectRol.addItem(rs.getString("Detalle"));
+                }
+
+
+
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
     }
 
     /**
@@ -51,6 +72,8 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
         txt_nombre = new javax.swing.JTextField();
         txt_cedula = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel10 = new javax.swing.JLabel();
+        cb_selectRol = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,6 +136,18 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel10.setText("Rol");
+        jLabel10.setMaximumSize(new java.awt.Dimension(49, 14));
+        jLabel10.setMinimumSize(new java.awt.Dimension(439, 14));
+
+        cb_selectRol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<seleccione Rol>" }));
+        cb_selectRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_selectRolActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -141,14 +176,20 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
                                 .addComponent(btn_guardarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(71, 71, 71)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btn_limpiarUsuario)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                                        .addComponent(btn_salirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txt_password)
-                                    .addComponent(txt_usuario)
-                                    .addComponent(txt_cedula, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                                    .addComponent(cb_selectRol, 0, 214, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(btn_limpiarUsuario)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                                            .addComponent(btn_salirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txt_password)
+                                        .addComponent(txt_usuario)
+                                        .addComponent(txt_cedula, javax.swing.GroupLayout.Alignment.TRAILING)))))))
                 .addGap(104, 104, 104))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,12 +214,16 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_selectRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_limpiarUsuario)
                     .addComponent(btn_guardarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_salirUsuario))
-                .addGap(260, 260, 260))
+                .addGap(232, 232, 232))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -191,9 +236,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, Short.MAX_VALUE)
         );
 
         pack();
@@ -212,7 +255,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
             pst.setString(3,user.nombre);
             pst.setString(4,user.cedula);
             pst.setString(5,"ACTIVO");
-            pst.setInt(6,2);
+            pst.setInt(6,user.id_Rol);
             pst.execute();
             resul = "Usuario Ingresado Correctamente";
             System.out.println(resul);
@@ -231,6 +274,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
         txt_cedula.setText("");
         txt_usuario.setText("");
         txt_password.setText("");
+        cb_selectRol.setSelectedIndex(0);
     }
     private void btn_limpiarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarUsuarioActionPerformed
         limpiar();
@@ -242,10 +286,18 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
         user.cedula = txt_cedula.getText();
         user.usuario = txt_usuario.getText();
         user.contraseña = txt_password.getText();
-
+        int id_rol = cb_selectRol.getSelectedIndex();
+        System.out.println(id_rol);
+        user.id_Rol = id_rol;
         String msj = Ingresar_usuario();
-        JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
-        limpiar();
+        if(msj.equals("Usuario Ingresado Correctamente")){
+          JOptionPane.showMessageDialog(null, msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE); 
+          limpiar();
+        }else{
+          JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTÉN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+        }
+        //JOptionPane.showMessageDialog(null, "InfoBox: " + msj , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
+        //limpiar();
     }//GEN-LAST:event_btn_guardarUsuarioActionPerformed
 
     private void btn_salirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirUsuarioActionPerformed
@@ -260,6 +312,11 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
+
+    private void cb_selectRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_selectRolActionPerformed
+        int id_rol = cb_selectRol.getSelectedIndex();
+        System.out.println(id_rol);
+    }//GEN-LAST:event_cb_selectRolActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,6 +357,8 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
     private javax.swing.JButton btn_guardarUsuario;
     private javax.swing.JButton btn_limpiarUsuario;
     private javax.swing.JButton btn_salirUsuario;
+    private javax.swing.JComboBox cb_selectRol;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

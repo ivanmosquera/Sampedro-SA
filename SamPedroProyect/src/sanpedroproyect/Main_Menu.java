@@ -67,6 +67,8 @@ public class Main_Menu extends javax.swing.JFrame {
         itemInventario_inventariosTotales = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         itemConfig_registrarUsuario = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         itemConfig_administrarRoles = new javax.swing.JMenuItem();
         itemConfig_cerrarSesion = new javax.swing.JMenuItem();
 
@@ -284,6 +286,17 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu4.add(itemConfig_registrarUsuario);
 
+        jMenuItem1.setText("Modificar/Eliminar Usuario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
+        jMenuItem2.setText("Nuevo Rol");
+        jMenu4.add(jMenuItem2);
+
         itemConfig_administrarRoles.setText("Administrar roles");
         itemConfig_administrarRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -442,6 +455,10 @@ public class Main_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_go_anulacionesActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public  int getCodigo_usuario() {
         return codigo_usuario;
     }
@@ -522,6 +539,8 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbl_user_name;
