@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Ivan%20Mosquera/Desktop/BOUTIQUE/Sampedro-SA/SamPedroProyect/src/Class/Prenda.java</file>
             <file>file:/C:/Users/Ivan%20Mosquera/Desktop/BOUTIQUE/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Reportes.java</file>
             <file>file:/C:/Users/Ivan%20Mosquera/Desktop/BOUTIQUE/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Ingreso_Nueva_prenda.java</file>
@@ -34,6 +35,21 @@
             <file>file:/C:/Users/Ivan%20Mosquera/Desktop/BOUTIQUE/Sampedro-SA/SamPedroProyect/src/Class/SepararPrenda.java</file>
             <file>file:/C:/Users/Ivan%20Mosquera/Desktop/BOUTIQUE/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Reporte_Inventario.java</file>
             <file>file:/C:/Users/Ivan%20Mosquera/Desktop/BOUTIQUE/Sampedro-SA/SamPedroProyect/src/Class/Mirender.java</file>
+=======
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Login.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Class/SepararPrenda.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Class/Operaciones.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Separar.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Class/Usuario.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Reporte_Separados.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Class/Factura.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Ingreso_Nueva_prenda.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/DATABASE/ConnectionDB.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Abonar.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Class/Prenda.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/GUI_Factura.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Detalle_Factura.java</file>
+>>>>>>> 97c7976f430b6167d84d3ea64cd47ea617e60999
         </group>
     </open-files>
 </project-private>

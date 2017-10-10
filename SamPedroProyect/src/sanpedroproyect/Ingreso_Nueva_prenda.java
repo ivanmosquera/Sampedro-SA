@@ -75,8 +75,8 @@ Prenda p = new Prenda();
             String sql = ("SELECT Nombre FROM categoria ");
             pst = cn.prepareStatement(sql);
             rs =pst.executeQuery();
-            if (rs.next()){
-                    System.out.println(rs.getString("Nombre"));
+             while(rs.next()){
+                    
                     cmb_categoria.addItem(rs.getString("Nombre"));
                 }
 

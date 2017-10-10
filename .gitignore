@@ -24,3 +24,10 @@ hs_err_pid*
 SamPedroProyect/src/DATABASE/*
 /SamPedroProyect/dist/
 /SamPedroProyect/build/
+
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/

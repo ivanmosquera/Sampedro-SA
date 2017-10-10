@@ -1142,7 +1142,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         
         JOptionPane.showMessageDialog(null, "Factura Ingresada Correcatemente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
         btn_imprimir.setEnabled(true);
-        limpiar();
         
         
     }//GEN-LAST:event_btn_guardar_factActionPerformed
