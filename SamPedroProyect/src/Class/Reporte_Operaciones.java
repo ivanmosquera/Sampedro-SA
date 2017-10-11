@@ -73,7 +73,7 @@ public class Reporte_Operaciones {
         int col;
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
-        String sql  =  "Select id_Separado , id_Producto , P.Descripcion ,P.talla, S.Saldo  FROM separado S, detalle_separado , producto P WHERE fk_cliente = ? and id_separado = fk_separado and fk_producto =  id_Producto;";
+        String sql  =  "Select id_Separado , id_Producto , P.Descripcion ,P.talla, S.Saldo  FROM separado S, detalle_separado , producto P WHERE fk_cliente = ? and id_separado = fk_separado and fk_producto =  id_Producto and fk_Estado = 1;";
         
         try {
             pst = cn.prepareStatement(sql);
@@ -469,12 +469,12 @@ public class Reporte_Operaciones {
         int col;
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
-        String sql  =  "Select U.Nombre, Fecha_separado ,Fecha_vencimiento , "
+        String sql  =  "Select S.id_Separado ,U.Nombre, Fecha_separado ,Fecha_vencimiento , "
                 + "C.Nombre, P.id_Producto, P.Descripcion ,P.talla, S.Saldo  "
                 + "FROM separado S, detalle_separado , producto P, usuario U, cliente C "
                 + "WHERE id_Cliente = fk_cliente AND "
                 + "id_separado = fk_separado and fk_producto =  id_Producto AND"
-                + " id_Usuario = fk_Usuario;";
+                + " id_Usuario = fk_Usuario and S.fk_Estado = 1;";
         
         try {
             pst = cn.prepareStatement(sql);

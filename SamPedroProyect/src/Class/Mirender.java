@@ -36,13 +36,12 @@ public class Mirender extends DefaultTableCellRenderer {
        
        
       JLabel label = (JLabel) super.getTableCellRendererComponent (table, value, isSelected, hasFocus, row, column);
-     Object fechaven = table.getValueAt(row, 2);
+     Object fechaven = table.getValueAt(row, 3);
      String vencido = String.valueOf(fechaven);
-     System.out.println("Diaa Vencimiento " + vencido);
      DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
      Date date1 = new Date() ;
      String dia = dateFormat.format(date);
-     System.out.println("Diaa  actual " + dia);
+
      Date date2 = new Date();
         try {
             date1 = dateFormat.parse(dia);
@@ -56,7 +55,7 @@ public class Mirender extends DefaultTableCellRenderer {
             Logger.getLogger(Mirender.class.getName()).log(Level.SEVERE, null, ex);
         }
      int i = date2.compareTo(date1);
-      System.out.println("salida : " + i);
+
       Color c = Color.WHITE;
       if ( i == -1 )
       {
