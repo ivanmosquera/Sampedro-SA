@@ -184,7 +184,7 @@ public class SepararPrenda {
             pst.execute();
             System.out.println(resul);
         } catch (Exception e){
-            resul = "Error " + e ;
+            resul = "Error update saldo " + e ;
         } 
         
         
@@ -194,7 +194,7 @@ public class SepararPrenda {
     
     
     
-    public static String Guardar_Abono(int idseparado,Float valor,int user){
+    public static String Guardar_Abono(int idseparado,float valor,int user){
         
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -222,7 +222,7 @@ public class SepararPrenda {
 
             
         }catch(SQLException e){
-            resul = "Error : "+e; 
+            resul = "Error  en guardar abono : "+e; 
             System.out.println(resul);
         }
         

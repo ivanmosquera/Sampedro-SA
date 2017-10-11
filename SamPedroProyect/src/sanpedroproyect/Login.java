@@ -14,7 +14,8 @@ public class Login extends javax.swing.JFrame {
     static String username;
     public Login() {
         initComponents();
-        this.setResizable(false);
+        //this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
    public void iniciarSplash() {
         

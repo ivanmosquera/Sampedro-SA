@@ -459,7 +459,7 @@ public class Abonar extends javax.swing.JFrame {
     private void btn_guardarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarproductoActionPerformed
         // TODO add your handling code here:
         sp.Ingreso_nuevo_saldo(id_separado,Float.parseFloat(txt_nuevo_saldo.getText()));
-        sp.Guardar_Abono(id_separado,Float.parseFloat(txt_abonar.getText()),USUARIO);
+        sp.Guardar_Abono(id_separado,Float.parseFloat(txt_abonar.getText()),1);//falta agregar USUARIO
          
         JOptionPane.showMessageDialog(null, "Aono Igresado Correctamente" , "ABONO INGRESADO" , JOptionPane.INFORMATION_MESSAGE);
         

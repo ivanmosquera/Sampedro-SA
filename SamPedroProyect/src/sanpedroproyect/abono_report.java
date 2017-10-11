@@ -8,6 +8,7 @@ package sanpedroproyect;
 
 import Class.Mirender;
 import Class.Reporte_Operaciones;
+import Class.abono;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -15,20 +16,20 @@ import javax.swing.table.TableModel;
  *
  * @author kleberstevendiazcoello
  */
-public class Reporte_Separados extends javax.swing.JFrame {
+public class abono_report extends javax.swing.JFrame {
 
     /**
      * Creates new form Reporte_Separados
      */
     DefaultTableModel m  = new DefaultTableModel();
     Reporte_Operaciones rp = new Reporte_Operaciones();
-    public Reporte_Separados() {
+    abono a = new abono();
+    public abono_report(String Nombre) {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        m = rp.consultar_Separados();
-        Tbl_separado.setDefaultRenderer(Object.class, new Mirender());
-        Tbl_separado.setModel(m);
-        
+        m = a.consultar_abonos(Nombre);
+        Tbl_abono.setModel(m);
+        lbl_abono.setText(String.valueOf(a.getTotal(Nombre)));
         
         
     }
@@ -44,15 +45,18 @@ public class Reporte_Separados extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tbl_separado = new javax.swing.JTable();
+        Tbl_abono = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        lbl_abono = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        Tbl_separado.setModel(new javax.swing.table.DefaultTableModel(
+        Tbl_abono.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -63,15 +67,15 @@ public class Reporte_Separados extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        Tbl_separado.addMouseListener(new java.awt.event.MouseAdapter() {
+        Tbl_abono.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Tbl_separadoMouseClicked(evt);
+                Tbl_abonoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(Tbl_separado);
+        jScrollPane1.setViewportView(Tbl_abono);
 
-        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
-        jLabel1.setText("Reporte Separados");
+        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel1.setText("Detalle de Abonos : ");
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -80,33 +84,58 @@ public class Reporte_Separados extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
+        jLabel3.setText("Detalle de Abonos");
+
+        lbl_abono.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel4.setText("$");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(308, 308, 308)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 73, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(424, 424, 424)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(352, 352, 352)
-                        .addComponent(jLabel1)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_abono, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(252, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addGap(236, 236, 236)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1)
-                .addGap(73, 73, 73)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(87, 87, 87)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(lbl_abono, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addComponent(jLabel3)
+                    .addContainerGap(376, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,65 +154,30 @@ public class Reporte_Separados extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Main_Menu ventana_menuPrincipal = new Main_Menu();
-        ventana_menuPrincipal.setVisible(true);
-        ventana_menuPrincipal.setLocationRelativeTo(null);
-        ventana_menuPrincipal.setResizable(false);
+        Reporte_Separados rs = new Reporte_Separados();
+        rs.setVisible(true);
+        rs.setLocationRelativeTo(null);
+        rs.setResizable(false);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void Tbl_separadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_separadoMouseClicked
-        // TODO add your handling code here:
-        int index= Tbl_separado.getSelectedRow();
-        TableModel model = Tbl_separado.getModel();
-        String nombre = model.getValueAt(index, 3).toString();
-        abono_report de = new abono_report(nombre);
-        de.setVisible(true);
-        de.setResizable(false);
-        de.setLocationRelativeTo(null);
-        dispose();
-    }//GEN-LAST:event_Tbl_separadoMouseClicked
+    private void Tbl_abonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_abonoMouseClicked
+
+    }//GEN-LAST:event_Tbl_abonoMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Separados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Separados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Separados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reporte_Separados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Reporte_Separados().setVisible(true);
-            }
-        });
-    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tbl_separado;
+    private javax.swing.JTable Tbl_abono;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_abono;
     // End of variables declaration//GEN-END:variables
 }

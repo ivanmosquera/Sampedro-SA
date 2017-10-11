@@ -548,7 +548,7 @@ public class Reporte_Operaciones {
     } 
      
      
-     public Float getTotal(){
+     public float getTotal(){
          String resul = null , lats = null;
          ConnectionDB cc = new ConnectionDB();
          Connection cn = cc.getConnection();

@@ -200,17 +200,19 @@
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="lbl_user_name" min="-2" pref="144" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="btn_go_inventario" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                      <Component id="btn_go_RegistroCliente" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                      <Component id="btn_go_registroFactura" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="btn_go_reportes" alignment="0" max="32767" attributes="0"/>
                           <Component id="btn_go_separarPrenda" alignment="0" pref="144" max="32767" attributes="0"/>
                           <Component id="btn_go_cierreCaja" max="32767" attributes="0"/>
                           <Component id="btn_go_anulaciones" alignment="1" max="32767" attributes="0"/>
                       </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btn_go_inventario" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btn_go_RegistroCliente" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btn_go_registroFactura" alignment="0" pref="144" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="506" max="32767" attributes="0"/>
+                  <EmptySpace pref="489" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -236,7 +238,7 @@
                   <Component id="btn_go_reportes" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btn_go_cierreCaja" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -244,6 +246,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btn_go_inventario">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="12" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/portapapeles.png"/>
             </Property>
@@ -257,6 +262,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_go_registroFactura">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="12" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/recepcion.png"/>
             </Property>
@@ -270,6 +278,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_go_anulaciones">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="12" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/archivo.png"/>
             </Property>
@@ -283,6 +294,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_go_separarPrenda">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="12" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/vestir.png"/>
             </Property>
@@ -296,6 +310,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_go_reportes">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="12" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/analitica.png"/>
             </Property>
@@ -309,6 +326,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_go_cierreCaja">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="12" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/proyecto-de-ley.png"/>
             </Property>
@@ -322,6 +342,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_go_RegistroCliente">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="12" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/usuario.png"/>
             </Property>
@@ -335,10 +358,18 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Usuario Actual  : "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_user_name">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="14" style="1"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
