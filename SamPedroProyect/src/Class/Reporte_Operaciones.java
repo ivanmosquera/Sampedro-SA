@@ -518,7 +518,7 @@ public class Reporte_Operaciones {
         //Caso 2: obtener la fecha y salida por pantalla con formato:
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dia = dateFormat.format(date);
-        String sql  = "Select id_Factura, F.Fecha, C.Nombre , Subtotal ,  Total  From cliente c , factura F   Where fk_Cliente = id_Cliente and Fecha = ? and fk_Estado = 1;";
+        String sql  = "Select id_Factura, F.Fecha, C.Nombre , Subtotal ,  Total , Efectivo , Tarjeta  From cliente c , factura F   Where fk_Cliente = id_Cliente and Fecha = ? and fk_Estado = 1;";
         
         try {
             pst = cn.prepareStatement(sql);
@@ -712,5 +712,147 @@ public class Reporte_Operaciones {
         
         return modelo;
     } 
+     
+       
+    public double getTotal_pago_efectivo(){
+         String resul = null , lats = null;
+         ConnectionDB cc = new ConnectionDB();
+         Connection cn = cc.getConnection();
+         PreparedStatement pst =null;
+         ResultSet rs = null;
+          Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+         String Desc;
+         float total = (float) 0.0;
+            try{
+               String sql = ("Select SUM(Efectivo) From Factura Where Fecha= ? and fk_Estado = 1 ;");
+                pst = cn.prepareStatement(sql);
+                pst.setString(1, dia);
+                rs =pst.executeQuery();
+                if (rs.next()){
+                    total = rs.getFloat("SUM(Efectivo)");
+                          
+                }
+
+
+
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
+                    
+        return total;
+     }
+    
+    
+     public double getTotal_pago_tarjeta(){
+         String resul = null , lats = null;
+         ConnectionDB cc = new ConnectionDB();
+         Connection cn = cc.getConnection();
+         PreparedStatement pst =null;
+         ResultSet rs = null;
+          Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+         String Desc;
+         float total = (float) 0.0;
+            try{
+               String sql = ("Select SUM(Tarjeta) From Factura Where Fecha= ? and fk_Estado = 1 ;");
+                pst = cn.prepareStatement(sql);
+                pst.setString(1, dia);
+                rs =pst.executeQuery();
+                if (rs.next()){
+                    total = rs.getFloat("SUM(Tarjeta)");
+                          
+                }
+
+
+
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
+                    
+        return total;
+     }
+     
+     
+     
+     
+     
+     public double getTotal_pago_efectivo_anuladas(){
+         String resul = null , lats = null;
+         ConnectionDB cc = new ConnectionDB();
+         Connection cn = cc.getConnection();
+         PreparedStatement pst =null;
+         ResultSet rs = null;
+          Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+         String Desc;
+         float total = (float) 0.0;
+            try{
+               String sql = ("Select SUM(Efectivo) From Factura Where Fecha= ? and fk_Estado = 3 ;");
+                pst = cn.prepareStatement(sql);
+                pst.setString(1, dia);
+                rs =pst.executeQuery();
+                if (rs.next()){
+                    total = rs.getFloat("SUM(Efectivo)");
+                          
+                }
+
+
+
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
+                    
+        return total;
+     }  
+     
+     public double getTotal_pago_tarjeta_anuladas(){
+         String resul = null , lats = null;
+         ConnectionDB cc = new ConnectionDB();
+         Connection cn = cc.getConnection();
+         PreparedStatement pst =null;
+         ResultSet rs = null;
+          Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+         String Desc;
+         float total = (float) 0.0;
+            try{
+               String sql = ("Select SUM(Tarjeta) From Factura Where Fecha= ? and fk_Estado = 3 ;");
+                pst = cn.prepareStatement(sql);
+                pst.setString(1, dia);
+                rs =pst.executeQuery();
+                if (rs.next()){
+                    total = rs.getFloat("SUM(Tarjeta)");
+                          
+                }
+
+
+
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
+                    
+        return total;
+     }
      
 }

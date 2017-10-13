@@ -852,9 +852,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                         .addComponent(btn_nueva_f, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(btn_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addGap(30, 30, 30)
                         .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
+                        .addGap(18, 18, 18))
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addComponent(btn_guardar_fact)
                         .addGap(58, 58, 58)
@@ -867,7 +867,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton5)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         Factura_panelLayout.setVerticalGroup(
             Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -920,12 +920,16 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)))
-                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_imprimir)
-                            .addComponent(btn_guardar_fact)))
+                            .addComponent(btn_guardar_fact))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_Limpiar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_Salir, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -953,9 +957,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                                 .addGap(18, 18, 18)
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel14)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_Limpiar)
-                                    .addComponent(btn_Salir))))))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
 
@@ -1142,7 +1144,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         int codigo_a_guardar = 0;
         int cantidad = 0 ;
         int codigo_obtenido;
-        String s = factura.Guardar_Factura(id_sumada,USUARIO);     
+        double pago_efectivo, pago_tarjeta;
+        pago_efectivo = Double.parseDouble(txt_efectivo.getText());
+        pago_tarjeta = Double.parseDouble(txt_vaucher_pago.getText());
+        String s = factura.Guardar_Factura(id_sumada,USUARIO,pago_efectivo,pago_tarjeta);     
         System.out.println("" + s);
         
         codigo_obtenido = factura.Get_last_id_factura();
