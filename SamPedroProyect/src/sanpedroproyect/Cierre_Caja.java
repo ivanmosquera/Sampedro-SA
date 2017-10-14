@@ -456,7 +456,7 @@ private void priceInvoice(){
             }*/
             
             JRBeanCollectionDataSource jcs = new JRBeanCollectionDataSource(plist);
-            JasperPrint jp = JasperFillManager.fillReport(jr, para, jcs);
+            JasperPrint jp = JasperFillManager.fillReport(jr, para, jcs );
             JasperViewer.viewReport(jp,false);
             
             
