@@ -783,6 +783,7 @@ public class Separar extends javax.swing.JFrame {
         DefaultTableModel order_list_guardar = new DefaultTableModel();
         subtotal_static = (Float.parseFloat(txt_subtotal.getText()));
         Total_static = (Float.parseFloat(txt_abono.getText()));
+        
         int i = 0;
         int codigo_a_guardar = 0;
         int cantidad = 0 ;
@@ -805,7 +806,8 @@ public class Separar extends javax.swing.JFrame {
                 int nueva_cantidad = 0;
                 codigo_a_guardar = Integer.parseInt(Tabla_ventas.getValueAt(i, 0).toString());
                 cantidad = Integer.parseInt(Tabla_ventas.getValueAt(i, 3).toString());
-                separar.Guardar_Detalle_separado(codigo_obtenido, codigo_a_guardar, cantidad); 
+                separar.Guardar_Detalle_separado(codigo_obtenido, codigo_a_guardar, cantidad);
+                separar.Guardar_abono_separado(codigo_obtenido,Total_static,USUARIO);
                 inv.Decremento_inventario_Separado(codigo_a_guardar,cantidad);
                 cantidad_actual = inv.get_cantidad_total_producto(codigo_a_guardar);
                 nueva_cantidad = (cantidad_actual - cantidad) ;

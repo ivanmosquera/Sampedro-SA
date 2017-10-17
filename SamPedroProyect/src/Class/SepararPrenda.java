@@ -130,7 +130,7 @@ public class SepararPrenda {
 
             
         }catch(SQLException e){
-            resul = "Error : "+e; 
+            resul = "Error DETALLE SEPARADO : "+e; 
             System.out.println(resul);
         }
         

@@ -57,6 +57,8 @@ public class abono {
                 modelo.addRow(filas);
             }
             
+            System.out.println("Consultar abono");
+            
         } catch (SQLException ex) {
             Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
         }catch(Exception e){
