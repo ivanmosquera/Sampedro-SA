@@ -6,10 +6,15 @@
 
 package sanpedroproyect;
 
+import Class.EXPORTAREXCEL;
 import Class.Mirender;
 import Class.Reporte_Operaciones;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import org.oxbow.swingbits.table.filter.TableRowFilterSupport;
 
 /**
  *
@@ -27,6 +32,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         m = rp.consultar_Factura();
         Tbl_ver_facturas.setModel(m);
+        TableRowFilterSupport.forTable(Tbl_ver_facturas).searchable(true).apply();
         
         
         
@@ -47,6 +53,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         Tbl_ver_facturas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btn_excel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -78,6 +85,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         jLabel1.setText("FACTURAS");
 
+        jButton1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         jButton1.setText("Salir");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -85,6 +93,17 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        btn_excel.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_excel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon.png"))); // NOI18N
+        btn_excel.setText("Exportar Excel");
+        btn_excel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_excel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_excel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excelActionPerformed(evt);
             }
         });
 
@@ -101,8 +120,10 @@ public class Ver_Facturas extends javax.swing.JFrame {
                         .addGap(451, 451, 451)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(422, 422, 422)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(352, 352, 352)
+                        .addComponent(btn_excel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -113,8 +134,10 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addGap(99, 99, 99)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(jButton1)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(btn_excel))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,6 +174,16 @@ public class Ver_Facturas extends javax.swing.JFrame {
         ventana_menuPrincipal.setResizable(false);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_excelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excelActionPerformed
+        // TODO add your handling code here:
+        EXPORTAREXCEL ex = new EXPORTAREXCEL();
+        try {
+            ex.exportarExcel(Tbl_ver_facturas);
+        } catch (IOException ex1) {
+            Logger.getLogger(Reporte_Inventario.class.getName()).log(Level.SEVERE, null, ex1);
+        }
+    }//GEN-LAST:event_btn_excelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,6 +222,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tbl_ver_facturas;
+    private javax.swing.JButton btn_excel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

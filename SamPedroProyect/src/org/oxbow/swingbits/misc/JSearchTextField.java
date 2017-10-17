@@ -31,9 +31,15 @@
 
 package org.oxbow.swingbits.misc;
 
+import static com.sun.org.apache.bcel.internal.util.SecuritySupport.getResourceAsStream;
 import java.awt.Graphics;
 import java.awt.Image;
-
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
@@ -50,11 +56,23 @@ public class JSearchTextField extends JTextField {
     private static final long serialVersionUID = 1L;
     
     private static ImageIcon icon;
+    //tatic InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/busqueda.png");
 
     private static Image getScaledImage( int size ) {
         
         if (icon == null) {
-            icon = new ImageIcon( "/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Imagenes/busqueda.png");
+
+            BufferedImage imagen = null;
+            try {
+                imagen = ImageIO.read(getResourceAsStream("Imagenes/busqueda.png"));
+            } catch (IOException ex) {
+                Logger.getLogger(JSearchTextField.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            icon = new ImageIcon(imagen);
+            //icon = new ImageIcon( "/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Imagenes/busqueda.png");
+          
+
+
         }
         return new ImageIcon(icon.getImage().getScaledInstance( size, size, Image.SCALE_SMOOTH )).getImage();
     }

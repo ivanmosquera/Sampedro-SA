@@ -6,11 +6,16 @@
 
 package sanpedroproyect;
 
+import Class.EXPORTAREXCEL;
 import Class.Mirender;
 import Class.Reporte_Operaciones;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import org.oxbow.swingbits.table.filter.TableRowFilterSupport;
 
 /**
  *
@@ -29,9 +34,7 @@ public class Reporte_Separados extends javax.swing.JFrame {
         m = rp.consultar_Separados();
         Tbl_separado.setDefaultRenderer(Object.class, new Mirender());
         Tbl_separado.setModel(m);
-        
-        
-        
+        TableRowFilterSupport.forTable(Tbl_separado).searchable(true).apply();        
     }
 
     /**
@@ -47,7 +50,8 @@ public class Reporte_Separados extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tbl_separado = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_salir = new javax.swing.JButton();
+        btn_excel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,14 +78,25 @@ public class Reporte_Separados extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel1.setText("Reporte Separados");
 
-        jButton1.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
-        jButton1.setText("Salir");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_salir.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
+        btn_salir.setText("Salir");
+        btn_salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_salir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_salirActionPerformed(evt);
+            }
+        });
+
+        btn_excel.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_excel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon.png"))); // NOI18N
+        btn_excel.setText("Exportar Excel");
+        btn_excel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_excel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_excel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excelActionPerformed(evt);
             }
         });
 
@@ -99,8 +114,10 @@ public class Reporte_Separados extends javax.swing.JFrame {
                 .addGap(75, 75, 75))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(418, 418, 418))
+                .addComponent(btn_excel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(376, 376, 376))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +127,9 @@ public class Reporte_Separados extends javax.swing.JFrame {
                 .addGap(76, 76, 76)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_salir)
+                    .addComponent(btn_excel))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -128,14 +147,14 @@ public class Reporte_Separados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
         // TODO add your handling code here:
         Main_Menu ventana_menuPrincipal = new Main_Menu();
         ventana_menuPrincipal.setVisible(true);
         ventana_menuPrincipal.setLocationRelativeTo(null);
         ventana_menuPrincipal.setResizable(false);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_salirActionPerformed
 
     private void Tbl_separadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_separadoMouseClicked
         // TODO add your handling code here:
@@ -151,6 +170,16 @@ public class Reporte_Separados extends javax.swing.JFrame {
            dispose();
         
     }//GEN-LAST:event_Tbl_separadoMouseClicked
+
+    private void btn_excelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excelActionPerformed
+        // TODO add your handling code here:
+        EXPORTAREXCEL ex = new EXPORTAREXCEL();
+        try {
+            ex.exportarExcel(Tbl_separado);
+        } catch (IOException ex1) {
+            Logger.getLogger(Reporte_Inventario.class.getName()).log(Level.SEVERE, null, ex1);
+        }
+    }//GEN-LAST:event_btn_excelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,7 +218,8 @@ public class Reporte_Separados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tbl_separado;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_excel;
+    private javax.swing.JButton btn_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

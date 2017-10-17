@@ -109,7 +109,7 @@ public class Reportes extends javax.swing.JFrame {
             });      
              
         String nombre_fil = cb_producto_inv_totales.getEditor().getItem().toString();
-        modelotabla2 = p.consultar_Producto_total(nombre_fil);
+        modelotabla2 = p.consultar_Producto_total();
         table_repor_inv_totales.setModel(modelotabla2);
         
         /*   FIN TAB 3     */

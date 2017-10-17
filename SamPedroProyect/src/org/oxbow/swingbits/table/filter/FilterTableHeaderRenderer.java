@@ -31,15 +31,22 @@
 
 package org.oxbow.swingbits.table.filter;
 
+import static com.sun.org.apache.bcel.internal.util.SecuritySupport.getResourceAsStream;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import org.oxbow.swingbits.misc.JSearchTextField;
 
 import org.oxbow.swingbits.table.TableHeaderRenderer;
 import org.oxbow.swingbits.util.swing.CompoundIcon;
@@ -76,7 +83,14 @@ class FilterTableHeaderRenderer extends TableHeaderRenderer {
     private Icon getFilterIcon() {
 
         if (icon == null) {
-            icon = new ImageIcon("/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Imagenes/funnel.png");
+                       BufferedImage imagen = null;
+            try {
+                imagen = ImageIO.read(getResourceAsStream("Imagenes/funnel.png"));
+            } catch (IOException ex) {
+                Logger.getLogger(JSearchTextField.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            icon = new ImageIcon(imagen);
+            //icon = new ImageIcon("/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Imagenes/funnel.png");
             icon = new ImageIcon( icon.getImage().getScaledInstance( 12, 12, Image.SCALE_SMOOTH  ));
         }
         return icon;

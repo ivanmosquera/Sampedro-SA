@@ -6,14 +6,17 @@
 
 package sanpedroproyect;
 
+import Class.EXPORTAREXCEL;
 import Class.Operaciones;
 import Class.Prenda;
 import Class.Reporte_Operaciones;
 import com.sun.glass.events.KeyEvent;
 import java.awt.event.KeyAdapter;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
+import org.oxbow.swingbits.table.filter.TableRowFilterSupport;
 
 /**
  *
@@ -32,7 +35,13 @@ public class Inventario_Totales extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
-             cb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+        //String nombre_fil = cb_producto.getEditor().getItem().toString();
+        modelotabla = p.consultar_Producto_total();
+        table_repor_inv.setModel(modelotabla);
+        TableRowFilterSupport.forTable(table_repor_inv).searchable(true).apply();    
+        
+        
+            /* cb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
             @Override
             public void keyReleased(java.awt.event.KeyEvent e) {
@@ -56,11 +65,9 @@ public class Inventario_Totales extends javax.swing.JFrame {
                     }
                 }
             }
-            });      
+            }); */     
              
-        String nombre_fil = cb_producto.getEditor().getItem().toString();
-        modelotabla = p.consultar_Producto_total(nombre_fil);
-        table_repor_inv.setModel(modelotabla);
+        
  }
 
     /**
@@ -76,22 +83,16 @@ public class Inventario_Totales extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_repor_inv = new javax.swing.JTable();
-        Btn_consultar_report = new javax.swing.JButton();
-        cb_producto = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        cb_Talla = new javax.swing.JComboBox();
-        rb_Producto = new javax.swing.JRadioButton();
-        rb_talla = new javax.swing.JRadioButton();
-        rb_categoria = new javax.swing.JRadioButton();
         btn_salir = new javax.swing.JButton();
+        btn_excel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("REPORTE DE INVENTARIO");
+        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
+        jLabel1.setText("REPORTE DE PRODUCTOS DISPONIBLES");
 
         table_repor_inv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,30 +107,6 @@ public class Inventario_Totales extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table_repor_inv);
 
-        Btn_consultar_report.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
-        Btn_consultar_report.setText("Consultar");
-        Btn_consultar_report.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Btn_consultar_report.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Btn_consultar_report.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_consultar_reportActionPerformed(evt);
-            }
-        });
-
-        cb_producto.setEditable(true);
-
-        jLabel2.setText("Producto");
-
-        jLabel3.setText("Talla");
-
-        cb_Talla.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "XS", "S", "M", "L", "XL","" }));
-
-        rb_Producto.setText("Por Producto");
-
-        rb_talla.setText("Por Talla");
-
-        rb_categoria.setText("Por Categoria");
-
         btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_salir.setText("Salir");
         btn_salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -140,68 +117,52 @@ public class Inventario_Totales extends javax.swing.JFrame {
             }
         });
 
+        btn_excel.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_excel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon.png"))); // NOI18N
+        btn_excel.setText("Exportar Excel");
+        btn_excel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_excel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_excel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(81, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(247, 247, 247)
-                                .addComponent(jLabel1))
-                            .addComponent(rb_Producto)
-                            .addComponent(rb_talla))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Btn_consultar_report)
-                        .addGap(198, 198, 198))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rb_categoria)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(52, 52, 52)
-                                .addComponent(cb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(216, 216, 216)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(cb_Talla, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(btn_excel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(132, 132, 132))
+                .addComponent(jLabel1)
+                .addGap(234, 234, 234))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(cb_Talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Btn_consultar_report)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(rb_Producto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rb_talla)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rb_categoria)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(btn_salir)
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_salir)
+                        .addGap(17, 17, 17))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(btn_excel)
+                        .addContainerGap(47, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,29 +179,6 @@ public class Inventario_Totales extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Btn_consultar_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_consultar_reportActionPerformed
-        // TODO add your handling code here:
-        if(cb_producto.getEditor().getItem().equals("")&&cb_Talla.getSelectedItem().toString().equals("")){
-            JOptionPane.showMessageDialog(null, "INGRESE PRODUCTO A REVISAR", "ERROR" , JOptionPane.INFORMATION_MESSAGE);
-        
-        }
-        String talla =  cb_Talla.getSelectedItem().toString();
-        System.out.println("Talla : " + talla);
-        if(talla.equals("")){ 
-            System.out.println("Entre Aqui");
-            String nombre_fil = cb_producto.getEditor().getItem().toString();
-            modelotabla = rop.consultar_inventario_filter_nombre(nombre_fil);
-            table_repor_inv.setModel(modelotabla);
-        }
-           
-            
-           
-            
-        
-        
-        
-    }//GEN-LAST:event_Btn_consultar_reportActionPerformed
-
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
         // TODO add your handling code here:
         
@@ -250,6 +188,16 @@ public class Inventario_Totales extends javax.swing.JFrame {
         ventana_menuPrincipal.setResizable(false);
         dispose();
     }//GEN-LAST:event_btn_salirActionPerformed
+
+    private void btn_excelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excelActionPerformed
+        // TODO add your handling code here:
+        EXPORTAREXCEL ex = new EXPORTAREXCEL();
+        try {
+            ex.exportarExcel(table_repor_inv);
+        } catch (IOException ex1) {
+            
+        }
+    }//GEN-LAST:event_btn_excelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,18 +235,11 @@ public class Inventario_Totales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_consultar_report;
+    private javax.swing.JButton btn_excel;
     private javax.swing.JButton btn_salir;
-    private javax.swing.JComboBox cb_Talla;
-    private javax.swing.JComboBox cb_producto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton rb_Producto;
-    private javax.swing.JRadioButton rb_categoria;
-    private javax.swing.JRadioButton rb_talla;
     private javax.swing.JTable table_repor_inv;
     // End of variables declaration//GEN-END:variables
 }

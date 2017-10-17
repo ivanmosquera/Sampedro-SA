@@ -169,7 +169,7 @@ class TableFilterColumnPopup extends PopupWindow implements MouseListener {
             toolbar.setFloatable(false);
             toolbar.setOpaque(false);
             toolbar.add( new PopupWindow.CommandAction(
-                    "Clear all column filters", 
+                    "Limpiar Filtros", 
                     null) {
                 @Override
                 protected boolean perform() {
@@ -180,14 +180,14 @@ class TableFilterColumnPopup extends PopupWindow implements MouseListener {
             
             commands.add(Box.createHorizontalGlue());
             
-            commands.add( new JButton( new PopupWindow.CommandAction("Apply"){
+            commands.add( new JButton( new PopupWindow.CommandAction("OK"){
                 @Override
                 protected boolean perform() {
                     return applyColumnFilter();
                 }})
              );
             commands.add( Box.createHorizontalStrut(5) );
-            commands.add( new JButton( new PopupWindow.CommandAction("Cancel")));
+            commands.add( new JButton( new PopupWindow.CommandAction("Cancelar")));
             commands.setBorder( BorderFactory.createEmptyBorder(3, 0, 3, 0));
             commands.setBackground(UIManager.getColor("Panel.background"));
             commands.setOpaque(true);

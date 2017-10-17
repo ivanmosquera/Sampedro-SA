@@ -265,7 +265,7 @@ public class Reporte_Operaciones {
         } catch (SQLException ex) {
             Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
         }catch(Exception e){
-            System.out.println("error : "+  e);
+            System.out.println("error aqui : "+  e);
         }
         
         return modelo;

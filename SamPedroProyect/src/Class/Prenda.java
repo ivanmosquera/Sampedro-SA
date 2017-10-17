@@ -89,7 +89,7 @@ public class Prenda {
     
     
     
-      public DefaultTableModel consultar_Producto_total(String Nombre ){
+      public DefaultTableModel consultar_Producto_total(){
        String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
