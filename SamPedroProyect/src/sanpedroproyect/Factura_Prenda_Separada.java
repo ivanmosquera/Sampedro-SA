@@ -47,6 +47,7 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import static sanpedroproyect.Factura_Prenda_Separada.total;
+import static sanpedroproyect.GUI_Factura.codigo_cliente;
 
 /**
  *
@@ -75,70 +76,6 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
     static int codigo_cliente, id_estado;
     static float subtotal_static,Descuento_static,Voucher_static,Iva_static,Total_static;
 
-    public int getCodigo_cliente() {
-        return codigo_cliente;
-    }
-
-    public void setCodigo_cliente(int codigo_cliente) {
-        this.codigo_cliente = codigo_cliente;
-    }
-
-    public int getId_estado() {
-        return id_estado;
-    }
-
-    public void setId_estado(int id_estado) {
-        this.id_estado = id_estado;
-    }
-
-    public float getSubtotal() {
-        return subtotal_static;
-    }
-
-    public void setSubtotal(float subtotal) {
-        this.subtotal_static = subtotal;
-    }
-
-    public float getSubtotal_static() {
-        return subtotal_static;
-    }
-
-    public void setSubtotal_static(float subtotal_static) {
-        this.subtotal_static = subtotal_static;
-    }
-
-    public float getDescuento_static() {
-        return Descuento_static;
-    }
-
-    public void setDescuento_static(float Descuento_static) {
-        this.Descuento_static = Descuento_static;
-    }
-
-    public float getIva_static() {
-        return Iva_static;
-    }
-
-    public void setIva_static(float Iva_static) {
-        this.Iva_static = Iva_static;
-    }
-
-    public float getTotal_static() {
-        return Total_static;
-    }
-
-    public void setTotal_static(float Total_static) {
-        this.Total_static = Total_static;
-    }
-
-    public float getVoucher_static() {
-        return Voucher_static;
-    }
-
-    public void setVoucher_static(float Voucher_static) {
-        this.Voucher_static = Voucher_static;
-    }
-
 
 
     /**
@@ -147,7 +84,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
     int id_factura_actual , id_sumada;
     Date date = new Date ();
     
-    public Factura_Prenda_Separada() {
+    public Factura_Prenda_Separada( int id_cliente , int id_producto) {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -163,63 +100,9 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         USUARIO = menu_Cod.getCodigo_usuario();
         btn_imprimir.setToolTipText("Antes de Imprimir, Guarde la Factura");
         btn_imprimir.setEnabled(false);
+        set_clientes(id_cliente);
+        set_Producto(id_producto);
         
-        cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
-        
-          
-            @Override
-            public void keyReleased(java.awt.event.KeyEvent e) {
-                 //To change body of generated methods, choose Tools | Templates.
-                String cadena = cbx_Nombre.getEditor().getItem().toString();
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    System.out.println("Aplasto ENter");
-                        String resul = null , lats = null;
-                        ConnectionDB cc = new ConnectionDB();
-                        Connection cn = cc.getConnection();
-                        PreparedStatement pst =null;
-                        ResultSet rs = null;
-                        String Desc;
-                        try{
-                           String sql = ("SELECT * FROM cliente where Nombre = ?");
-                           pst = cn.prepareStatement(sql);
-                           pst.setString(1, cadena);
-                           rs =pst.executeQuery();
-                           if (rs.next()){
-                               codigo_cliente = rs.getInt("id_Cliente");
-                               txt_cedula.setText(rs.getString("Cedula"));
-                               txt_dir.setText(rs.getString("Direccion"));
-                               txt_mail.setText(rs.getString("Correo"));
-                               txt_telefono.setText(rs.getString("Telefono"));
-                          
-                           }
-
-
-
-                        } catch (Exception ex){
-                            System.out.println(ex);
-                        }
-                    
-                }
-                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
-                    cbx_Nombre.setModel(op.geLista(cadena));
-                    if(cbx_Nombre.getItemCount()>0){
-                        cbx_Nombre.showPopup();
-                        if(e.getKeyCode()!=8){
-                            ((JTextComponent)cbx_Nombre.getEditor().getEditorComponent()).select(cadena.length(),cbx_Nombre.getEditor().getItem().toString().length());
-                            
-                            
-                        }else{
-                            cbx_Nombre.getEditor().setItem(cadena);
-                            
-                        }
-                            
-                    }else{
-                        cbx_Nombre.addItem(cadena);
-                    }
-                }
-            }
-          
-        });
         txt_descto.getDocument().addDocumentListener(new DocumentListener() {
 
             @Override
@@ -413,7 +296,6 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         txt_dir = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txt_telefono = new javax.swing.JTextField();
-        cbx_Nombre = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         txt_subtotal = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -438,6 +320,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         lbl_pagovaucher = new javax.swing.JLabel();
         txt_efectivo = new javax.swing.JTextField();
         txt_vaucher_pago = new javax.swing.JTextField();
+        txt_cliente = new javax.swing.JTextField();
 
         Dialog_buscar_pro.setTitle("Buscar Producto");
 
@@ -631,8 +514,6 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
 
         txt_telefono.setEditable(false);
 
-        cbx_Nombre.setEditable(true);
-
         jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel10.setText("Subtotal");
 
@@ -727,6 +608,8 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
             }
         });
 
+        txt_cliente.setEditable(false);
+
         javax.swing.GroupLayout Factura_panelLayout = new javax.swing.GroupLayout(Factura_panel);
         Factura_panel.setLayout(Factura_panelLayout);
         Factura_panelLayout.setHorizontalGroup(
@@ -741,9 +624,9 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
                 .addGap(34, 34, 34)
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Factura_panelLayout.createSequentialGroup()
-                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(cbx_Nombre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Factura_panelLayout.createSequentialGroup()
                                 .addGap(199, 199, 199)
@@ -819,8 +702,8 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
                 .addContainerGap()
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(cbx_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(txt_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1003,7 +886,6 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         txt_vaucher.setText("");
         txt_total.setText("");
         txt_nota.setText("");
-        cbx_Nombre.removeAllItems();
         Tabla_ventas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1041,7 +923,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         double pago_efectivo, pago_tarjeta;
         pago_efectivo = Double.parseDouble(txt_efectivo.getText());
         pago_tarjeta = Double.parseDouble(txt_vaucher_pago.getText());
-        String s = factura.Guardar_Factura(id_sumada,USUARIO,pago_efectivo,pago_tarjeta);     
+        String s = factura.Guardar_Factura(id_sumada,1,pago_efectivo,pago_tarjeta);     
         System.out.println("" + s);
         
         codigo_obtenido = factura.Get_last_id_factura();
@@ -1118,46 +1000,6 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         // TODO add your handling code here:
     }//GEN-LAST:event_Combo_FORMA_PAGOActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-
-    /**
-     *
-     * @param args
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Factura_Prenda_Separada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Factura_Prenda_Separada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Factura_Prenda_Separada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Factura_Prenda_Separada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Factura_Prenda_Separada().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combo_FORMA_PAGO;
     private javax.swing.JDialog Dialog_buscar_pro;
@@ -1169,7 +1011,6 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
     private javax.swing.JButton btn_agregar_producto;
     private javax.swing.JButton btn_guardar_fact;
     private javax.swing.JButton btn_imprimir;
-    private javax.swing.JComboBox cbx_Nombre;
     private javax.swing.JComboBox cmb_descuento;
     private javax.swing.JComboBox cmb_producto;
     private javax.swing.JLabel jLabel1;
@@ -1200,6 +1041,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
     private javax.swing.JTable tabla_producto;
     private javax.swing.JTextField txt_can;
     private javax.swing.JTextField txt_cedula;
+    private javax.swing.JTextField txt_cliente;
     private javax.swing.JTextField txt_descto;
     private javax.swing.JTextField txt_dir;
     private javax.swing.JTextField txt_efectivo;
@@ -1242,7 +1084,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
             int i = 0;
             JasperReport jr = JasperCompileManager.compileReport(is);
             HashMap<String,Object> para = new HashMap<>();
-            para.put("CLIENTE", cbx_Nombre.getEditor().getItem().toString());
+            para.put("CLIENTE", txt_cliente.getText());
             para.put("CEDULA", txt_cedula.getText());
             para.put("DIRECCION", txt_dir.getText());
             para.put("TELEFONO",txt_telefono.getText());
@@ -1279,10 +1121,150 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         }
         
     }
+        public int getCodigo_cliente() {
+        return codigo_cliente;
+    }
+
+    public void setCodigo_cliente(int codigo_cliente) {
+        this.codigo_cliente = codigo_cliente;
+    }
+
+    public int getId_estado() {
+        return id_estado;
+    }
+
+    public void setId_estado(int id_estado) {
+        this.id_estado = id_estado;
+    }
+
+    public float getSubtotal() {
+        return subtotal_static;
+    }
+
+    public void setSubtotal(float subtotal) {
+        this.subtotal_static = subtotal;
+    }
+
+    public float getSubtotal_static() {
+        return subtotal_static;
+    }
+
+    public void setSubtotal_static(float subtotal_static) {
+        this.subtotal_static = subtotal_static;
+    }
+
+    public float getDescuento_static() {
+        return Descuento_static;
+    }
+
+    public void setDescuento_static(float Descuento_static) {
+        this.Descuento_static = Descuento_static;
+    }
+
+    public float getIva_static() {
+        return Iva_static;
+    }
+
+    public void setIva_static(float Iva_static) {
+        this.Iva_static = Iva_static;
+    }
+
+    public float getTotal_static() {
+        return Total_static;
+    }
+
+    public void setTotal_static(float Total_static) {
+        this.Total_static = Total_static;
+    }
+
+    public float getVoucher_static() {
+        return Voucher_static;
+    }
+
+    public void setVoucher_static(float Voucher_static) {
+        this.Voucher_static = Voucher_static;
+    }
+
+    private void set_clientes(int id_cliente){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String Desc;
+        try{
+            String sql = ("SELECT * FROM cliente where id_Cliente = ?");
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1, id_cliente);
+            rs =pst.executeQuery();
+            if (rs.next()){
+                               //codigo_cliente = rs.getInt("id_Cliente");
+                txt_cedula.setText(rs.getString("Cedula"));
+                txt_dir.setText(rs.getString("Direccion"));
+                txt_mail.setText(rs.getString("Correo"));
+                txt_telefono.setText(rs.getString("Telefono"));
+                txt_cliente.setText(rs.getString("Nombre"));
+                txt_nota.setText(rs.getString("Nota"));
+                          
+                }
+
+
+
+            } catch (Exception ex){
+               System.out.println(ex);
+            }
+    }
+    
+    private void set_Producto(int id_codigo){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String Desc;
+        float x = 0;
+        float calcula = 0;
+        String codigo ="" , descripcion="", talla ="",cantidad="", precio_s="" , importe="";
+        float precio = 0;
+        try{
+            String sql = ("SELECT * FROM producto where id_Producto = ?");
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1, id_codigo);
+            rs =pst.executeQuery();
+            if (rs.next()){
+                descripcion = rs.getString("Descripcion");
+                talla = rs.getString("Talla");
+                precio = rs.getFloat("Precio");
+           
+                }
+
+
+
+            } catch (Exception ex){
+               System.out.println(ex);
+            }
+        
+                 x = precio * 1;
+                 codigo = String.valueOf(id_codigo);
+                 precio_s = String.valueOf(precio);
+                 importe = String.format(java.util.Locale.US,"%.2f", x);
+                 cantidad = "1";
+                 m = (DefaultTableModel) Tabla_ventas.getModel();
+                 String filaElemento[] = {
+                     codigo,descripcion,talla,cantidad,precio_s,importe
+                 };
+                 m.addRow(filaElemento);
+                 calcula = (Float.parseFloat(importe));
+                 sub_total = sub_total + calcula;
+                 //iva = total * (0.12);
+                 
+                 txt_subtotal.setText(String.format(java.util.Locale.US,"%.2f", sub_total));
+                 
+    }
     
     
     private void limpiar(){
-        cbx_Nombre.getEditor().setItem("");
+       
         txt_numFactura.setText("");
         txt_fecha.setText("");
         txt_cedula.setText("");
@@ -1298,7 +1280,6 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         txt_vaucher.setText("0");
         txt_total.setText("");
         txt_nota.setText("");
-        cbx_Nombre.removeAllItems();
         Tabla_ventas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

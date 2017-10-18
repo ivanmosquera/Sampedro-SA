@@ -260,5 +260,35 @@ public class Inventario {
         
         return null;
     }
+        
+        
+    public void Aumento_inventario__genracion_factura_separado(int codigo_a_guardar, int cantidad) {
+               
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String sql = "INSERT INTO inventario values(null,?,?,?,?,?,?)";
+         Date date = new Date();
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dia = dateFormat.format(date);
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1,codigo_a_guardar);
+            pst.setInt(2,cantidad);
+            pst.setString(3,"SEPARADO COMPLETO");
+            pst.setInt(4,1);
+            pst.setString(5,dia);
+            pst.setString(6,hora);
+            pst.execute();
+            resul = "Ingresado Correctamente";
+            System.out.println(resul);
+        } catch (Exception e){
+            System.out.println("Error de decremento de inventario "+e);
+        }
+    } 
 
 }

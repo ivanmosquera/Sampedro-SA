@@ -35,6 +35,7 @@ public class abono_report extends javax.swing.JFrame {
     Inventario i = new Inventario();
     int id_producto_viejo;
     int id_Separado;
+    int id_cliente_obtenido;
     
     public abono_report(int separado_id) {
         initComponents();
@@ -49,7 +50,7 @@ public class abono_report extends javax.swing.JFrame {
          ResultSet rs = null;
 
             try{
-               String sql = ("SELECT p.id_Producto,p.Talla,p.Descripcion,c.Nombre, s.saldo , p.Precio,s.id_Separado "
+               String sql = ("SELECT p.id_Producto,c.id_Cliente,p.Talla,p.Descripcion,c.Nombre, s.saldo , p.Precio,s.id_Separado "
                        + "FROM separado  s ,cliente c , detalle_separado d , producto p "
                        + "where  id_cliente = fk_cliente "
                        + "and d.fk_separado = s.id_Separado and fk_producto = id_Producto  "
@@ -66,6 +67,7 @@ public class abono_report extends javax.swing.JFrame {
                     lbl_cliente.setText(rs.getString("Nombre"));
                     lbl_saldo.setText(rs.getString("Saldo"));
                     id_Separado = rs.getInt("id_Separado");
+                    id_cliente_obtenido = rs.getInt("id_Cliente");
                           
                 }
 
@@ -333,7 +335,16 @@ public class abono_report extends javax.swing.JFrame {
 
     private void btn_generar_facActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generar_facActionPerformed
         // TODO add your handling code here:
-    
+        a.Eliminar_Separado(id_Separado);
+        int total_anterior = i.get_cantidad_total_producto(id_producto_viejo);
+        int cantidad = total_anterior + 1;
+        i.Incremeneto_total_producto(id_producto_viejo , cantidad);
+        i.Aumento_inventario__genracion_factura_separado(id_producto_viejo, 1);
+        Factura_Prenda_Separada fns = new Factura_Prenda_Separada(id_cliente_obtenido,id_producto_viejo);
+        fns.setVisible(true);
+        fns.setLocationRelativeTo(null);
+        fns.setResizable(false);
+        dispose();
     }//GEN-LAST:event_btn_generar_facActionPerformed
 
     private void btn_eliminar_separadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminar_separadoActionPerformed
