@@ -75,69 +75,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     static int codigo_cliente, id_estado;
     static float subtotal_static,Descuento_static,Voucher_static,Iva_static,Total_static;
 
-    public int getCodigo_cliente() {
-        return codigo_cliente;
-    }
-
-    public void setCodigo_cliente(int codigo_cliente) {
-        this.codigo_cliente = codigo_cliente;
-    }
-
-    public int getId_estado() {
-        return id_estado;
-    }
-
-    public void setId_estado(int id_estado) {
-        this.id_estado = id_estado;
-    }
-
-    public float getSubtotal() {
-        return subtotal_static;
-    }
-
-    public void setSubtotal(float subtotal) {
-        this.subtotal_static = subtotal;
-    }
-
-    public float getSubtotal_static() {
-        return subtotal_static;
-    }
-
-    public void setSubtotal_static(float subtotal_static) {
-        this.subtotal_static = subtotal_static;
-    }
-
-    public float getDescuento_static() {
-        return Descuento_static;
-    }
-
-    public void setDescuento_static(float Descuento_static) {
-        this.Descuento_static = Descuento_static;
-    }
-
-    public float getIva_static() {
-        return Iva_static;
-    }
-
-    public void setIva_static(float Iva_static) {
-        this.Iva_static = Iva_static;
-    }
-
-    public float getTotal_static() {
-        return Total_static;
-    }
-
-    public void setTotal_static(float Total_static) {
-        this.Total_static = Total_static;
-    }
-
-    public float getVoucher_static() {
-        return Voucher_static;
-    }
-
-    public void setVoucher_static(float Voucher_static) {
-        this.Voucher_static = Voucher_static;
-    }
 
 
 
@@ -163,7 +100,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         USUARIO = menu_Cod.getCodigo_usuario();
         btn_imprimir.setToolTipText("Antes de Imprimir, Guarde la Factura");
         btn_imprimir.setEnabled(false);
-        
+        lbl_pagovaucher.setEnabled(false);
+        txt_vaucher_pago.setEnabled(false);
+        lbl_efectivo.setEnabled(false);
+        txt_efectivo.setEnabled(false);
+     
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
         
           
@@ -221,7 +162,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
           
         });
         txt_descto.getDocument().addDocumentListener(new DocumentListener() {
-
+        
             @Override
             public void insertUpdate(DocumentEvent e) {
                 
@@ -385,7 +326,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         Dialog_buscar_pro = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
         cmb_producto = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_producto = new javax.swing.JTable();
@@ -393,6 +333,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         btn_SalirProducto = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         txt_can = new javax.swing.JTextField();
+        cmb_CodoPre = new javax.swing.JComboBox();
+        jLabel19 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_numFactura = new javax.swing.JTextField();
@@ -447,8 +389,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel17.setText("BUSCAR : ");
-
         cmb_producto.setEditable(true);
 
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
@@ -485,53 +425,62 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel18.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel18.setText("Cantidad");
 
+        cmb_CodoPre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Descripcion", "Codigo" }));
+        cmb_CodoPre.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmb_CodoPreItemStateChanged(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel19.setText("Busqueda Por :");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel17)
+                        .addContainerGap()
+                        .addComponent(jScrollPane2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel18)
+                        .addGap(26, 26, 26)
+                        .addComponent(txt_can, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(btn_agregar_producto)
+                        .addGap(34, 34, 34)
+                        .addComponent(btn_SalirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel18)
-                .addGap(27, 27, 27)
-                .addComponent(txt_can, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_agregar_producto)
-                .addGap(18, 18, 18)
-                .addComponent(btn_SalirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmb_CodoPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_CodoPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addGap(54, 54, 54)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_agregar_producto)
-                            .addComponent(btn_SalirProducto)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_can, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(txt_can, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_agregar_producto)
+                    .addComponent(btn_SalirProducto))
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout Dialog_buscar_proLayout = new javax.swing.GroupLayout(Dialog_buscar_pro.getContentPane());
@@ -1222,35 +1171,35 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private void Combo_FORMA_PAGOItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Combo_FORMA_PAGOItemStateChanged
         // TODO add your handling code here:
         if(Combo_FORMA_PAGO.getSelectedItem().equals("")){
-            lbl_pagovaucher.setVisible(false);
-            txt_vaucher_pago.setVisible(false);
-            lbl_efectivo.setVisible(false);
-            txt_efectivo.setVisible(false);
+            lbl_pagovaucher.setEnabled(false);
+            txt_vaucher_pago.setEnabled(false);
+            lbl_efectivo.setEnabled(false);
+            txt_efectivo.setEnabled(false);
         }
         else if(Combo_FORMA_PAGO.getSelectedItem().equals("Efectivo")){
-            lbl_pagovaucher.setVisible(false);
-            txt_vaucher_pago.setVisible(false);
-            lbl_efectivo.setVisible(true);
-            txt_efectivo.setVisible(true);
+            lbl_pagovaucher.setEnabled(false);
+            txt_vaucher_pago.setEnabled(false);
+            lbl_efectivo.setEnabled(true);
+            txt_efectivo.setEnabled(true);
             System.out.println("EFECTIVO");
         }else if(Combo_FORMA_PAGO.getSelectedItem().equals("Tarjeta Credito")){
-            lbl_pagovaucher.setVisible(true);
-            txt_vaucher_pago.setVisible(true);
-            lbl_efectivo.setVisible(false);
-            txt_efectivo.setVisible(false);
+            lbl_pagovaucher.setEnabled(true);
+            txt_vaucher_pago.setEnabled(true);
+            lbl_efectivo.setEnabled(false);
+            txt_efectivo.setEnabled(false);
         }else if(Combo_FORMA_PAGO.getSelectedItem().equals("Tarjeta Débito")) {
              System.out.println("Tarjeta Débito");
-            lbl_pagovaucher.setVisible(true);
-            txt_vaucher_pago.setVisible(true);
-            lbl_efectivo.setVisible(false);
-            txt_efectivo.setVisible(false);
+            lbl_pagovaucher.setEnabled(true);
+            txt_vaucher_pago.setEnabled(true);
+            lbl_efectivo.setEnabled(false);
+            txt_efectivo.setEnabled(false);
         }
         else if(Combo_FORMA_PAGO.getSelectedItem().equals("Mixto")) {
              System.out.println("mixto");
-            lbl_pagovaucher.setVisible(true);
-            txt_vaucher_pago.setVisible(true);
-            lbl_efectivo.setVisible(true);
-            txt_efectivo.setVisible(true);
+            lbl_pagovaucher.setEnabled(true);
+            txt_vaucher_pago.setEnabled(true);
+            lbl_efectivo.setEnabled(true);
+            txt_efectivo.setEnabled(true);
         }
     }//GEN-LAST:event_Combo_FORMA_PAGOItemStateChanged
 
@@ -1261,6 +1210,78 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private void Combo_FORMA_PAGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Combo_FORMA_PAGOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Combo_FORMA_PAGOActionPerformed
+
+    private void cmb_CodoPreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_CodoPreItemStateChanged
+        // TODO add your handling code here:
+        if(cmb_CodoPre.getSelectedItem().equals("Descripcion")){
+               
+            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent e) {
+                String cadena = cmb_producto.getEditor().getItem().toString();
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    String name = cmb_producto.getEditor().getItem().toString();
+                    m = rep.consultar_producto_name(name);
+                    tabla_producto.setModel(m);  
+                }
+                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                    cmb_producto.setModel(op.geLista_Producto(cadena));
+                    if(cmb_producto.getItemCount()>0){
+                        cmb_producto.showPopup();
+                        if(e.getKeyCode()!=8){
+                            ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+                            
+                            
+                        }else{
+                            cmb_producto.getEditor().setItem(cadena);
+                            
+                        }
+                            
+                    }else{
+                        cmb_producto.addItem(cadena);
+                    }
+                }
+            }                   
+            
+        });
+               
+              
+        }else{
+            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent e) {
+                //String cadena = cmb_producto.getEditor().getItem().toString();
+                int cadena = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    int codigo_producto = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
+                    m = rep.consultar_producto_codigo(codigo_producto);
+                    tabla_producto.setModel(m);  
+                }
+                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                    cmb_producto.setModel(op.geLista_Producto_porcodigo(cadena));
+                    if(cmb_producto.getItemCount()>0){
+                        cmb_producto.showPopup();
+                        if(e.getKeyCode()!=8){
+                            //((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+                            
+                            
+                        }else{
+                            cmb_producto.getEditor().setItem(cadena);
+                            
+                        }
+                            
+                    }else{
+                        cmb_producto.addItem(cadena);
+                    }
+                }
+            }                   
+            
+        });
+            
+        }
+    }//GEN-LAST:event_cmb_CodoPreItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -1316,6 +1337,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private javax.swing.JButton btn_imprimir;
     private javax.swing.JButton btn_nueva_f;
     private javax.swing.JComboBox cbx_Nombre;
+    private javax.swing.JComboBox cmb_CodoPre;
     private javax.swing.JComboBox cmb_descuento;
     private javax.swing.JComboBox cmb_producto;
     private javax.swing.JButton jButton5;
@@ -1327,8 +1349,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1455,5 +1477,71 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "TOTAL"
             }
         ));
+    }
+    
+    
+    
+    public int getCodigo_cliente() {
+        return codigo_cliente;
+    }
+
+    public void setCodigo_cliente(int codigo_cliente) {
+        this.codigo_cliente = codigo_cliente;
+    }
+
+    public int getId_estado() {
+        return id_estado;
+    }
+
+    public void setId_estado(int id_estado) {
+        this.id_estado = id_estado;
+    }
+
+    public float getSubtotal() {
+        return subtotal_static;
+    }
+
+    public void setSubtotal(float subtotal) {
+        this.subtotal_static = subtotal;
+    }
+
+    public float getSubtotal_static() {
+        return subtotal_static;
+    }
+
+    public void setSubtotal_static(float subtotal_static) {
+        this.subtotal_static = subtotal_static;
+    }
+
+    public float getDescuento_static() {
+        return Descuento_static;
+    }
+
+    public void setDescuento_static(float Descuento_static) {
+        this.Descuento_static = Descuento_static;
+    }
+
+    public float getIva_static() {
+        return Iva_static;
+    }
+
+    public void setIva_static(float Iva_static) {
+        this.Iva_static = Iva_static;
+    }
+
+    public float getTotal_static() {
+        return Total_static;
+    }
+
+    public void setTotal_static(float Total_static) {
+        this.Total_static = Total_static;
+    }
+
+    public float getVoucher_static() {
+        return Voucher_static;
+    }
+
+    public void setVoucher_static(float Voucher_static) {
+        this.Voucher_static = Voucher_static;
     }
 }

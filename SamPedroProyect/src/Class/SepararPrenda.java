@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +23,8 @@ import javax.swing.table.DefaultTableModel;
  * @author kleberstevendiazcoello
  */
 public class SepararPrenda {
+    
+
     
     public static String Separar_prenda(int codigo,int estado,int usuario,float saldo, String dia_vencimiento,String Nota){
         
@@ -40,6 +43,8 @@ public class SepararPrenda {
         String dia = dateFormat.format(date);
         int flag = 0;
         int id_ultimo;
+        
+        
         try{
             pst = cn.prepareStatement(sql);
             pst.setInt(1,codigo);

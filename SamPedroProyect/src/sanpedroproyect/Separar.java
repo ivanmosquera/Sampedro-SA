@@ -27,6 +27,8 @@ import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -260,12 +262,13 @@ public class Separar extends javax.swing.JFrame {
 
         Dialog_buscar_pro = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
         cmb_producto = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_producto = new javax.swing.JTable();
         btn_agregar_producto = new javax.swing.JButton();
         btn_SalirProducto = new javax.swing.JButton();
+        cmb_CodoPre = new javax.swing.JComboBox();
+        jLabel20 = new javax.swing.JLabel();
         Dialog_seleccionar_fecha = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
@@ -296,15 +299,11 @@ public class Separar extends javax.swing.JFrame {
         txt_saldo = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        calendario_dia = new com.toedter.calendar.JDateChooser();
-        jLabel8 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
 
         Dialog_buscar_pro.setTitle("Buscar Producto");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel17.setText("BUSCAR : ");
 
         cmb_producto.setEditable(true);
 
@@ -339,42 +338,57 @@ public class Separar extends javax.swing.JFrame {
             }
         });
 
+        cmb_CodoPre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Descripcion", "Codigo" }));
+        cmb_CodoPre.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmb_CodoPreItemStateChanged(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel20.setText("Busqueda Por :");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel17)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(183, 183, 183)
+                                .addComponent(btn_agregar_producto)
+                                .addGap(49, 49, 49)
+                                .addComponent(btn_SalirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmb_CodoPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(btn_agregar_producto)
-                .addGap(55, 55, 55)
-                .addComponent(btn_SalirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_CodoPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_agregar_producto)
                     .addComponent(btn_SalirProducto))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Dialog_buscar_proLayout = new javax.swing.GroupLayout(Dialog_buscar_pro.getContentPane());
@@ -537,8 +551,6 @@ public class Separar extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel15.setText("Saldo");
 
-        jLabel8.setText("Seleccione fecha de vencimiento : ");
-
         jButton6.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton-x.png"))); // NOI18N
         jButton6.setText("Quitar Producto");
@@ -595,21 +607,13 @@ public class Separar extends javax.swing.JFrame {
                             .addComponent(txt_abono, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_subtotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
                             .addComponent(txt_saldo))
-                        .addGap(231, 231, 231)
-                        .addComponent(jLabel8)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Factura_panelLayout.createSequentialGroup()
-                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Factura_panelLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Factura_panelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(calendario_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(246, 246, 246)))
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btn_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -653,12 +657,8 @@ public class Separar extends javax.swing.JFrame {
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_guardar_fact)
-                            .addComponent(calendario_dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(28, 28, 28)
+                        .addComponent(btn_guardar_fact)))
                 .addGap(12, 12, 12)
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Factura_panelLayout.createSequentialGroup()
@@ -789,9 +789,16 @@ public class Separar extends javax.swing.JFrame {
         int cantidad = 0 ;
         int codigo_obtenido;
         float saldo = Float.parseFloat(txt_saldo.getText());
-        String fechaobtenida = dateFormat.format(calendario_dia.getDate());
-        System.out.println("Fecha " + fechaobtenida);
-        String s = separar.Separar_prenda(codigo_cliente,1,USUARIO,saldo,fechaobtenida,txt_nota.getText());   
+        
+        //String fechaobtenida = dateFormat.format(calendario_dia.getDate());
+        //System.out.println("Fecha " + fechaobtenida);
+        Date date = new Date(); 
+        date = sumarRestarDiasFecha(date, 30);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+        System.out.println("nueva fecha " + dia);
+        
+        String s = separar.Separar_prenda(codigo_cliente,1,USUARIO,saldo,dia,txt_nota.getText());   
         System.out.println("" + s);
         
         codigo_obtenido = separar.Get_last_id_separado();
@@ -845,6 +852,49 @@ public class Separar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void cmb_CodoPreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_CodoPreItemStateChanged
+        // TODO add your handling code here:
+        if(cmb_CodoPre.getSelectedItem().equals("Descripcion")){
+
+            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+                @Override
+                public void keyReleased(java.awt.event.KeyEvent e) {
+                    String cadena = cmb_producto.getEditor().getItem().toString();
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                        String name = cmb_producto.getEditor().getItem().toString();
+                        m = rep.consultar_producto_name(name);
+                        tabla_producto.setModel(m);
+                    }
+                    if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                        cmb_producto.setModel(op.geLista_Producto(cadena));
+                        if(cmb_producto.getItemCount()>0){
+                            cmb_producto.showPopup();
+                            if(e.getKeyCode()!=8){
+                                ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+
+                            }else{
+                                cmb_producto.getEditor().setItem(cadena);
+
+                            }
+
+                        }else{
+                            cmb_producto.addItem(cadena);
+                        }
+                    }
+                }
+
+            });
+
+        }else{
+            
+            
+            
+            
+        }
+            
+    }//GEN-LAST:event_cmb_CodoPreItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -895,8 +945,8 @@ public class Separar extends javax.swing.JFrame {
     private javax.swing.JButton btn_SalirProducto;
     private javax.swing.JButton btn_agregar_producto;
     private javax.swing.JButton btn_guardar_fact;
-    private com.toedter.calendar.JDateChooser calendario_dia;
     private javax.swing.JComboBox cbx_Nombre;
+    private javax.swing.JComboBox cmb_CodoPre;
     private javax.swing.JComboBox cmb_producto;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -906,14 +956,13 @@ public class Separar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -929,5 +978,10 @@ public class Separar extends javax.swing.JFrame {
     private javax.swing.JTextField txt_vendedor;
     // End of variables declaration//GEN-END:variables
 
-    
+    public Date sumarRestarDiasFecha(Date fecha, int dias){
+      Calendar calendar = Calendar.getInstance();
+      calendar.setTime(fecha); // Configuramos la fecha que se recibe
+      calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0
+      return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
+    }
 }

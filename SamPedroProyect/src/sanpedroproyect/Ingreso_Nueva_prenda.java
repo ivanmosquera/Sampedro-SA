@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import static sanpedroproyect.Detalle_Factura.codigo_cliente;
+import static sanpedroproyect.Ingreso_Inventario.Codigo_Producto;
 
 
 /**
@@ -297,7 +298,11 @@ Prenda p = new Prenda();
         }else{
           JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
         }
-        
+        Ingreso_producto_inventario ipi = new Ingreso_producto_inventario(Integer.parseInt(Codigo));
+        ipi.setVisible(true);
+        ipi.setLocationRelativeTo(null);
+        ipi.setResizable(false);
+        dispose();
     }//GEN-LAST:event_btn_guardar_nuevaprendaActionPerformed
 
     private void btn_salirIngresoPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirIngresoPrendaActionPerformed

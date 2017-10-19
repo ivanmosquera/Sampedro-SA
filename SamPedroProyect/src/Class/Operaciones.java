@@ -40,6 +40,9 @@ public class Operaciones {
         return modelo;
     
 }   
+    
+    
+    
         public DefaultComboBoxModel geLista_Producto(String Cadena){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -53,6 +56,30 @@ public class Operaciones {
            rs = pst.executeQuery();
            while(rs.next()){
                modelo.addElement(rs.getString("Descripcion"));
+               
+           }
+        }catch(Exception e){
+            resul = "Error :" + e;
+            System.out.println(resul);
+        }
+        
+        return modelo;
+    
+}   
+        
+    public DefaultComboBoxModel geLista_Producto_porcodigo(int Cadena){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        String sql  =  "SELECT id_Producto From producto WHERE id_Producto LIKE '"+Cadena+"%';";
+        try{
+           pst = cn.prepareStatement(sql); 
+           rs = pst.executeQuery();
+           while(rs.next()){
+               modelo.addElement(rs.getString("id_Producto"));
                
            }
         }catch(Exception e){

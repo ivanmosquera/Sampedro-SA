@@ -24,7 +24,7 @@ public class Inventario {
      String Talla;
      static Ingreso_Inventario Nuevo_Inventario = new Ingreso_Inventario();
 
-    public static String Ingresar_Inventario(int usuario) {
+    public static String Ingresar_Inventario(int codigoproducto,int cantidad,int usuario) {
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -40,8 +40,8 @@ public class Inventario {
         String dia = dateFormat.format(date);
         try{
             pst = cn.prepareStatement(sql);
-            pst.setInt(1, Nuevo_Inventario.getCodigo_Producto());
-            pst.setInt(2,Nuevo_Inventario.getCantidad());
+            pst.setInt(1,codigoproducto);
+            pst.setInt(2,cantidad);
             pst.setString(3,"INGRESO");
             pst.setInt(4,usuario);
             pst.setString(5,dia);

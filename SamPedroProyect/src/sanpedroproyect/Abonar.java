@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
@@ -49,6 +50,7 @@ public class Abonar extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        txt_abonar.setEditable(false);
         USUARIO = menu_Cod.getCodigo_usuario();
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
@@ -83,7 +85,7 @@ public class Abonar extends javax.swing.JFrame {
                     Dialog_buscar_pro.setSize(500, 500);
                     Dialog_buscar_pro.setLocationRelativeTo(null);
                     Dialog_buscar_pro.setVisible(true);
-                    
+                    txt_abonar.setEditable(true);
                 }
                 if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
                     cbx_Nombre.setModel(op.geLista(cadena));
@@ -272,6 +274,11 @@ public class Abonar extends javax.swing.JFrame {
                 cbx_NombreActionPerformed(evt);
             }
         });
+        cbx_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cbx_NombreKeyTyped(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel1.setText("Abonar");
@@ -295,6 +302,16 @@ public class Abonar extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel6.setText("Nuevo Saldo");
+
+        txt_saldo.setEditable(false);
+
+        txt_nuevo_saldo.setEditable(false);
+
+        txt_abonar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_abonarKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel7.setText("Prenda");
@@ -347,11 +364,12 @@ public class Abonar extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(lbltalla, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(cbx_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(310, 310, 310)
                                 .addComponent(jLabel1)))
-                        .addGap(0, 199, Short.MAX_VALUE)))
+                        .addGap(81, 81, 81)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(273, 273, 273)
@@ -466,6 +484,46 @@ public class Abonar extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_guardarproductoActionPerformed
 
+    private void txt_abonarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_abonarKeyTyped
+        // TODO add your handling code here:
+       char c = evt.getKeyChar();
+       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
+            evt.consume();
+        }
+        if (c == '.' && txt_abonar.getText().contains(".")) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txt_abonarKeyTyped
+
+    private void cbx_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbx_NombreKeyTyped
+        // TODO add your handling code here:
+         
+        char c=evt.getKeyChar(); 
+
+          if(Character.isDigit(c)) { 
+              getToolkit().beep(); 
+              evt.consume(); 
+              JOptionPane.showMessageDialog(null, "INGRESE SOLO LETRAS" , "ERROR" , JOptionPane.ERROR_MESSAGE); 
+               
+          } 
+    }//GEN-LAST:event_cbx_NombreKeyTyped
+
+    public void SLetras(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isDigit(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
+    }
     /**
      * @param args the command line arguments
      */

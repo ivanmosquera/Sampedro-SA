@@ -183,6 +183,84 @@ public class Reporte_Operaciones {
     }
      
      
+        
+     public DefaultTableModel consultar_producto_name(String nombre){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+         System.out.println(nombre);
+        String sql  =  "SELECT id_Producto, Descripcion, Precio, Talla FROM producto Where Descripcion = ? ";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,nombre);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+            for(int i = 1;i<=col;i++){
+                modelo.addColumn(rsmd.getColumnName(i));}
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    System.out.println("Mi string"  + rs.getString("Descripcion"));
+                }
+                 modelo.addRow(filas);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+    }
+     
+         public DefaultTableModel consultar_producto_codigo(int codigo){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+        String sql  =  "SELECT id_Producto, Descripcion, Precio, Talla FROM producto Where id_Producto = ? ";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1,codigo);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+            for(int i = 1;i<=col;i++){
+                modelo.addColumn(rsmd.getColumnName(i));}
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    System.out.println("Mi string"  + rs.getString("Descripcion"));
+                }
+                 modelo.addRow(filas);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+    } 
+     
      
      public DefaultTableModel consultar_inventario_filter_nombre(String Nombre ){
        String resul = null , lats = null;

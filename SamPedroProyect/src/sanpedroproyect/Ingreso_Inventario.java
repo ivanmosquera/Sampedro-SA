@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 
@@ -91,6 +92,9 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
             }
           
         });
+        
+        
+        SNumeros(txt_cant);
     }
     
     
@@ -112,6 +116,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         tabla_producto = new javax.swing.JTable();
         btn_agregar_producto = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        cmb_CodoPre = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -134,9 +139,15 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("BUSCAR : ");
+        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        jLabel1.setText("BUSCAR POR: ");
 
         cmb_producto.setEditable(true);
+        cmb_producto.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmb_productoItemStateChanged(evt);
+            }
+        });
 
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,6 +175,13 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton3.setText("SALIR");
 
+        cmb_CodoPre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Descripcion", "Codigo" }));
+        cmb_CodoPre.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmb_CodoPreItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -171,18 +189,21 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmb_CodoPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(54, 54, 54))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(170, 170, 170)
                 .addComponent(btn_agregar_producto)
-                .addGap(97, 97, 97)
+                .addGap(66, 66, 66)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -192,14 +213,15 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_CodoPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_agregar_producto)
                     .addComponent(jButton3))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Dialog_buscarLayout = new javax.swing.GroupLayout(Dialog_buscar.getContentPane());
@@ -390,7 +412,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         int nuevototal = 0;
         Cantidad =  Integer.parseInt(txt_cant.getText());
         Codigo_Producto = Integer.parseInt(txt_codigo_busqueda.getText());
-        String msj = i.Ingresar_Inventario(USUARIO);
+        String msj = i.Ingresar_Inventario(Codigo_Producto,Cantidad,USUARIO);
         System.out.println("Test :" + msj );
         totalbuscado = i.get_cantidad_total_producto(Codigo_Producto);
         nuevototal = (totalbuscado + Cantidad);
@@ -399,6 +421,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         if(msj.equals("Inventario Ingresado Correctamente")){
           JOptionPane.showMessageDialog(null, "Inventario Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE); 
           limpiar();
+          
         }else{
           JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
         }
@@ -448,12 +471,184 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_salirInventarioActionPerformed
 
+    private void cmb_productoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_productoItemStateChanged
+        // TODO add your handling code here
+         if(cmb_CodoPre.getSelectedItem().equals("Descripcion")){
+               
+            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent e) {
+                String cadena = cmb_producto.getEditor().getItem().toString();
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    String name = cmb_producto.getEditor().getItem().toString();
+                    m = rep.consultar_producto_name(name);
+                    tabla_producto.setModel(m);  
+                }
+                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                    cmb_producto.setModel(op.geLista_Producto(cadena));
+                    if(cmb_producto.getItemCount()>0){
+                        cmb_producto.showPopup();
+                        if(e.getKeyCode()!=8){
+                            ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+                            
+                            
+                        }else{
+                            cmb_producto.getEditor().setItem(cadena);
+                            
+                        }
+                            
+                    }else{
+                        cmb_producto.addItem(cadena);
+                    }
+                }
+            }                   
+            
+        });
+               
+              
+        }else{
+            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent e) {
+                //String cadena = cmb_producto.getEditor().getItem().toString();
+                int cadena = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    int codigo_producto = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
+                    m = rep.consultar_producto_codigo(codigo_producto);
+                    tabla_producto.setModel(m);  
+                }
+                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                    cmb_producto.setModel(op.geLista_Producto_porcodigo(cadena));
+                    if(cmb_producto.getItemCount()>0){
+                        cmb_producto.showPopup();
+                        if(e.getKeyCode()!=8){
+                            //((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+                            
+                            
+                        }else{
+                            cmb_producto.getEditor().setItem(cadena);
+                            
+                        }
+                            
+                    }else{
+                        cmb_producto.addItem(cadena);
+                    }
+                }
+            }                   
+            
+        });
+            
+        }
+    }//GEN-LAST:event_cmb_productoItemStateChanged
+
+    private void cmb_CodoPreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_CodoPreItemStateChanged
+        // TODO add your handling code here:
+        if(cmb_CodoPre.getSelectedItem().equals("Descripcion")){
+
+            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+                @Override
+                public void keyReleased(java.awt.event.KeyEvent e) {
+                    String cadena = cmb_producto.getEditor().getItem().toString();
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                        String name = cmb_producto.getEditor().getItem().toString();
+                        m = rep.consultar_producto_name(name);
+                        tabla_producto.setModel(m);
+                    }
+                    if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                        cmb_producto.setModel(op.geLista_Producto(cadena));
+                        if(cmb_producto.getItemCount()>0){
+                            cmb_producto.showPopup();
+                            if(e.getKeyCode()!=8){
+                                ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+
+                            }else{
+                                cmb_producto.getEditor().setItem(cadena);
+
+                            }
+
+                        }else{
+                            cmb_producto.addItem(cadena);
+                        }
+                    }
+                }
+
+            });
+
+        }else{
+            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+                @Override
+                public void keyReleased(java.awt.event.KeyEvent e) {
+                    //String cadena = cmb_producto.getEditor().getItem().toString();
+                    int cadena = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                        int codigo_producto = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
+                        m = rep.consultar_producto_codigo(codigo_producto);
+                        tabla_producto.setModel(m);
+                    }
+                    if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                        cmb_producto.setModel(op.geLista_Producto_porcodigo(cadena));
+                        if(cmb_producto.getItemCount()>0){
+                            cmb_producto.showPopup();
+                            if(e.getKeyCode()!=8){
+                                //((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+
+                            }else{
+                                cmb_producto.getEditor().setItem(cadena);
+
+                            }
+
+                        }else{
+                            cmb_producto.addItem(cadena);
+                        }
+                    }
+                }
+
+            });
+
+        }
+    }//GEN-LAST:event_cmb_CodoPreItemStateChanged
+
     public void limpiar(){
         txt_cant.setText("");
         lbl_descripcion.setText("");
         lbl_talla.setText("");
         txt_codigo_busqueda.setText("");
                 
+    }
+     public void SLetras(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isDigit(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
+    }
+     
+      public void SNumeros(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isLetter(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
     }
     /**
      * @param args the command line arguments
@@ -496,6 +691,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscar_Producto;
     private javax.swing.JButton btn_guadar_inventario;
     private javax.swing.JButton btn_salirInventario;
+    private javax.swing.JComboBox cmb_CodoPre;
     private javax.swing.JComboBox cmb_producto;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
