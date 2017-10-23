@@ -212,7 +212,7 @@ public class Separar extends javax.swing.JFrame {
                 abono = (Double.parseDouble(txt_abono.getText()));
                 sub_total =Double.parseDouble(txt_subtotal.getText());
                 total = (sub_total - abono);
-                stotal = (String.valueOf(total));
+                stotal = String.format(java.util.Locale.US,"%.2f", total);
                 txt_saldo.setText(stotal);
             }
 
@@ -225,7 +225,7 @@ public class Separar extends javax.swing.JFrame {
                 }
                 sub_total =Double.parseDouble(txt_subtotal.getText());
                 total = sub_total - ((sub_total * desc)/100);
-                stotal = (String.valueOf(total));
+                stotal = String.format(java.util.Locale.US,"%.2f", total);
                 txt_saldo.setText(stotal);
                 if(txt_abono.getText().isEmpty()){
                     txt_abono.setText(txt_subtotal.getText());

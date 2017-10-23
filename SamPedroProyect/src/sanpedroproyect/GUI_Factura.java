@@ -602,6 +602,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel11.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel11.setText("Descuento");
 
+        txt_descto.setText("0");
         txt_descto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_desctoKeyTyped(evt);
@@ -611,6 +612,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         lbl_vaucher.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         lbl_vaucher.setText("Vaucher");
 
+        txt_vaucher.setText("0");
         txt_vaucher.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_vaucherKeyTyped(evt);
@@ -620,6 +622,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel15.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel15.setText("I.V.A");
 
+        txt_iva.setText("0");
         txt_iva.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_ivaKeyTyped(evt);
@@ -733,12 +736,14 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         lbl_pagovaucher.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         lbl_pagovaucher.setText("Pago con Vaucher");
 
+        txt_efectivo.setText("0");
         txt_efectivo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_efectivoKeyTyped(evt);
             }
         });
 
+        txt_vaucher_pago.setText("0");
         txt_vaucher_pago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_vaucher_pagoActionPerformed(evt);
@@ -1002,7 +1007,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             if(fsel==-1){
                 JOptionPane.showMessageDialog(null,"Dese seleccionar un producto","Advertencia",JOptionPane.WARNING_MESSAGE);
             }
-            else{
+            else if(!(txt_can.getText().isEmpty())){
                 m = (DefaultTableModel) tabla_producto.getModel();
                 codigo = tabla_producto.getValueAt(fsel, 0).toString();
                 descripcion = tabla_producto.getValueAt(fsel, 1).toString();
@@ -1022,8 +1027,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                  //iva = total * (0.12);
                  
                  txt_subtotal.setText(String.format(java.util.Locale.US,"%.2f", sub_total));
+                 txt_total.setText(String.format(java.util.Locale.US,"%.2f", sub_total));
                  
-                 
+            }else{
+                JOptionPane.showMessageDialog(null,"AGREGE LA CANTIDAD","Advertencia",JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception e) {
         }
@@ -1542,8 +1549,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     
     private void limpiar(){
         cbx_Nombre.getEditor().setItem("");
-        txt_numFactura.setText("");
-        txt_fecha.setText("");
+        //txt_numFactura.setText("");
+        //txt_fecha.setText("");
         txt_cedula.setText("");
         txt_dir.setText("");
         txt_can.setText("");

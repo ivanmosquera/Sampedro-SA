@@ -43,6 +43,7 @@ public class abono_report extends javax.swing.JFrame {
         m = a.consultar_abonos(separado_id);
         Tbl_abono.setModel(m);
         lbl_abono.setText(String.valueOf(a.getTotal(separado_id)));
+        btn_generar_fac.setEnabled(false);
          String resul = null , lats = null;
          ConnectionDB cc = new ConnectionDB();
          Connection cn = cc.getConnection();
@@ -77,6 +78,10 @@ public class abono_report extends javax.swing.JFrame {
                             System.out.println(ex);
             }
         cc.desconectar();
+        
+        if(Float.parseFloat(lbl_saldo.getText()) <= 0){
+            btn_generar_fac.setEnabled(true);
+        }
     }
 
     /**
