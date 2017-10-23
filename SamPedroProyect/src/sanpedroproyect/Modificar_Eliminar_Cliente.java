@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 import static sanpedroproyect.Ingreso_Nuevo_Cliente.Nombre;
 
@@ -114,6 +115,10 @@ Cliente c = new Cliente();
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        SLetras(txt_ciu);
+        SLetras(txt_dir);
+        SNumeros(txtcedu);
+        SNumeros(txt_fono);
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
             @Override
@@ -485,6 +490,37 @@ Cliente c = new Cliente();
         });
     }
 
+         public void SLetras(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isDigit(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
+    }
+     
+      public void SNumeros(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isLetter(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_salirModificarCliente;
     private javax.swing.JComboBox cbx_Nombre;

@@ -408,6 +408,9 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
 
     private void btn_guadar_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guadar_inventarioActionPerformed
         // TODO add your handling code here:
+        if(lbl_descripcion.getText().equals("")||txt_cant.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
+        }else{
         int totalbuscado = 0;
         int nuevototal = 0;
         Cantidad =  Integer.parseInt(txt_cant.getText());
@@ -425,6 +428,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         }else{
           JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
         }
+       }
     }//GEN-LAST:event_btn_guadar_inventarioActionPerformed
 
     private void btn_agregar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar_productoActionPerformed

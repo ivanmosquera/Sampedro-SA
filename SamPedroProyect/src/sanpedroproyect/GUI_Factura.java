@@ -602,11 +602,29 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel11.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel11.setText("Descuento");
 
+        txt_descto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_desctoKeyTyped(evt);
+            }
+        });
+
         lbl_vaucher.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         lbl_vaucher.setText("Vaucher");
 
+        txt_vaucher.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_vaucherKeyTyped(evt);
+            }
+        });
+
         jLabel15.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel15.setText("I.V.A");
+
+        txt_iva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_ivaKeyTyped(evt);
+            }
+        });
 
         txt_total.setEditable(false);
 
@@ -715,9 +733,20 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         lbl_pagovaucher.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         lbl_pagovaucher.setText("Pago con Vaucher");
 
+        txt_efectivo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_efectivoKeyTyped(evt);
+            }
+        });
+
         txt_vaucher_pago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_vaucher_pagoActionPerformed(evt);
+            }
+        });
+        txt_vaucher_pago.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_vaucher_pagoKeyTyped(evt);
             }
         });
 
@@ -1085,6 +1114,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
     private void btn_guardar_factActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_factActionPerformed
         // TODO add your handling code here:
+        if(!txt_subtotal.getText().equals("")){
         DefaultTableModel order_list_guardar = new DefaultTableModel();
         subtotal_static = (Float.parseFloat(txt_subtotal.getText()));
         Descuento_static = (Float.parseFloat(txt_descto.getText()));
@@ -1123,6 +1153,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         JOptionPane.showMessageDialog(null, "Factura Ingresada Correcatemente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
         btn_imprimir.setEnabled(true);
         
+        }else{
+           JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE); 
+        }
+       
         
     }//GEN-LAST:event_btn_guardar_factActionPerformed
 
@@ -1282,6 +1316,61 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             
         }
     }//GEN-LAST:event_cmb_CodoPreItemStateChanged
+
+    private void txt_desctoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_desctoKeyTyped
+        // TODO add your handling code here:
+       char c = evt.getKeyChar();
+       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
+            evt.consume();
+        }
+        if (c == '.' && txt_descto.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_desctoKeyTyped
+
+    private void txt_ivaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ivaKeyTyped
+        // TODO add your handling code here:
+               char c = evt.getKeyChar();
+       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
+            evt.consume();
+        }
+        if (c == '.' && txt_iva.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_ivaKeyTyped
+
+    private void txt_vaucherKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vaucherKeyTyped
+        // TODO add your handling code here:
+       char c = evt.getKeyChar();
+       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
+            evt.consume();
+        }
+        if (c == '.' && txt_vaucher.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_vaucherKeyTyped
+
+    private void txt_efectivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_efectivoKeyTyped
+        // TODO add your handling code here:
+       char c = evt.getKeyChar();
+       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
+            evt.consume();
+        }
+        if (c == '.' && txt_efectivo.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_efectivoKeyTyped
+
+    private void txt_vaucher_pagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vaucher_pagoKeyTyped
+        // TODO add your handling code here:
+       char c = evt.getKeyChar();
+       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
+            evt.consume();
+        }
+        if (c == '.' && txt_vaucher_pago.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_vaucher_pagoKeyTyped
 
     /**
      * @param args the command line arguments

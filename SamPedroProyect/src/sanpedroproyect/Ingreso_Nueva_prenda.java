@@ -7,10 +7,13 @@ package sanpedroproyect;
 
 import Class.Prenda;
 import DATABASE.ConnectionDB;
+import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyAdapter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import static sanpedroproyect.Detalle_Factura.codigo_cliente;
 import static sanpedroproyect.Ingreso_Inventario.Codigo_Producto;
 
@@ -66,6 +69,8 @@ Prenda p = new Prenda();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         USUARIO = menu_Cod.getCodigo_usuario();
+        SLetras(txt_talla);
+        SLetras(txt_detalle);
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -132,6 +137,12 @@ Prenda p = new Prenda();
         jLabel5.setText("Precio");
         jLabel5.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel5.setMinimumSize(new java.awt.Dimension(439, 14));
+
+        txt_precio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_precioKeyTyped(evt);
+            }
+        });
 
         btn_limpiarIngresoPrenda.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_limpiarIngresoPrenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escoba.png"))); // NOI18N
@@ -286,23 +297,28 @@ Prenda p = new Prenda();
     }
     private void btn_guardar_nuevaprendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_nuevaprendaActionPerformed
         // TODO add your handling code here:
-        Codigo = txt_codigo.getText();
-        Detalle = txt_detalle.getText();
-        Precio = Float.parseFloat(txt_precio.getText());
-        Talla = txt_talla.getText();
-        int id_cat = p.GetidCategoria(cmb_categoria.getSelectedItem().toString());
-        String msj = p.Ingresar_Prenda(USUARIO,id_cat);
-         if(msj.equals("Prenda Ingresado Correctamente")){
-          JOptionPane.showMessageDialog(null, "Prenda Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE); 
-          limpiar();
+        if(txt_codigo.getText().equals("")||txt_detalle.getText().equals("")||txt_precio.getText().equals("")||txt_talla.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
         }else{
-          JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+            Codigo = txt_codigo.getText();
+            Detalle = txt_detalle.getText();
+            Precio = Float.parseFloat(txt_precio.getText());
+            Talla = txt_talla.getText();
+            int id_cat = p.GetidCategoria(cmb_categoria.getSelectedItem().toString());
+            String msj = p.Ingresar_Prenda(USUARIO,id_cat);
+             if(msj.equals("Prenda Ingresado Correctamente")){
+              JOptionPane.showMessageDialog(null, "Prenda Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE); 
+              limpiar();
+            }else{
+              JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+            }
+            Ingreso_producto_inventario ipi = new Ingreso_producto_inventario(Integer.parseInt(Codigo));
+            ipi.setVisible(true);
+            ipi.setLocationRelativeTo(null);
+            ipi.setResizable(false);
+            dispose();
         }
-        Ingreso_producto_inventario ipi = new Ingreso_producto_inventario(Integer.parseInt(Codigo));
-        ipi.setVisible(true);
-        ipi.setLocationRelativeTo(null);
-        ipi.setResizable(false);
-        dispose();
+ 
     }//GEN-LAST:event_btn_guardar_nuevaprendaActionPerformed
 
     private void btn_salirIngresoPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirIngresoPrendaActionPerformed
@@ -321,6 +337,17 @@ Prenda p = new Prenda();
     private void cmb_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_categoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_categoriaActionPerformed
+
+    private void txt_precioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_precioKeyTyped
+        // TODO add your handling code here:
+               char c = evt.getKeyChar();
+       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
+            evt.consume();
+        }
+        if (c == '.' && txt_precio.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_precioKeyTyped
 
     /**
      * @param args the command line arguments
@@ -356,6 +383,39 @@ Prenda p = new Prenda();
             }
         });
     }
+    
+    
+         public void SLetras(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isDigit(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
+    }
+     
+      public void SNumeros(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isLetter(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardar_nuevaprenda;
@@ -378,3 +438,4 @@ Prenda p = new Prenda();
     private javax.swing.JTextField txt_talla;
     // End of variables declaration//GEN-END:variables
 }
+

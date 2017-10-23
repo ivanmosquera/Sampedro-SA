@@ -6,7 +6,9 @@
 package sanpedroproyect;
 
 import Class.Cliente;
+import java.awt.event.KeyAdapter;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import static sanpedroproyect.Modificar_Eliminar_Cliente.Nombre;
 
 /**
@@ -23,6 +25,12 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        SLetras(txt_ciu1);
+        SLetras(txt_dir1);
+        SLetras(txt_nombre1);
+        SNumeros(txtcedu1);
+        SNumeros(txt_fono1);
+        
     }
 
     public String getCedula() {
@@ -326,22 +334,27 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
 
     private void btn_nc_guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nc_guardar1ActionPerformed
         // TODO add your handling code here:
-        Nombre = txt_nombre1.getText();
-        Cedula = txtcedu1.getText();
-        Direccion = txt_dir1.getText();
-        Telefono = txt_fono1.getText();
-        Ciudad = txt_ciu1.getText();
-        Correo = txt_correo1.getText();
-        Nota = txt_nota1.getText();
-        
-        String msj = c.Ingresar_cliente();
-        if(msj.equals("CORRECTO INGRESO CLIENTE")){
-          JOptionPane.showMessageDialog(null, "Cliente Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);  
+        if(txt_nombre1.getText().equals("")||txt_ciu1.getText().equals("")||txt_dir1.getText().equals("")||txt_fono1.getText().equals("")||txt_correo1.getText().equals("")||txtcedu1.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
         }else{
-          JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+            Nombre = txt_nombre1.getText();
+           Cedula = txtcedu1.getText();
+           Direccion = txt_dir1.getText();
+           Telefono = txt_fono1.getText();
+           Ciudad = txt_ciu1.getText();
+           Correo = txt_correo1.getText();
+           Nota = txt_nota1.getText();
+
+           String msj = c.Ingresar_cliente();
+           if(msj.equals("CORRECTO INGRESO CLIENTE")){
+             JOptionPane.showMessageDialog(null, "Cliente Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);  
+           }else{
+             JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+           }
+
+           limpiar(); 
         }
-        
-        limpiar();
+     
     }//GEN-LAST:event_btn_nc_guardar1ActionPerformed
 
     /**
@@ -378,6 +391,38 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                 new Ingreso_Nuevo_Cliente().setVisible(true);
             }
         });
+    }
+    
+         public void SLetras(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isDigit(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
+    }
+     
+      public void SNumeros(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isLetter(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
