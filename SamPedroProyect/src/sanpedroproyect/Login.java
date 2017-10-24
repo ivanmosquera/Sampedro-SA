@@ -6,12 +6,15 @@ import java.awt.event.KeyEvent;// importamos las librerias del evento KeyPressed
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Arrays;
 import javax.swing.JOptionPane;// importacion de las librerias de la opcion de mensajes de panel
 
 public class Login extends javax.swing.JFrame {
 
     static int Codigo_usuario;
     static String username;
+    static int rol_usuario;
+    static String [] permisos_usuario;
     public Login() {
         initComponents();
         //this.setResizable(false);
@@ -34,16 +37,34 @@ public class Login extends javax.swing.JFrame {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
+        PreparedStatement pst2 =null;
         ResultSet rs = null;
+        ResultSet rs2 = null;
         //String Desc;
         try{
            String sql = ("SELECT * FROM usuario WHERE Usuario='"+usuario+"' AND Contraseña=sha1('"+clave+"')");
+           //String sql2 = ("SELECT Detalle, Nombre FROM rol JOIN roles_permisos ON rol.id_Rol = roles_permisos.fk_Rol JOIN permisos ON roles_permisos.fk_Permiso = permisos.id_Permiso WHERE rol.id_Rol="+rol_usuario+" ORDER BY Detalle");
            pst = cn.prepareStatement(sql);
            //pst.setString(1, cadena);
            rs =pst.executeQuery();
            if (rs.next()){
                Codigo_usuario = rs.getInt("id_Usuario");
                username = rs.getString("Usuario");
+               rol_usuario = rs.getInt("fk_Rol");
+               //EXTRAEMOS LOS PERMISOS SEGUN EL ROL LOGGUEADO
+               String sql2 = ("SELECT Detalle, Nombre FROM rol JOIN roles_permisos ON rol.id_Rol = roles_permisos.fk_Rol JOIN permisos ON roles_permisos.fk_Permiso = permisos.id_Permiso WHERE rol.id_Rol="+rol_usuario+" ORDER BY Detalle");
+               pst2 = cn.prepareStatement(sql2);
+               rs2 =pst2.executeQuery();
+               rs2.last();
+               int numFils = rs2.getRow();
+               rs2.beforeFirst();
+               int i = 0;
+               permisos_usuario = new String[numFils];
+               while(rs2.next()){
+                   permisos_usuario[i] = rs2.getString("Nombre");
+                   i++;
+               }
+               //System.out.println(Arrays.toString(permisos_usuario));// imprimimos los permisos por consola del usuario loggueado
                JOptionPane.showMessageDialog(this,"Bienvenido");// mensaje
                dispose();
                Main_Menu ventana_menuPrincipal = new Main_Menu();
@@ -287,7 +308,17 @@ return resultado;
         Login.username = username;
     }
     
+    public  int getRol_usuario() {
+        return rol_usuario;
+    }
+
+    public  void setRol_usuario(int rol_usuario) {
+        Login.rol_usuario = rol_usuario;
+    }
     
+    public String [] getPermisos_usuario(){
+        return permisos_usuario;
+    }
     
     /*
     private class Tiempo implements Runnable{// la creacion de una clase privada que la implementamos con runnable para que arranque en cuanto accedamos a ella 

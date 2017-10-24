@@ -37,7 +37,9 @@ public class Reportes extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
-
+        //jTabbedPane1.setEnabledAt(0, false);
+        //jTabbedPane1.setEnabledAt(1, false);
+        //jTabbedPane1.setEnabledAt(2, false);
          /* TAB 1: REPORTE DE INVENTARIO */
             cb_producto_inv.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
