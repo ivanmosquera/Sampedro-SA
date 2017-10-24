@@ -1128,7 +1128,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         Descuento_static = (Float.parseFloat(txt_descto.getText()));
         Total_static = (Float.parseFloat(txt_total.getText()));
         int i = 0;
-        int codigo_a_guardar = 0;
+        String codigo_a_guardar;
         int cantidad = 0 ;
         int codigo_obtenido;
         double pago_efectivo, pago_tarjeta;
@@ -1147,7 +1147,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             for(i=0;i<numero_filas;i++){
                 int cantidad_actual = 0;
                 int nueva_cantidad = 0;
-                codigo_a_guardar = Integer.parseInt(Tabla_ventas.getValueAt(i, 0).toString());
+                codigo_a_guardar = Tabla_ventas.getValueAt(i, 0).toString();
                 cantidad = Integer.parseInt(Tabla_ventas.getValueAt(i, 3).toString());
                 factura.Guardar_Detalle_Factura(codigo_obtenido, codigo_a_guardar, cantidad); 
                 inv.Decremento_inventario(codigo_a_guardar,cantidad);

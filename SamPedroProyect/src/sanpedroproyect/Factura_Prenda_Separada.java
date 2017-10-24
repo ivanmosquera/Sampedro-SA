@@ -84,7 +84,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
     int id_factura_actual , id_sumada;
     Date date = new Date ();
     
-    public Factura_Prenda_Separada( int id_cliente , int id_producto) {
+    public Factura_Prenda_Separada( int id_cliente , String id_producto) {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -917,7 +917,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         Descuento_static = (Float.parseFloat(txt_descto.getText()));
         Total_static = (Float.parseFloat(txt_total.getText()));
         int i = 0;
-        int codigo_a_guardar = 0;
+        String codigo_a_guardar;
         int cantidad = 0 ;
         int codigo_obtenido;
         double pago_efectivo, pago_tarjeta;
@@ -936,7 +936,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
             for(i=0;i<numero_filas;i++){
                 int cantidad_actual = 0;
                 int nueva_cantidad = 0;
-                codigo_a_guardar = Integer.parseInt(Tabla_ventas.getValueAt(i, 0).toString());
+                codigo_a_guardar = Tabla_ventas.getValueAt(i, 0).toString();
                 cantidad = Integer.parseInt(Tabla_ventas.getValueAt(i, 3).toString());
                 factura.Guardar_Detalle_Factura(codigo_obtenido, codigo_a_guardar, cantidad); 
                 inv.Decremento_inventario(codigo_a_guardar,cantidad);
@@ -1215,7 +1215,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
             }
     }
     
-    private void set_Producto(int id_codigo){
+    private void set_Producto(String id_codigo){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -1229,7 +1229,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         try{
             String sql = ("SELECT * FROM producto where id_Producto = ?");
             pst = cn.prepareStatement(sql);
-            pst.setInt(1, id_codigo);
+            pst.setString(1, id_codigo);
             rs =pst.executeQuery();
             if (rs.next()){
                 descripcion = rs.getString("Descripcion");

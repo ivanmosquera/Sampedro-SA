@@ -30,15 +30,16 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
     DefaultTableModel m = new DefaultTableModel();
     Operaciones op =  new Operaciones();
     Reporte_Operaciones rep = new Reporte_Operaciones();
-   static int Codigo_Producto,Cantidad;
+   static int Cantidad;
+   static String Codigo_Producto;
    int USUARIO;
    Main_Menu menu_Cod = new Main_Menu();
 
-    public int getCodigo_Producto() {
+    public String getCodigo_Producto() {
         return Codigo_Producto;
     }
 
-    public void setCodigo_Producto(int Codigo_Producto) {
+    public void setCodigo_Producto(String Codigo_Producto) {
         this.Codigo_Producto = Codigo_Producto;
     }
 
@@ -414,7 +415,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         int totalbuscado = 0;
         int nuevototal = 0;
         Cantidad =  Integer.parseInt(txt_cant.getText());
-        Codigo_Producto = Integer.parseInt(txt_codigo_busqueda.getText());
+        Codigo_Producto = txt_codigo_busqueda.getText();
         String msj = i.Ingresar_Inventario(Codigo_Producto,Cantidad,USUARIO);
         System.out.println("Test :" + msj );
         totalbuscado = i.get_cantidad_total_producto(Codigo_Producto);

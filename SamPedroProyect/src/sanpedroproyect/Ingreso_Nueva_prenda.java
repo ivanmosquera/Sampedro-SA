@@ -305,14 +305,14 @@ Prenda p = new Prenda();
             Precio = Float.parseFloat(txt_precio.getText());
             Talla = txt_talla.getText();
             int id_cat = p.GetidCategoria(cmb_categoria.getSelectedItem().toString());
-            String msj = p.Ingresar_Prenda(USUARIO,id_cat);
+            String msj = p.Ingresar_Prenda(Codigo,USUARIO,id_cat);
              if(msj.equals("Prenda Ingresado Correctamente")){
               JOptionPane.showMessageDialog(null, "Prenda Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE); 
               limpiar();
             }else{
               JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
             }
-            Ingreso_producto_inventario ipi = new Ingreso_producto_inventario(Integer.parseInt(Codigo));
+            Ingreso_producto_inventario ipi = new Ingreso_producto_inventario(Codigo);
             ipi.setVisible(true);
             ipi.setLocationRelativeTo(null);
             ipi.setResizable(false);

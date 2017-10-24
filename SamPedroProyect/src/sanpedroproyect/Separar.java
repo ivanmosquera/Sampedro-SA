@@ -794,7 +794,7 @@ public class Separar extends javax.swing.JFrame {
         Total_static = (Float.parseFloat(txt_abono.getText()));
         
         int i = 0;
-        int codigo_a_guardar = 0;
+        String codigo_a_guardar;
         int cantidad = 0 ;
         int codigo_obtenido;
         float saldo = Float.parseFloat(txt_saldo.getText());
@@ -820,7 +820,7 @@ public class Separar extends javax.swing.JFrame {
             for(i=0;i<numero_filas;i++){
                 int  cantidad_actual=0;
                 int nueva_cantidad = 0;
-                codigo_a_guardar = Integer.parseInt(Tabla_ventas.getValueAt(i, 0).toString());
+                codigo_a_guardar = Tabla_ventas.getValueAt(i, 0).toString();
                 cantidad = Integer.parseInt(Tabla_ventas.getValueAt(i, 3).toString());
                 separar.Guardar_Detalle_separado(codigo_obtenido, codigo_a_guardar, cantidad);
                 separar.Guardar_abono_separado(codigo_obtenido,Total_static,USUARIO);

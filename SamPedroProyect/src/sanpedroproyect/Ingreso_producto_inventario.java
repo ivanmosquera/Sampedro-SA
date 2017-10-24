@@ -31,16 +31,17 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
     DefaultTableModel m = new DefaultTableModel();
     Operaciones op =  new Operaciones();
     Reporte_Operaciones rep = new Reporte_Operaciones();
-   static int Codigo_Producto,Cantidad;
+   static int Cantidad;
    int USUARIO;
    int codigo;
+   static String Codigo_Producto;
    Main_Menu menu_Cod = new Main_Menu();
 
-    public int getCodigo_Producto() {
+    public String getCodigo_Producto() {
         return Codigo_Producto;
     }
 
-    public void setCodigo_Producto(int Codigo_Producto) {
+    public void setCodigo_Producto(String Codigo_Producto) {
         this.Codigo_Producto = Codigo_Producto;
     }
 
@@ -56,7 +57,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
      * Creates new form Inventario
      * @param codigo_producto_obtenido
      */
-    public Ingreso_producto_inventario(int codigo_producto_obtenido) {
+    public Ingreso_producto_inventario(String codigo_producto_obtenido) {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         USUARIO = menu_Cod.getCodigo_usuario();
@@ -71,7 +72,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         try{
             String sql = ("SELECT * FROM producto where id_Producto = ?");
             pst = cn.prepareStatement(sql);
-            pst.setInt(1, codigo_producto_obtenido);
+            pst.setString(1, codigo_producto_obtenido);
             rs =pst.executeQuery();
             if (rs.next()){
                 lbl_descripcion.setText(rs.getString("Descripcion"));
@@ -290,7 +291,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         int totalbuscado = 0;
         int nuevototal = 0;
         Cantidad =  Integer.parseInt(txt_cant.getText());
-        Codigo_Producto = Integer.parseInt(txt_codigo_busqueda.getText());
+        Codigo_Producto = txt_codigo_busqueda.getText();
         String msj = i.Ingresar_Inventario(Codigo_Producto,Cantidad,USUARIO);
         System.out.println("Test :" + msj );
         totalbuscado = i.get_cantidad_total_producto(Codigo_Producto);

@@ -33,7 +33,7 @@ public class abono_report extends javax.swing.JFrame {
     Reporte_Operaciones rp = new Reporte_Operaciones();
     abono a = new abono();
     Inventario i = new Inventario();
-    int id_producto_viejo;
+    String id_producto_viejo;
     int id_Separado;
     int id_cliente_obtenido;
     
@@ -61,7 +61,7 @@ public class abono_report extends javax.swing.JFrame {
                 pst.setInt(1, separado_id);
                 rs =pst.executeQuery();
                 if (rs.next()){
-                    id_producto_viejo = rs.getInt("id_Producto");
+                    id_producto_viejo = rs.getString("id_Producto");
                     lbl_precio.setText(rs.getString("Precio"));
                     lbl_talla.setText(rs.getString("Talla"));
                     lbl_prenda.setText(rs.getString("Descripcion"));

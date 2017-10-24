@@ -560,7 +560,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
         Descuento_static = (Float.parseFloat(txt_descto.getText()));
         Total_static = (Float.parseFloat(txt_total.getText()));
         int i = 0;
-        int codigo_a_guardar = 0;
+        String codigo_a_guardar;
         int cantidad = 0 ;
         int codigo_obtenido;
         String s = factura.Eliminar_Factura(id_de_la_factura,USUARIO,"Porque si");  //FALATA PONER MOTIVO   
@@ -573,7 +573,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
             for(i=0;i<numero_filas;i++){
                 int cantidad_actual = 0;
                 int nueva_cantidad = 0;
-                codigo_a_guardar = Integer.parseInt(Tabla_ventas.getValueAt(i, 0).toString());
+                codigo_a_guardar = Tabla_ventas.getValueAt(i, 0).toString();
                 cantidad = Integer.parseInt(Tabla_ventas.getValueAt(i, 3).toString());
                 //factura.Guardar_Detalle_Factura(codigo_obtenido, codigo_a_guardar, cantidad); 
                 inv.Ingresar_Inventario_Anulacion(codigo_a_guardar,cantidad);

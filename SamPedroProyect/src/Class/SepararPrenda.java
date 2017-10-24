@@ -108,7 +108,7 @@ public class SepararPrenda {
     
     
     
-    public static String Guardar_Detalle_separado(int idseparado,int producto,int cantidad){
+    public static String Guardar_Detalle_separado(int idseparado,String producto,int cantidad){
         
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -128,7 +128,7 @@ public class SepararPrenda {
         try{
             pst = cn.prepareStatement(sql);
             pst.setInt(1,idseparado);
-            pst.setInt(2,producto);
+            pst.setString(2,producto);
             pst.setInt(3,cantidad);
             pst.execute();
             resul = "Ingresado Correctamente";

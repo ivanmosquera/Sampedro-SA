@@ -45,7 +45,7 @@ public class Prenda {
     }
     
     static Ingreso_Nueva_prenda  pr = new Ingreso_Nueva_prenda();
-    public static String Ingresar_Prenda(int usuario,int categoria){
+    public static String Ingresar_Prenda(String codigo_producto,int usuario,int categoria){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -64,7 +64,7 @@ public class Prenda {
         float precio = Float.parseFloat(formattedString);
         try{
             pst = cn.prepareStatement(sql);
-            pst.setString(1,pr.getCodigo());
+            pst.setString(1,codigo_producto);
             pst.setString(2,pr.getDetalle());
             pst.setFloat(3, precio);
             pst.setString(4,pr.getTalla());

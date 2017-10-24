@@ -106,7 +106,7 @@ public class Factura {
     
     
     
-    public static String Guardar_Detalle_Factura(int id,int producto,int cantidad){
+    public static String Guardar_Detalle_Factura(int id,String producto,int cantidad){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -118,7 +118,7 @@ public class Factura {
         try{
             pst = cn.prepareStatement(sql3);
             pst.setInt(1,id);
-            pst.setInt(2,producto);
+            pst.setString(2,producto);
             pst.setInt(3,cantidad);
             
             pst.execute();

@@ -24,7 +24,7 @@ public class Inventario {
      String Talla;
      static Ingreso_Inventario Nuevo_Inventario = new Ingreso_Inventario();
 
-    public static String Ingresar_Inventario(int codigoproducto,int cantidad,int usuario) {
+    public static String Ingresar_Inventario(String codigoproducto,int cantidad,int usuario) {
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -40,7 +40,7 @@ public class Inventario {
         String dia = dateFormat.format(date);
         try{
             pst = cn.prepareStatement(sql);
-            pst.setInt(1,codigoproducto);
+            pst.setString(1,codigoproducto);
             pst.setInt(2,cantidad);
             pst.setString(3,"INGRESO");
             pst.setInt(4,usuario);
@@ -60,7 +60,7 @@ public class Inventario {
         return resul ;
     }
     
-    public static String Decremento_inventario(int codigo,int cantidad){
+    public static String Decremento_inventario(String codigo,int cantidad){
         
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -75,7 +75,7 @@ public class Inventario {
         String dia = dateFormat.format(date);
         try{
             pst = cn.prepareStatement(sql);
-            pst.setInt(1,codigo);
+            pst.setString(1,codigo);
             pst.setInt(2,cantidad);
             pst.setString(3,"SALIDA");
             pst.setInt(4,1);
@@ -114,7 +114,7 @@ public class Inventario {
         this.Talla = Talla;
     }
 
-    public void Decremento_inventario_Separado(int codigo_a_guardar, int cantidad) {
+    public void Decremento_inventario_Separado(String codigo_a_guardar, int cantidad) {
                
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -129,7 +129,7 @@ public class Inventario {
         String dia = dateFormat.format(date);
         try{
             pst = cn.prepareStatement(sql);
-            pst.setInt(1,codigo_a_guardar);
+            pst.setString(1,codigo_a_guardar);
             pst.setInt(2,cantidad);
             pst.setString(3,"SEPARADO");
             pst.setInt(4,1);
@@ -143,7 +143,7 @@ public class Inventario {
         }
     }
     
-      public void Aumento_inventario_Devolucion_Separado(int codigo_a_guardar, int cantidad) {
+      public void Aumento_inventario_Devolucion_Separado(String codigo_a_guardar, int cantidad) {
                
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -158,7 +158,7 @@ public class Inventario {
         String dia = dateFormat.format(date);
         try{
             pst = cn.prepareStatement(sql);
-            pst.setInt(1,codigo_a_guardar);
+            pst.setString(1,codigo_a_guardar);
             pst.setInt(2,cantidad);
             pst.setString(3,"DEVOLUCION SEPARADO");
             pst.setInt(4,1);
@@ -174,7 +174,7 @@ public class Inventario {
     
     
     
-    public static String Incremeneto_total_producto(int codigop , int can){
+    public static String Incremeneto_total_producto(String codigop , int can){
         
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -185,7 +185,7 @@ public class Inventario {
         try{
             pst = cn.prepareStatement(sql);
             pst.setInt(1,can);
-            pst.setInt(2,codigop);
+            pst.setString(2,codigop);
             pst.execute();
             System.out.println(resul);
             resul = "Incremento a producto correcto" ;
@@ -199,7 +199,7 @@ public class Inventario {
     }
     
     
-    public static int get_cantidad_total_producto(int cod){
+    public static int get_cantidad_total_producto(String cod){
          String resul = null , lats = null;
          ConnectionDB cc = new ConnectionDB();
          Connection cn = cc.getConnection();
@@ -210,7 +210,7 @@ public class Inventario {
         try{
                 String sql = ("SELECT cantidad_total FROM producto where id_Producto = ?");
                 pst = cn.prepareStatement(sql);
-                pst.setInt(1, cod);
+                pst.setString(1, cod);
                 rs =pst.executeQuery();
                 if (rs.next()){
                     cantidad_ob = rs.getInt("cantidad_total");           
@@ -225,7 +225,7 @@ public class Inventario {
     
     
     
-        public static String Ingresar_Inventario_Anulacion(int codigo_a_guardar, int cantidad) {
+        public static String Ingresar_Inventario_Anulacion(String codigo_a_guardar, int cantidad) {
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -241,7 +241,7 @@ public class Inventario {
         String dia = dateFormat.format(date);
         try{
             pst = cn.prepareStatement(sql);
-            pst.setInt(1, codigo_a_guardar);
+            pst.setString(1, codigo_a_guardar);
             pst.setInt(2,cantidad);
             pst.setString(3,"DEVOLUCIÓN");
             pst.setInt(4,1);
@@ -262,7 +262,7 @@ public class Inventario {
     }
         
         
-    public void Aumento_inventario__genracion_factura_separado(int codigo_a_guardar, int cantidad) {
+    public void Aumento_inventario__genracion_factura_separado(String codigo_a_guardar, int cantidad) {
                
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -277,7 +277,7 @@ public class Inventario {
         String dia = dateFormat.format(date);
         try{
             pst = cn.prepareStatement(sql);
-            pst.setInt(1,codigo_a_guardar);
+            pst.setString(1,codigo_a_guardar);
             pst.setInt(2,cantidad);
             pst.setString(3,"SEPARADO COMPLETO");
             pst.setInt(4,1);
