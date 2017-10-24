@@ -5,6 +5,7 @@
         <group>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/org/oxbow/swingbits/table/filter/TableFilterState.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/org/oxbow/swingbits/list/IListFilter.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Ingreso_Nuevo_Usuario.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Class/SepararPrenda.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Factura_Prenda_Separada.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Ingreso_producto_inventario.java</file>
@@ -21,12 +22,15 @@
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Class/Inventario.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/abono_report.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Detalle_Factura.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Ingreso_Nuevo_Cliente.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/Class/EXPORTAREXCEL.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Login.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Cierre_Caja.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Main_Menu.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Reporte_Separados.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Reporte_Inventario.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Inventario_Totales.java</file>
+            <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Modificar_Eliminar_Cliente.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/org/oxbow/swingbits/list/CheckListRenderer.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/org/oxbow/swingbits/list/ActionCheckListModel.java</file>
             <file>file:/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/Ver_Facturas.java</file>
