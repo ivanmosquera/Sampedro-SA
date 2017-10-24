@@ -479,14 +479,10 @@ public class Main_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_go_cierreCajaActionPerformed
 
     private void itemFactura_nuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFactura_nuevaFacturaActionPerformed
-        if(rol_usuario == 1){
             GUI_Factura ventana_factura = new GUI_Factura();
             ventana_factura.setVisible(true);
             ventana_factura.setResizable(false);
             dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "NO TIENE PERMISO PARA REALIZAR ESTA ACCIÓN" , "NO AUTORIZADO" , JOptionPane.ERROR_MESSAGE);
-        }
          
     }//GEN-LAST:event_itemFactura_nuevaFacturaActionPerformed
 
