@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import static sanpedroproyect.GUI_Factura.codigo_cliente;
@@ -61,7 +62,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         USUARIO = menu_Cod.getCodigo_usuario();
         this.setLocationRelativeTo(null);
         String resul = null , lats = null;
-            
+        SNumeros(txt_cant);
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
@@ -283,6 +284,9 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
 
     private void btn_guadar_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guadar_inventarioActionPerformed
         // TODO add your handling code here:
+        if(lbl_descripcion.getText().equals("")|| txt_cant.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
+        }else{
         int totalbuscado = 0;
         int nuevototal = 0;
         Cantidad =  Integer.parseInt(txt_cant.getText());
@@ -299,6 +303,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         }else{
           JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
         }
+       } 
     }//GEN-LAST:event_btn_guadar_inventarioActionPerformed
 
     private void btn_salirInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirInventarioActionPerformed
@@ -320,6 +325,38 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         lbl_talla.setText("");
         txt_codigo_busqueda.setText("");
                 
+    }
+    
+         public void SLetras(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isDigit(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
+    }
+     
+      public void SNumeros(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 if(Character.isLetter(c)){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

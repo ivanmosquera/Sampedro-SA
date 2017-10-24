@@ -212,7 +212,7 @@ public class Separar extends javax.swing.JFrame {
                 abono = (Double.parseDouble(txt_abono.getText()));
                 sub_total =Double.parseDouble(txt_subtotal.getText());
                 total = (sub_total - abono);
-                stotal = (String.valueOf(total));
+                stotal = String.format(java.util.Locale.US,"%.2f", total);
                 txt_saldo.setText(stotal);
             }
 
@@ -225,7 +225,7 @@ public class Separar extends javax.swing.JFrame {
                 }
                 sub_total =Double.parseDouble(txt_subtotal.getText());
                 total = sub_total - ((sub_total * desc)/100);
-                stotal = (String.valueOf(total));
+                stotal = String.format(java.util.Locale.US,"%.2f", total);
                 txt_saldo.setText(stotal);
                 if(txt_abono.getText().isEmpty()){
                     txt_abono.setText(txt_subtotal.getText());
@@ -483,6 +483,12 @@ public class Separar extends javax.swing.JFrame {
         jLabel10.setText("Subtotal");
 
         txt_subtotal.setEditable(false);
+
+        txt_abono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_abonoKeyTyped(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel13.setText("Abono");
@@ -780,7 +786,10 @@ public class Separar extends javax.swing.JFrame {
 
     private void btn_guardar_factActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_factActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel order_list_guardar = new DefaultTableModel();
+        if(txt_subtotal.getText().equals("")||txt_abono.getText().equals("")||txt_saldo.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "LLENE TODO LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            DefaultTableModel order_list_guardar = new DefaultTableModel();
         subtotal_static = (Float.parseFloat(txt_subtotal.getText()));
         Total_static = (Float.parseFloat(txt_abono.getText()));
         
@@ -823,6 +832,8 @@ public class Separar extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(null, "Prenda Separada Correctamente" , "SEPARADO CORRECTO" , JOptionPane.INFORMATION_MESSAGE);
         limpiar();
+        }
+        
     }//GEN-LAST:event_btn_guardar_factActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -894,6 +905,17 @@ public class Separar extends javax.swing.JFrame {
         }
             
     }//GEN-LAST:event_cmb_CodoPreItemStateChanged
+
+    private void txt_abonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_abonoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
+            evt.consume();
+        }
+        if (c == '.' && txt_abono.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_abonoKeyTyped
 
     /**
      * @param args the command line arguments

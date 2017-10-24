@@ -44,6 +44,7 @@ public class Abonar extends javax.swing.JFrame {
     static int id_separado;
     Double saldo_g,abono, tot;
     double x;
+    String stotal;
     int USUARIO;
     Main_Menu menu_Cod = new Main_Menu();
     public Abonar() {
@@ -114,8 +115,9 @@ public class Abonar extends javax.swing.JFrame {
                saldo_g = (Double.parseDouble(txt_saldo.getText()));
                abono =Double.parseDouble(txt_abonar.getText());
                tot = (saldo_g - abono) ;
-               saldo_nuevo = (String.valueOf(tot));
-               txt_nuevo_saldo.setText(saldo_nuevo);
+               //saldo_nuevo = (String.valueOf(tot));
+               stotal = String.format(java.util.Locale.US,"%.2f", tot);
+               txt_nuevo_saldo.setText(stotal);
             }
 
             @Override
@@ -128,8 +130,8 @@ public class Abonar extends javax.swing.JFrame {
                 saldo_g = (Double.parseDouble(txt_saldo.getText()));
 
                 tot = (saldo_g - abono) ;
-                saldo_nuevo = (String.valueOf(tot));
-                txt_nuevo_saldo.setText(saldo_nuevo);
+                stotal = String.format(java.util.Locale.US,"%.2f", tot);
+                txt_nuevo_saldo.setText(stotal);
                 if(txt_abonar.getText().isEmpty()){
                     txt_nuevo_saldo.setText(txt_saldo.getText());
                 }
@@ -479,7 +481,7 @@ public class Abonar extends javax.swing.JFrame {
         sp.Ingreso_nuevo_saldo(id_separado,Float.parseFloat(txt_nuevo_saldo.getText()));
         sp.Guardar_Abono(id_separado,Float.parseFloat(txt_abonar.getText()),1);//falta agregar USUARIO
          
-        JOptionPane.showMessageDialog(null, "Aono Igresado Correctamente" , "ABONO INGRESADO" , JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "ABONO INGRESADO CORRECTAMENTE" , "ABONO INGRESADO" , JOptionPane.INFORMATION_MESSAGE);
         
         
     }//GEN-LAST:event_btn_guardarproductoActionPerformed

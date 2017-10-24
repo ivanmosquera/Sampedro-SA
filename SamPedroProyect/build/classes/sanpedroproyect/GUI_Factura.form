@@ -680,6 +680,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_descto">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_desctoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_vaucher">
           <Properties>
@@ -690,6 +696,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_vaucher">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_vaucherKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
@@ -700,6 +712,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_iva">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_ivaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_total">
           <Properties>
@@ -899,10 +917,20 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_efectivo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_efectivoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_vaucher_pago">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_vaucher_pagoActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_vaucher_pagoKeyTyped"/>
           </Events>
         </Component>
       </SubComponents>
