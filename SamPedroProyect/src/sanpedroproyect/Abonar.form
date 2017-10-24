@@ -251,7 +251,7 @@
                   <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
                   <Component id="btn_guardarproducto" min="-2" pref="109" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btn_salirModificarCliente" min="-2" pref="69" max="-2" attributes="0"/>
+                  <Component id="btn_salirAbonar" min="-2" pref="69" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -292,7 +292,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btn_salirModificarCliente" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_salirAbonar" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_guardarproducto" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
@@ -329,7 +329,7 @@
             <Property name="text" type="java.lang.String" value="Abonar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btn_salirModificarCliente">
+        <Component class="javax.swing.JButton" name="btn_salirAbonar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bookman Old Style" size="11" style="1"/>
@@ -342,7 +342,7 @@
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_salirModificarClienteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_salirAbonarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">

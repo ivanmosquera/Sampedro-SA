@@ -87,6 +87,7 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         itemProducto_ingresarProducto = new javax.swing.JMenuItem();
         itemProducto_separarPrenda = new javax.swing.JMenuItem();
+        itemProducto_abonar = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         itemInventario_ingresoInventario = new javax.swing.JMenuItem();
         itemInventario_inventariosTotales = new javax.swing.JMenuItem();
@@ -289,6 +290,14 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
         jMenu3.add(itemProducto_separarPrenda);
+
+        itemProducto_abonar.setText("Abonar");
+        itemProducto_abonar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemProducto_abonarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemProducto_abonar);
 
         jMenuBar1.add(jMenu3);
 
@@ -564,6 +573,15 @@ public class Main_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_itemConfig_modificarUsuarioActionPerformed
 
+    private void itemProducto_abonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProducto_abonarActionPerformed
+        // TODO add your handling code here:
+        Abonar ventana_abonar = new Abonar();
+        ventana_abonar.setVisible(true);
+        ventana_abonar.setResizable(false);
+        ventana_abonar.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_itemProducto_abonarActionPerformed
+
     public  int getCodigo_usuario() {
         return codigo_usuario;
     }
@@ -637,6 +655,7 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemFactura_verFacturas;
     private javax.swing.JMenuItem itemInventario_ingresoInventario;
     private javax.swing.JMenuItem itemInventario_inventariosTotales;
+    private javax.swing.JMenuItem itemProducto_abonar;
     private javax.swing.JMenuItem itemProducto_ingresarProducto;
     private javax.swing.JMenuItem itemProducto_separarPrenda;
     private javax.swing.JLabel jLabel1;

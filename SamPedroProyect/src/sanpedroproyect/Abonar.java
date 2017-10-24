@@ -167,7 +167,7 @@ public class Abonar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cbx_Nombre = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        btn_salirModificarCliente = new javax.swing.JButton();
+        btn_salirAbonar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -285,14 +285,14 @@ public class Abonar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel1.setText("Abonar");
 
-        btn_salirModificarCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
-        btn_salirModificarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
-        btn_salirModificarCliente.setText("Salir");
-        btn_salirModificarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_salirModificarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_salirModificarCliente.addActionListener(new java.awt.event.ActionListener() {
+        btn_salirAbonar.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_salirAbonar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
+        btn_salirAbonar.setText("Salir");
+        btn_salirAbonar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_salirAbonar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_salirAbonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_salirModificarClienteActionPerformed(evt);
+                btn_salirAbonarActionPerformed(evt);
             }
         });
 
@@ -366,18 +366,17 @@ public class Abonar extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(lbltalla, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(cbx_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(310, 310, 310)
                                 .addComponent(jLabel1)))
-                        .addGap(81, 81, 81)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(273, 273, 273)
                 .addComponent(btn_guardarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_salirModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_salirAbonar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
         jPanel2Layout.setVerticalGroup(
@@ -411,7 +410,7 @@ public class Abonar extends javax.swing.JFrame {
                     .addComponent(txt_nuevo_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(110, 110, 110)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_salirModificarCliente)
+                    .addComponent(btn_salirAbonar)
                     .addComponent(btn_guardarproducto))
                 .addGap(36, 36, 36))
         );
@@ -430,14 +429,14 @@ public class Abonar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_salirModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirModificarClienteActionPerformed
+    private void btn_salirAbonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirAbonarActionPerformed
         //System.exit(0);
         Main_Menu ventana_menuPrincipal = new Main_Menu();
         ventana_menuPrincipal.setVisible(true);
         ventana_menuPrincipal.setLocationRelativeTo(null);
         ventana_menuPrincipal.setResizable(false);
         dispose();
-    }//GEN-LAST:event_btn_salirModificarClienteActionPerformed
+    }//GEN-LAST:event_btn_salirAbonarActionPerformed
 
     private void cbx_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_NombreActionPerformed
         // TODO add your handling code here:
@@ -566,7 +565,7 @@ public class Abonar extends javax.swing.JFrame {
     private javax.swing.JButton btn_SalirProducto;
     private javax.swing.JButton btn_agregar_producto;
     private javax.swing.JButton btn_guardarproducto;
-    private javax.swing.JButton btn_salirModificarCliente;
+    private javax.swing.JButton btn_salirAbonar;
     private javax.swing.JComboBox cbx_Nombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
