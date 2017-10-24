@@ -7,7 +7,10 @@ package sanpedroproyect;
 
 import DATABASE.ConnectionDB;
 import java.sql.Connection;
+import java.util.Arrays;
 import javax.swing.Icon;
+import javax.swing.JOptionPane;
+import static sanpedroproyect.Login.permisos_usuario;
 
 /**
  *
@@ -16,6 +19,8 @@ import javax.swing.Icon;
 public class Main_Menu extends javax.swing.JFrame {
     static int codigo_usuario;
     static String nombre_usuario;
+    static int rol_usuario;
+    //static String [] permisos_usuario;
     Login l = new Login();
     /**
      * Creates new form Main_MEnu
@@ -25,8 +30,28 @@ public class Main_Menu extends javax.swing.JFrame {
         lbl_user_name.setText(l.getUsername());
         nombre_usuario = l.getUsername();
         codigo_usuario = l.getCodigo_usuario();
+        rol_usuario = l.getRol_usuario();
+        //permisos_usuario = l.getPermisos_usuario();
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
+        btn_go_inventario.setEnabled(false);
+        itemInventario_ingresoInventario.setEnabled(false);
+        btn_go_RegistroCliente.setEnabled(false);
+        itemCliente_registrarCliente.setEnabled(false);
+        itemCliente_modificar_eliminar.setEnabled(false);
+        btn_go_registroFactura.setEnabled(false);
+        btn_go_anulaciones.setEnabled(false);
+        itemFactura_verFacturas.setEnabled(false);
+        btn_go_separarPrenda.setEnabled(false);
+        btn_go_cierreCaja.setEnabled(false);
+        itemFactura_nuevaFactura.setEnabled(false);
+        itemProducto_ingresarProducto.setEnabled(false);
+        itemProducto_separarPrenda.setEnabled(false);
+        itemConfig_registrarUsuario.setEnabled(false);
+        itemConfig_modificarUsuario.setEnabled(false);
+        itemConfig_nuevoRol.setEnabled(false);
+        itemConfig_administrarRoles.setEnabled(false);
+        verificar_Permisos();
         
         
 
@@ -67,8 +92,8 @@ public class Main_Menu extends javax.swing.JFrame {
         itemInventario_inventariosTotales = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         itemConfig_registrarUsuario = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        itemConfig_modificarUsuario = new javax.swing.JMenuItem();
+        itemConfig_nuevoRol = new javax.swing.JMenuItem();
         itemConfig_administrarRoles = new javax.swing.JMenuItem();
         itemConfig_cerrarSesion = new javax.swing.JMenuItem();
 
@@ -297,16 +322,16 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu4.add(itemConfig_registrarUsuario);
 
-        jMenuItem1.setText("Modificar/Eliminar Usuario");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemConfig_modificarUsuario.setText("Modificar/Eliminar Usuario");
+        itemConfig_modificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemConfig_modificarUsuarioActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
+        jMenu4.add(itemConfig_modificarUsuario);
 
-        jMenuItem2.setText("Nuevo Rol");
-        jMenu4.add(jMenuItem2);
+        itemConfig_nuevoRol.setText("Nuevo Rol");
+        jMenu4.add(itemConfig_nuevoRol);
 
         itemConfig_administrarRoles.setText("Administrar roles");
         itemConfig_administrarRoles.addActionListener(new java.awt.event.ActionListener() {
@@ -344,19 +369,80 @@ public class Main_Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void verificar_Permisos(){
+        if(rol_usuario == 1){
+            itemConfig_registrarUsuario.setEnabled(true);
+            itemConfig_modificarUsuario.setEnabled(true);
+            itemConfig_nuevoRol.setEnabled(true);
+            itemConfig_administrarRoles.setEnabled(true);
+        }
+        int i;
+        for(i=0;i<permisos_usuario.length;i++){
+            if(permisos_usuario[i].equals("RealizarSeparados")){
+                btn_go_separarPrenda.setEnabled(true);
+                itemProducto_separarPrenda.setEnabled(true);
+            }else if(permisos_usuario[i].equals("Facturar")){
+                btn_go_registroFactura.setEnabled(true);
+                itemFactura_nuevaFactura.setEnabled(true);
+            }else if(permisos_usuario[i].equals("Anular")){
+                btn_go_anulaciones.setEnabled(true);
+                itemFactura_verFacturas.setEnabled(true);
+            }else if(permisos_usuario[i].equals("GenerarReportesCierreDeCaja")){
+                btn_go_cierreCaja.setEnabled(true);
+            }else if(permisos_usuario[i].equals("IngresoInventario")){
+                btn_go_inventario.setEnabled(true);
+                itemInventario_ingresoInventario.setEnabled(true);
+            }else if(permisos_usuario[i].equals("RegistrarCliente")){
+                btn_go_RegistroCliente.setEnabled(true);
+                itemCliente_registrarCliente.setEnabled(true);
+            }else if(permisos_usuario[i].equals("ModificarCliente")){
+                itemCliente_modificar_eliminar.setEnabled(true);
+            }else if(permisos_usuario[i].equals("IngresarProducto")){
+                itemProducto_ingresarProducto.setEnabled(true);
+            }
+
+        }
+    }
     private void btn_go_separarPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_separarPrendaActionPerformed
-        Separar ventana_separar = new Separar();
-        ventana_separar.setVisible(true);
-        ventana_separar.setResizable(false);
-        dispose();
+          int i;
+          int acceso_permitido = 0;
+          for(i=0;i<permisos_usuario.length;i++){
+              if(permisos_usuario[i].equals("RealizarSeparados")){
+                    Separar ventana_separar = new Separar();
+                    ventana_separar.setVisible(true);
+                    ventana_separar.setResizable(false);
+                    acceso_permitido = 1;
+                    dispose(); 
+              }
+          
+          }
+          if(acceso_permitido!=1){
+             JOptionPane.showMessageDialog(null, "NO TIENE PERMISO PARA REALIZAR ESTA ACCIÓN" , "NO AUTORIZADO" , JOptionPane.ERROR_MESSAGE);
+          }
         
     }//GEN-LAST:event_btn_go_separarPrendaActionPerformed
 
     private void btn_go_registroFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_registroFacturaActionPerformed
-        GUI_Factura ventana_factura = new GUI_Factura();
-        ventana_factura.setVisible(true);
-        ventana_factura.setResizable(false);
-        dispose();     
+        //if(rol_usuario == 1){
+          int i;
+          int acceso_permitido = 0;
+          for(i=0;i<permisos_usuario.length;i++){
+              if(permisos_usuario[i].equals("Facturar")){
+                    System.out.println(permisos_usuario[i]);
+                  //System.out.println(Arrays.toString(permisos_usuario));
+                    GUI_Factura ventana_factura = new GUI_Factura();
+                    ventana_factura.setVisible(true);
+                    ventana_factura.setResizable(false);
+                    acceso_permitido = 1;
+                    dispose(); 
+              }
+          
+          }
+          if(acceso_permitido!=1){
+             JOptionPane.showMessageDialog(null, "NO TIENE PERMISO PARA REALIZAR ESTA ACCIÓN" , "NO AUTORIZADO" , JOptionPane.ERROR_MESSAGE);
+          }
+          
+             
     }//GEN-LAST:event_btn_go_registroFacturaActionPerformed
 
     private void itemConfig_registrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_registrarUsuarioActionPerformed
@@ -388,20 +474,27 @@ public class Main_Menu extends javax.swing.JFrame {
         Cierre_Caja ventana_cierreCaja = new Cierre_Caja();
         ventana_cierreCaja.setVisible(true);
         ventana_cierreCaja.setResizable(false);
+        ventana_cierreCaja.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_btn_go_cierreCajaActionPerformed
 
     private void itemFactura_nuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFactura_nuevaFacturaActionPerformed
-        GUI_Factura ventana_factura = new GUI_Factura();
-        ventana_factura.setVisible(true);
-        ventana_factura.setResizable(false);
-        dispose(); 
+        if(rol_usuario == 1){
+            GUI_Factura ventana_factura = new GUI_Factura();
+            ventana_factura.setVisible(true);
+            ventana_factura.setResizable(false);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "NO TIENE PERMISO PARA REALIZAR ESTA ACCIÓN" , "NO AUTORIZADO" , JOptionPane.ERROR_MESSAGE);
+        }
+         
     }//GEN-LAST:event_itemFactura_nuevaFacturaActionPerformed
 
     private void itemFactura_verFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFactura_verFacturasActionPerformed
         Ver_Facturas ventana_verFacturas = new Ver_Facturas();
         ventana_verFacturas.setVisible(true);
         ventana_verFacturas.setResizable(false);
+        ventana_verFacturas.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_itemFactura_verFacturasActionPerformed
 
@@ -463,12 +556,17 @@ public class Main_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_go_reportesActionPerformed
 
     private void btn_go_anulacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_anulacionesActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
+        Ver_Facturas ventana_anulaciones = new Ver_Facturas();
+        ventana_anulaciones.setVisible(true);
+        ventana_anulaciones.setResizable(false);
+        ventana_anulaciones.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_btn_go_anulacionesActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itemConfig_modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_modificarUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_itemConfig_modificarUsuarioActionPerformed
 
     public  int getCodigo_usuario() {
         return codigo_usuario;
@@ -536,6 +634,8 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemCliente_registrarCliente;
     private javax.swing.JMenuItem itemConfig_administrarRoles;
     private javax.swing.JMenuItem itemConfig_cerrarSesion;
+    private javax.swing.JMenuItem itemConfig_modificarUsuario;
+    private javax.swing.JMenuItem itemConfig_nuevoRol;
     private javax.swing.JMenuItem itemConfig_registrarUsuario;
     private javax.swing.JMenuItem itemFactura_nuevaFactura;
     private javax.swing.JMenuItem itemFactura_verFacturas;
@@ -550,8 +650,6 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbl_user_name;

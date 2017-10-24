@@ -86,6 +86,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     
     public GUI_Factura() {
         initComponents();
+        //btn_guardar_fact.setEnabled(false);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         id_factura_actual= factura.Get_last_id_factura();
@@ -1319,6 +1320,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GUI_Factura().setVisible(true);
+                
             }
         });
     }
