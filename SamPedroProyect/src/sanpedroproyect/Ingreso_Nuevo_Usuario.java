@@ -137,11 +137,11 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
         });
 
         jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        jLabel10.setText("Rol");
+        jLabel10.setText("Perfil");
         jLabel10.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel10.setMinimumSize(new java.awt.Dimension(439, 14));
 
-        cb_selectRol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<seleccione Rol>" }));
+        cb_selectRol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<seleccione Perfil>" }));
         cb_selectRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_selectRolActionPerformed(evt);
@@ -166,7 +166,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addGap(155, 155, 155)
+                                .addGap(141, 141, 141)
                                 .addComponent(txt_nombre))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(70, 70, 70)

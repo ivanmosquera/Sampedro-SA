@@ -70,7 +70,53 @@ public class Factura {
        cc.desconectar();
         return resul;      
  }
-    
+        public static String Guardar_Factura_SEPARADOS(int id ,int codigo_cliente, int user,double efectivo, double tarjeta,float subtotal,float descuento,float total,float iva, float vaucher){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql = "INSERT INTO factura values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Date date = new Date();
+        ResultSet rs = null;
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dia = dateFormat.format(date);
+        int flag = 0;
+        int id_ultimo;
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1,id);
+            pst.setInt(2,codigo_cliente);
+            pst.setInt(3,1);
+            pst.setString(4,dia);
+            pst.setInt(5,1);
+            pst.setFloat(6,subtotal);
+            pst.setFloat(7,descuento);
+            pst.setFloat(8,iva);
+            pst.setFloat(9,vaucher);
+            pst.setFloat(10, total);
+            pst.setFloat(11, user);
+            pst.setDouble(12, efectivo);
+            pst.setDouble(13, tarjeta);
+            
+            pst.execute();
+            resul = "Ingresado Correctamente Factura";
+           
+            
+            
+            
+            
+        }catch(SQLException e){
+            resul = "Error Error en guardar Factura: "+e; 
+            System.out.println(resul);
+        }
+        
+       cc.desconectar();
+        return resul;      
+ }
     
     
     public static int Get_last_id_factura(){

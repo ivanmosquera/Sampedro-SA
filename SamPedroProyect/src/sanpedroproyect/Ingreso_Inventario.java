@@ -175,8 +175,13 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton3.setText("SALIR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        cmb_CodoPre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Descripcion", "Codigo" }));
+        cmb_CodoPre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Seleccione Busqueda>", "Descripcion", "Codigo" }));
         cmb_CodoPre.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmb_CodoPreItemStateChanged(evt);
@@ -191,7 +196,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
@@ -461,7 +466,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         // TODO add your handling code here:
         m = rep.consultar_producto();
         tabla_producto.setModel(m);
-        Dialog_buscar.setSize(500, 500);
+        Dialog_buscar.setSize(700, 500);
         Dialog_buscar.setLocationRelativeTo(null);
         Dialog_buscar.setVisible(true);
         
@@ -549,73 +554,47 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_cmb_productoItemStateChanged
 
     private void cmb_CodoPreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_CodoPreItemStateChanged
-        // TODO add your handling code here:
         if(cmb_CodoPre.getSelectedItem().equals("Descripcion")){
-
+               
             cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
-                @Override
-                public void keyReleased(java.awt.event.KeyEvent e) {
-                    String cadena = cmb_producto.getEditor().getItem().toString();
-                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                        String name = cmb_producto.getEditor().getItem().toString();
-                        m = rep.consultar_producto_name(name);
-                        tabla_producto.setModel(m);
-                    }
-                    if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
-                        cmb_producto.setModel(op.geLista_Producto(cadena));
-                        if(cmb_producto.getItemCount()>0){
-                            cmb_producto.showPopup();
-                            if(e.getKeyCode()!=8){
-                                ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
-
-                            }else{
-                                cmb_producto.getEditor().setItem(cadena);
-
-                            }
-
+            @Override
+            public void keyReleased(java.awt.event.KeyEvent e) {
+                String cadena = cmb_producto.getEditor().getItem().toString();
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    String name = cmb_producto.getEditor().getItem().toString();
+                    m = rep.consultar_producto_name(name);
+                    tabla_producto.setModel(m);  
+                }
+                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                    cmb_producto.setModel(op.geLista_Producto(cadena));
+                    if(cmb_producto.getItemCount()>0){
+                        cmb_producto.showPopup();
+                        if(e.getKeyCode()!=8){
+                            ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+                            
+                            
                         }else{
-                            cmb_producto.addItem(cadena);
+                            cmb_producto.getEditor().setItem(cadena);
+                            
                         }
+                            
+                    }else{
+                        cmb_producto.addItem(cadena);
                     }
                 }
-
-            });
-
-        }else{
-            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
-
-                @Override
-                public void keyReleased(java.awt.event.KeyEvent e) {
-                    //String cadena = cmb_producto.getEditor().getItem().toString();
-                    int cadena = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
-                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                        int codigo_producto = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
-                        m = rep.consultar_producto_codigo(codigo_producto);
-                        tabla_producto.setModel(m);
-                    }
-                    if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
-                        cmb_producto.setModel(op.geLista_Producto_porcodigo(cadena));
-                        if(cmb_producto.getItemCount()>0){
-                            cmb_producto.showPopup();
-                            if(e.getKeyCode()!=8){
-                                //((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
-
-                            }else{
-                                cmb_producto.getEditor().setItem(cadena);
-
-                            }
-
-                        }else{
-                            cmb_producto.addItem(cadena);
-                        }
-                    }
-                }
-
-            });
-
+            }                   
+            
+        });
+               
+              
         }
     }//GEN-LAST:event_cmb_CodoPreItemStateChanged
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Dialog_buscar.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public void limpiar(){
         txt_cant.setText("");

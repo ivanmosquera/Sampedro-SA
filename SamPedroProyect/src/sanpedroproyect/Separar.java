@@ -338,7 +338,7 @@ public class Separar extends javax.swing.JFrame {
             }
         });
 
-        cmb_CodoPre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Descripcion", "Codigo" }));
+        cmb_CodoPre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Seleccione Metodo>", "Descripcion", "Codigo" }));
         cmb_CodoPre.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmb_CodoPreItemStateChanged(evt);
@@ -356,7 +356,7 @@ public class Separar extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -762,7 +762,7 @@ public class Separar extends javax.swing.JFrame {
         // TODO add your handling code here:
         m = rep.consultar_producto();
         tabla_producto.setModel(m);
-        Dialog_buscar_pro.setSize(500, 500);
+        Dialog_buscar_pro.setSize(700, 500);
         Dialog_buscar_pro.setLocationRelativeTo(null);
         Dialog_buscar_pro.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed

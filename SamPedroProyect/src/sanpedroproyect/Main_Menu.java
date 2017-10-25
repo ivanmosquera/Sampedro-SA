@@ -91,6 +91,10 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         itemInventario_ingresoInventario = new javax.swing.JMenuItem();
         itemInventario_inventariosTotales = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        reporteinventario = new javax.swing.JMenuItem();
+        reporteproducto = new javax.swing.JMenuItem();
+        reporteseparados = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         itemConfig_registrarUsuario = new javax.swing.JMenuItem();
         itemConfig_modificarUsuario = new javax.swing.JMenuItem();
@@ -230,7 +234,7 @@ public class Main_Menu extends javax.swing.JFrame {
                 .addComponent(btn_go_reportes)
                 .addGap(18, 18, 18)
                 .addComponent(btn_go_cierreCaja)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Factura");
@@ -320,6 +324,34 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenu5.add(itemInventario_inventariosTotales);
 
         jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Reportes");
+
+        reporteinventario.setText("Reporte Inventarios");
+        reporteinventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reporteinventarioActionPerformed(evt);
+            }
+        });
+        jMenu6.add(reporteinventario);
+
+        reporteproducto.setText("Reporte Productos");
+        reporteproducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reporteproductoActionPerformed(evt);
+            }
+        });
+        jMenu6.add(reporteproducto);
+
+        reporteseparados.setText("Reporte Separados");
+        reporteseparados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reporteseparadosActionPerformed(evt);
+            }
+        });
+        jMenu6.add(reporteseparados);
+
+        jMenuBar1.add(jMenu6);
 
         jMenu4.setText("Configuración");
 
@@ -582,6 +614,30 @@ public class Main_Menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_itemProducto_abonarActionPerformed
 
+    private void reporteinventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteinventarioActionPerformed
+        // TODO add your handling code here:
+        Reporte_Inventario ri = new Reporte_Inventario();
+        ri.setVisible(true);
+        ri.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_reporteinventarioActionPerformed
+
+    private void reporteproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteproductoActionPerformed
+        // TODO add your handling code here:
+        Inventario_Totales it = new Inventario_Totales();
+        it.setVisible(true);
+        it.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_reporteproductoActionPerformed
+
+    private void reporteseparadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteseparadosActionPerformed
+        // TODO add your handling code here:
+        Reporte_Separados rs = new Reporte_Separados();
+        rs.setVisible(true);
+        rs.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_reporteseparadosActionPerformed
+
     public  int getCodigo_usuario() {
         return codigo_usuario;
     }
@@ -664,9 +720,13 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbl_user_name;
+    private javax.swing.JMenuItem reporteinventario;
+    private javax.swing.JMenuItem reporteproducto;
+    private javax.swing.JMenuItem reporteseparados;
     // End of variables declaration//GEN-END:variables
 }

@@ -96,8 +96,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         String dia = dateFormat.format(date);
         txt_fecha.setText(dia);
-        lbl_vaucher.setVisible(false);
-        txt_vaucher.setVisible(false);
+        //lbl_vaucher.setVisible(false);
+        //txt_vaucher.setVisible(false);
         USUARIO = menu_Cod.getCodigo_usuario();
         btn_imprimir.setToolTipText("Antes de Imprimir, Guarde la Factura");
         btn_imprimir.setEnabled(false);
@@ -426,10 +426,15 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel18.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel18.setText("Cantidad");
 
-        cmb_CodoPre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Descripcion", "Codigo" }));
+        cmb_CodoPre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Seleccione Busqueda>", "Descripcion", "Codigo" }));
         cmb_CodoPre.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmb_CodoPreItemStateChanged(evt);
+            }
+        });
+        cmb_CodoPre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_CodoPreActionPerformed(evt);
             }
         });
 
@@ -461,7 +466,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cmb_CodoPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
         );
@@ -1042,7 +1047,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         // TODO add your handling code here:
         m = rep.consultar_producto();
         tabla_producto.setModel(m);
-        Dialog_buscar_pro.setSize(500, 500);
+        Dialog_buscar_pro.setSize(700, 500);
         Dialog_buscar_pro.setLocationRelativeTo(null);
         Dialog_buscar_pro.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -1379,6 +1384,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             evt.consume();
         }
     }//GEN-LAST:event_txt_vaucher_pagoKeyTyped
+
+    private void cmb_CodoPreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_CodoPreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_CodoPreActionPerformed
 
     /**
      * @param args the command line arguments

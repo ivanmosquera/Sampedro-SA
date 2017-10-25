@@ -340,12 +340,8 @@ public class abono_report extends javax.swing.JFrame {
 
     private void btn_generar_facActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generar_facActionPerformed
         // TODO add your handling code here:
-        a.Eliminar_Separado(id_Separado);
-        int total_anterior = i.get_cantidad_total_producto(id_producto_viejo);
-        int cantidad = total_anterior + 1;
-        i.Incremeneto_total_producto(id_producto_viejo , cantidad);
-        i.Aumento_inventario__genracion_factura_separado(id_producto_viejo, 1);
-        Factura_Prenda_Separada fns = new Factura_Prenda_Separada(id_cliente_obtenido,id_producto_viejo);
+       
+        Factura_Prenda_Separada fns = new Factura_Prenda_Separada(id_cliente_obtenido,id_producto_viejo,id_Separado);
         fns.setVisible(true);
         fns.setLocationRelativeTo(null);
         fns.setResizable(false);
