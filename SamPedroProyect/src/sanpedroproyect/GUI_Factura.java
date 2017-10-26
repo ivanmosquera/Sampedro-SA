@@ -1171,8 +1171,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
     private void btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LimpiarActionPerformed
         // TODO add your handling code here:
-        txt_numFactura.setText("");
-        txt_fecha.setText("");
+        /*
+        id_factura_actual= factura.Get_last_id_factura();
+        id_sumada = (id_factura_actual + 1 );
+        txt_numFactura.setText(String.valueOf(id_sumada));
         txt_cedula.setText("");
         txt_dir.setText("");
         txt_can.setText("");
@@ -1180,10 +1182,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         txt_subtotal.setText("");
         sub_total = 0;
         txt_telefono.setText("");
-        txt_vendedor.setText("");
         txt_descto.setText("");
         txt_iva.setText("");
         txt_vaucher.setText("");
+        txt_vaucher_pago.setText("");
+        txt_efectivo.setText("");
         txt_total.setText("");
         txt_nota.setText("");
         cbx_Nombre.removeAllItems();
@@ -1194,7 +1197,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             new String [] {
                 "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "TOTAL"
             }
-        ));
+        ));*/
+        limpiar();
         
     }//GEN-LAST:event_btn_LimpiarActionPerformed
 
@@ -1301,6 +1305,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         id_factura_actual= factura.Get_last_id_factura();
         id_sumada = (id_factura_actual + 1 );
         txt_numFactura.setText(String.valueOf(id_sumada));
+        txt_vendedor.setText(menu_Cod.getNombre_usuario());
         
     }//GEN-LAST:event_btn_nueva_fActionPerformed
 
@@ -1341,21 +1346,21 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             txt_efectivo.setEnabled(false);
         }
         else if(Combo_FORMA_PAGO.getSelectedItem().equals("Efectivo")){
-            lbl_efectivo.setEnabled(false);
+            lbl_efectivo.setEnabled(true);
             txt_vaucher_pago.setEnabled(false);
-            lbl_pagovaucher.setEnabled(true);
+            lbl_pagovaucher.setEnabled(false);
             txt_efectivo.setEnabled(true);
             System.out.println("EFECTIVO"); 
         }else if(Combo_FORMA_PAGO.getSelectedItem().equals("Tarjeta Credito")){
-            lbl_efectivo.setEnabled(true);
+            lbl_efectivo.setEnabled(false);
             txt_vaucher_pago.setEnabled(true);
-            lbl_pagovaucher.setEnabled(false);
+            lbl_pagovaucher.setEnabled(true);
             txt_efectivo.setEnabled(false);
         }else if(Combo_FORMA_PAGO.getSelectedItem().equals("Tarjeta Débito")) {
              System.out.println("Tarjeta Débito");
-            lbl_efectivo.setEnabled(true);
+            lbl_efectivo.setEnabled(false);
             txt_vaucher_pago.setEnabled(true);
-            lbl_pagovaucher.setEnabled(false);
+            lbl_pagovaucher.setEnabled(true);
             txt_efectivo.setEnabled(false);
         }
         else if(Combo_FORMA_PAGO.getSelectedItem().equals("Mixto")) {
@@ -1710,6 +1715,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     
     
     private void limpiar(){
+        id_factura_actual= factura.Get_last_id_factura();
+        id_sumada = (id_factura_actual + 1 );
+        txt_numFactura.setText(String.valueOf(id_sumada));
         cbx_Nombre.getEditor().setItem("");
         //txt_numFactura.setText("");
         //txt_fecha.setText("");
@@ -1720,10 +1728,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         txt_subtotal.setText("0");
         
         txt_telefono.setText("");
-        txt_vendedor.setText("");
         txt_descto.setText("0");
         txt_iva.setText("0");
         txt_vaucher.setText("0");
+        txt_vaucher_pago.setText("");
+        txt_efectivo.setText("");
         txt_total.setText("");
         txt_nota.setText("");
         cbx_Nombre.removeAllItems();
