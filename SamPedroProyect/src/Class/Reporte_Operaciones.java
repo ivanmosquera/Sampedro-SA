@@ -154,7 +154,7 @@ public class Reporte_Operaciones {
         int col;
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
-        String sql  =  "SELECT id_Producto, Descripcion, Precio, Talla FROM producto ";
+        String sql  =  "SELECT id_Producto, Descripcion, Precio, Talla FROM producto WHERE cantidad_total > 0 ";
         
         try {
             pst = cn.prepareStatement(sql);

@@ -179,6 +179,21 @@
         </Container>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JDialog" name="jDialog1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="593" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="397" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -241,7 +256,7 @@
                   <Component id="jLabel2" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txt_fecha" min="-2" pref="144" max="-2" attributes="0"/>
-                  <EmptySpace pref="505" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -345,66 +360,6 @@
                   </Group>
                   <EmptySpace min="-2" pref="448" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                          <Component id="txt_total" min="-2" pref="154" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_vaucher" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_efectivo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_pagovaucher" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txt_subtotal" min="-2" pref="93" max="-2" attributes="0"/>
-                              <Component id="txt_iva" min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="txt_vaucher" min="-2" pref="38" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txt_descto" min="-2" pref="38" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cmb_descuento" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="txt_efectivo" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="txt_vaucher_pago" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="305" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="btn_nueva_f" min="-2" pref="133" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="btn_Limpiar" min="-2" pref="133" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="btn_Salir" min="-2" pref="133" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btn_guardar_fact" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                          <Component id="btn_imprimir" min="-2" pref="133" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="827" max="-2" attributes="0"/>
@@ -413,7 +368,84 @@
                       <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton6" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="44" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="431" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_vaucher" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_pagovaucher" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_efectivo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txt_subtotal" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="txt_iva" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txt_descto" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="cmb_descuento" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txt_vaucher" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txt_vaucher_pago" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="txt_efectivo" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                      <Component id="btn_realizar_pago" min="-2" pref="139" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                                  <Component id="txt_total" min="-2" pref="154" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" pref="305" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                          <Component id="btn_guardar_fact" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="btn_imprimir" min="-2" pref="133" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="btn_nueva_f" min="-2" pref="133" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btn_Limpiar" min="-2" pref="133" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="btn_Salir" min="-2" pref="133" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -461,7 +493,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jScrollPane3" min="-2" pref="166" max="-2" attributes="0"/>
@@ -483,58 +515,59 @@
                           <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btn_imprimir" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_guardar_fact" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btn_Limpiar" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="btn_Salir" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_Limpiar" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_nueva_f" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_Salir" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_iva" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txt_vaucher" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_vaucher" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_total" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btn_nueva_f" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txt_iva" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txt_vaucher" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbl_vaucher" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txt_total" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txt_efectivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbl_efectivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lbl_pagovaucher" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txt_vaucher_pago" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lbl_efectivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_efectivo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="btn_realizar_pago" min="-2" pref="56" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="44" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="85" max="32767" attributes="0"/>
+                  <EmptySpace pref="106" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -902,20 +935,20 @@
             </Property>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="lbl_pagovaucher">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Pago con Tarjeta"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JLabel" name="lbl_efectivo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pago con Efectivo"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_pagovaucher">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Pago con Vaucher"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_efectivo">
@@ -933,6 +966,22 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_vaucher_pagoActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_vaucher_pagoKeyTyped"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_realizar_pago">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="14" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/proyecto-de-ley.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Calcular"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_realizar_pagoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

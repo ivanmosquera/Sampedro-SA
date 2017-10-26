@@ -74,8 +74,12 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     Main_Menu menu_Cod = new Main_Menu();
     static int codigo_cliente, id_estado;
     static float subtotal_static,Descuento_static,Voucher_static,Iva_static,Total_static;
-
-
+    double efectivo;
+    double tarjeta;
+    double subpago,subpago_v;
+    double cambio;
+    String pago_cliente,pago_cliente_v;
+    double total_encontrado;
 
 
     /**
@@ -101,10 +105,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         USUARIO = menu_Cod.getCodigo_usuario();
         btn_imprimir.setToolTipText("Antes de Imprimir, Guarde la Factura");
         btn_imprimir.setEnabled(false);
-        lbl_pagovaucher.setEnabled(false);
-        txt_vaucher_pago.setEnabled(false);
         lbl_efectivo.setEnabled(false);
+        txt_vaucher_pago.setEnabled(false);
+        lbl_pagovaucher.setEnabled(false);
         txt_efectivo.setEnabled(false);
+        btn_guardar_fact.setEnabled(false);
      
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
         
@@ -196,6 +201,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                     total = sub_total - desc ;
                     stotal = String.format(java.util.Locale.US,"%.2f", total);
                     txt_total.setText(stotal);
+
                     if(txt_descto.getText().isEmpty()){
                         txt_total.setText(txt_subtotal.getText());
                     }
@@ -300,11 +306,86 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             }
         });
         
+        /*txt_efectivo.getDocument().addDocumentListener(new DocumentListener() {
         
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+     
+                efectivo = (Double.parseDouble(txt_efectivo.getText()));
+                total_encontrado =Double.parseDouble(txt_total.getText());
+                subpago = total_encontrado - efectivo ;
+                pago_cliente = String.format(java.util.Locale.US,"%.2f", subpago);
+                total_pagado.setText(pago_cliente);
+                
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+ 
+
+                if(txt_efectivo.getText().isEmpty()){
+                    efectivo = 0;
+                }else{
+                    efectivo = (Double.parseDouble(txt_efectivo.getText()));
+                }
+                    sub_total =Double.parseDouble(txt_subtotal.getText());
+                    total_encontrado =Double.parseDouble(txt_total.getText());
+                    subpago = total_encontrado - efectivo ;
+                    pago_cliente = String.format(java.util.Locale.US,"%.2f", subpago);
+                        total_pagado.setText(pago_cliente);
+                if(txt_efectivo.getText().isEmpty()){
+                        total_pagado.setText(txt_efectivo.getText());
+                    }
+                }
+            
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+              
+            } ); 
+        txt_vaucher_pago.getDocument().addDocumentListener(new DocumentListener() {
+        
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+     
+                tarjeta = (Double.parseDouble(txt_vaucher_pago.getText()));
+                total_encontrado =Double.parseDouble(total_pagado.getText());
+                subpago_v = total_encontrado - tarjeta ;
+                pago_cliente_v = String.format(java.util.Locale.US,"%.2f", subpago_v);
+                total_pagado.setText(pago_cliente_v);
+                
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+ 
+
+                if(txt_vaucher_pago.getText().isEmpty()){
+                    tarjeta = 0;
+                }else{
+                    tarjeta = (Double.parseDouble(txt_vaucher_pago.getText()));
+                }
+                    sub_total =Double.parseDouble(txt_subtotal.getText());
+                    total_encontrado =Double.parseDouble(total_pagado.getText());
+                    subpago_v = total_encontrado - tarjeta ;
+                    pago_cliente_v = String.format(java.util.Locale.US,"%.2f", subpago_v);
+                    total_pagado.setText(pago_cliente_v);
+                if(txt_vaucher_pago.getText().isEmpty()){
+                        total_pagado.setText(txt_vaucher_pago.getText());
+                    }
+                }
+            
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+              
+            } ); 
         
         
      
-        
+        */
         
     }
     
@@ -336,6 +417,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         txt_can = new javax.swing.JTextField();
         cmb_CodoPre = new javax.swing.JComboBox();
         jLabel19 = new javax.swing.JLabel();
+        jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_numFactura = new javax.swing.JTextField();
@@ -381,10 +463,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         btn_nueva_f = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         cmb_descuento = new javax.swing.JComboBox();
-        lbl_efectivo = new javax.swing.JLabel();
         lbl_pagovaucher = new javax.swing.JLabel();
+        lbl_efectivo = new javax.swing.JLabel();
         txt_efectivo = new javax.swing.JTextField();
         txt_vaucher_pago = new javax.swing.JTextField();
+        btn_realizar_pago = new javax.swing.JButton();
 
         Dialog_buscar_pro.setTitle("Buscar Producto");
 
@@ -500,6 +583,17 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 593, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 397, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
@@ -526,7 +620,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(505, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -736,11 +830,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         cmb_descuento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$", "%" }));
 
+        lbl_pagovaucher.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        lbl_pagovaucher.setText("Pago con Tarjeta");
+
         lbl_efectivo.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         lbl_efectivo.setText("Pago con Efectivo");
-
-        lbl_pagovaucher.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        lbl_pagovaucher.setText("Pago con Vaucher");
 
         txt_efectivo.setText("0");
         txt_efectivo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -758,6 +852,17 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         txt_vaucher_pago.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_vaucher_pagoKeyTyped(evt);
+            }
+        });
+
+        btn_realizar_pago.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_realizar_pago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proyecto-de-ley.png"))); // NOI18N
+        btn_realizar_pago.setText("Calcular");
+        btn_realizar_pago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_realizar_pago.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_realizar_pago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_realizar_pagoActionPerformed(evt);
             }
         });
 
@@ -802,53 +907,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                     .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(448, 448, 448))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Factura_panelLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Factura_panelLayout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Factura_panelLayout.createSequentialGroup()
-                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(Factura_panelLayout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addGap(11, 11, 11))
-                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jLabel15)
-                            .addComponent(lbl_vaucher)
-                            .addComponent(lbl_efectivo)
-                            .addComponent(jLabel13)
-                            .addComponent(lbl_pagovaucher))
-                        .addGap(27, 27, 27)
-                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_vaucher, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Factura_panelLayout.createSequentialGroup()
-                                .addComponent(txt_descto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmb_descuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_vaucher_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(Factura_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(65, 65, 65)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Factura_panelLayout.createSequentialGroup()
-                        .addComponent(btn_nueva_f, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(btn_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(Factura_panelLayout.createSequentialGroup()
-                        .addComponent(btn_guardar_fact)
-                        .addGap(58, 58, 58)
-                        .addComponent(btn_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104))))
             .addGroup(Factura_panelLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -856,7 +914,65 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton5)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(Factura_panelLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Factura_panelLayout.createSequentialGroup()
+                            .addComponent(jLabel13)
+                            .addGap(431, 431, 431))
+                        .addGroup(Factura_panelLayout.createSequentialGroup()
+                            .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(Factura_panelLayout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addGap(11, 11, 11))
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(jLabel15)
+                                .addComponent(lbl_vaucher)
+                                .addComponent(lbl_pagovaucher)
+                                .addComponent(lbl_efectivo))
+                            .addGap(27, 27, 27)
+                            .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(Factura_panelLayout.createSequentialGroup()
+                                    .addComponent(txt_descto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cmb_descuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_vaucher, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(Factura_panelLayout.createSequentialGroup()
+                                    .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_vaucher_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(69, 69, 69)
+                                    .addComponent(btn_realizar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(Factura_panelLayout.createSequentialGroup()
+                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Factura_panelLayout.createSequentialGroup()
+                                .addGap(157, 157, 157)
+                                .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(Factura_panelLayout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(64, 64, 64)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(49, 49, 49)))
+                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Factura_panelLayout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(btn_guardar_fact)
+                        .addGap(58, 58, 58)
+                        .addComponent(btn_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Factura_panelLayout.createSequentialGroup()
+                        .addComponent(btn_nueva_f, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(btn_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
         );
         Factura_panelLayout.setVerticalGroup(
             Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -892,7 +1008,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(txt_mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Factura_panelLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -909,45 +1025,46 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)))
-                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_imprimir)
                             .addComponent(btn_guardar_fact))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(81, 81, 81)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_Limpiar, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_Salir, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(btn_Limpiar)
+                            .addComponent(btn_nueva_f)
+                            .addComponent(btn_Salir)))
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
+                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_vaucher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_vaucher))
+                        .addGap(10, 10, 10)
+                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_nueva_f)
                             .addGroup(Factura_panelLayout.createSequentialGroup()
-                                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel15)
-                                    .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
-                                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txt_vaucher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_vaucher))
-                                .addGap(10, 10, 10)
-                                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txt_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_efectivo))
-                                .addGap(18, 18, 18)
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lbl_pagovaucher)
                                     .addComponent(txt_vaucher_pago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(85, Short.MAX_VALUE))
+                                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_efectivo)
+                                    .addComponent(txt_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btn_realizar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1218,34 +1335,34 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private void Combo_FORMA_PAGOItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Combo_FORMA_PAGOItemStateChanged
         // TODO add your handling code here:
         if(Combo_FORMA_PAGO.getSelectedItem().equals("")){
-            lbl_pagovaucher.setEnabled(false);
-            txt_vaucher_pago.setEnabled(false);
             lbl_efectivo.setEnabled(false);
+            txt_vaucher_pago.setEnabled(false);
+            lbl_pagovaucher.setEnabled(false);
             txt_efectivo.setEnabled(false);
         }
         else if(Combo_FORMA_PAGO.getSelectedItem().equals("Efectivo")){
-            lbl_pagovaucher.setEnabled(false);
-            txt_vaucher_pago.setEnabled(false);
-            lbl_efectivo.setEnabled(true);
-            txt_efectivo.setEnabled(true);
-            System.out.println("EFECTIVO");
-        }else if(Combo_FORMA_PAGO.getSelectedItem().equals("Tarjeta Credito")){
-            lbl_pagovaucher.setEnabled(true);
-            txt_vaucher_pago.setEnabled(true);
             lbl_efectivo.setEnabled(false);
+            txt_vaucher_pago.setEnabled(false);
+            lbl_pagovaucher.setEnabled(true);
+            txt_efectivo.setEnabled(true);
+            System.out.println("EFECTIVO"); 
+        }else if(Combo_FORMA_PAGO.getSelectedItem().equals("Tarjeta Credito")){
+            lbl_efectivo.setEnabled(true);
+            txt_vaucher_pago.setEnabled(true);
+            lbl_pagovaucher.setEnabled(false);
             txt_efectivo.setEnabled(false);
         }else if(Combo_FORMA_PAGO.getSelectedItem().equals("Tarjeta Débito")) {
              System.out.println("Tarjeta Débito");
-            lbl_pagovaucher.setEnabled(true);
+            lbl_efectivo.setEnabled(true);
             txt_vaucher_pago.setEnabled(true);
-            lbl_efectivo.setEnabled(false);
+            lbl_pagovaucher.setEnabled(false);
             txt_efectivo.setEnabled(false);
         }
         else if(Combo_FORMA_PAGO.getSelectedItem().equals("Mixto")) {
              System.out.println("mixto");
-            lbl_pagovaucher.setEnabled(true);
-            txt_vaucher_pago.setEnabled(true);
             lbl_efectivo.setEnabled(true);
+            txt_vaucher_pago.setEnabled(true);
+            lbl_pagovaucher.setEnabled(true);
             txt_efectivo.setEnabled(true);
         }
     }//GEN-LAST:event_Combo_FORMA_PAGOItemStateChanged
@@ -1389,6 +1506,38 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_CodoPreActionPerformed
 
+    private void btn_realizar_pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_realizar_pagoActionPerformed
+        // TODO add your handling code here:
+        double total, efectivo, tarjeta,cambio,total_pagado,subtot,
+                subtot2;
+        double tot = 0;
+        String scambio;
+        total = Double.parseDouble(txt_total.getText());
+        System.out.println("" + total);
+        efectivo = Double.parseDouble(txt_efectivo.getText());
+        tarjeta =  Double.parseDouble(txt_vaucher_pago.getText());
+        
+        total_pagado = total - tarjeta - efectivo;
+        subtot2 =  (total) - (total_pagado);
+        System.out.println("" + total_pagado);
+        if(total_pagado == 0){
+            JOptionPane.showMessageDialog(null, "PAGO COMPLETADO PROCEDA A GUARDAR FACTURA", "CORRECTO", JOptionPane.INFORMATION_MESSAGE);
+            btn_guardar_fact.setEnabled(true);
+        }else if(total_pagado > 0){
+            System.out.println("subtot2" +  subtot2);
+            JOptionPane.showMessageDialog(null, "FALTAN PARA COMPLETAR EL PAGO", "INCORRECTO", JOptionPane.WARNING_MESSAGE);
+        }else if (total_pagado < 0){
+           subtot =  total - tarjeta ;
+           cambio = efectivo - subtot ;
+           scambio = String.format(java.util.Locale.US,"%.2f", cambio);
+           JOptionPane.showMessageDialog(null, "PAGO COMPLETADO PROCEDA A GUARDAR FACTURA, CAMBIO :" +scambio+ "$", "CORRECTO", JOptionPane.INFORMATION_MESSAGE);
+           btn_guardar_fact.setEnabled(true);
+
+        }
+        
+        
+    }//GEN-LAST:event_btn_realizar_pagoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1443,12 +1592,14 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private javax.swing.JButton btn_guardar_fact;
     private javax.swing.JButton btn_imprimir;
     private javax.swing.JButton btn_nueva_f;
+    private javax.swing.JButton btn_realizar_pago;
     private javax.swing.JComboBox cbx_Nombre;
     private javax.swing.JComboBox cmb_CodoPre;
     private javax.swing.JComboBox cmb_descuento;
     private javax.swing.JComboBox cmb_producto;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
