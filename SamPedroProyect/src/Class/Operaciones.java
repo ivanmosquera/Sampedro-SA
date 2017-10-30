@@ -67,7 +67,7 @@ public class Operaciones {
     
 }   
         
-    public DefaultComboBoxModel geLista_Producto_porcodigo(int Cadena){
+    public DefaultComboBoxModel geLista_Producto_porcodigo(String Cadena){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();

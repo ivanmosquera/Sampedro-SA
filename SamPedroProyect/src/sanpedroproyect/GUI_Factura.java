@@ -1416,34 +1416,17 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         });
                
               
-        }else{
+        }else if(cmb_CodoPre.getSelectedItem().equals("Codigo")){
             cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
             @Override
             public void keyReleased(java.awt.event.KeyEvent e) {
                 //String cadena = cmb_producto.getEditor().getItem().toString();
-                int cadena = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
+                String cadena = cmb_producto.getEditor().getItem().toString();
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    int codigo_producto = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
+                    String codigo_producto = cmb_producto.getEditor().getItem().toString();
                     m = rep.consultar_producto_codigo(codigo_producto);
                     tabla_producto.setModel(m);  
-                }
-                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
-                    cmb_producto.setModel(op.geLista_Producto_porcodigo(cadena));
-                    if(cmb_producto.getItemCount()>0){
-                        cmb_producto.showPopup();
-                        if(e.getKeyCode()!=8){
-                            //((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
-                            
-                            
-                        }else{
-                            cmb_producto.getEditor().setItem(cadena);
-                            
-                        }
-                            
-                    }else{
-                        cmb_producto.addItem(cadena);
-                    }
                 }
             }                   
             

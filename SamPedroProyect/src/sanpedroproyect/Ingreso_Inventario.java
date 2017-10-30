@@ -517,15 +517,15 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         });
                
               
-        }else{
+        }else if(cmb_CodoPre.getSelectedItem().equals("Codigo")){
             cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
             @Override
             public void keyReleased(java.awt.event.KeyEvent e) {
                 //String cadena = cmb_producto.getEditor().getItem().toString();
-                int cadena = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
+                String cadena = cmb_producto.getEditor().getItem().toString();
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    int codigo_producto = Integer.parseInt(cmb_producto.getEditor().getItem().toString());
+                    String codigo_producto = cmb_producto.getEditor().getItem().toString();
                     m = rep.consultar_producto_codigo(codigo_producto);
                     tabla_producto.setModel(m);  
                 }

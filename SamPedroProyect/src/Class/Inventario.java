@@ -95,6 +95,41 @@ public class Inventario {
         return null;
     }
     
+        public static String Decremento_inventario_Cambio_Prenda(String codigo,int cantidad){
+        
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String sql = "INSERT INTO inventario values(null,?,?,?,?,?,?)";
+         Date date = new Date();
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dia = dateFormat.format(date);
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,codigo);
+            pst.setInt(2,cantidad);
+            pst.setString(3,"SEPARADO");
+            pst.setInt(4,1);
+            pst.setString(5,dia);
+            pst.setString(6,hora);
+            pst.execute();
+            resul = "Decrementado Inventario correcto";
+            System.out.println(resul);
+        } catch (Exception e){
+            System.out.println("Error Decremento " + e);
+        }
+        
+       
+       
+       
+        
+        return null;
+    }
+    
     
     
 

@@ -187,7 +187,7 @@ public class SepararPrenda {
             pst.setFloat(1,nuevo_saldo);
             pst.setInt(2,codigop);
             pst.execute();
-            System.out.println(resul);
+            System.out.println("SI ACTUALICE SALDO");
         } catch (Exception e){
             resul = "Error update saldo " + e ;
         } 
@@ -237,6 +237,30 @@ public class SepararPrenda {
     }
 
     
+    
+      public static String Update_cambio_prenda(String codigo , int separado ){
+        
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String sql = "UPDATE `San Pedro`.`detalle_separado` SET `fk_Producto`= ? WHERE `fk_Separado`= ?; ";
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,codigo);
+            pst.setInt(2,separado);
+            pst.execute();
+            System.out.println(resul);
+        } catch (Exception e){
+            resul = "Error update cmabio prenda " + e ;
+        } 
+        
+        
+         return resul;
+        
+    }
+
     
     
     
