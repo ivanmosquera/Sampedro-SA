@@ -158,12 +158,15 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemConfig_nuevoRol">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nuevo Rol"/>
+                <Property name="text" type="java.lang.String" value="Nuevo Perfil"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemConfig_nuevoRolActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemConfig_administrarRoles">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Administrar roles"/>
+                <Property name="text" type="java.lang.String" value="Administrar perfiles"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemConfig_administrarRolesActionPerformed"/>

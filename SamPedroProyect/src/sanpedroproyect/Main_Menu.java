@@ -371,10 +371,15 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu4.add(itemConfig_modificarUsuario);
 
-        itemConfig_nuevoRol.setText("Nuevo Rol");
+        itemConfig_nuevoRol.setText("Nuevo Perfil");
+        itemConfig_nuevoRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemConfig_nuevoRolActionPerformed(evt);
+            }
+        });
         jMenu4.add(itemConfig_nuevoRol);
 
-        itemConfig_administrarRoles.setText("Administrar roles");
+        itemConfig_administrarRoles.setText("Administrar perfiles");
         itemConfig_administrarRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemConfig_administrarRolesActionPerformed(evt);
@@ -637,6 +642,14 @@ public class Main_Menu extends javax.swing.JFrame {
         rs.setResizable(false);
         dispose();
     }//GEN-LAST:event_reporteseparadosActionPerformed
+
+    private void itemConfig_nuevoRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_nuevoRolActionPerformed
+        // TODO add your handling code here:
+        Ingreso_Nuevo_Perfil ventana_ingresoPerfil = new Ingreso_Nuevo_Perfil();
+        ventana_ingresoPerfil.setVisible(true);
+        ventana_ingresoPerfil.setResizable(false);
+        dispose();
+    }//GEN-LAST:event_itemConfig_nuevoRolActionPerformed
 
     public  int getCodigo_usuario() {
         return codigo_usuario;
