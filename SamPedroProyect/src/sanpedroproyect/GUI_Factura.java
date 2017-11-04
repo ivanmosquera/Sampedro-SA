@@ -90,6 +90,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     
     public GUI_Factura() {
         initComponents();
+        System.out.println(Login.rol_usuario);
         //btn_guardar_fact.setEnabled(false);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -110,6 +111,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         lbl_pagovaucher.setEnabled(false);
         txt_efectivo.setEnabled(false);
         btn_guardar_fact.setEnabled(false);
+        txt_descto.setEnabled(false);
+        verificar_Permisos();
+        
+        
      
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
         
@@ -387,6 +392,36 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
      
         */
         
+    }
+    private void verificar_Permisos(){
+        if(Login.rol_usuario == 1){
+            txt_descto.setEnabled(true);
+        }
+        int i;
+        for(i=0;i<Login.permisos_usuario.length;i++){
+            if(Login.permisos_usuario[i].equals("RealizarDescuentos")){
+                txt_descto.setEnabled(true);
+            }/*else if(permisos_usuario[i].equals("Facturar")){
+                btn_go_registroFactura.setEnabled(true);
+                itemFactura_nuevaFactura.setEnabled(true);
+            }else if(permisos_usuario[i].equals("Anular")){
+                btn_go_anulaciones.setEnabled(true);
+                itemFactura_verFacturas.setEnabled(true);
+            }else if(permisos_usuario[i].equals("GenerarReportesCierreDeCaja")){
+                btn_go_cierreCaja.setEnabled(true);
+            }else if(permisos_usuario[i].equals("IngresoInventario")){
+                btn_go_inventario.setEnabled(true);
+                itemInventario_ingresoInventario.setEnabled(true);
+            }else if(permisos_usuario[i].equals("RegistrarCliente")){
+                btn_go_RegistroCliente.setEnabled(true);
+                itemCliente_registrarCliente.setEnabled(true);
+            }else if(permisos_usuario[i].equals("ModificarCliente")){
+                itemCliente_modificar_eliminar.setEnabled(true);
+            }else if(permisos_usuario[i].equals("IngresarProducto")){
+                itemProducto_ingresarProducto.setEnabled(true);
+            }*/
+
+        }
     }
     
     public Integer getCodigo() {
@@ -703,6 +738,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel11.setText("Descuento");
 
         txt_descto.setText("0");
+        txt_descto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_desctoActionPerformed(evt);
+            }
+        });
         txt_descto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_desctoKeyTyped(evt);
@@ -947,8 +987,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                                         .addComponent(txt_vaucher_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txt_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(69, 69, 69)
-                                    .addComponent(btn_realizar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(btn_realizar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Factura_panelLayout.createSequentialGroup()
@@ -1525,6 +1564,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         
         
     }//GEN-LAST:event_btn_realizar_pagoActionPerformed
+
+    private void txt_desctoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_desctoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_desctoActionPerformed
 
     /**
      * @param args the command line arguments
