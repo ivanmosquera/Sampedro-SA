@@ -34,17 +34,27 @@ public class Reporte_Operaciones {
         int col;
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
-        String sql  =  "SELECT p.Descripcion,Talla,Precio,Cantidad,Mov,Fecha,Hora From inventario i"
-                + ",producto p Where"
-                + " id_Producto = fk_Producto";
+        String sql  =  "SELECT p.id_Producto,p.Descripcion,Talla,Precio,Cantidad,Mov,u.Usuario,Fecha,Hora From inventario i"
+                + ",producto p, usuario u Where"
+                + " id_Producto = fk_Producto and id_Usuario = fk_Usuario";
         
         try {
             pst = cn.prepareStatement(sql);
             rs = pst.executeQuery();
             rsmd = rs.getMetaData();
             col = rsmd.getColumnCount();
-            for(int i = 1;i<=col;i++){
-                modelo.addColumn(rsmd.getColumnName(i));}
+            
+            modelo.addColumn("Codigo");
+            modelo.addColumn("Detalle");
+            modelo.addColumn("Talla");
+            modelo.addColumn("Precio");
+            modelo.addColumn("Cantidad");
+            modelo.addColumn("Movimiento");
+            modelo.addColumn("Usuario");
+            modelo.addColumn("Fecha");
+            modelo.addColumn("Hora");
+            /*for(int i = 1;i<=col;i++){
+                modelo.addColumn(rsmd.getColumnName(i));}*/
             while(rs.next()){
                 
                 String filas[]= new String[col];
@@ -537,6 +547,50 @@ public class Reporte_Operaciones {
          
      }
       
+      
+       public DefaultTableModel consultar_mas_vendidos(){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+        String sql  =  "SELECT id_Producto, Descripcion , Talla ,Sum(Cantidad) "
+                + "FROM inventario , producto where id_Producto = fk_Producto "
+                + "and mov = 'Salida' group by fk_Producto order by Sum(Cantidad) desc";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+            modelo.addColumn("Codigo");
+            modelo.addColumn("Detalle");
+            modelo.addColumn("Talla");
+            modelo.addColumn("Total Vendidos");
+           // for(int i = 1;i<=col;i++){
+               // modelo.addColumn(rsmd.getColumnName(i));}
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    
+                }
+                modelo.addRow(filas);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+    }
+      
  
     public DefaultTableModel consultar_Separados(){
         String resul = null , lats = null;
@@ -547,7 +601,7 @@ public class Reporte_Operaciones {
         int col;
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
-        String sql  =  "Select S.id_Separado ,U.Nombre, Fecha_separado ,Fecha_vencimiento , "
+        String sql  =  "Select S.id_Separado ,U.Usuario, Fecha_separado ,Fecha_vencimiento , "
                 + "C.Nombre, P.id_Producto, P.Descripcion ,P.talla, S.Saldo  "
                 + "FROM separado S, detalle_separado , producto P, usuario U, cliente C "
                 + "WHERE id_Cliente = fk_cliente AND "
@@ -559,8 +613,17 @@ public class Reporte_Operaciones {
             rs = pst.executeQuery();
             rsmd = rs.getMetaData();
             col = rsmd.getColumnCount();
-            for(int i = 1;i<=col;i++){
-                modelo.addColumn(rsmd.getColumnName(i));}
+            modelo.addColumn("ID");
+            modelo.addColumn("Usuario");
+            modelo.addColumn("Fecha");
+            modelo.addColumn("Vence");
+            modelo.addColumn("Cliente");
+            modelo.addColumn("Codigo");
+            modelo.addColumn("Detalle");
+            modelo.addColumn("Talla");
+            modelo.addColumn("Saldo");
+           // for(int i = 1;i<=col;i++){
+               // modelo.addColumn(rsmd.getColumnName(i));}
             while(rs.next()){
                 
                 String filas[]= new String[col];
@@ -743,7 +806,7 @@ public class Reporte_Operaciones {
         //Caso 2: obtener la fecha y salida por pantalla con formato:
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dia = dateFormat.format(date);
-        String sql  = "Select id_Factura, F.Fecha, C.Nombre , Subtotal ,  Total , Usuario  From cliente c , factura F ,usuario U   "
+        String sql  = "Select id_Factura, Usuario, F.Fecha, C.Nombre , Subtotal ,  Total   From cliente c , factura F ,usuario U   "
                 + "Where fk_Cliente = id_Cliente AND fk_Usuario = id_Usuario AND fk_Estado = 1";
         
         try {
@@ -751,8 +814,16 @@ public class Reporte_Operaciones {
             rs = pst.executeQuery();
             rsmd = rs.getMetaData();
             col = rsmd.getColumnCount();
-            for(int i = 1;i<=col;i++){
-                modelo.addColumn(rsmd.getColumnName(i));}
+            modelo.addColumn("Factura #");
+             modelo.addColumn("Usuario");
+            modelo.addColumn("Fecha");
+            modelo.addColumn("Cliente");
+            modelo.addColumn("Subtotal");
+            modelo.addColumn("Total");
+           
+
+            //for(int i = 1;i<=col;i++){
+               // modelo.addColumn(rsmd.getColumnName(i));}
             while(rs.next()){
                 
                 String filas[]= new String[col];
@@ -771,6 +842,190 @@ public class Reporte_Operaciones {
         
         return modelo;
     } 
+     
+      public DefaultTableModel consultar_Factura_fecha(String desde , String hasta){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+        Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+        String sql  = "Select id_Factura, Usuario, F.Fecha, C.Nombre , Subtotal ,  Total   From cliente c , factura F ,usuario U   "
+                + "Where fk_Cliente = id_Cliente AND fk_Usuario = id_Usuario AND fk_Estado = 1 and (Fecha between ? and ?)";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,desde);
+            pst.setString(2,hasta);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+       
+           
+            modelo.addColumn("Factura #");
+            modelo.addColumn("Usuario");
+            modelo.addColumn("Fecha");
+            modelo.addColumn("Cliente");
+            modelo.addColumn("Subtotal");
+            modelo.addColumn("Total");
+            //for(int i = 1;i<=col;i++){
+                //modelo.addColumn(rsmd.getColumnName(i));}
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    
+                }
+                modelo.addRow(filas);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+    } 
+      public DefaultTableModel consultar_Factura_fecha_usuario(String desde , String hasta,String Usuario){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+        Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+        String sql  = "Select id_Factura, Usuario, F.Fecha, C.Nombre , Subtotal ,  Total   From cliente c , factura F ,usuario U   "
+                + "Where fk_Cliente = id_Cliente AND fk_Usuario = id_Usuario AND fk_Estado = 1 and (Fecha between ? and ?) and Usuario = ?" ;
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,desde);
+            pst.setString(2,hasta);
+            pst.setString(3, Usuario);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+       
+           
+            modelo.addColumn("Factura #");
+            modelo.addColumn("Usuario");
+            modelo.addColumn("Fecha");
+            modelo.addColumn("Cliente");
+            modelo.addColumn("Subtotal");
+            modelo.addColumn("Total");
+            //for(int i = 1;i<=col;i++){
+                //modelo.addColumn(rsmd.getColumnName(i));}
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    
+                }
+                modelo.addRow(filas);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+    } 
+      
+      public float getTotal_Fechas(String desde, String hasta){
+         String resul = null , lats = null;
+         ConnectionDB cc = new ConnectionDB();
+         Connection cn = cc.getConnection();
+         PreparedStatement pst =null;
+         ResultSet rs = null;
+          Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+         String Desc;
+         float total = (float) 0.0;
+            try{
+               String sql = ("Select SUM(Total) "
+                        + "From cliente c , factura F ,usuario U Where fk_Cliente = id_Cliente AND fk_Usuario = id_Usuario AND fk_Estado = 1 and (Fecha between ? and ?)");
+                pst = cn.prepareStatement(sql);
+                pst.setString(1,desde);
+                pst.setString(2,hasta);
+                rs =pst.executeQuery();
+                if (rs.next()){
+                    total = rs.getFloat("SUM(Total)");
+                          
+                }
+
+
+
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
+                    
+        return total;
+     }
+      public float getTotal_Fechas_Usuario(String desde, String hasta,String Usuario){
+         String resul = null , lats = null;
+         ConnectionDB cc = new ConnectionDB();
+         Connection cn = cc.getConnection();
+         PreparedStatement pst =null;
+         ResultSet rs = null;
+          Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+         String Desc;
+         float total = (float) 0.0;
+            try{
+               String sql = ("Select SUM(Total) "
+                        + "From cliente c , factura F ,usuario U Where fk_Cliente = id_Cliente AND fk_Usuario = id_Usuario AND fk_Estado = 1 and (Fecha between ? and ?) and Usuario = ?");
+                pst = cn.prepareStatement(sql);
+                pst.setString(1,desde);
+                pst.setString(2,hasta);
+                pst.setString(3,Usuario);
+                rs =pst.executeQuery();
+                if (rs.next()){
+                    total = rs.getFloat("SUM(Total)");
+                          
+                }
+
+
+
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
+                    
+        return total;
+     }
+     
+     
      
    
       public DefaultTableModel consultar_abonos(){

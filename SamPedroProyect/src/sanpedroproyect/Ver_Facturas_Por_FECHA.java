@@ -9,7 +9,11 @@ package sanpedroproyect;
 import Class.EXPORTAREXCEL;
 import Class.Mirender;
 import Class.Reporte_Operaciones;
+import DATABASE.ConnectionDB;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,12 +22,13 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import org.oxbow.swingbits.table.filter.TableRowFilterSupport;
+import static sanpedroproyect.GUI_Factura.total;
 
 /**
  *
  * @author kleberstevendiazcoello
  */
-public class Ver_Facturas extends javax.swing.JFrame {
+public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
 
     /**
      * Creates new form Reporte_Separados
@@ -31,16 +36,28 @@ public class Ver_Facturas extends javax.swing.JFrame {
     DefaultTableModel m  = new DefaultTableModel();
     Reporte_Operaciones rp = new Reporte_Operaciones();
     
-    public Ver_Facturas() {
+    public Ver_Facturas_Por_FECHA() {
         initComponents();
-        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        m = rp.consultar_Factura();
-        Tbl_ver_facturas.setModel(m);
-        TableRowFilterSupport.forTable(Tbl_ver_facturas).searchable(true).apply();
-       
-        
-        
-        
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);  
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String Desc;
+        try{
+            String sql = ("SELECT Usuario FROM usuario ");
+            pst = cn.prepareStatement(sql);
+            rs =pst.executeQuery();
+             while(rs.next()){
+                    
+                    cmb_usuario.addItem(rs.getString("Usuario"));
+                }
+
+
+
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
         
     }
 
@@ -65,6 +82,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        lblTotalFecha = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        cmb_usuario = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -123,7 +145,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jLabel13.setText("Hasta :");
 
         jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        jLabel14.setText("Facturas ");
+        jLabel14.setText("Facturas Por Fecha ");
 
         jButton2.setText("Consultar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +153,19 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel15.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel15.setText("TOTAL :");
+
+        lblTotalFecha.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel17.setText("$");
+
+        jLabel16.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel16.setText("Usuario :");
+
+        cmb_usuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Seleccione Usuario>" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,44 +183,59 @@ public class Ver_Facturas extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 937, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTotalFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel17))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
-                                    .addComponent(jLabel13))
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel16))
                                 .addGap(29, 29, 29)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(77, 77, 77)
-                                        .addComponent(jButton2))))))
+                                        .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(99, 99, 99)
+                                        .addComponent(jButton2))
+                                    .addComponent(cmb_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(443, 443, 443)
+                        .addGap(392, 392, 392)
                         .addComponent(jLabel14)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel14)
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(51, 51, 51)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(cmb_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
+                                .addGap(21, 21, 21)
                                 .addComponent(jButton2)))
-                        .addGap(4, 4, 4))
-                    .addComponent(jLabel13))
-                .addGap(89, 89, 89)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13)
+                            .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(lblTotalFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(btn_excel))
@@ -239,19 +289,38 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Date date = new Date(); 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        date = dateDesde.getDate();
-        String desde = dateFormat.format(date);
-        System.out.println(desde);
-        date = dateHasta.getDate();
-        String hasta = dateFormat.format(date);
-        System.out.println(hasta);
-        DefaultTableModel nm =  new DefaultTableModel();
-        nm = rp.consultar_Factura_fecha(desde, hasta);
-        Tbl_ver_facturas.setModel(nm);
- 
-        
+        if (cmb_usuario.getSelectedItem().equals("<Seleccione Usuario>")){
+            Date date = new Date(); 
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            date = dateDesde.getDate();
+            String desde = dateFormat.format(date);
+            System.out.println(desde);
+            date = dateHasta.getDate();
+            String hasta = dateFormat.format(date);
+            System.out.println(hasta);
+            DefaultTableModel nm =  new DefaultTableModel();
+            nm = rp.consultar_Factura_fecha(desde, hasta);
+            Tbl_ver_facturas.setModel(nm);   
+            float total = rp.getTotal_Fechas(desde, hasta);
+            String stotal = String.format(java.util.Locale.US,"%.2f", total);
+            lblTotalFecha.setText(stotal);
+        }else{
+            String user = cmb_usuario.getSelectedItem().toString();
+            Date date = new Date(); 
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            date = dateDesde.getDate();
+            String desde = dateFormat.format(date);
+            System.out.println(desde);
+            date = dateHasta.getDate();
+            String hasta = dateFormat.format(date);
+            System.out.println(hasta);
+            DefaultTableModel nm =  new DefaultTableModel();
+            nm = rp.consultar_Factura_fecha_usuario(desde, hasta,user);
+            Tbl_ver_facturas.setModel(nm);   
+            float total = rp.getTotal_Fechas_Usuario(desde, hasta, user);
+            String stotal = String.format(java.util.Locale.US,"%.2f", total);
+            lblTotalFecha.setText(stotal);
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -272,20 +341,20 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ver_Facturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ver_Facturas_Por_FECHA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ver_Facturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ver_Facturas_Por_FECHA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ver_Facturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ver_Facturas_Por_FECHA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ver_Facturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ver_Facturas_Por_FECHA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ver_Facturas().setVisible(true);
+                new Ver_Facturas_Por_FECHA().setVisible(true);
             }
         });
     }
@@ -294,6 +363,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.ButtonGroup FORMA_BUSQUEDA;
     private javax.swing.JTable Tbl_ver_facturas;
     private javax.swing.JButton btn_excel;
+    private javax.swing.JComboBox cmb_usuario;
     private com.toedter.calendar.JDateChooser dateDesde;
     private com.toedter.calendar.JDateChooser dateHasta;
     private javax.swing.JButton jButton1;
@@ -301,7 +371,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTotalFecha;
     // End of variables declaration//GEN-END:variables
 }
