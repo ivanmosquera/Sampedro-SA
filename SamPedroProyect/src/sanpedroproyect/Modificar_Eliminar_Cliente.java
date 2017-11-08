@@ -134,9 +134,9 @@ Cliente c = new Cliente();
                         ResultSet rs = null;
                         String Desc;
                         try{
-                           String sql = ("SELECT * FROM cliente where Nombre = ? Estado = 'ACTIVO' ");
+                           String sql = ("SELECT * FROM cliente WHERE Nombre='"+cadena+"' AND Estado='ACTIVO'");
                            pst = cn.prepareStatement(sql);
-                           pst.setString(1, cadena);
+                           //pst.setString(1, cadena);
                            rs =pst.executeQuery();
                            if (rs.next()){
 

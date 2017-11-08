@@ -80,7 +80,9 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         itemFactura_nuevaFactura = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
         itemFactura_verFacturas = new javax.swing.JMenuItem();
+        itemFactura_verFacturasFecha = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         itemCliente_registrarCliente = new javax.swing.JMenuItem();
         itemCliente_modificar_eliminar = new javax.swing.JMenuItem();
@@ -95,6 +97,7 @@ public class Main_Menu extends javax.swing.JFrame {
         reporteinventario = new javax.swing.JMenuItem();
         reporteproducto = new javax.swing.JMenuItem();
         reporteseparados = new javax.swing.JMenuItem();
+        itemReportes_ventaPrendas = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         itemConfig_registrarUsuario = new javax.swing.JMenuItem();
         itemConfig_modificarUsuario = new javax.swing.JMenuItem();
@@ -247,13 +250,25 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu1.add(itemFactura_nuevaFactura);
 
-        itemFactura_verFacturas.setText("Ver Facturas");
+        jMenu7.setText("Ver Facturas");
+
+        itemFactura_verFacturas.setText("Totales");
         itemFactura_verFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemFactura_verFacturasActionPerformed(evt);
             }
         });
-        jMenu1.add(itemFactura_verFacturas);
+        jMenu7.add(itemFactura_verFacturas);
+
+        itemFactura_verFacturasFecha.setText("Por fecha");
+        itemFactura_verFacturasFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemFactura_verFacturasFechaActionPerformed(evt);
+            }
+        });
+        jMenu7.add(itemFactura_verFacturasFecha);
+
+        jMenu1.add(jMenu7);
 
         jMenuBar1.add(jMenu1);
 
@@ -350,6 +365,14 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
         jMenu6.add(reporteseparados);
+
+        itemReportes_ventaPrendas.setText("Reporte de Venta de prendas");
+        itemReportes_ventaPrendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReportes_ventaPrendasActionPerformed(evt);
+            }
+        });
+        jMenu6.add(itemReportes_ventaPrendas);
 
         jMenuBar1.add(jMenu6);
 
@@ -651,6 +674,24 @@ public class Main_Menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_itemConfig_nuevoRolActionPerformed
 
+    private void itemReportes_ventaPrendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportes_ventaPrendasActionPerformed
+        // TODO add your handling code here:
+        prendasMVendidad ventana_reporteVentaPrendas = new prendasMVendidad();
+        ventana_reporteVentaPrendas.setVisible(true);
+        ventana_reporteVentaPrendas.setResizable(false);
+        ventana_reporteVentaPrendas.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_itemReportes_ventaPrendasActionPerformed
+
+    private void itemFactura_verFacturasFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFactura_verFacturasFechaActionPerformed
+        // TODO add your handling code here:
+        Ver_Facturas_Por_FECHA ventana_verFacturasFecha = new Ver_Facturas_Por_FECHA();
+        ventana_verFacturasFecha.setVisible(true);
+        ventana_verFacturasFecha.setResizable(false);
+        ventana_verFacturasFecha.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_itemFactura_verFacturasFechaActionPerformed
+
     public  int getCodigo_usuario() {
         return codigo_usuario;
     }
@@ -722,11 +763,13 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemConfig_registrarUsuario;
     private javax.swing.JMenuItem itemFactura_nuevaFactura;
     private javax.swing.JMenuItem itemFactura_verFacturas;
+    private javax.swing.JMenuItem itemFactura_verFacturasFecha;
     private javax.swing.JMenuItem itemInventario_ingresoInventario;
     private javax.swing.JMenuItem itemInventario_inventariosTotales;
     private javax.swing.JMenuItem itemProducto_abonar;
     private javax.swing.JMenuItem itemProducto_ingresarProducto;
     private javax.swing.JMenuItem itemProducto_separarPrenda;
+    private javax.swing.JMenuItem itemReportes_ventaPrendas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -734,6 +777,7 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
