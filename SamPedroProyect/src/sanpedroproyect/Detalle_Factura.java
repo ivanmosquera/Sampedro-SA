@@ -107,6 +107,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
                 txt_vaucher.setText(rs.getString("Vaucher"));
                 txt_nota.setText(rs.getString("Nota"));
                 txt_vendedor.setText(rs.getString("Usuario"));
+                USUARIO = rs.getInt("id_Usuario");
                           
                 }
 
@@ -564,8 +565,8 @@ public class Detalle_Factura extends javax.swing.JFrame {
         int cantidad = 0 ;
         int codigo_obtenido;
         String s = factura.Eliminar_Factura(id_de_la_factura,USUARIO,"Porque si");  //FALATA PONER MOTIVO   
-        factura.update_estado_factura(id_de_la_factura);
-        System.out.println("" + s);
+        String s2 = factura.Update(id_de_la_factura);
+        System.out.println("" + s2);
    
         /*Neceista el id para guardar todos los productos de una factura*/
         order_list_guardar = (DefaultTableModel) Tabla_ventas.getModel();

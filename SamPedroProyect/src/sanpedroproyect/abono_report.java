@@ -544,7 +544,8 @@ public class abono_report extends javax.swing.JFrame {
                 i.Aumento_inventario_Devolucion_Separado(id_producto_viejo, 1);
                 
                 
-                sp.Update_cambio_prenda(codigo,id_Separado);
+                String s1 = sp.Update_Prenda(codigo,id_Separado);
+                System.out.println(s1);
                 i.Decremento_inventario_Separado(codigo,1);
                 int cantidad_actual = i.get_cantidad_total_producto(codigo);
                 int nueva_cantidad = (cantidad_actual - 1) ;
@@ -560,7 +561,9 @@ public class abono_report extends javax.swing.JFrame {
                 lbl_talla.setText(talla);
                 lbl_prenda.setText(descripcion);
                 lbl_saldo.setText(nuevosaldo);
-                sp.Ingreso_nuevo_saldo(id_separado,Float.parseFloat(lbl_saldo.getText()));
+                float saldof =Float.parseFloat(lbl_saldo.getText());
+                String S2 =  sp.Update(12,id_separado);
+                System.out.println(S2);
                 
                 
                 

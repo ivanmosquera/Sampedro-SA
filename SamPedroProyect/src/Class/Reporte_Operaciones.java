@@ -164,7 +164,7 @@ public class Reporte_Operaciones {
         int col;
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
-        String sql  =  "SELECT id_Producto, Descripcion, Precio, Talla FROM producto WHERE cantidad_total > 0 ";
+        String sql  =  "SELECT id_Producto, Descripcion, Precio, Talla FROM producto;";
         
         try {
             pst = cn.prepareStatement(sql);
@@ -1044,7 +1044,7 @@ public class Reporte_Operaciones {
         //Caso 2: obtener la fecha y salida por pantalla con formato:
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dia = dateFormat.format(date);
-        String sql  = "Select id_Separado, c.Nombre, a.Valor , u.Usuario "
+        String sql  = "Select id_Separado, c.Nombre, a.Valor , u.Usuario, fecha "
                 + "From abono a, Separado s, cliente c,  usuario u "
                 + "Where c.id_Cliente = s.fk_Cliente and  a.fk_Separado = id_Separado and s.fk_Usuario = id_Usuario and a.Fecha = ? ";
         
@@ -1093,7 +1093,7 @@ public class Reporte_Operaciones {
         //Caso 2: obtener la fecha y salida por pantalla con formato:
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dia = dateFormat.format(date);
-        String sql  = "Select id_Factura, F.Fecha, C.Nombre , Subtotal ,  Total  From cliente c , factura F   Where fk_Cliente = id_Cliente and Fecha = ? and fk_Estado = 3;";
+        String sql  = "Select id_Factura, F.Fecha, C.Nombre , Subtotal ,  Total,Efectivo , Tarjeta   From cliente c , factura F   Where fk_Cliente = id_Cliente and Fecha = ? and fk_Estado = 3;";
         
         try {
             pst = cn.prepareStatement(sql);

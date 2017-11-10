@@ -19,8 +19,9 @@ public class Detalle_Cierre_Caja {
     String total;
     String efectivo;
     String tarjeta;
+    String tipo;
 
-    public Detalle_Cierre_Caja(String id, String fecha, String cliente, String subtotal, String total, String efectivo, String tarjeta) {
+    public Detalle_Cierre_Caja(String id, String fecha, String cliente, String subtotal, String total, String efectivo, String tarjeta,String tipo) {
         this.id = id;
         this.fecha = fecha;
         this.cliente = cliente;
@@ -28,6 +29,7 @@ public class Detalle_Cierre_Caja {
         this.total = total;
         this.efectivo = efectivo;
         this.tarjeta = tarjeta;
+        this.tipo = tipo;
     }
 
     public String getId() {
@@ -84,6 +86,14 @@ public class Detalle_Cierre_Caja {
 
     public void setTarjeta(String tarjeta) {
         this.tarjeta = tarjeta;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
     

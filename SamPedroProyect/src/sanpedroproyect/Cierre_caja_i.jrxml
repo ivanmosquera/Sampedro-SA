@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="be3e865d-ab09-4313-ad04-94be1ce13c86">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="64"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="TOTALVENTAS" class="java.lang.String"/>
 	<parameter name="EFECTIVO" class="java.lang.String"/>
 	<parameter name="TARJETA" class="java.lang.String"/>
@@ -10,6 +10,7 @@
 	<parameter name="EFECTIVOA" class="java.lang.String"/>
 	<parameter name="TARJETAA" class="java.lang.String"/>
 	<parameter name="TOTALCAJA" class="java.lang.String"/>
+	<parameter name="TOTALABONADO" class="java.lang.String"/>
 	<field name="id" class="java.lang.String"/>
 	<field name="fecha" class="java.lang.String"/>
 	<field name="cliente" class="java.lang.String"/>
@@ -17,6 +18,7 @@
 	<field name="total" class="java.lang.String"/>
 	<field name="efectivo" class="java.lang.String"/>
 	<field name="tarjeta" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -40,134 +42,84 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="37" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="17" width="54" height="20" uuid="bbe59883-3e48-421d-a7cd-27640416fa1e"/>
-				<text><![CDATA[id]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="54" y="17" width="70" height="20" uuid="314c8e2b-a398-471e-bbfe-7961726f6d12"/>
-				<text><![CDATA[fecha]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="130" y="17" width="100" height="20" uuid="46d60c81-6621-46e3-9673-64bd46ba9560"/>
-				<text><![CDATA[cliente]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="241" y="17" width="60" height="20" uuid="96fe5957-815a-4ffa-96a7-b84ddc4438e7"/>
-				<text><![CDATA[subtotal]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="315" y="17" width="67" height="20" uuid="f1ec21f2-cf78-478b-9ce1-9f75fe30731c"/>
-				<text><![CDATA[total]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="399" y="17" width="62" height="20" uuid="322c2bf5-5f04-4941-b0d2-3e2e76f809fd"/>
-				<text><![CDATA[efectivo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="476" y="17" width="63" height="20" uuid="301638da-fb62-430c-b574-5b42c4438544"/>
-				<text><![CDATA[tarjeta]]></text>
-			</staticText>
-		</band>
+		<band height="37" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="130" splitType="Stretch">
+		<band height="295" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="10" width="130" height="20" uuid="8be9d5b4-b49c-448d-9915-51beff977fa0"/>
+				<text><![CDATA[TOTAL EN EFECTIVO]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="0" y="21" width="54" height="20" uuid="dde15571-ec2b-4075-b810-bd3b99cad3ed"/>
-				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				<reportElement x="149" y="84" width="100" height="20" uuid="a5ff2abe-576e-415d-8220-26f29c3fe505"/>
+				<textFieldExpression><![CDATA[$P{TOTALVENTAS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="44" width="130" height="20" uuid="29be4e06-0118-4775-b508-e9b04ae41013"/>
+				<text><![CDATA[TOTAL EN VOUCHERS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="84" width="130" height="20" uuid="b72d1583-fe2e-4b17-9693-5ee3afce14c5"/>
+				<text><![CDATA[TOTAL EN VENTAS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="149" y="10" width="100" height="20" uuid="e4ec6f30-139d-4cb6-8ee4-447e84341004"/>
+				<textFieldExpression><![CDATA[$P{EFECTIVO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="54" y="21" width="70" height="20" uuid="063eaabd-248e-4ef3-b938-899dbd6d5771"/>
-				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+				<reportElement x="149" y="44" width="100" height="20" uuid="654d35dc-3e0e-4e0f-b708-7ff987bcecda"/>
+				<textFieldExpression><![CDATA[$P{TARJETA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="129" width="174" height="20" uuid="975ab754-27f1-4803-abce-f07864d8df8b"/>
+				<text><![CDATA[TOTAL EFECTIVO ANULADAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="203" width="174" height="20" uuid="dfa79b33-ce38-495d-9585-0fed834909d3"/>
+				<text><![CDATA[TOTAL EN VENTAS ANULADAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="163" width="174" height="20" uuid="f2ed113f-3e4a-492f-b46a-8509a0d77fb9"/>
+				<text><![CDATA[TOTAL EN VOUCHERS ANULADOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="195" y="129" width="100" height="20" uuid="82aa73e5-8eda-41a6-a891-0e1114bb4259"/>
+				<textFieldExpression><![CDATA[$P{EFECTIVOA}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="130" y="21" width="100" height="20" uuid="454407b7-8ca0-4a43-aa1f-a65e9ed33f52"/>
-				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+				<reportElement x="195" y="163" width="100" height="20" uuid="73438be6-dc98-4c3f-b372-d1e2327b1938"/>
+				<textFieldExpression><![CDATA[$P{TARJETAA}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="241" y="21" width="60" height="20" uuid="362d8090-ca84-41ec-8545-5a7bbaca631c"/>
-				<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+				<reportElement x="195" y="203" width="100" height="20" uuid="10a10167-12e6-4f97-a8e4-058ed2428a5f"/>
+				<textFieldExpression><![CDATA[$P{TOTALANULADAS}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="8" y="247" width="170" height="20" uuid="55f5f94c-e882-45f3-bd53-e29fb988bd03"/>
+				<text><![CDATA[TOTAL DE ABONOS REALIZADOS :]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="315" y="21" width="67" height="20" uuid="0be820ca-5669-4ef5-b06b-d6754efbadf1"/>
-				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="399" y="21" width="62" height="20" uuid="36bd168f-99a8-4f8c-9031-f553e6f63c81"/>
-				<textFieldExpression><![CDATA[$F{efectivo}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="476" y="21" width="63" height="20" uuid="57c76576-fd7e-4fde-a7ca-2ca03540610b"/>
-				<textFieldExpression><![CDATA[$F{tarjeta}]]></textFieldExpression>
+				<reportElement x="198" y="247" width="124" height="20" uuid="1fc56461-0a0c-45f1-a9f5-c14fe83c918d"/>
+				<textFieldExpression><![CDATA[$P{TOTALABONADO}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="111" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="0" width="130" height="20" uuid="8be9d5b4-b49c-448d-9915-51beff977fa0"/>
-				<text><![CDATA[TOTAL EN EFECTIVO]]></text>
-			</staticText>
+		<band height="95" splitType="Stretch">
 			<textField>
-				<reportElement x="141" y="74" width="100" height="20" uuid="a5ff2abe-576e-415d-8220-26f29c3fe505"/>
-				<textFieldExpression><![CDATA[$P{TOTALVENTAS}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="34" width="130" height="20" uuid="29be4e06-0118-4775-b508-e9b04ae41013"/>
-				<text><![CDATA[TOTAL EN VOUCHERS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="74" width="130" height="20" uuid="b72d1583-fe2e-4b17-9693-5ee3afce14c5"/>
-				<text><![CDATA[TOTAL EN VENTAS]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="141" y="0" width="100" height="20" uuid="e4ec6f30-139d-4cb6-8ee4-447e84341004"/>
-				<textFieldExpression><![CDATA[$P{EFECTIVO}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="141" y="34" width="100" height="20" uuid="654d35dc-3e0e-4e0f-b708-7ff987bcecda"/>
-				<textFieldExpression><![CDATA[$P{TARJETA}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="268" y="0" width="174" height="20" uuid="975ab754-27f1-4803-abce-f07864d8df8b"/>
-				<text><![CDATA[TOTAL EFECTIVO ANULADAS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="268" y="74" width="174" height="20" uuid="dfa79b33-ce38-495d-9585-0fed834909d3"/>
-				<text><![CDATA[TOTAL EN VENTAS ANULADAS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="268" y="34" width="174" height="20" uuid="f2ed113f-3e4a-492f-b46a-8509a0d77fb9"/>
-				<text><![CDATA[TOTAL EN VOUCHERS ANULADOS]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="455" y="0" width="100" height="20" uuid="82aa73e5-8eda-41a6-a891-0e1114bb4259"/>
-				<textFieldExpression><![CDATA[$P{EFECTIVOA}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="455" y="34" width="100" height="20" uuid="73438be6-dc98-4c3f-b372-d1e2327b1938"/>
-				<textFieldExpression><![CDATA[$P{TARJETAA}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="455" y="74" width="100" height="20" uuid="10a10167-12e6-4f97-a8e4-058ed2428a5f"/>
-				<textFieldExpression><![CDATA[$P{TOTALANULADAS}]]></textFieldExpression>
-			</textField>
-		</band>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch">
-			<textField>
-				<reportElement x="283" y="19" width="100" height="20" uuid="ad6d40c8-a043-4ebf-bf0d-267f8c702fbc"/>
+				<reportElement x="153" y="43" width="100" height="20" uuid="ad6d40c8-a043-4ebf-bf0d-267f8c702fbc"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{TOTALCAJA}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="138" y="19" width="130" height="20" uuid="a39c0a9f-23b7-40e5-a088-15507ac5e101"/>
+				<reportElement x="8" y="43" width="130" height="20" uuid="a39c0a9f-23b7-40e5-a088-15507ac5e101"/>
 				<text><![CDATA[TOTAL CAJA]]></text>
 			</staticText>
 		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="61" splitType="Stretch"/>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
