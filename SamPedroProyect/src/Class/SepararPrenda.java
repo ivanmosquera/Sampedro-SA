@@ -339,19 +339,10 @@ public class SepararPrenda {
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
         String sql = "UPDATE separado SET Saldo= ? WHERE id_Separado = ? ";
-        Date date = new Date();
         ResultSet rs = null;
-        //Caso 1: obtener la hora y salida por pantalla con formato:
-        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-        String hora = hourFormat.format(date);
-        //Caso 2: obtener la fecha y salida por pantalla con formato:
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        String dia = dateFormat.format(date);
-        int flag = 0;
-        int id_ultimo;
         try{
             pst = cn.prepareStatement(sql);
-            pst.setFloat(1,saldo);
+            pst.setFloat(1,3);
             pst.setInt(2,sepa);
             pst.execute();
             resul = "Update abono correcto";

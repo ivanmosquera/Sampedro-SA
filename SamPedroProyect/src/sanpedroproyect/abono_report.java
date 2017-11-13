@@ -17,6 +17,7 @@ import java.awt.event.KeyAdapter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -471,6 +472,9 @@ public class abono_report extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //float saldof =Float.parseFloat(lbl_saldo.getText());
+        //String S2 =  sp.Update(saldof,id_separado);
+        //System.out.println(S2);
         Reporte_Separados rs = new Reporte_Separados();
         rs.setVisible(true);
         rs.setLocationRelativeTo(null);
@@ -562,15 +566,37 @@ public class abono_report extends javax.swing.JFrame {
                 lbl_prenda.setText(descripcion);
                 lbl_saldo.setText(nuevosaldo);
                 float saldof =Float.parseFloat(lbl_saldo.getText());
-                String S2 =  sp.Update(12,id_separado);
-                System.out.println(S2);
-                
-                
-                
-                
-                
-        } catch (Exception e) {
-        }
+                /*System.out.println(saldof);
+                System.out.println(id_Separado);
+                String S2 =  sp.Update(saldof,id_separado);
+                System.out.println(S2);*/
+                 String resul = null , lats = null;
+                ConnectionDB cc = new ConnectionDB();
+                Connection cn = cc.getConnection();
+                PreparedStatement pst =null;
+                String sql = "UPDATE separado SET Saldo= ? WHERE id_Separado = ? ";
+                ResultSet rs = null;
+                try{
+                    pst = cn.prepareStatement(sql);
+                    pst.setFloat(1,saldof);
+                    pst.setInt(2,id_Separado);
+                    pst.execute();
+                    resul = "Update abono correcto";
+                    System.out.println(resul);
+
+                }catch(SQLException e){
+                    resul = "Error  update abono: "+e; 
+                    System.out.println(resul);
+                }
+
+               cc.desconectar();
+
+
+
+
+
+                } catch (Exception e) {
+                }
     }//GEN-LAST:event_btn_agregar_productoActionPerformed
 
     private void btn_SalirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirProductoActionPerformed

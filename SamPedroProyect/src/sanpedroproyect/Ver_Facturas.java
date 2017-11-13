@@ -59,12 +59,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         Tbl_ver_facturas = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         btn_excel = new javax.swing.JButton();
-        dateDesde = new com.toedter.calendar.JDateChooser();
-        dateHasta = new com.toedter.calendar.JDateChooser();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -116,21 +111,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        jLabel12.setText("Desde :");
-
-        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        jLabel13.setText("Hasta :");
-
         jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel14.setText("Facturas ");
-
-        jButton2.setText("Consultar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,19 +127,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 937, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel13))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(77, 77, 77)
-                                        .addComponent(jButton2))))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 937, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(443, 443, 443)
                         .addComponent(jLabel14)))
@@ -168,23 +138,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel14)
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jButton2)))
-                        .addGap(4, 4, 4))
-                    .addComponent(jLabel13))
-                .addGap(89, 89, 89)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
@@ -237,24 +192,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_excelActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Date date = new Date(); 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        date = dateDesde.getDate();
-        String desde = dateFormat.format(date);
-        System.out.println(desde);
-        date = dateHasta.getDate();
-        String hasta = dateFormat.format(date);
-        System.out.println(hasta);
-        DefaultTableModel nm =  new DefaultTableModel();
-        nm = rp.consultar_Factura_fecha(desde, hasta);
-        Tbl_ver_facturas.setModel(nm);
- 
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -294,12 +231,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.ButtonGroup FORMA_BUSQUEDA;
     private javax.swing.JTable Tbl_ver_facturas;
     private javax.swing.JButton btn_excel;
-    private com.toedter.calendar.JDateChooser dateDesde;
-    private com.toedter.calendar.JDateChooser dateHasta;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
