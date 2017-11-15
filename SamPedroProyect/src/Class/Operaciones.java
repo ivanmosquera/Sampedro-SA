@@ -40,6 +40,29 @@ public class Operaciones {
         return modelo;
     
 }   
+    public DefaultComboBoxModel getListaUsuarios(String Cadena){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        String sql  =  "SELECT Nombre From Usuario WHERE Estado = 'ACTIVO' AND  Nombre LIKE '"+Cadena+"%' ";
+        try{
+           pst = cn.prepareStatement(sql); 
+           rs = pst.executeQuery();
+           while(rs.next()){
+               modelo.addElement(rs.getString("Nombre"));
+               System.out.println(rs.getString("Nombre"));
+           }
+        }catch(Exception e){
+            resul = "Error :" + e;
+            System.out.println(resul);
+        }
+        
+        return modelo;
+    
+}   
     
     
     

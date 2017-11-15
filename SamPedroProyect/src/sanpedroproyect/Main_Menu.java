@@ -631,6 +631,11 @@ public class Main_Menu extends javax.swing.JFrame {
 
     private void itemConfig_modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_modificarUsuarioActionPerformed
         // TODO add your handling code here:
+        Modificar_Eliminar_Usuario ventana_modificarUsuario = new Modificar_Eliminar_Usuario();
+        ventana_modificarUsuario.setVisible(true);
+        ventana_modificarUsuario.setResizable(false);
+        ventana_modificarUsuario.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_itemConfig_modificarUsuarioActionPerformed
 
     private void itemProducto_abonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProducto_abonarActionPerformed
