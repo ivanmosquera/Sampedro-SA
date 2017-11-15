@@ -188,7 +188,7 @@ public class Factura {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql3 = "INSERT INTO anulacion values(?,?,?,?)";
+        String sql3 = "INSERT INTO `SAMPEDRO`.`anulacion` (`fk_Factura`, `Motivo`, `fk_Usuario`, `Fecha_anulacion`) VALUES (?, ?, ?, ?);";
         Date date = new Date();
         ResultSet rs = null;
         //Caso 1: obtener la hora y salida por pantalla con formato:
@@ -217,7 +217,7 @@ public class Factura {
             
             
         }catch(SQLException e){
-            resul = "Error  en detalle Factura: "+e; 
+            resul = "Error  en anulaciones: "+e; 
             System.out.println(resul);
         }
         
@@ -225,20 +225,20 @@ public class Factura {
         return resul;      
         }
     
-        public static String update_estado_factura(int codigo){
+        public String update_estado_factura(int codigo){
         
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
         ResultSet rs = null;
-        String sql = "UPDATE `San Pedro`.`factura` SET `fk_Estado`= ? WHERE `id_Factura`= ? ";
+        String sql = "UPDATE factura SET fk_Estado= ? WHERE id_Factura= ? ";
         try{
             pst = cn.prepareStatement(sql);
             pst.setInt(1,3);
             pst.setInt(2,codigo);
-            pst.execute();
-             resul = "correcto update estado factura" ;
+            pst.executeQuery();
+            resul = "correcto update estado factura" ;
             System.out.println(resul);
             
         } catch (Exception e){
@@ -250,6 +250,43 @@ public class Factura {
         
     }
     
+        public static String Update(int id){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql3 =  "UPDATE factura SET fk_Estado= ? WHERE id_Factura= ? ";
+        Date date = new Date();
+        ResultSet rs = null;
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+        System.out.println(hora);
+        System.out.println(dia);
+
+        try{
+            pst = cn.prepareStatement(sql3);
+            pst.setInt(1,3);
+            pst.setInt(2,id);
+
+            pst.execute();
+            resul = "UPDATE REALIZADO";
+           
+            
+            
+            
+            
+        }catch(SQLException e){
+            resul = "Error  en UPDATE: "+e; 
+            System.out.println(resul);
+        }
+        
+       cc.desconectar();
+        return resul;      
+        }
     
        
   }

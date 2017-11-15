@@ -174,7 +174,7 @@ public class SepararPrenda {
     
     
         
-    public static String Ingreso_nuevo_saldo(int codigop , Float nuevo_saldo){
+    public static String Ingreso_nuevo_saldo(int codigop , float nuevo_saldo){
         
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -260,7 +260,112 @@ public class SepararPrenda {
          return resul;
         
     }
+      
+        public static String Update_Prenda(String cod,int codsep){
+        
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql3 = "UPDATE detalle_separado SET fk_Producto= ? WHERE fk_Separado= ?;" ;
+        Date date = new Date();
+        ResultSet rs = null;
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dia = dateFormat.format(date);
+        int flag = 0;
+        int id_ultimo;
+        try{
+            pst = cn.prepareStatement(sql3);
+            pst.setString(1,cod);
+            pst.setInt(2,codsep);
+            pst.execute();
+            resul = "Update prenda correcto";
 
+            
+        }catch(SQLException e){
+            resul = "Updtae prenda incorrecto : "+e; 
+            System.out.println(resul);
+        }
+        
+       cc.desconectar();
+        return resul;   
+        
+    }
+      
+      
+
+    public static String Update_saldo(float saldo ,int sepa){
+        
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql = "UPDATE separado SET Saldo= ? WHERE id_Separado = ? ";
+        Date date = new Date();
+        ResultSet rs = null;
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dia = dateFormat.format(date);
+        int flag = 0;
+        int id_ultimo;
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setFloat(1,saldo);
+            pst.setInt(2,sepa);
+            pst.execute();
+            resul = "Update abono correcto";
+
+            
+        }catch(SQLException e){
+            resul = "Error  update abono: "+e; 
+            System.out.println(resul);
+        }
+        
+       cc.desconectar();
+        return resul;   
+        
+    } 
+     public  String Update(float saldo ,int sepa){
+        
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql = "UPDATE separado SET Saldo= ? WHERE id_Separado = ? ";
+        Date date = new Date();
+        ResultSet rs = null;
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dia = dateFormat.format(date);
+        int flag = 0;
+        int id_ultimo;
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setFloat(1,saldo);
+            pst.setInt(2,sepa);
+            pst.execute();
+            resul = "Update abono correcto";
+
+            
+        }catch(SQLException e){
+            resul = "Error  update abono: "+e; 
+            System.out.println(resul);
+        }
+        
+       cc.desconectar();
+        return resul;   
+        
+    } 
     
     
     

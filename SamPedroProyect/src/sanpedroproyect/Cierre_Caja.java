@@ -6,6 +6,7 @@
 
 package sanpedroproyect;
 
+import Class.Detalle_Cierre_Abono;
 import Class.Detalle_Cierre_Anulada;
 import Class.Detalle_Cierre_Caja;
 import Class.Mirender;
@@ -73,7 +74,11 @@ public class Cierre_Caja extends javax.swing.JFrame {
         
         s = rp.consultar_abonos();
         tbl_abonos_hoy.setModel(s);
-        total_anuladas = rp.getTotal_abonos_hoy();
+        float total_abono = rp.getTotal_abonos_hoy();
+        lbl_abono.setText(String.valueOf(total_abono));
+        
+        double totalcaja = total_abono + total_efectivo;
+        lbl_total_caja.setText(String.valueOf(totalcaja));
         //String totalb = String.format(java.util.Locale.US,"%.2f", total_anuladas);
         //lbl_Anuladas_hoy.setText(String.valueOf(totala));
         //total_efectivo_a = rp.getTotal_pago_efectivo_anuladas();
@@ -125,6 +130,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_abonos_hoy = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
+        lbl_abono = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -235,6 +241,54 @@ public class Cierre_Caja extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(lbl_total_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(23, 23, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_ventas_hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(lbl_efectivo1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_tarjeta_hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(lbl_efectivo)
+                            .addGap(18, 18, 18)
+                            .addComponent(lbl_efectivo_hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_Anuladas_hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_efectivo3)
+                            .addComponent(lbl_efectivo2))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_efectivo_hoy_a, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_tarjeta_hoy_a, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_abono, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(205, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(451, 451, 451)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -242,60 +296,12 @@ public class Cierre_Caja extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel7)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(125, 125, 125)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(128, 128, 128)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(136, 136, 136)
-                                        .addComponent(lbl_total_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(245, 245, 245)
-                                .addComponent(lbl_Anuladas_hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_ventas_hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lbl_efectivo1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbl_tarjeta_hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lbl_efectivo)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lbl_efectivo_hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(163, 163, 163)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_efectivo_hoy_a, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_tarjeta_hoy_a, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbl_efectivo3)
-                                .addComponent(lbl_efectivo2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel8)))))
-                .addContainerGap(188, Short.MAX_VALUE))
+                            .addComponent(jLabel7))))
+                .addContainerGap(709, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(465, 465, 465))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))))
+                .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(465, 465, 465))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(376, 376, 376)
@@ -331,39 +337,33 @@ public class Cierre_Caja extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addComponent(lbl_Anuladas_hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(lbl_efectivo2)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(lbl_efectivo_hoy_a, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(lbl_tarjeta_hoy_a, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbl_efectivo3)
-                                .addGap(57, 57, 57))))
+                            .addComponent(jLabel5)
+                            .addComponent(lbl_Anuladas_hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_efectivo2)
+                            .addComponent(lbl_efectivo_hoy_a, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_efectivo3)
+                            .addComponent(lbl_tarjeta_hoy_a, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(5, 5, 5))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_total_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(10, 10, 10))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_abono, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(lbl_total_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
                 .addComponent(btn_salir)
                 .addGap(30, 30, 30))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -457,6 +457,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbl_Anuladas_hoy;
+    private javax.swing.JLabel lbl_abono;
     private javax.swing.JLabel lbl_efectivo;
     private javax.swing.JLabel lbl_efectivo1;
     private javax.swing.JLabel lbl_efectivo2;
@@ -475,8 +476,11 @@ private void priceInvoice(){
         
         DefaultTableModel order_list = new DefaultTableModel();
          DefaultTableModel order_list_a = new DefaultTableModel();
+         DefaultTableModel order_list_b = new DefaultTableModel();
         String id, fecha,  cliente, subtotal, total,efectivo, tarjeta;
         String id_a, fecha_a,  cliente_a, subtotal_a, total_a,efectivo_a, tarjeta_a;
+        String id_b, fecha_b,  cliente_b, subtotal_b, total_b,efectivo_b, tarjeta_b;
+        
         InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/Cierre_Caja_i.jrxml");
         
         try {
@@ -490,6 +494,7 @@ private void priceInvoice(){
             para.put("EFECTIVOA", lbl_efectivo_hoy_a.getText());
             para.put("TARJETAA", lbl_tarjeta_hoy_a.getText());
             para.put("TOTALCAJA",lbl_total_caja.getText());
+            para.put("TOTALABONADO",lbl_abono.getText());
             
             order_list = (DefaultTableModel) Tbl_ventas_hoy.getModel();
             int numero_filas = order_list.getRowCount();
@@ -503,16 +508,17 @@ private void priceInvoice(){
                 total = Tbl_ventas_hoy.getValueAt(i,4).toString();
                 efectivo = Tbl_ventas_hoy.getValueAt(i,5).toString();    
                 tarjeta = Tbl_ventas_hoy.getValueAt(i,6).toString(); 
-                plist.add(new Detalle_Cierre_Caja(id, fecha,  cliente, subtotal, total,efectivo, tarjeta));
+                String tipo = "VENTA";
+                plist.add(new Detalle_Cierre_Caja(id, fecha,  cliente, subtotal, total,efectivo, tarjeta,tipo));
   
             }
             
             
-           /* order_list_a = (DefaultTableModel) tbl_anuladas_hoy.getModel();
-            int numero_filas_a = order_list.getRowCount();
-            ArrayList<Detalle_Cierre_Anulada> plist_a = new ArrayList<>();
+            /*order_list_a = (DefaultTableModel) tbl_anuladas_hoy.getModel();
+            int numero_filas_a = order_list_a.getRowCount();
+            //ArrayList<Detalle_Cierre_Caja> plist = new ArrayList<>();
 
-            for(i=0;i<numero_filas;i++){
+            for(i=0;i<numero_filas_a;i++){
                 id_a = tbl_anuladas_hoy.getValueAt(i, 0).toString();
                 fecha_a = tbl_anuladas_hoy.getValueAt(i, 1).toString();
                 cliente_a = tbl_anuladas_hoy.getValueAt(i, 2).toString();
@@ -520,9 +526,29 @@ private void priceInvoice(){
                 total_a = tbl_anuladas_hoy.getValueAt(i,4).toString();
                 efectivo_a = tbl_anuladas_hoy.getValueAt(i,5).toString();    
                 tarjeta_a = tbl_anuladas_hoy.getValueAt(i,6).toString(); 
-                plist_a.add(new Detalle_Cierre_Anulada(id_a, fecha_a,  cliente_a, subtotal_a, total_a,efectivo_a, tarjeta_a));
+                String tipoanulado = "ANULADO";
+                plist.add(new Detalle_Cierre_Caja(id_a, fecha_a,  cliente_a, subtotal_a, total_a,efectivo_a, tarjeta_a,tipoanulado));
   
             }*/
+            
+            
+           /* order_list_b = (DefaultTableModel) tbl_abonos_hoy.getModel();
+            int numero_filas_ab = order_list_b.getRowCount();
+            //ArrayList<Detalle_Cierre_Abono> plist_ab = new ArrayList<>();
+            for(i=0;i<numero_filas_ab;i++){
+                id_b = tbl_abonos_hoy.getValueAt(i, 0).toString();
+                cliente_b = Tbl_ventas_hoy.getValueAt(i, 1).toString();
+                total_b = tbl_abonos_hoy.getValueAt(i, 2).toString();
+                fecha_b = tbl_abonos_hoy.getValueAt(i, 4).toString();
+                subtotal_b = "0";
+                efectivo_b = "0";
+                tarjeta_b = "0";
+                String tipoabono = "ABONO";
+                plist.add(new Detalle_Cierre_Caja(id_b, fecha_b,  cliente_b, subtotal_b, total_b,efectivo_b, tarjeta_b,tipoabono));
+  
+            }*/
+            
+            
             
             JRBeanCollectionDataSource jcs = new JRBeanCollectionDataSource(plist);
             JasperPrint jp = JasperFillManager.fillReport(jr, para, jcs );
