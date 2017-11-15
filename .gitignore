@@ -21,11 +21,11 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-SamPedroProyect/src/DATABASE/*
-/SamPedroProyect/dist/
-/SamPedroProyect/build/
+SamPedroProyect/src/DATABASE/ConnectionDB.java
+SamPedroProyect/dist/
+SamPedroProyect/build/classes
 
-nbproject/private/
+SamPedroProyect/nbproject/private/
 build/
 nbbuild/
 dist/
