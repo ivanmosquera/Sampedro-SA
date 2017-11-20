@@ -42,7 +42,7 @@ public class Login extends javax.swing.JFrame {
         ResultSet rs2 = null;
         //String Desc;
         try{
-           String sql = ("SELECT * FROM usuario WHERE Usuario='"+usuario+"' AND Contraseña=sha1('"+clave+"')");
+           String sql = ("SELECT * FROM usuario WHERE Usuario='"+usuario+"' AND Contraseña=sha1('"+clave+"') AND Estado='ACTIVO'");
            //String sql2 = ("SELECT Detalle, Nombre FROM rol JOIN roles_permisos ON rol.id_Rol = roles_permisos.fk_Rol JOIN permisos ON roles_permisos.fk_Permiso = permisos.id_Permiso WHERE rol.id_Rol="+rol_usuario+" ORDER BY Detalle");
            pst = cn.prepareStatement(sql);
            //pst.setString(1, cadena);
