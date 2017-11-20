@@ -685,7 +685,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         txt_mail.setEditable(false);
 
-        txt_cedula.setEditable(false);
+        txt_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cedulaKeyReleased(evt);
+            }
+        });
 
         txt_vendedor.setEditable(false);
         txt_vendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -1089,7 +1093,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                             .addComponent(jLabel13)
                             .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Factura_panelLayout.createSequentialGroup()
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lbl_pagovaucher)
@@ -1098,7 +1102,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lbl_efectivo)
                                     .addComponent(txt_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btn_realizar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_realizar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(42, 42, 42)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
@@ -1568,6 +1572,41 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private void txt_desctoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_desctoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_desctoActionPerformed
+
+    private void txt_cedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaKeyReleased
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            String cedu = txt_cedula.getText().toString();
+                    System.out.println("Aplasto ENter");
+                        String resul = null , lats = null;
+                        ConnectionDB cc = new ConnectionDB();
+                        Connection cn = cc.getConnection();
+                        PreparedStatement pst =null;
+                        ResultSet rs = null;
+                        String Desc;
+                        try{
+                           String sql = ("SELECT * FROM cliente where Cedula = ?");
+                           pst = cn.prepareStatement(sql);
+                           pst.setString(1,cedu);
+                           rs =pst.executeQuery();
+                           if (rs.next()){
+                               cbx_Nombre.getEditor().setItem(rs.getString("Nombre"));
+                               codigo_cliente = rs.getInt("id_Cliente");
+                               txt_cedula.setText(rs.getString("Cedula"));
+                               txt_dir.setText(rs.getString("Direccion"));
+                               txt_mail.setText(rs.getString("Correo"));
+                               txt_telefono.setText(rs.getString("Telefono"));
+                          
+                           }
+
+
+
+                        } catch (Exception ex){
+                            System.out.println(ex);
+                        }
+                    
+                }
+    }//GEN-LAST:event_txt_cedulaKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combo_FORMA_PAGO;

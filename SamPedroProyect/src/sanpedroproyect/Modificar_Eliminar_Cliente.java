@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
+import static sanpedroproyect.GUI_Factura.codigo_cliente;
 import static sanpedroproyect.Ingreso_Nuevo_Cliente.Nombre;
 
 /**
@@ -218,6 +219,12 @@ Cliente c = new Cliente();
         setTitle("SAMPEDRO S.A.");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        txtcedu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtceduKeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel8.setText("Correo");
@@ -440,6 +447,44 @@ Cliente c = new Cliente();
 
         dispose();
     }//GEN-LAST:event_btn_salirModificarClienteActionPerformed
+
+    private void txtceduKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtceduKeyTyped
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            String cedu = txtcedu.getText().toString();
+                    System.out.println("Aplasto ENter");
+                        String resul = null , lats = null;
+                        ConnectionDB cc = new ConnectionDB();
+                        Connection cn = cc.getConnection();
+                        PreparedStatement pst =null;
+                        ResultSet rs = null;
+                        String Desc;
+                        try{
+                           String sql = ("SELECT * FROM cliente where Cedula = ?");
+                           pst = cn.prepareStatement(sql);
+                           pst.setString(1,cedu);
+                           rs =pst.executeQuery();
+                           if (rs.next()){
+                               cbx_Nombre.getEditor().setItem(rs.getString("Nombre"));
+                               codigo_cliente = rs.getInt("id_Cliente");
+                               txtcedu.setText(rs.getString("Cedula"));
+                               txt_dir.setText(rs.getString("Direccion"));
+                               txt_correo.setText(rs.getString("Correo"));
+                               txt_fono.setText(rs.getString("Telefono"));
+                               txt_ciu.setText(rs.getString("Ciudad"));
+                               txt_nota.setText(rs.getString("Nota"));
+                               
+                          
+                           }
+
+
+
+                        } catch (Exception ex){
+                            System.out.println(ex);
+                        }
+                    
+                }
+    }//GEN-LAST:event_txtceduKeyTyped
 
     
      private void limpiar(){
