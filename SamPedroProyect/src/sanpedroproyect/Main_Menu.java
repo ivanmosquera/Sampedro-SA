@@ -481,7 +481,6 @@ public class Main_Menu extends javax.swing.JFrame {
                     ventana_separar.setVisible(true);
                     ventana_separar.setResizable(false);
                     acceso_permitido = 1;
-                    dispose(); 
               }
           
           }
@@ -503,7 +502,7 @@ public class Main_Menu extends javax.swing.JFrame {
                     ventana_factura.setVisible(true);
                     ventana_factura.setResizable(false);
                     acceso_permitido = 1;
-                    dispose(); 
+                    
               }
           
           }
@@ -518,7 +517,6 @@ public class Main_Menu extends javax.swing.JFrame {
         Ingreso_Nuevo_Usuario ventana_ingresoUsuario = new Ingreso_Nuevo_Usuario();
         ventana_ingresoUsuario.setVisible(true);
         ventana_ingresoUsuario.setResizable(false);
-        dispose();
     }//GEN-LAST:event_itemConfig_registrarUsuarioActionPerformed
 
     private void itemConfig_administrarRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_administrarRolesActionPerformed
@@ -527,21 +525,19 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_modificarPerfil.setVisible(true);
         ventana_modificarPerfil.setResizable(false);
         ventana_modificarPerfil.setLocationRelativeTo(null);
-        dispose();
     }//GEN-LAST:event_itemConfig_administrarRolesActionPerformed
 
     private void btn_go_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_inventarioActionPerformed
         Ingreso_Inventario ventana_ingresoInventario = new Ingreso_Inventario();
         ventana_ingresoInventario.setVisible(true);
         ventana_ingresoInventario.setResizable(false);
-        dispose();
     }//GEN-LAST:event_btn_go_inventarioActionPerformed
 
     private void btn_go_RegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_RegistroClienteActionPerformed
         Ingreso_Nuevo_Cliente ventana_ingresoCliente = new Ingreso_Nuevo_Cliente();
         ventana_ingresoCliente.setVisible(true);
         ventana_ingresoCliente.setResizable(false);
-        dispose();
+        
     }//GEN-LAST:event_btn_go_RegistroClienteActionPerformed
 
     private void btn_go_cierreCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_cierreCajaActionPerformed
@@ -549,14 +545,14 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_cierreCaja.setVisible(true);
         ventana_cierreCaja.setResizable(false);
         ventana_cierreCaja.setLocationRelativeTo(null);
-        dispose();
+       
     }//GEN-LAST:event_btn_go_cierreCajaActionPerformed
 
     private void itemFactura_nuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFactura_nuevaFacturaActionPerformed
             GUI_Factura ventana_factura = new GUI_Factura();
             ventana_factura.setVisible(true);
             ventana_factura.setResizable(false);
-            dispose();
+            
          
     }//GEN-LAST:event_itemFactura_nuevaFacturaActionPerformed
 
@@ -565,64 +561,64 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_verFacturas.setVisible(true);
         ventana_verFacturas.setResizable(false);
         ventana_verFacturas.setLocationRelativeTo(null);
-        dispose();
+        
     }//GEN-LAST:event_itemFactura_verFacturasActionPerformed
 
     private void itemCliente_registrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCliente_registrarClienteActionPerformed
         Ingreso_Nuevo_Cliente ventana_ingresoCliente = new Ingreso_Nuevo_Cliente();
         ventana_ingresoCliente.setVisible(true);
         ventana_ingresoCliente.setResizable(false);
-        dispose();
+       
     }//GEN-LAST:event_itemCliente_registrarClienteActionPerformed
 
     private void itemCliente_modificar_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCliente_modificar_eliminarActionPerformed
         Modificar_Eliminar_Cliente ventana_modificar_eliminarCliente = new Modificar_Eliminar_Cliente();
         ventana_modificar_eliminarCliente.setVisible(true);
         ventana_modificar_eliminarCliente.setResizable(false);
-        dispose();
+        
     }//GEN-LAST:event_itemCliente_modificar_eliminarActionPerformed
 
     private void itemProducto_ingresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProducto_ingresarProductoActionPerformed
         Ingreso_Nueva_prenda ventana_nuevaPrenda = new Ingreso_Nueva_prenda();
         ventana_nuevaPrenda.setVisible(true);
         ventana_nuevaPrenda.setResizable(false);
-        dispose();
+        
     }//GEN-LAST:event_itemProducto_ingresarProductoActionPerformed
 
     private void itemProducto_separarPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProducto_separarPrendaActionPerformed
         Separar ventana_separar = new Separar();
         ventana_separar.setVisible(true);
         ventana_separar.setResizable(false);
-        dispose();
+       
     }//GEN-LAST:event_itemProducto_separarPrendaActionPerformed
 
     private void itemInventario_ingresoInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInventario_ingresoInventarioActionPerformed
         Ingreso_Inventario ventana_ingresoInventario = new Ingreso_Inventario();
         ventana_ingresoInventario.setVisible(true);
         ventana_ingresoInventario.setResizable(false);
-        dispose();
+        
     }//GEN-LAST:event_itemInventario_ingresoInventarioActionPerformed
 
     private void itemInventario_inventariosTotalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInventario_inventariosTotalesActionPerformed
         Inventario_Totales ventana_inventariosTotales = new Inventario_Totales();
         ventana_inventariosTotales.setVisible(true);
         ventana_inventariosTotales.setResizable(false);
-        dispose();
+       
     }//GEN-LAST:event_itemInventario_inventariosTotalesActionPerformed
 
     private void itemConfig_cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_cerrarSesionActionPerformed
         Login ventana_login = new Login();
         ventana_login.setVisible(true);
         ventana_login.setResizable(false);
-        dispose();
+       
     }//GEN-LAST:event_itemConfig_cerrarSesionActionPerformed
 
     private void btn_go_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_reportesActionPerformed
-        Reportes ventana_reportes = new Reportes();
-        ventana_reportes.setVisible(true);
-        ventana_reportes.setResizable(false);
-        ventana_reportes.setLocationRelativeTo(null);
-        dispose();
+        Inventario_Totales tot = new Inventario_Totales();
+        tot.setVisible(true);
+        tot.setResizable(false);
+        tot.setLocationRelativeTo(null);
+
     }//GEN-LAST:event_btn_go_reportesActionPerformed
 
     private void btn_go_anulacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_anulacionesActionPerformed
@@ -631,7 +627,7 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_anulaciones.setVisible(true);
         ventana_anulaciones.setResizable(false);
         ventana_anulaciones.setLocationRelativeTo(null);
-        dispose();
+  
     }//GEN-LAST:event_btn_go_anulacionesActionPerformed
 
     private void itemConfig_modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_modificarUsuarioActionPerformed
@@ -640,7 +636,7 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_modificarUsuario.setVisible(true);
         ventana_modificarUsuario.setResizable(false);
         ventana_modificarUsuario.setLocationRelativeTo(null);
-        dispose();
+ 
     }//GEN-LAST:event_itemConfig_modificarUsuarioActionPerformed
 
     private void itemProducto_abonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProducto_abonarActionPerformed
@@ -649,7 +645,6 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_abonar.setVisible(true);
         ventana_abonar.setResizable(false);
         ventana_abonar.setLocationRelativeTo(null);
-        dispose();
     }//GEN-LAST:event_itemProducto_abonarActionPerformed
 
     private void reporteinventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteinventarioActionPerformed
@@ -657,7 +652,6 @@ public class Main_Menu extends javax.swing.JFrame {
         Reporte_Inventario ri = new Reporte_Inventario();
         ri.setVisible(true);
         ri.setResizable(false);
-        dispose();
     }//GEN-LAST:event_reporteinventarioActionPerformed
 
     private void reporteproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteproductoActionPerformed
@@ -665,7 +659,6 @@ public class Main_Menu extends javax.swing.JFrame {
         Inventario_Totales it = new Inventario_Totales();
         it.setVisible(true);
         it.setResizable(false);
-        dispose();
     }//GEN-LAST:event_reporteproductoActionPerformed
 
     private void reporteseparadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteseparadosActionPerformed
@@ -673,7 +666,6 @@ public class Main_Menu extends javax.swing.JFrame {
         Reporte_Separados rs = new Reporte_Separados();
         rs.setVisible(true);
         rs.setResizable(false);
-        dispose();
     }//GEN-LAST:event_reporteseparadosActionPerformed
 
     private void itemConfig_nuevoRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_nuevoRolActionPerformed
@@ -681,7 +673,6 @@ public class Main_Menu extends javax.swing.JFrame {
         Ingreso_Nuevo_Perfil ventana_ingresoPerfil = new Ingreso_Nuevo_Perfil();
         ventana_ingresoPerfil.setVisible(true);
         ventana_ingresoPerfil.setResizable(false);
-        dispose();
     }//GEN-LAST:event_itemConfig_nuevoRolActionPerformed
 
     private void itemReportes_ventaPrendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportes_ventaPrendasActionPerformed
@@ -690,7 +681,6 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_reporteVentaPrendas.setVisible(true);
         ventana_reporteVentaPrendas.setResizable(false);
         ventana_reporteVentaPrendas.setLocationRelativeTo(null);
-        dispose();
     }//GEN-LAST:event_itemReportes_ventaPrendasActionPerformed
 
     private void itemFactura_verFacturasFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFactura_verFacturasFechaActionPerformed
@@ -699,7 +689,6 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_verFacturasFecha.setVisible(true);
         ventana_verFacturasFecha.setResizable(false);
         ventana_verFacturasFecha.setLocationRelativeTo(null);
-        dispose();
     }//GEN-LAST:event_itemFactura_verFacturasFechaActionPerformed
 
     public  int getCodigo_usuario() {
@@ -718,43 +707,6 @@ public class Main_Menu extends javax.swing.JFrame {
         Main_Menu.nombre_usuario = nombre_usuario;
     }
     
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-                //new Main_Menu().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_go_RegistroCliente;

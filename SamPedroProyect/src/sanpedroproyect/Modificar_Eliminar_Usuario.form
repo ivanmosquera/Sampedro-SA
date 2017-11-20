@@ -62,10 +62,10 @@
                           </Group>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="cbx_Nombre" pref="178" max="32767" attributes="0"/>
-                              <Component id="txt_password" alignment="0" pref="178" max="32767" attributes="0"/>
-                              <Component id="txt_usuario" alignment="0" pref="178" max="32767" attributes="0"/>
-                              <Component id="txtcedu" alignment="0" pref="178" max="32767" attributes="0"/>
+                              <Component id="cbx_Nombre" max="32767" attributes="0"/>
+                              <Component id="txt_password" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txt_usuario" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtcedu" alignment="0" max="32767" attributes="0"/>
                               <Component id="cb_selectRol" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>

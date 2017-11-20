@@ -9,7 +9,12 @@ package Class;
 import DATABASE.ConnectionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import sanpedroproyect.Ingreso_Nuevo_Cliente;
 import sanpedroproyect.Modificar_Eliminar_Cliente;
 
@@ -50,12 +55,51 @@ public class Cliente {
         return resul;
     }
     
+    public String existe_cliente(String Cedula){
+        
+        String msj = "";
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+        String sql  =  "SELECT * FROM cliente WHERE Cedula = ? ";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            pst.setString(1, Cedula);
+            rs = pst.executeQuery();
+            
+            if(rs.last()){
+                msj = "Existe";
+                System.out.println(msj);
+            }
+            else{
+                msj = "No Existe";
+                System.out.println(msj);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error en buscqueda cliente : "+  e);
+        }
+        
+        return msj;
+        
+    }
+    
+    
+    
     public static String Modificar_Cliente(){
        String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "UPDATE `San Pedro`.`cliente` SET `Cedula`= ? , `Nombre`= ? , `Correo`= ?, `Telefono`= ? , `Direccion`= ? , `Ciudad`= ? , `Nota`= ?   WHERE `id_Cliente`= ?;";
+        String sql = "UPDATE cliente SET Cedula= ? , Nombre= ? , Correo= ?, Telefono= ? , Direccion= ? , Ciudad= ? , Nota= ?   WHERE id_Cliente= ?;";
         try{
             pst = cn.prepareStatement(sql);
             pst.setString(1,mod.getCedula());
@@ -83,7 +127,7 @@ public class Cliente {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "UPDATE `San Pedro`.`cliente` SET `Estado`= ?  WHERE `id_Cliente`= ?;";
+        String sql = "UPDATE cliente SET Estado= ?  WHERE id_Cliente = ?;";
         try{
             pst = cn.prepareStatement(sql);
             pst.setString(1,"ELIMINADO");

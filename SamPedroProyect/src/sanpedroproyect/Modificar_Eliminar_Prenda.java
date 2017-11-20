@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import static sanpedroproyect.Detalle_Factura.codigo_cliente;
+import static sanpedroproyect.GUI_Factura.codigo_cliente;
 import static sanpedroproyect.Ingreso_Inventario.Codigo_Producto;
 
 
@@ -22,7 +23,7 @@ import static sanpedroproyect.Ingreso_Inventario.Codigo_Producto;
  *
  * @author Pantheon
  */
-public class Ingreso_Nueva_prenda extends javax.swing.JFrame {
+public class Modificar_Eliminar_Prenda extends javax.swing.JFrame {
 static String Codigo , Detalle , Talla;
 static float Precio;
 int USUARIO;
@@ -64,7 +65,7 @@ Prenda p = new Prenda();
     /**
      * Creates new form Ingreso_Nueva_prenda
      */
-    public Ingreso_Nueva_prenda() {
+    public Modificar_Eliminar_Prenda() {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -138,6 +139,12 @@ Prenda p = new Prenda();
         jLabel5.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel5.setMinimumSize(new java.awt.Dimension(439, 14));
 
+        txt_codigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_codigoKeyReleased(evt);
+            }
+        });
+
         txt_precio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_precioKeyTyped(evt);
@@ -156,8 +163,8 @@ Prenda p = new Prenda();
         });
 
         btn_guardar_nuevaprenda.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        btn_guardar_nuevaprenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
-        btn_guardar_nuevaprenda.setText("Guardar");
+        btn_guardar_nuevaprenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar.png"))); // NOI18N
+        btn_guardar_nuevaprenda.setText("Modificar");
         btn_guardar_nuevaprenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_guardar_nuevaprenda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_guardar_nuevaprenda.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +188,7 @@ Prenda p = new Prenda();
         jLabel2.setText("Codigo");
 
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
-        jLabel1.setText("Ingresar Nueva Prenda");
+        jLabel1.setText("Modificar  Prenda");
 
         jLabel7.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel7.setText("Talla");
@@ -197,42 +204,43 @@ Prenda p = new Prenda();
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 98, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(98, 98, 98))
             .addComponent(jSeparator2)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(btn_guardar_nuevaprenda)
                 .addGap(79, 79, 79)
                 .addComponent(btn_limpiarIngresoPrenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(btn_salirIngresoPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_detalle, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGap(31, 31, 31)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_detalle, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txt_talla, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                                        .addComponent(txt_precio))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_talla, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                                .addComponent(txt_precio)))))
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -297,40 +305,32 @@ Prenda p = new Prenda();
     }
     private void btn_guardar_nuevaprendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_nuevaprendaActionPerformed
         // TODO add your handling code here:
-        Codigo = txt_codigo.getText();
-        String existe = p.existe_producto(Codigo);
-        if(existe.equals("Existe")){
-             JOptionPane.showMessageDialog(null, "CODIGO EXISTENTE" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
-        }else if (existe.equals("No Existe")){
-                   if(txt_codigo.getText().equals("")||txt_detalle.getText().equals("")||txt_precio.getText().equals("")||txt_talla.getText().equals("")){
-                        JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
-                    }else{
-                        Codigo = txt_codigo.getText();
-                        Detalle = txt_detalle.getText();
-                        Precio = Float.parseFloat(txt_precio.getText());
-                        Talla = txt_talla.getText();
-                        int id_cat = p.GetidCategoria(cmb_categoria.getSelectedItem().toString());
-                        String msj = p.Ingresar_Prenda(Codigo,USUARIO,id_cat);
-                         if(msj.equals("Prenda Ingresado Correctamente")){
-                          JOptionPane.showMessageDialog(null, "Prenda Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE); 
-                          limpiar();
-                        }else{
-                          JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
-                        }
-                        Ingreso_producto_inventario ipi = new Ingreso_producto_inventario(Codigo);
-                        ipi.setVisible(true);
-                        ipi.setLocationRelativeTo(null);
-                        ipi.setResizable(false);
-                        dispose();
-                    }
+        if(txt_codigo.getText().equals("")||txt_detalle.getText().equals("")||txt_precio.getText().equals("")||txt_talla.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
+        }else{
+            Codigo = txt_codigo.getText();
+            Detalle = txt_detalle.getText();
+            Precio = Float.parseFloat(txt_precio.getText());
+            Talla = txt_talla.getText();
+            int id_cat = p.GetidCategoria(cmb_categoria.getSelectedItem().toString());
+            String msj = p.Modificar_Prenda(Codigo,id_cat,Detalle,Talla,Precio);
+             if(msj.equals("Prenda Modificada Correctamente")){
+              JOptionPane.showMessageDialog(null, "Prenda Modificada Correctamente" , "MODIFICACIÒN EXITOSA" , JOptionPane.INFORMATION_MESSAGE); 
+              limpiar();
+            }else{
+              JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+            }
+            
         }
-        
- 
  
     }//GEN-LAST:event_btn_guardar_nuevaprendaActionPerformed
 
     private void btn_salirIngresoPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirIngresoPrendaActionPerformed
         //System.exit(0);
+        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        ventana_menuPrincipal.setVisible(true);
+        ventana_menuPrincipal.setLocationRelativeTo(null);
+        ventana_menuPrincipal.setResizable(false);
         dispose();
     }//GEN-LAST:event_btn_salirIngresoPrendaActionPerformed
 
@@ -352,7 +352,40 @@ Prenda p = new Prenda();
             evt.consume();
         }
     }//GEN-LAST:event_txt_precioKeyTyped
- 
+
+    private void txt_codigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_codigoKeyReleased
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+                    
+                    System.out.println("Aplasto ENter");
+                        String resul = null , lats = null;
+                        ConnectionDB cc = new ConnectionDB();
+                        Connection cn = cc.getConnection();
+                        PreparedStatement pst =null;
+                        ResultSet rs = null;
+                        String Desc;
+                        try{
+                           String sql = ("SELECT * FROM producto where id_Producto = ?");
+                           pst = cn.prepareStatement(sql);
+                           pst.setString(1,txt_codigo.getText().toString());
+                           rs =pst.executeQuery();
+                           if (rs.next()){
+                               int codigo_pro = rs.getInt("id_Producto");
+                               txt_detalle.setText(rs.getString("Descripcion"));
+                               txt_precio.setText(rs.getString("Precio"));
+                               txt_talla.setText(rs.getString("Talla"));
+                           }
+
+
+
+                        } catch (Exception ex){
+                            System.out.println(ex);
+                        }
+                    
+                }
+    }//GEN-LAST:event_txt_codigoKeyReleased
+
+       
          public void SLetras(JTextField a){
         a.addKeyListener(new KeyAdapter() {
 

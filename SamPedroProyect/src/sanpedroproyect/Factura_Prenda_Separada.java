@@ -954,10 +954,10 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
         //System.exit(0); 
-        Main_Menu ventana_menuPrincipal = new Main_Menu();
+        /*Main_Menu ventana_menuPrincipal = new Main_Menu();
         ventana_menuPrincipal.setVisible(true);
         ventana_menuPrincipal.setLocationRelativeTo(null);
-        ventana_menuPrincipal.setResizable(false);
+        ventana_menuPrincipal.setResizable(false);*/
         dispose();
     }//GEN-LAST:event_btn_SalirActionPerformed
 

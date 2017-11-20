@@ -320,11 +320,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         txt_nota1.setText("");
     }
     private void btn_salirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirClienteActionPerformed
-        //System.exit(0);
-        Main_Menu ventana_menuPrincipal = new Main_Menu();
-        ventana_menuPrincipal.setVisible(true);
-        ventana_menuPrincipal.setLocationRelativeTo(null);
-        ventana_menuPrincipal.setResizable(false);
+
         dispose();
     }//GEN-LAST:event_btn_salirClienteActionPerformed
 
@@ -334,65 +330,38 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
 
     private void btn_nc_guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nc_guardar1ActionPerformed
         // TODO add your handling code here:
-        if(txt_nombre1.getText().equals("")||txt_ciu1.getText().equals("")||txt_dir1.getText().equals("")||txt_fono1.getText().equals("")||txt_correo1.getText().equals("")||txtcedu1.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
-        }else{
-            Nombre = txt_nombre1.getText();
-           Cedula = txtcedu1.getText();
-           Direccion = txt_dir1.getText();
-           Telefono = txt_fono1.getText();
-           Ciudad = txt_ciu1.getText();
-           Correo = txt_correo1.getText();
-           Nota = txt_nota1.getText();
+        Cedula = txtcedu1.getText();
+        String existe = c.existe_cliente(Cedula);
+        if(existe.equals("Existe")){
+             JOptionPane.showMessageDialog(null, "NUMERO DE CEDULA EXISTENTE" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
+        }else if (existe.equals("No Existe")){
+            if(txt_nombre1.getText().equals("")||txt_ciu1.getText().equals("")||txt_dir1.getText().equals("")||txt_fono1.getText().equals("")||txt_correo1.getText().equals("")||txtcedu1.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
+            }else{
+                Nombre = txt_nombre1.getText();
+               Cedula = txtcedu1.getText();
+               Direccion = txt_dir1.getText();
+               Telefono = txt_fono1.getText();
+               Ciudad = txt_ciu1.getText();
+               Correo = txt_correo1.getText();
+               Nota = txt_nota1.getText();
 
-           String msj = c.Ingresar_cliente();
-           if(msj.equals("CORRECTO INGRESO CLIENTE")){
-             JOptionPane.showMessageDialog(null, "Cliente Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);  
-           }else{
-             JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
-           }
+               String msj = c.Ingresar_cliente();
+               if(msj.equals("CORRECTO INGRESO CLIENTE")){
+                 JOptionPane.showMessageDialog(null, "Cliente Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);  
+               }else{
+                 JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+               }
 
-           limpiar(); 
+               limpiar(); 
+            }
         }
+        
+        
      
     }//GEN-LAST:event_btn_nc_guardar1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ingreso_Nuevo_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ingreso_Nuevo_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ingreso_Nuevo_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ingreso_Nuevo_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Ingreso_Nuevo_Cliente().setVisible(true);
-            }
-        });
-    }
-    
          public void SLetras(JTextField a){
         a.addKeyListener(new KeyAdapter() {
 

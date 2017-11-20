@@ -437,11 +437,7 @@ Cliente c = new Cliente();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btn_salirModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirModificarClienteActionPerformed
-        //System.exit(0);
-        Main_Menu ventana_menuPrincipal = new Main_Menu();
-        ventana_menuPrincipal.setVisible(true);
-        ventana_menuPrincipal.setLocationRelativeTo(null);
-        ventana_menuPrincipal.setResizable(false);
+
         dispose();
     }//GEN-LAST:event_btn_salirModificarClienteActionPerformed
 
@@ -454,40 +450,6 @@ Cliente c = new Cliente();
         txt_dir.setText("");
         txt_fono.setText("");
         txt_nota.setText("");
-    }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Modificar_Eliminar_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Modificar_Eliminar_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Modificar_Eliminar_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Modificar_Eliminar_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Modificar_Eliminar_Cliente().setVisible(true);
-            }
-        });
     }
 
          public void SLetras(JTextField a){

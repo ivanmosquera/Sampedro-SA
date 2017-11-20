@@ -43,7 +43,7 @@ public class Prenda {
         this.Talla = Talla;
         this.Precio = Precio;
     }
-    
+
     static Ingreso_Nueva_prenda  pr = new Ingreso_Nueva_prenda();
     public static String Ingresar_Prenda(String codigo_producto,int usuario,int categoria){
         String resul = null , lats = null;
@@ -87,6 +87,74 @@ public class Prenda {
         return resul;
     }
     
+    
+    
+    public String existe_producto(String codigo){
+        
+        String msj = "";
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+        String sql  =  "SELECT * FROM producto WHERE id_Producto = ? ";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            pst.setString(1, codigo);
+            rs = pst.executeQuery();
+            
+            if(rs.last()){
+                msj = "Existe";
+                System.out.println(msj);
+            }
+            else{
+                msj = "No Existe";
+                System.out.println(msj);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error en buscqueda cliente : "+  e);
+        }
+        
+        return msj;
+        
+    }
+    
+        public static String Modificar_Prenda(String codigo_producto,int categoria, String Detalle , String talla,float preciog ){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql = "UPDATE producto SET Descripcion = ? , Precio = ? ,  Talla = ? ,  fk_Categoria = ? WHERE  id_Producto = ?;";
+        String formattedString = String.format(java.util.Locale.US,"%.2f", preciog);
+        float precio = Float.parseFloat(formattedString);
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,Detalle);
+            pst.setFloat(2,precio);
+            pst.setString(3, talla);
+            pst.setInt(4,categoria);
+            pst.setString(5,codigo_producto);
+            pst.execute();
+            resul = "Prenda Modificada Correctamente";
+            System.out.println(resul);
+            
+        }catch(SQLException e){
+            resul = "Prenda Modificada Incorrectamente";
+            System.out.println(resul);
+            System.out.println(pst);
+            
+        }
+        
+        return resul;
+    }
+
     
     
       public DefaultTableModel consultar_Producto_total(){
