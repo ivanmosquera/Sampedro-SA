@@ -483,7 +483,7 @@ public class Modificar_Eliminar_Perfil extends javax.swing.JFrame {
                     remover_Permisos(nuevo_IdPermiso);
                 }
             };
-            
+            JOptionPane.showMessageDialog(null, "Perfil Modificado Correctamente" , "PERFIL MODIFICADO" , JOptionPane.INFORMATION_MESSAGE);
             obtenerPerfiles();
             limpiar();
         }else{
