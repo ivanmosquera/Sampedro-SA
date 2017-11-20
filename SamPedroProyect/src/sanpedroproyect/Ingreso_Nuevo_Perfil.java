@@ -57,6 +57,7 @@ public class Ingreso_Nuevo_Perfil extends javax.swing.JFrame {
         btn_salirPerfil = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SAMPEDRO S.A");
 
         jLabel11.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel11.setText("Ingresar Nuevo Perfil");
