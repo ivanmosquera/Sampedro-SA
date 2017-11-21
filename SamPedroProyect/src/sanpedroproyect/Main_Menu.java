@@ -610,6 +610,7 @@ public class Main_Menu extends javax.swing.JFrame {
         Login ventana_login = new Login();
         ventana_login.setVisible(true);
         ventana_login.setResizable(false);
+        dispose();
        
     }//GEN-LAST:event_itemConfig_cerrarSesionActionPerformed
 
