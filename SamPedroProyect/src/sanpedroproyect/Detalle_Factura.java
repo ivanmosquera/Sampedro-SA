@@ -197,6 +197,13 @@ public class Detalle_Factura extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialog_motivo = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txt_motivo = new javax.swing.JTextArea();
+        btn_guardar_fact1 = new javax.swing.JButton();
+        btn_Salir1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_numFactura = new javax.swing.JTextField();
@@ -235,6 +242,81 @@ public class Detalle_Factura extends javax.swing.JFrame {
         Tabla_ventas = new javax.swing.JTable();
         btn_guardar_fact = new javax.swing.JButton();
         cbx_Nombre = new javax.swing.JTextField();
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel17.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel17.setText("Motivo de Eliminaciòn");
+
+        txt_motivo.setColumns(20);
+        txt_motivo.setRows(5);
+        jScrollPane2.setViewportView(txt_motivo);
+
+        btn_guardar_fact1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_guardar_fact1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
+        btn_guardar_fact1.setText("OK");
+        btn_guardar_fact1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_guardar_fact1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_guardar_fact1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardar_fact1ActionPerformed(evt);
+            }
+        });
+
+        btn_Salir1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_Salir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
+        btn_Salir1.setText("Salir");
+        btn_Salir1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Salir1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_Salir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Salir1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel17))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btn_guardar_fact1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_Salir1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_guardar_fact1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Salir1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
+        );
+
+        javax.swing.GroupLayout dialog_motivoLayout = new javax.swing.GroupLayout(dialog_motivo.getContentPane());
+        dialog_motivo.getContentPane().setLayout(dialog_motivoLayout);
+        dialog_motivoLayout.setHorizontalGroup(
+            dialog_motivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        dialog_motivoLayout.setVerticalGroup(
+            dialog_motivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -556,6 +638,17 @@ public class Detalle_Factura extends javax.swing.JFrame {
 
     private void btn_guardar_factActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_factActionPerformed
         // TODO add your handling code here:
+        dialog_motivo.setSize(480, 354);
+        dialog_motivo.setLocationRelativeTo(null);
+        dialog_motivo.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_btn_guardar_factActionPerformed
+
+    private void btn_guardar_fact1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_fact1ActionPerformed
+        // TODO add your handling code here:
+        String motivo = txt_motivo.getText().toString();
         DefaultTableModel order_list_guardar = new DefaultTableModel();
         subtotal_static = (Float.parseFloat(txt_subtotal.getText()));
         Descuento_static = (Float.parseFloat(txt_descto.getText()));
@@ -564,7 +657,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
         String codigo_a_guardar;
         int cantidad = 0 ;
         int codigo_obtenido;
-        String s = factura.Eliminar_Factura(id_de_la_factura,USUARIO,"Porque si");  //FALATA PONER MOTIVO   
+        String s = factura.Eliminar_Factura(id_de_la_factura,USUARIO,motivo);  //FALATA PONER MOTIVO   
         String s2 = factura.Update(id_de_la_factura);
         System.out.println("" + s2);
    
@@ -581,15 +674,22 @@ public class Detalle_Factura extends javax.swing.JFrame {
                 cantidad_actual = inv.get_cantidad_total_producto(codigo_a_guardar);
                 nueva_cantidad = (cantidad_actual + cantidad) ;
                 inv.Incremeneto_total_producto(codigo_a_guardar , nueva_cantidad );
-                
-                
-
             }
+            
+        JOptionPane.showMessageDialog(null, "FACTURA ELIMINADA EXITOSAMENTE" , "ELIMINACIÓN EXITOSA" , JOptionPane.INFORMATION_MESSAGE);  
+        Ver_Facturas ve = new Ver_Facturas();
+        ve.setVisible(true);
+        ve.setLocationRelativeTo(null);
+        ve.setResizable(false);
+        dialog_motivo.dispose();
+        dispose();
         
-        
-        
-        
-    }//GEN-LAST:event_btn_guardar_factActionPerformed
+    }//GEN-LAST:event_btn_guardar_fact1ActionPerformed
+
+    private void btn_Salir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Salir1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btn_Salir1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -606,8 +706,11 @@ public class Detalle_Factura extends javax.swing.JFrame {
     private javax.swing.JPanel Factura_panel;
     private javax.swing.JTable Tabla_ventas;
     private javax.swing.JButton btn_Salir;
+    private javax.swing.JButton btn_Salir1;
     private javax.swing.JButton btn_guardar_fact;
+    private javax.swing.JButton btn_guardar_fact1;
     private javax.swing.JTextField cbx_Nombre;
+    private javax.swing.JDialog dialog_motivo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -616,6 +719,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -625,7 +729,9 @@ public class Detalle_Factura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_descto;
@@ -633,6 +739,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
     private javax.swing.JTextField txt_fecha;
     private javax.swing.JTextField txt_iva;
     private javax.swing.JTextField txt_mail;
+    private javax.swing.JTextArea txt_motivo;
     private javax.swing.JTextArea txt_nota;
     private javax.swing.JTextField txt_numFactura;
     private javax.swing.JTextField txt_subtotal;

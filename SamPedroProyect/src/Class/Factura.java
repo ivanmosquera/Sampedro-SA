@@ -188,7 +188,7 @@ public class Factura {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql3 = "INSERT INTO `SAMPEDRO`.`anulacion` (`fk_Factura`, `Motivo`, `fk_Usuario`, `Fecha_anulacion`) VALUES (?, ?, ?, ?);";
+        String sql3 = "INSERT INTO anulacion (fk_Factura, Motivo, fk_Usuario, Fecha_anulacion) VALUES (?, ?, ?, ?);";
         Date date = new Date();
         ResultSet rs = null;
         //Caso 1: obtener la hora y salida por pantalla con formato:
