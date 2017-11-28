@@ -74,10 +74,11 @@ public class Login extends javax.swing.JFrame {
            }
            else
             {
-               JOptionPane.showMessageDialog(this,"Usuario o contraseña Incorrecto");                     
+               JOptionPane.showMessageDialog(this,"Usuario o contraseña Incorrecto","Acceso denegado",JOptionPane.ERROR_MESSAGE);                     
             } 
            
         } catch (Exception ex){
+            JOptionPane.showMessageDialog(this,"ERROOOOR: " + ex);
             System.out.println(ex);
         }
     /*
