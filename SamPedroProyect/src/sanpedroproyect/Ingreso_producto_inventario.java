@@ -61,6 +61,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         USUARIO = menu_Cod.getCodigo_usuario();
+        lbl_username.setText(Main_Menu.nombre_usuario);
         this.setLocationRelativeTo(null);
         String resul = null , lats = null;
         SNumeros(txt_cant);
@@ -109,7 +110,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         lbl_talla = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lbl_username = new javax.swing.JLabel();
         btn_guadar_inventario = new javax.swing.JButton();
         btn_salirInventario = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
@@ -129,12 +130,8 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel3.setText("Producto");
 
-        lbl_descripcion.setFont(new java.awt.Font("MT Extra", 0, 14)); // NOI18N
-
         jLabel5.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel5.setText("Talla");
-
-        lbl_talla.setFont(new java.awt.Font("MT Extra", 0, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel7.setText("Cantidad a Ingresar");
@@ -142,7 +139,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel8.setText("Usuario");
 
-        jLabel9.setFont(new java.awt.Font("MT Extra", 1, 14)); // NOI18N
+        lbl_username.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
 
         btn_guadar_inventario.setFont(new java.awt.Font("Bookman Old Style", 1, 13)); // NOI18N
         btn_guadar_inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
@@ -216,7 +213,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbl_username, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(358, 358, 358))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -259,7 +256,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
                 .addGap(92, 92, 92)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_username, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
@@ -369,12 +366,12 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel lbl_descripcion;
     private javax.swing.JLabel lbl_talla;
+    private javax.swing.JLabel lbl_username;
     private javax.swing.JTextField txt_cant;
     private javax.swing.JTextField txt_codigo_busqueda;
     // End of variables declaration//GEN-END:variables

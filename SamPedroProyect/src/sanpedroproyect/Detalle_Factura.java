@@ -79,6 +79,9 @@ public class Detalle_Factura extends javax.swing.JFrame {
     public Detalle_Factura(int idFactura) {
         initComponents();
         id_de_la_factura = idFactura;
+        Ingreso_Nuevo_Cliente.SNumeros(txt_numFactura);
+        Ingreso_Nuevo_Cliente.SNumeros(txt_fecha);
+        txt_numFactura.setText(String.valueOf(id_de_la_factura));
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         System.out.println("" + idFactura);
@@ -97,6 +100,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
                 codigo_cliente = rs.getInt("id_Cliente");
                 cbx_Nombre.setText(rs.getString("Nombre"));
                 txt_cedula.setText(rs.getString("Cedula"));
+                txt_fecha.setText(String.valueOf(rs.getDate("Fecha")));
                 txt_dir.setText(rs.getString("Direccion"));
                 txt_mail.setText(rs.getString("Correo"));
                 txt_telefono.setText(rs.getString("Telefono"));
@@ -295,16 +299,19 @@ public class Detalle_Factura extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_guardar_fact1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Salir1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(21, 21, 21))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Salir1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btn_guardar_fact1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(71, 71, 71))
         );
 
         javax.swing.GroupLayout dialog_motivoLayout = new javax.swing.GroupLayout(dialog_motivo.getContentPane());
@@ -688,7 +695,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
 
     private void btn_Salir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Salir1ActionPerformed
         // TODO add your handling code here:
-        dispose();
+        dialog_motivo.dispose();
     }//GEN-LAST:event_btn_Salir1ActionPerformed
 
     /**

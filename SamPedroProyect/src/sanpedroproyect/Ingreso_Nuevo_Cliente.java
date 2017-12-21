@@ -378,7 +378,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         
     }
      
-      public void SNumeros(JTextField a){
+      public static void SNumeros(JTextField a){
         a.addKeyListener(new KeyAdapter() {
 
             @Override

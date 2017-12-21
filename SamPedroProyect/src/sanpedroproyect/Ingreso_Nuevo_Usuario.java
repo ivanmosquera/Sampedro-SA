@@ -166,7 +166,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addGap(141, 141, 141)
+                                .addGap(155, 155, 155)
                                 .addComponent(txt_nombre))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(70, 70, 70)

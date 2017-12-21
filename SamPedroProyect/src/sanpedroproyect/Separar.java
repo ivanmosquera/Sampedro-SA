@@ -151,6 +151,8 @@ public class Separar extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         USUARIO = menu_Cod.getCodigo_usuario();
+        Ingreso_Nuevo_Cliente.SNumeros(txt_cedula);
+        txt_vendedor.setText(Main_Menu.nombre_usuario);
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
         
           
@@ -477,6 +479,8 @@ public class Separar extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel6.setText("Vendedor");
 
+        txt_vendedor.setEditable(false);
+
         cbx_Nombre.setEditable(true);
 
         jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
@@ -484,6 +488,11 @@ public class Separar extends javax.swing.JFrame {
 
         txt_subtotal.setEditable(false);
 
+        txt_abono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_abonoActionPerformed(evt);
+            }
+        });
         txt_abono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_abonoKeyTyped(evt);
@@ -551,6 +560,12 @@ public class Separar extends javax.swing.JFrame {
         btn_guardar_fact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardar_factActionPerformed(evt);
+            }
+        });
+
+        txt_saldo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_saldoKeyTyped(evt);
             }
         });
 
@@ -706,7 +721,6 @@ public class Separar extends javax.swing.JFrame {
         txt_cedula.setText("");
         txt_subtotal.setText("");
         sub_total = 0;
-        txt_vendedor.setText("");
         txt_abono.setText("");
         txt_nota.setText("");
         cbx_Nombre.removeAllItems();
@@ -912,6 +926,21 @@ public class Separar extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txt_abonoKeyTyped
+
+    private void txt_abonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_abonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_abonoActionPerformed
+
+    private void txt_saldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_saldoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
+            evt.consume();
+        }
+        if (c == '.' && txt_abono.getText().contains(".")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_saldoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

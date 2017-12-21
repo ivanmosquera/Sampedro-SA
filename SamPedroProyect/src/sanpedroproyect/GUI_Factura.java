@@ -113,6 +113,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         btn_guardar_fact.setEnabled(false);
         txt_descto.setEnabled(false);
         verificar_Permisos();
+        Ingreso_Nuevo_Cliente.SNumeros(txt_can);
+        Ingreso_Nuevo_Cliente.SNumeros(txt_numFactura);
+        Ingreso_Nuevo_Cliente.SNumeros(txt_cedula);
         
         
      
@@ -512,13 +515,13 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
         jScrollPane2.setViewportView(tabla_producto);
@@ -576,7 +579,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                         .addGap(67, 67, 67)
                         .addComponent(btn_agregar_producto)
                         .addGap(34, 34, 34)
-                        .addComponent(btn_SalirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_SalirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -1172,6 +1175,12 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             
             if(fsel==-1){
                 JOptionPane.showMessageDialog(null,"Dese seleccionar un producto","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
+            else if(Integer.parseInt(txt_can.getText())<=0){
+                JOptionPane.showMessageDialog(null,"Ingrese cantidad positiva","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
+            else if(Integer.parseInt(txt_can.getText())>Integer.parseInt(tabla_producto.getValueAt(fsel, 4).toString())){
+                JOptionPane.showMessageDialog(null,"No hay dicha cantidad en stock","Advertencia",JOptionPane.WARNING_MESSAGE);
             }
             else if(!(txt_can.getText().isEmpty())){
                 m = (DefaultTableModel) tabla_producto.getModel();

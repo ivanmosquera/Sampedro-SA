@@ -18,7 +18,7 @@ import static sanpedroproyect.Login.permisos_usuario;
  */
 public class Main_Menu extends javax.swing.JFrame {
     static int codigo_usuario;
-    static String nombre_usuario;
+    public static String nombre_usuario;
     static int rol_usuario;
     //static String [] permisos_usuario;
     Login l = new Login();

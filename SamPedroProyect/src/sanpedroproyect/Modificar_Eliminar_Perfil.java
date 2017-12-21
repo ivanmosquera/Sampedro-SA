@@ -22,7 +22,7 @@ import static sanpedroproyect.Modificar_Eliminar_Usuario.id_usuario;
  * @author Ivan Mosquera
  */
 public class Modificar_Eliminar_Perfil extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Modificar_Eliminar_Perfil
      */
