@@ -9,14 +9,6 @@
             <Property name="text" type="java.lang.String" value="Factura"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemFactura_nuevaFactura">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nueva Factura"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemFactura_nuevaFacturaActionPerformed"/>
-              </Events>
-            </MenuItem>
             <Menu class="javax.swing.JMenu" name="jMenu7">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Facturas"/>
@@ -47,14 +39,6 @@
             <Property name="text" type="java.lang.String" value="Cliente"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemCliente_registrarCliente">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Registrar cliente"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemCliente_registrarClienteActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemCliente_modificar_eliminar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar/Eliminar cliente"/>
@@ -78,20 +62,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemProducto_ingresarProductoActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemProducto_separarPrenda">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Separar prenda"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemProducto_separarPrendaActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemProducto_abonar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Abonar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemProducto_abonarActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemProducto_ingresarCategoria">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ingresar categor&#xed;a"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemProducto_ingresarCategoriaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -107,14 +91,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemInventario_ingresoInventarioActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemInventario_inventariosTotales">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Inventarios totales"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemInventario_inventariosTotalesActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -260,34 +236,49 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="btn_go_reportes" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btn_go_separarPrenda" alignment="0" pref="144" max="32767" attributes="0"/>
+                                  <Component id="btn_go_cierreCaja" max="32767" attributes="0"/>
+                                  <Component id="btn_go_anulaciones" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="btn_go_inventario" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btn_go_RegistroCliente" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btn_go_registroFactura" alignment="0" pref="144" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="640" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="lbl_user_name" min="-2" pref="144" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btn_go_reportes" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btn_go_separarPrenda" alignment="0" pref="144" max="32767" attributes="0"/>
-                          <Component id="btn_go_cierreCaja" max="32767" attributes="0"/>
-                          <Component id="btn_go_anulaciones" alignment="1" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btn_go_inventario" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btn_go_RegistroCliente" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btn_go_registroFactura" alignment="0" pref="144" max="32767" attributes="0"/>
+                          <EmptySpace pref="164" max="32767" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="lbl_nombreUsuario" min="-2" pref="144" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="489" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_user_name" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_user_name" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_nombreUsuario" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="btn_go_inventario" min="-2" max="-2" attributes="0"/>
@@ -430,6 +421,21 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_user_name">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="14" style="1"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bookman Old Style" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Nombre  : "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_nombreUsuario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bookman Old Style" size="14" style="1"/>

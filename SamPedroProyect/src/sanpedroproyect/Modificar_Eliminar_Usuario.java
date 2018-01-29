@@ -33,6 +33,7 @@ public class Modificar_Eliminar_Usuario extends javax.swing.JFrame {
      */
     public Modificar_Eliminar_Usuario() {
         initComponents();
+        Ingreso_Nuevo_Cliente.validarCedula(txtcedu);
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();

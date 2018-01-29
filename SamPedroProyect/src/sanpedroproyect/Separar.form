@@ -517,6 +517,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_cedula">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cedulaKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_vendedor">
           <Properties>

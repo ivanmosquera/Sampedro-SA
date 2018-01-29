@@ -257,7 +257,7 @@ public class Reporte_Operaciones {
                 String filas[]= new String[col];
                 for(int j = 0;j<col;j++){
                     filas[j]=rs.getString(j+1);
-                    System.out.println("Mi string"  + rs.getString("Descripcion"));
+                    System.out.println("Mi string"  + rs.getString("id_Producto"));
                 }
                  modelo.addRow(filas);
             }

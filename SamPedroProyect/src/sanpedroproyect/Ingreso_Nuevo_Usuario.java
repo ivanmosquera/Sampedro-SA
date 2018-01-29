@@ -27,6 +27,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        Ingreso_Nuevo_Cliente.validarCedula(txt_cedula);
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();

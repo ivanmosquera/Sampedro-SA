@@ -28,7 +28,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         SLetras(txt_ciu1);
         SLetras(txt_dir1);
         SLetras(txt_nombre1);
-        SNumeros(txtcedu1);
+        validarCedula(txtcedu1);
         SNumeros(txt_fono1);
         
     }
@@ -335,9 +335,12 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         if(existe.equals("Existe")){
              JOptionPane.showMessageDialog(null, "NUMERO DE CEDULA EXISTENTE" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
         }else if (existe.equals("No Existe")){
-            if(txt_nombre1.getText().equals("")||txt_ciu1.getText().equals("")||txt_dir1.getText().equals("")||txt_fono1.getText().equals("")||txt_correo1.getText().equals("")||txtcedu1.getText().equals("")){
-                JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
-            }else{
+            if(txt_nombre1.getText().equals("")||txtcedu1.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "SE REQUIERE AL MENOS LLENAR CAMPOS DE NOMBRE Y CEDULA" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
+            }else if(txtcedu1.getText().length()<10){
+                JOptionPane.showMessageDialog(null, "NUMERO DE CEDULA DEBE CONTENER 10 DIGITOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
+            }
+            else{
                 Nombre = txt_nombre1.getText();
                Cedula = txtcedu1.getText();
                Direccion = txt_dir1.getText();
@@ -378,7 +381,24 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         
     }
      
-      public static void SNumeros(JTextField a){
+      public static void validarCedula(JTextField a){
+        a.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                 char c = e.getKeyChar();
+                 String cadena = a.getText();
+                 if(Character.isLetter(c) || cadena.length()>=10){
+                     e.consume();
+                 }
+            }
+            
+            
+    });
+        
+    }
+      
+    public static void SNumeros(JTextField a){
         a.addKeyListener(new KeyAdapter() {
 
             @Override

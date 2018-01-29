@@ -115,7 +115,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         verificar_Permisos();
         Ingreso_Nuevo_Cliente.SNumeros(txt_can);
         Ingreso_Nuevo_Cliente.SNumeros(txt_numFactura);
-        Ingreso_Nuevo_Cliente.SNumeros(txt_cedula);
+        Ingreso_Nuevo_Cliente.validarCedula(txt_cedula);
         
         
      
@@ -688,6 +688,11 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         txt_mail.setEditable(false);
 
+        txt_cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cedulaActionPerformed(evt);
+            }
+        });
         txt_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_cedulaKeyReleased(evt);
@@ -1393,24 +1398,32 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         // TODO add your handling code here:
         if(Combo_FORMA_PAGO.getSelectedItem().equals("")){
             lbl_efectivo.setEnabled(false);
+            lbl_vaucher.setEnabled(false);
+            txt_vaucher.setEnabled(false);
             txt_vaucher_pago.setEnabled(false);
             lbl_pagovaucher.setEnabled(false);
             txt_efectivo.setEnabled(false);
         }
         else if(Combo_FORMA_PAGO.getSelectedItem().equals("Efectivo")){
             lbl_efectivo.setEnabled(true);
+            lbl_vaucher.setEnabled(false);
+            txt_vaucher.setEnabled(false);
             txt_vaucher_pago.setEnabled(false);
             lbl_pagovaucher.setEnabled(false);
             txt_efectivo.setEnabled(true);
             System.out.println("EFECTIVO"); 
         }else if(Combo_FORMA_PAGO.getSelectedItem().equals("Tarjeta Credito")){
             lbl_efectivo.setEnabled(false);
+            lbl_vaucher.setEnabled(true);
+            txt_vaucher.setEnabled(true);
             txt_vaucher_pago.setEnabled(true);
             lbl_pagovaucher.setEnabled(true);
             txt_efectivo.setEnabled(false);
         }else if(Combo_FORMA_PAGO.getSelectedItem().equals("Tarjeta Débito")) {
              System.out.println("Tarjeta Débito");
             lbl_efectivo.setEnabled(false);
+            lbl_vaucher.setEnabled(true);
+            txt_vaucher.setEnabled(true);
             txt_vaucher_pago.setEnabled(true);
             lbl_pagovaucher.setEnabled(true);
             txt_efectivo.setEnabled(false);
@@ -1418,6 +1431,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         else if(Combo_FORMA_PAGO.getSelectedItem().equals("Mixto")) {
              System.out.println("mixto");
             lbl_efectivo.setEnabled(true);
+            lbl_vaucher.setEnabled(true);
+            txt_vaucher.setEnabled(true);
             txt_vaucher_pago.setEnabled(true);
             lbl_pagovaucher.setEnabled(true);
             txt_efectivo.setEnabled(true);
@@ -1479,6 +1494,23 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                     String codigo_producto = cmb_producto.getEditor().getItem().toString();
                     m = rep.consultar_producto_codigo(codigo_producto);
                     tabla_producto.setModel(m);  
+                }
+                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                    cmb_producto.setModel(op.geLista_Producto_porcodigo(cadena));
+                    if(cmb_producto.getItemCount()>0){
+                        cmb_producto.showPopup();
+                        if(e.getKeyCode()!=8){
+                            ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+                            
+                            
+                        }else{
+                            cmb_producto.getEditor().setItem(cadena);
+                            
+                        }
+                            
+                    }else{
+                        cmb_producto.addItem(cadena);
+                    }
                 }
             }                   
             
@@ -1616,6 +1648,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                     
                 }
     }//GEN-LAST:event_txt_cedulaKeyReleased
+
+    private void txt_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cedulaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combo_FORMA_PAGO;

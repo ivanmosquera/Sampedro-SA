@@ -13,6 +13,7 @@ public class Login extends javax.swing.JFrame {
 
     static int Codigo_usuario;
     static String username;
+    static String nombre;
     static int rol_usuario;
     static String [] permisos_usuario;
     public Login() {
@@ -50,6 +51,7 @@ public class Login extends javax.swing.JFrame {
            if (rs.next()){
                Codigo_usuario = rs.getInt("id_Usuario");
                username = rs.getString("Usuario");
+               nombre = rs.getString("Nombre");
                rol_usuario = rs.getInt("fk_Rol");
                //EXTRAEMOS LOS PERMISOS SEGUN EL ROL LOGGUEADO
                String sql2 = ("SELECT Detalle, Nombre FROM rol JOIN roles_permisos ON rol.id_Rol = roles_permisos.fk_Rol JOIN permisos ON roles_permisos.fk_Permiso = permisos.id_Permiso WHERE rol.id_Rol="+rol_usuario+" ORDER BY Detalle");
@@ -311,6 +313,14 @@ return resultado;
     
     public  int getRol_usuario() {
         return rol_usuario;
+    }
+
+    public static String getNombre() {
+        return nombre;
+    }
+
+    public static void setNombre(String nombre) {
+        Login.nombre = nombre;
     }
 
     public  void setRol_usuario(int rol_usuario) {

@@ -118,8 +118,8 @@ Cliente c = new Cliente();
         this.setLocationRelativeTo(null);
         SLetras(txt_ciu);
         SLetras(txt_dir);
-        SNumeros(txtcedu);
         SNumeros(txt_fono);
+        Ingreso_Nuevo_Cliente.validarCedula(txtcedu);
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
             @Override
@@ -220,9 +220,14 @@ Cliente c = new Cliente();
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        txtcedu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtceduActionPerformed(evt);
+            }
+        });
         txtcedu.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtceduKeyTyped(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtceduKeyReleased(evt);
             }
         });
 
@@ -448,8 +453,13 @@ Cliente c = new Cliente();
         dispose();
     }//GEN-LAST:event_btn_salirModificarClienteActionPerformed
 
-    private void txtceduKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtceduKeyTyped
+    
+    private void txtceduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtceduActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_txtceduActionPerformed
+
+    private void txtceduKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtceduKeyReleased
+
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             String cedu = txtcedu.getText().toString();
                     System.out.println("Aplasto ENter");
@@ -458,7 +468,6 @@ Cliente c = new Cliente();
                         Connection cn = cc.getConnection();
                         PreparedStatement pst =null;
                         ResultSet rs = null;
-                        String Desc;
                         try{
                            String sql = ("SELECT * FROM cliente where Cedula = ?");
                            pst = cn.prepareStatement(sql);
@@ -466,14 +475,13 @@ Cliente c = new Cliente();
                            rs =pst.executeQuery();
                            if (rs.next()){
                                cbx_Nombre.getEditor().setItem(rs.getString("Nombre"));
-                               codigo_cliente = rs.getInt("id_Cliente");
+                               lbl_cliente.setText(rs.getString("id_Cliente"));
                                txtcedu.setText(rs.getString("Cedula"));
                                txt_dir.setText(rs.getString("Direccion"));
+                               txt_ciu.setText(rs.getString("Ciudad"));
                                txt_correo.setText(rs.getString("Correo"));
                                txt_fono.setText(rs.getString("Telefono"));
-                               txt_ciu.setText(rs.getString("Ciudad"));
                                txt_nota.setText(rs.getString("Nota"));
-                               
                           
                            }
 
@@ -484,7 +492,7 @@ Cliente c = new Cliente();
                         }
                     
                 }
-    }//GEN-LAST:event_txtceduKeyTyped
+    }//GEN-LAST:event_txtceduKeyReleased
 
     
      private void limpiar(){
@@ -528,6 +536,8 @@ Cliente c = new Cliente();
     });
         
     }
+      
+                               
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_salirModificarCliente;
     private javax.swing.JComboBox cbx_Nombre;

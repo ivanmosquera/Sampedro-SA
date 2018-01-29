@@ -166,7 +166,8 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtcedu">
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtceduKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtceduActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtceduKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_fono">

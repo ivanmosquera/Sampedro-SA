@@ -151,7 +151,7 @@ public class Separar extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         USUARIO = menu_Cod.getCodigo_usuario();
-        Ingreso_Nuevo_Cliente.SNumeros(txt_cedula);
+        Ingreso_Nuevo_Cliente.validarCedula(txt_cedula);
         txt_vendedor.setText(Main_Menu.nombre_usuario);
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
         
@@ -478,6 +478,12 @@ public class Separar extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel6.setText("Vendedor");
+
+        txt_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cedulaKeyReleased(evt);
+            }
+        });
 
         txt_vendedor.setEditable(false);
 
@@ -941,6 +947,34 @@ public class Separar extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txt_saldoKeyTyped
+
+    private void txt_cedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaKeyReleased
+        // TODO add your handling code here:
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            String cedu = txt_cedula.getText().toString();
+                    System.out.println("Aplasto ENter");
+                        String resul = null , lats = null;
+                        ConnectionDB cc = new ConnectionDB();
+                        Connection cn = cc.getConnection();
+                        PreparedStatement pst =null;
+                        ResultSet rs = null;
+                        try{
+                           String sql = ("SELECT * FROM cliente where Cedula = ?");
+                           pst = cn.prepareStatement(sql);
+                           pst.setString(1,cedu);
+                           rs =pst.executeQuery();
+                           if (rs.next()){
+                               cbx_Nombre.getEditor().setItem(rs.getString("Nombre"));
+                               txt_cedula.setText(rs.getString("Cedula"));
+                           }
+
+                        } catch (Exception ex){
+                            System.out.println(ex);
+                        }
+                    
+                }
+    }//GEN-LAST:event_txt_cedulaKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -28,6 +28,7 @@ public class Main_Menu extends javax.swing.JFrame {
     public Main_Menu() {
         initComponents();
         lbl_user_name.setText(l.getUsername());
+        lbl_nombreUsuario.setText(l.getNombre());
         nombre_usuario = l.getUsername();
         codigo_usuario = l.getCodigo_usuario();
         rol_usuario = l.getRol_usuario();
@@ -37,16 +38,16 @@ public class Main_Menu extends javax.swing.JFrame {
         btn_go_inventario.setEnabled(false);
         itemInventario_ingresoInventario.setEnabled(false);
         btn_go_RegistroCliente.setEnabled(false);
-        itemCliente_registrarCliente.setEnabled(false);
+        //itemCliente_registrarCliente.setEnabled(false);
         itemCliente_modificar_eliminar.setEnabled(false);
         btn_go_registroFactura.setEnabled(false);
         btn_go_anulaciones.setEnabled(false);
         itemFactura_verFacturas.setEnabled(false);
         btn_go_separarPrenda.setEnabled(false);
         btn_go_cierreCaja.setEnabled(false);
-        itemFactura_nuevaFactura.setEnabled(false);
+        //itemFactura_nuevaFactura.setEnabled(false);
         itemProducto_ingresarProducto.setEnabled(false);
-        itemProducto_separarPrenda.setEnabled(false);
+        //itemProducto_separarPrenda.setEnabled(false);
         itemConfig_registrarUsuario.setEnabled(false);
         itemConfig_modificarUsuario.setEnabled(false);
         itemConfig_nuevoRol.setEnabled(false);
@@ -76,23 +77,22 @@ public class Main_Menu extends javax.swing.JFrame {
         btn_go_RegistroCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lbl_user_name = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbl_nombreUsuario = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        itemFactura_nuevaFactura = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         itemFactura_verFacturas = new javax.swing.JMenuItem();
         itemFactura_verFacturasFecha = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        itemCliente_registrarCliente = new javax.swing.JMenuItem();
         itemCliente_modificar_eliminar = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         itemProducto_ingresarProducto = new javax.swing.JMenuItem();
-        itemProducto_separarPrenda = new javax.swing.JMenuItem();
         itemProducto_abonar = new javax.swing.JMenuItem();
+        itemProducto_ingresarCategoria = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         itemInventario_ingresoInventario = new javax.swing.JMenuItem();
-        itemInventario_inventariosTotales = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         reporteinventario = new javax.swing.JMenuItem();
         reporteproducto = new javax.swing.JMenuItem();
@@ -194,6 +194,11 @@ public class Main_Menu extends javax.swing.JFrame {
 
         lbl_user_name.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel2.setText("Nombre  : ");
+
+        lbl_nombreUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -202,27 +207,38 @@ public class Main_Menu extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btn_go_reportes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_go_separarPrenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                                .addComponent(btn_go_cierreCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_go_anulaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btn_go_inventario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_go_RegistroCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_go_registroFactura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)))
+                        .addContainerGap(640, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(27, 27, 27)
-                        .addComponent(lbl_user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btn_go_reportes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_go_separarPrenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                        .addComponent(btn_go_cierreCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_go_anulaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btn_go_inventario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_go_RegistroCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_go_registroFactura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)))
-                .addContainerGap(489, Short.MAX_VALUE))
+                        .addComponent(lbl_user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(27, 27, 27)
+                        .addComponent(lbl_nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lbl_user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(lbl_user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(lbl_nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34)
                 .addComponent(btn_go_inventario)
                 .addGap(18, 18, 18)
@@ -241,14 +257,6 @@ public class Main_Menu extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Factura");
-
-        itemFactura_nuevaFactura.setText("Nueva Factura");
-        itemFactura_nuevaFactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemFactura_nuevaFacturaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(itemFactura_nuevaFactura);
 
         jMenu7.setText("Ver Facturas");
 
@@ -274,14 +282,6 @@ public class Main_Menu extends javax.swing.JFrame {
 
         jMenu2.setText("Cliente");
 
-        itemCliente_registrarCliente.setText("Registrar cliente");
-        itemCliente_registrarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemCliente_registrarClienteActionPerformed(evt);
-            }
-        });
-        jMenu2.add(itemCliente_registrarCliente);
-
         itemCliente_modificar_eliminar.setText("Modificar/Eliminar cliente");
         itemCliente_modificar_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,14 +302,6 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu3.add(itemProducto_ingresarProducto);
 
-        itemProducto_separarPrenda.setText("Separar prenda");
-        itemProducto_separarPrenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemProducto_separarPrendaActionPerformed(evt);
-            }
-        });
-        jMenu3.add(itemProducto_separarPrenda);
-
         itemProducto_abonar.setText("Abonar");
         itemProducto_abonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,6 +309,14 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
         jMenu3.add(itemProducto_abonar);
+
+        itemProducto_ingresarCategoria.setText("Ingresar categoría");
+        itemProducto_ingresarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemProducto_ingresarCategoriaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemProducto_ingresarCategoria);
 
         jMenuBar1.add(jMenu3);
 
@@ -329,14 +329,6 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
         jMenu5.add(itemInventario_ingresoInventario);
-
-        itemInventario_inventariosTotales.setText("Inventarios totales");
-        itemInventario_inventariosTotales.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemInventario_inventariosTotalesActionPerformed(evt);
-            }
-        });
-        jMenu5.add(itemInventario_inventariosTotales);
 
         jMenuBar1.add(jMenu5);
 
@@ -449,10 +441,10 @@ public class Main_Menu extends javax.swing.JFrame {
         for(i=0;i<permisos_usuario.length;i++){
             if(permisos_usuario[i].equals("RealizarSeparados")){
                 btn_go_separarPrenda.setEnabled(true);
-                itemProducto_separarPrenda.setEnabled(true);
+                //itemProducto_separarPrenda.setEnabled(true);
             }else if(permisos_usuario[i].equals("Facturar")){
                 btn_go_registroFactura.setEnabled(true);
-                itemFactura_nuevaFactura.setEnabled(true);
+                //itemFactura_nuevaFactura.setEnabled(true);
             }else if(permisos_usuario[i].equals("Anular")){
                 btn_go_anulaciones.setEnabled(true);
                 itemFactura_verFacturas.setEnabled(true);
@@ -463,7 +455,7 @@ public class Main_Menu extends javax.swing.JFrame {
                 itemInventario_ingresoInventario.setEnabled(true);
             }else if(permisos_usuario[i].equals("RegistrarCliente")){
                 btn_go_RegistroCliente.setEnabled(true);
-                itemCliente_registrarCliente.setEnabled(true);
+                //itemCliente_registrarCliente.setEnabled(true);
             }else if(permisos_usuario[i].equals("ModificarCliente")){
                 itemCliente_modificar_eliminar.setEnabled(true);
             }else if(permisos_usuario[i].equals("IngresarProducto")){
@@ -528,9 +520,9 @@ public class Main_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_itemConfig_administrarRolesActionPerformed
 
     private void btn_go_inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_inventarioActionPerformed
-        Ingreso_Inventario ventana_ingresoInventario = new Ingreso_Inventario();
-        ventana_ingresoInventario.setVisible(true);
-        ventana_ingresoInventario.setResizable(false);
+        Inventario_Totales ventana_inventariosTotales = new Inventario_Totales();
+        ventana_inventariosTotales.setVisible(true);
+        ventana_inventariosTotales.setResizable(false);
     }//GEN-LAST:event_btn_go_inventarioActionPerformed
 
     private void btn_go_RegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_RegistroClienteActionPerformed
@@ -548,14 +540,6 @@ public class Main_Menu extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btn_go_cierreCajaActionPerformed
 
-    private void itemFactura_nuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFactura_nuevaFacturaActionPerformed
-            GUI_Factura ventana_factura = new GUI_Factura();
-            ventana_factura.setVisible(true);
-            ventana_factura.setResizable(false);
-            
-         
-    }//GEN-LAST:event_itemFactura_nuevaFacturaActionPerformed
-
     private void itemFactura_verFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFactura_verFacturasActionPerformed
         Ver_Facturas ventana_verFacturas = new Ver_Facturas();
         ventana_verFacturas.setVisible(true);
@@ -563,13 +547,6 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_verFacturas.setLocationRelativeTo(null);
         
     }//GEN-LAST:event_itemFactura_verFacturasActionPerformed
-
-    private void itemCliente_registrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCliente_registrarClienteActionPerformed
-        Ingreso_Nuevo_Cliente ventana_ingresoCliente = new Ingreso_Nuevo_Cliente();
-        ventana_ingresoCliente.setVisible(true);
-        ventana_ingresoCliente.setResizable(false);
-       
-    }//GEN-LAST:event_itemCliente_registrarClienteActionPerformed
 
     private void itemCliente_modificar_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCliente_modificar_eliminarActionPerformed
         Modificar_Eliminar_Cliente ventana_modificar_eliminarCliente = new Modificar_Eliminar_Cliente();
@@ -585,26 +562,12 @@ public class Main_Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_itemProducto_ingresarProductoActionPerformed
 
-    private void itemProducto_separarPrendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProducto_separarPrendaActionPerformed
-        Separar ventana_separar = new Separar();
-        ventana_separar.setVisible(true);
-        ventana_separar.setResizable(false);
-       
-    }//GEN-LAST:event_itemProducto_separarPrendaActionPerformed
-
     private void itemInventario_ingresoInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInventario_ingresoInventarioActionPerformed
         Ingreso_Inventario ventana_ingresoInventario = new Ingreso_Inventario();
         ventana_ingresoInventario.setVisible(true);
         ventana_ingresoInventario.setResizable(false);
         
     }//GEN-LAST:event_itemInventario_ingresoInventarioActionPerformed
-
-    private void itemInventario_inventariosTotalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInventario_inventariosTotalesActionPerformed
-        Inventario_Totales ventana_inventariosTotales = new Inventario_Totales();
-        ventana_inventariosTotales.setVisible(true);
-        ventana_inventariosTotales.setResizable(false);
-       
-    }//GEN-LAST:event_itemInventario_inventariosTotalesActionPerformed
 
     private void itemConfig_cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConfig_cerrarSesionActionPerformed
         Login ventana_login = new Login();
@@ -692,6 +655,14 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_verFacturasFecha.setLocationRelativeTo(null);
     }//GEN-LAST:event_itemFactura_verFacturasFechaActionPerformed
 
+    private void itemProducto_ingresarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProducto_ingresarCategoriaActionPerformed
+        // TODO add your handling code here:
+        Ingreso_Nueva_Categoria ventana_ingresoCategoria = new Ingreso_Nueva_Categoria();
+        ventana_ingresoCategoria.setVisible(true);
+        ventana_ingresoCategoria.setResizable(false);
+        ventana_ingresoCategoria.setLocationRelativeTo(null);
+    }//GEN-LAST:event_itemProducto_ingresarCategoriaActionPerformed
+
     public  int getCodigo_usuario() {
         return codigo_usuario;
     }
@@ -718,22 +689,20 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btn_go_reportes;
     private javax.swing.JButton btn_go_separarPrenda;
     private javax.swing.JMenuItem itemCliente_modificar_eliminar;
-    private javax.swing.JMenuItem itemCliente_registrarCliente;
     private javax.swing.JMenuItem itemConfig_administrarRoles;
     private javax.swing.JMenuItem itemConfig_cerrarSesion;
     private javax.swing.JMenuItem itemConfig_modificarUsuario;
     private javax.swing.JMenuItem itemConfig_nuevoRol;
     private javax.swing.JMenuItem itemConfig_registrarUsuario;
-    private javax.swing.JMenuItem itemFactura_nuevaFactura;
     private javax.swing.JMenuItem itemFactura_verFacturas;
     private javax.swing.JMenuItem itemFactura_verFacturasFecha;
     private javax.swing.JMenuItem itemInventario_ingresoInventario;
-    private javax.swing.JMenuItem itemInventario_inventariosTotales;
     private javax.swing.JMenuItem itemProducto_abonar;
+    private javax.swing.JMenuItem itemProducto_ingresarCategoria;
     private javax.swing.JMenuItem itemProducto_ingresarProducto;
-    private javax.swing.JMenuItem itemProducto_separarPrenda;
     private javax.swing.JMenuItem itemReportes_ventaPrendas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -744,6 +713,7 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbl_nombreUsuario;
     private javax.swing.JLabel lbl_user_name;
     private javax.swing.JMenuItem reporteinventario;
     private javax.swing.JMenuItem reporteproducto;
