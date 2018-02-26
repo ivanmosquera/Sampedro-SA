@@ -10,6 +10,11 @@
 	<parameter name="SUBTOTAL" class="java.lang.String"/>
 	<parameter name="TOTAL" class="java.lang.String"/>
 	<parameter name="NOTA" class="java.lang.String"/>
+	<parameter name="DESCUENTO" class="java.lang.String"/>
+	<parameter name="IVA" class="java.lang.String"/>
+	<parameter name="VAUCHER" class="java.lang.String"/>
+	<parameter name="TOTALPAGADO" class="java.lang.String"/>
+	<parameter name="CAMBIO" class="java.lang.String"/>
 	<field name="PRODUCTO" class="java.lang.String"/>
 	<field name="TALLA" class="java.lang.String"/>
 	<field name="PRECIO" class="java.lang.String"/>
@@ -103,35 +108,35 @@
 	<detail>
 		<band height="63" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="28" width="45" height="20" uuid="d4be13a4-1055-4770-a9a3-1ab645ee3021"/>
+				<reportElement x="0" y="8" width="45" height="20" uuid="d4be13a4-1055-4770-a9a3-1ab645ee3021"/>
 				<textElement>
 					<font size="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PRODUCTO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="56" y="28" width="10" height="20" uuid="a541036f-b47f-43a6-82b0-ecb97a9d4921"/>
+				<reportElement x="56" y="8" width="10" height="20" uuid="a541036f-b47f-43a6-82b0-ecb97a9d4921"/>
 				<textElement>
 					<font size="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TALLA}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="80" y="28" width="20" height="20" uuid="018bc2ba-2689-40cd-9349-422dad7e9464"/>
+				<reportElement x="80" y="8" width="20" height="20" uuid="018bc2ba-2689-40cd-9349-422dad7e9464"/>
 				<textElement>
 					<font size="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PRECIO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="28" width="13" height="20" uuid="c872eb9e-01f5-4bbe-a79d-263d050b3c5d"/>
+				<reportElement x="110" y="8" width="13" height="20" uuid="c872eb9e-01f5-4bbe-a79d-263d050b3c5d"/>
 				<textElement>
 					<font size="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{CANTIDAD}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="137" y="28" width="25" height="20" uuid="d5322e71-057d-4bf8-8295-c091f3355676"/>
+				<reportElement x="137" y="8" width="25" height="20" uuid="d5322e71-057d-4bf8-8295-c091f3355676"/>
 				<textElement>
 					<font size="5"/>
 				</textElement>
@@ -140,20 +145,55 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="75" splitType="Stretch">
+		<band height="97" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="100" height="20" uuid="e6f3cdae-d755-485a-9efe-9116e39ab41c"/>
+				<reportElement x="0" y="0" width="66" height="11" uuid="e6f3cdae-d755-485a-9efe-9116e39ab41c"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{SUBTOTAL}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="37" width="100" height="20" uuid="d025dc13-ee6f-4a06-a563-9ff1fd4c66f7"/>
+				<reportElement x="0" y="47" width="100" height="14" uuid="d025dc13-ee6f-4a06-a563-9ff1fd4c66f7"/>
 				<textElement>
-					<font size="8"/>
+					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="11" width="64" height="11" uuid="f1171442-41d8-4d32-9d34-c55d15a7d23d"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DESCUENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="22" width="56" height="12" uuid="46afa684-ceb0-4a1f-aa66-1e6c1f420396"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{IVA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="34" width="54" height="13" uuid="0ec4c4da-6e19-4f27-82fd-f1499b5b18e0"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{VAUCHER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="61" width="100" height="20" uuid="4432fda4-b97f-4719-bd22-29f8d7b1d2d6"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTALPAGADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="81" width="100" height="16" uuid="27759059-ff27-44c5-833c-c718c8c64e4f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMBIO}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>
@@ -166,6 +206,13 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{NOTA}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="2" y="34" width="170" height="20" uuid="12576238-31d5-47f1-a800-54ea1c887edb"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[SALIDA LA MERCADERIA NO SE ACEPTAN CAMBIOS NI DEVOLUCIONES]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 	<summary>

@@ -70,6 +70,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     double vaucher= 0;
     double  sub_total_v= 0;
     double total_v = 0;
+    double totalfin = 0;
     int USUARIO;
     Main_Menu menu_Cod = new Main_Menu();
     static int codigo_cliente, id_estado;
@@ -80,6 +81,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     double cambio;
     String pago_cliente,pago_cliente_v;
     double total_encontrado;
+    double Totalpagar;
+    static double totalpagadofinal = 0;
+    static double cambiofinal = 0;
+    
 
 
     /**
@@ -175,7 +180,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             }
           
         });
-        txt_descto.getDocument().addDocumentListener(new DocumentListener() {
+       /* txt_descto.getDocument().addDocumentListener(new DocumentListener() {
         
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -312,7 +317,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             public void changedUpdate(DocumentEvent e) {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
-        });
+        });*/
         
         /*txt_efectivo.getDocument().addDocumentListener(new DocumentListener() {
         
@@ -456,6 +461,16 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         cmb_CodoPre = new javax.swing.JComboBox();
         jLabel19 = new javax.swing.JLabel();
         jDialog1 = new javax.swing.JDialog();
+        Dialog_calculo = new javax.swing.JDialog();
+        jPanel4 = new javax.swing.JPanel();
+        txt_efectivo = new javax.swing.JTextField();
+        txt_vaucher_pago = new javax.swing.JTextField();
+        lbl_efectivo = new javax.swing.JLabel();
+        lbl_pagovaucher = new javax.swing.JLabel();
+        lbl_efectivo1 = new javax.swing.JLabel();
+        txt_total = new javax.swing.JTextField();
+        btn_realizar_pago = new javax.swing.JButton();
+        btn_Salircalculo = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_numFactura = new javax.swing.JTextField();
@@ -486,8 +501,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         txt_vaucher = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txt_iva = new javax.swing.JTextField();
-        txt_total = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_nota = new javax.swing.JTextArea();
@@ -501,11 +514,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         btn_nueva_f = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         cmb_descuento = new javax.swing.JComboBox();
-        lbl_pagovaucher = new javax.swing.JLabel();
-        lbl_efectivo = new javax.swing.JLabel();
-        txt_efectivo = new javax.swing.JTextField();
-        txt_vaucher_pago = new javax.swing.JTextField();
-        btn_realizar_pago = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        btn_calcular = new javax.swing.JButton();
 
         Dialog_buscar_pro.setTitle("Buscar Producto");
 
@@ -630,6 +641,103 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 397, Short.MAX_VALUE)
+        );
+
+        Dialog_calculo.setTitle("Buscar Producto");
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        txt_efectivo.setText("0");
+
+        txt_vaucher_pago.setText("0");
+
+        lbl_efectivo.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        lbl_efectivo.setText("Pago con Efectivo");
+
+        lbl_pagovaucher.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        lbl_pagovaucher.setText("Pago con Tarjeta");
+
+        lbl_efectivo1.setFont(new java.awt.Font("Bookman Old Style", 1, 36)); // NOI18N
+        lbl_efectivo1.setText("TOTAL :");
+
+        txt_total.setEditable(false);
+
+        btn_realizar_pago.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_realizar_pago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proyecto-de-ley.png"))); // NOI18N
+        btn_realizar_pago.setText("CONFIRMAR");
+        btn_realizar_pago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_realizar_pago.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_realizar_pago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_realizar_pagoActionPerformed(evt);
+            }
+        });
+
+        btn_Salircalculo.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_Salircalculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
+        btn_Salircalculo.setText("SALIR");
+        btn_Salircalculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SalircalculoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_efectivo)
+                            .addComponent(lbl_pagovaucher)
+                            .addComponent(lbl_efectivo1))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_efectivo, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                .addComponent(txt_vaucher_pago))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(btn_realizar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(115, 115, 115)
+                        .addComponent(btn_Salircalculo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(125, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_efectivo1)
+                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_efectivo)
+                    .addComponent(txt_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_pagovaucher)
+                    .addComponent(txt_vaucher_pago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_Salircalculo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_realizar_pago, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(101, 101, 101))
+        );
+
+        javax.swing.GroupLayout Dialog_calculoLayout = new javax.swing.GroupLayout(Dialog_calculo.getContentPane());
+        Dialog_calculo.getContentPane().setLayout(Dialog_calculoLayout);
+        Dialog_calculoLayout.setHorizontalGroup(
+            Dialog_calculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        Dialog_calculoLayout.setVerticalGroup(
+            Dialog_calculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -781,11 +889,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             }
         });
 
-        txt_total.setEditable(false);
-
-        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        jLabel13.setText("Total");
-
         jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel14.setText("NOTA :");
 
@@ -881,40 +984,31 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         });
 
         cmb_descuento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$", "%" }));
-
-        lbl_pagovaucher.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        lbl_pagovaucher.setText("Pago con Tarjeta");
-
-        lbl_efectivo.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        lbl_efectivo.setText("Pago con Efectivo");
-
-        txt_efectivo.setText("0");
-        txt_efectivo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_efectivoKeyTyped(evt);
+        cmb_descuento.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmb_descuentoItemStateChanged(evt);
             }
         });
-
-        txt_vaucher_pago.setText("0");
-        txt_vaucher_pago.addActionListener(new java.awt.event.ActionListener() {
+        cmb_descuento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_vaucher_pagoActionPerformed(evt);
-            }
-        });
-        txt_vaucher_pago.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_vaucher_pagoKeyTyped(evt);
+                cmb_descuentoActionPerformed(evt);
             }
         });
 
-        btn_realizar_pago.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        btn_realizar_pago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proyecto-de-ley.png"))); // NOI18N
-        btn_realizar_pago.setText("Calcular");
-        btn_realizar_pago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_realizar_pago.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_realizar_pago.addActionListener(new java.awt.event.ActionListener() {
+        jLabel17.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel17.setText("%");
+
+        jLabel20.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel20.setText("$");
+
+        btn_calcular.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_calcular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
+        btn_calcular.setText("Calcular Total");
+        btn_calcular.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_calcular.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_realizar_pagoActionPerformed(evt);
+                btn_calcularActionPerformed(evt);
             }
         });
 
@@ -970,10 +1064,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             .addGroup(Factura_panelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Factura_panelLayout.createSequentialGroup()
-                            .addComponent(jLabel13)
-                            .addGap(431, 431, 431))
+                    .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(Factura_panelLayout.createSequentialGroup()
                             .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -982,34 +1073,29 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                                         .addGap(11, 11, 11))
                                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addComponent(jLabel15)
-                                .addComponent(lbl_vaucher)
-                                .addComponent(lbl_pagovaucher)
-                                .addComponent(lbl_efectivo))
-                            .addGap(27, 27, 27)
+                                .addComponent(lbl_vaucher))
+                            .addGap(81, 81, 81)
                             .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txt_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(Factura_panelLayout.createSequentialGroup()
-                                    .addComponent(txt_descto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(cmb_descuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(txt_vaucher, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(Factura_panelLayout.createSequentialGroup()
                                     .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txt_vaucher_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(69, 69, 69)
-                                    .addComponent(btn_realizar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(txt_descto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cmb_descuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(Factura_panelLayout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel20)
+                                                .addComponent(jLabel17)))))))
+                        .addComponent(btn_calcular))
                     .addGroup(Factura_panelLayout.createSequentialGroup()
-                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Factura_panelLayout.createSequentialGroup()
-                                .addGap(157, 157, 157)
-                                .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(Factura_panelLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(64, 64, 64)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(49, 49, 49)))
+                        .addComponent(jLabel14)
+                        .addGap(64, 64, 64)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49)
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addGap(156, 156, 156)
@@ -1091,27 +1177,16 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                         .addGap(2, 2, 2)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
-                            .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
                         .addGap(10, 10, 10)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_vaucher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_vaucher))
-                        .addGap(10, 10, 10)
-                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Factura_panelLayout.createSequentialGroup()
-                                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lbl_pagovaucher)
-                                    .addComponent(txt_vaucher_pago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lbl_efectivo)
-                                    .addComponent(txt_efectivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btn_realizar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_vaucher)
+                            .addComponent(jLabel20))
                         .addGap(42, 42, 42)
+                        .addComponent(btn_calcular)
+                        .addGap(64, 64, 64)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -1169,54 +1244,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
      */
     }//GEN-LAST:event_btn_imprimirActionPerformed
 
-    private void btn_agregar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar_productoActionPerformed
-        // TODO add your handling code here:
-        int fsel = tabla_producto.getSelectedRow();
-        try {
-            String codigo, descripcion, precio, cantidad,importe,talla;
-            float x;
-            float calcula;
-            float iva;
-            
-            if(fsel==-1){
-                JOptionPane.showMessageDialog(null,"Dese seleccionar un producto","Advertencia",JOptionPane.WARNING_MESSAGE);
-            }
-            else if(Integer.parseInt(txt_can.getText())<=0){
-                JOptionPane.showMessageDialog(null,"Ingrese cantidad positiva","Advertencia",JOptionPane.WARNING_MESSAGE);
-            }
-            else if(Integer.parseInt(txt_can.getText())>Integer.parseInt(tabla_producto.getValueAt(fsel, 4).toString())){
-                JOptionPane.showMessageDialog(null,"No hay dicha cantidad en stock","Advertencia",JOptionPane.WARNING_MESSAGE);
-            }
-            else if(!(txt_can.getText().isEmpty())){
-                m = (DefaultTableModel) tabla_producto.getModel();
-                codigo = tabla_producto.getValueAt(fsel, 0).toString();
-                descripcion = tabla_producto.getValueAt(fsel, 1).toString();
-                precio = tabla_producto.getValueAt(fsel, 2).toString();
-                talla = tabla_producto.getValueAt(fsel, 3).toString();
-                cantidad = txt_can.getText();
-                Dialog_buscar_pro.setVisible(false);
-                 x = (Float.parseFloat(precio)) * Integer.parseInt(cantidad);
-                 importe = String.format(java.util.Locale.US,"%.2f", x);
-                 m = (DefaultTableModel) Tabla_ventas.getModel();
-                 String filaElemento[] = {
-                     codigo,descripcion,talla,cantidad,precio,importe
-                 };
-                 m.addRow(filaElemento);
-                 calcula = (Float.parseFloat(importe));
-                 sub_total = sub_total + calcula;
-                 //iva = total * (0.12);
-                 
-                 txt_subtotal.setText(String.format(java.util.Locale.US,"%.2f", sub_total));
-                 txt_total.setText(String.format(java.util.Locale.US,"%.2f", sub_total));
-                 
-            }else{
-                JOptionPane.showMessageDialog(null,"AGREGE LA CANTIDAD","Advertencia",JOptionPane.WARNING_MESSAGE);
-            }
-        } catch (Exception e) {
-        }
-
-    }//GEN-LAST:event_btn_agregar_productoActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         m = rep.consultar_producto();
@@ -1258,10 +1285,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         limpiar();
         
     }//GEN-LAST:event_btn_LimpiarActionPerformed
-
-    private void btn_SalirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirProductoActionPerformed
-        Dialog_buscar_pro.dispose();
-    }//GEN-LAST:event_btn_SalirProductoActionPerformed
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
         //System.exit(0); 
@@ -1337,8 +1360,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 cantidad_actual = inv.get_cantidad_total_producto(codigo_a_guardar);
                 nueva_cantidad = (cantidad_actual - cantidad) ;
                 inv.Incremeneto_total_producto(codigo_a_guardar , nueva_cantidad );
-                
-
             }
         
         JOptionPane.showMessageDialog(null, "Factura Ingresada Correcatemente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
@@ -1410,6 +1431,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             txt_vaucher.setEnabled(false);
             txt_vaucher_pago.setEnabled(false);
             lbl_pagovaucher.setEnabled(false);
+            txt_vaucher.setEnabled(false);
             txt_efectivo.setEnabled(true);
             System.out.println("EFECTIVO"); 
         }else if(Combo_FORMA_PAGO.getSelectedItem().equals("Tarjeta Credito")){
@@ -1439,85 +1461,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         }
     }//GEN-LAST:event_Combo_FORMA_PAGOItemStateChanged
 
-    private void txt_vaucher_pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vaucher_pagoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_vaucher_pagoActionPerformed
-
     private void Combo_FORMA_PAGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Combo_FORMA_PAGOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Combo_FORMA_PAGOActionPerformed
-
-    private void cmb_CodoPreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_CodoPreItemStateChanged
-        // TODO add your handling code here:
-        if(cmb_CodoPre.getSelectedItem().equals("Descripcion")){
-               
-            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
-
-            @Override
-            public void keyReleased(java.awt.event.KeyEvent e) {
-                String cadena = cmb_producto.getEditor().getItem().toString();
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    String name = cmb_producto.getEditor().getItem().toString();
-                    m = rep.consultar_producto_name(name);
-                    tabla_producto.setModel(m);  
-                }
-                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
-                    cmb_producto.setModel(op.geLista_Producto(cadena));
-                    if(cmb_producto.getItemCount()>0){
-                        cmb_producto.showPopup();
-                        if(e.getKeyCode()!=8){
-                            ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
-                            
-                            
-                        }else{
-                            cmb_producto.getEditor().setItem(cadena);
-                            
-                        }
-                            
-                    }else{
-                        cmb_producto.addItem(cadena);
-                    }
-                }
-            }                   
-            
-        });
-               
-              
-        }else if(cmb_CodoPre.getSelectedItem().equals("Codigo")){
-            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
-
-            @Override
-            public void keyReleased(java.awt.event.KeyEvent e) {
-                //String cadena = cmb_producto.getEditor().getItem().toString();
-                String cadena = cmb_producto.getEditor().getItem().toString();
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    String codigo_producto = cmb_producto.getEditor().getItem().toString();
-                    m = rep.consultar_producto_codigo(codigo_producto);
-                    tabla_producto.setModel(m);  
-                }
-                if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
-                    cmb_producto.setModel(op.geLista_Producto_porcodigo(cadena));
-                    if(cmb_producto.getItemCount()>0){
-                        cmb_producto.showPopup();
-                        if(e.getKeyCode()!=8){
-                            ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
-                            
-                            
-                        }else{
-                            cmb_producto.getEditor().setItem(cadena);
-                            
-                        }
-                            
-                    }else{
-                        cmb_producto.addItem(cadena);
-                    }
-                }
-            }                   
-            
-        });
-            
-        }
-    }//GEN-LAST:event_cmb_CodoPreItemStateChanged
 
     private void txt_desctoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_desctoKeyTyped
         // TODO add your handling code here:
@@ -1551,64 +1497,6 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             evt.consume();
         }
     }//GEN-LAST:event_txt_vaucherKeyTyped
-
-    private void txt_efectivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_efectivoKeyTyped
-        // TODO add your handling code here:
-       char c = evt.getKeyChar();
-       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
-            evt.consume();
-        }
-        if (c == '.' && txt_efectivo.getText().contains(".")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txt_efectivoKeyTyped
-
-    private void txt_vaucher_pagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vaucher_pagoKeyTyped
-        // TODO add your handling code here:
-       char c = evt.getKeyChar();
-       if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACKSPACE) && (c != '.')) {
-            evt.consume();
-        }
-        if (c == '.' && txt_vaucher_pago.getText().contains(".")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txt_vaucher_pagoKeyTyped
-
-    private void cmb_CodoPreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_CodoPreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_CodoPreActionPerformed
-
-    private void btn_realizar_pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_realizar_pagoActionPerformed
-        // TODO add your handling code here:
-        double total, efectivo, tarjeta,cambio,total_pagado,subtot,
-                subtot2;
-        double tot = 0;
-        String scambio;
-        total = Double.parseDouble(txt_total.getText());
-        System.out.println("" + total);
-        efectivo = Double.parseDouble(txt_efectivo.getText());
-        tarjeta =  Double.parseDouble(txt_vaucher_pago.getText());
-        
-        total_pagado = total - tarjeta - efectivo;
-        subtot2 =  (total) - (total_pagado);
-        System.out.println("" + total_pagado);
-        if(total_pagado == 0){
-            JOptionPane.showMessageDialog(null, "PAGO COMPLETADO PROCEDA A GUARDAR FACTURA", "CORRECTO", JOptionPane.INFORMATION_MESSAGE);
-            btn_guardar_fact.setEnabled(true);
-        }else if(total_pagado > 0){
-            System.out.println("subtot2" +  subtot2);
-            JOptionPane.showMessageDialog(null, "FALTAN PARA COMPLETAR EL PAGO", "INCORRECTO", JOptionPane.WARNING_MESSAGE);
-        }else if (total_pagado < 0){
-           subtot =  total - tarjeta ;
-           cambio = efectivo - subtot ;
-           scambio = String.format(java.util.Locale.US,"%.2f", cambio);
-           JOptionPane.showMessageDialog(null, "PAGO COMPLETADO PROCEDA A GUARDAR FACTURA, CAMBIO :" +scambio+ "$", "CORRECTO", JOptionPane.INFORMATION_MESSAGE);
-           btn_guardar_fact.setEnabled(true);
-
-        }
-        
-        
-    }//GEN-LAST:event_btn_realizar_pagoActionPerformed
 
     private void txt_desctoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_desctoActionPerformed
         // TODO add your handling code here:
@@ -1653,15 +1541,214 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cedulaActionPerformed
 
+    private void btn_SalirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirProductoActionPerformed
+        Dialog_buscar_pro.dispose();
+    }//GEN-LAST:event_btn_SalirProductoActionPerformed
+
+    private void btn_agregar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar_productoActionPerformed
+        // TODO add your handling code here:
+        int fsel = tabla_producto.getSelectedRow();
+        try {
+            String codigo, descripcion, precio, cantidad,importe,talla;
+            float x;
+            float calcula;
+            float iva;
+
+            if(fsel==-1){
+                JOptionPane.showMessageDialog(null,"Dese seleccionar un producto","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
+            else if(Integer.parseInt(txt_can.getText())<=0){
+                JOptionPane.showMessageDialog(null,"Ingrese cantidad positiva","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
+            else if(Integer.parseInt(txt_can.getText())>Integer.parseInt(tabla_producto.getValueAt(fsel, 4).toString())){
+                JOptionPane.showMessageDialog(null,"No hay dicha cantidad en stock","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
+            else if(!(txt_can.getText().isEmpty())){
+                m = (DefaultTableModel) tabla_producto.getModel();
+                codigo = tabla_producto.getValueAt(fsel, 0).toString();
+                descripcion = tabla_producto.getValueAt(fsel, 1).toString();
+                precio = tabla_producto.getValueAt(fsel, 2).toString();
+                talla = tabla_producto.getValueAt(fsel, 3).toString();
+                cantidad = txt_can.getText();
+                Dialog_buscar_pro.setVisible(false);
+                x = (Float.parseFloat(precio)) * Integer.parseInt(cantidad);
+                importe = String.format(java.util.Locale.US,"%.2f", x);
+                m = (DefaultTableModel) Tabla_ventas.getModel();
+                String filaElemento[] = {
+                    codigo,descripcion,talla,cantidad,precio,importe
+                };
+                m.addRow(filaElemento);
+                calcula = (Float.parseFloat(importe));
+                sub_total = sub_total + calcula;
+                //iva = total * (0.12);
+
+                txt_subtotal.setText(String.format(java.util.Locale.US,"%.2f", sub_total));
+                txt_total.setText(String.format(java.util.Locale.US,"%.2f", sub_total));
+
+            }else{
+                JOptionPane.showMessageDialog(null,"AGREGE LA CANTIDAD","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btn_agregar_productoActionPerformed
+
+    private void cmb_CodoPreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_CodoPreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_CodoPreActionPerformed
+
+    private void cmb_CodoPreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_CodoPreItemStateChanged
+        // TODO add your handling code here:
+        if(cmb_CodoPre.getSelectedItem().equals("Descripcion")){
+
+            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+                @Override
+                public void keyReleased(java.awt.event.KeyEvent e) {
+                    String cadena = cmb_producto.getEditor().getItem().toString();
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                        String name = cmb_producto.getEditor().getItem().toString();
+                        m = rep.consultar_producto_name(name);
+                        tabla_producto.setModel(m);
+                    }
+                    if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                        cmb_producto.setModel(op.geLista_Producto(cadena));
+                        if(cmb_producto.getItemCount()>0){
+                            cmb_producto.showPopup();
+                            if(e.getKeyCode()!=8){
+                                ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+
+                            }else{
+                                cmb_producto.getEditor().setItem(cadena);
+
+                            }
+
+                        }else{
+                            cmb_producto.addItem(cadena);
+                        }
+                    }
+                }
+
+            });
+
+        }else if(cmb_CodoPre.getSelectedItem().equals("Codigo")){
+            cmb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+
+                @Override
+                public void keyReleased(java.awt.event.KeyEvent e) {
+                    //String cadena = cmb_producto.getEditor().getItem().toString();
+                    String cadena = cmb_producto.getEditor().getItem().toString();
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                        String codigo_producto = cmb_producto.getEditor().getItem().toString();
+                        m = rep.consultar_producto_codigo(codigo_producto);
+                        tabla_producto.setModel(m);
+                    }
+                    if(e.getKeyCode()>= 65 && e.getKeyCode()<= 90 || e.getKeyCode()>= 96 && e.getKeyCode()<= 105 || e.getKeyCode()>= 96 && e.getKeyCode()== 8 ){
+                        cmb_producto.setModel(op.geLista_Producto_porcodigo(cadena));
+                        if(cmb_producto.getItemCount()>0){
+                            cmb_producto.showPopup();
+                            if(e.getKeyCode()!=8){
+                                ((JTextComponent)cmb_producto.getEditor().getEditorComponent()).select(cadena.length(),cmb_producto.getEditor().getItem().toString().length());
+
+                            }else{
+                                cmb_producto.getEditor().setItem(cadena);
+
+                            }
+
+                        }else{
+                            cmb_producto.addItem(cadena);
+                        }
+                    }
+                }
+
+            });
+
+        }
+    }//GEN-LAST:event_cmb_CodoPreItemStateChanged
+
+    private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
+        // TODO add your handling code here:
+         sub_total =(Double.parseDouble(txt_subtotal.getText())); 
+         iva = (Double.parseDouble(txt_iva.getText()));
+         vaucher = (Double.parseDouble(txt_vaucher.getText()));
+         if(cmb_descuento.getSelectedItem().equals("$")){
+                     desc = (Double.parseDouble(txt_descto.getText()));
+                     sub_total =Double.parseDouble(txt_subtotal.getText());
+                     total = sub_total - desc ;
+                     sub_total_i = total;
+                     total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                     totalfin = total_i + vaucher;
+                     stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
+                     txt_total.setText(stotal);
+            }else{
+                
+                desc = (Double.parseDouble(txt_descto.getText()));
+                sub_total =Double.parseDouble(txt_subtotal.getText());
+                total = sub_total - ((sub_total * desc)/100) ;
+                sub_total_i = total;
+                total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                totalfin = total_i + vaucher;
+                stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
+                txt_total.setText(stotal);
+            }
+        Dialog_calculo.setSize(700, 500);
+        Dialog_calculo.setLocationRelativeTo(null);
+        Dialog_calculo.setVisible(true);
+    }//GEN-LAST:event_btn_calcularActionPerformed
+
+    private void cmb_descuentoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_descuentoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_descuentoItemStateChanged
+
+    private void cmb_descuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_descuentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_descuentoActionPerformed
+
+    private void btn_realizar_pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_realizar_pagoActionPerformed
+        double pay , calculus,dif,cambio;
+       Totalpagar =  (Double.parseDouble(txt_total.getText())); 
+       efectivo = (Double.parseDouble(txt_efectivo.getText())); 
+       tarjeta = (Double.parseDouble(txt_vaucher_pago.getText())); 
+       
+       pay =  efectivo + tarjeta;
+       totalpagadofinal = pay;
+       calculus = pay - Totalpagar;
+       
+       if(calculus > 0){
+            dif = Totalpagar - tarjeta;
+            cambio = efectivo - dif;
+           JOptionPane.showMessageDialog(null,"Su cambio es : "+cambio+" $ ","Su cambio",JOptionPane.INFORMATION_MESSAGE);
+           btn_guardar_fact.setEnabled(true);
+           Dialog_calculo.setVisible(false);
+           txt_efectivo.setText(String.valueOf(efectivo- cambio));
+           cambiofinal = cambio;
+       }else if(calculus < 0){
+           JOptionPane.showMessageDialog(null,"Faltan  : "+calculus+" $ !!! ","OJO",JOptionPane.WARNING_MESSAGE);
+       }else if(calculus == 0){
+           
+           JOptionPane.showMessageDialog(null," Gracias por su compra"," Campra Exitosa!!",JOptionPane.INFORMATION_MESSAGE);
+           btn_guardar_fact.setEnabled(true);
+           Dialog_calculo.setVisible(false);
+       }
+       
+    }//GEN-LAST:event_btn_realizar_pagoActionPerformed
+
+    private void btn_SalircalculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalircalculoActionPerformed
+        // TODO add your handling code here:
+        Dialog_calculo.dispose();
+    }//GEN-LAST:event_btn_SalircalculoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combo_FORMA_PAGO;
     private javax.swing.JDialog Dialog_buscar_pro;
+    private javax.swing.JDialog Dialog_calculo;
     private javax.swing.JPanel Factura_panel;
     private javax.swing.JTable Tabla_ventas;
     private javax.swing.JButton btn_Limpiar;
     private javax.swing.JButton btn_Salir;
     private javax.swing.JButton btn_SalirProducto;
+    private javax.swing.JButton btn_Salircalculo;
     private javax.swing.JButton btn_agregar_producto;
+    private javax.swing.JButton btn_calcular;
     private javax.swing.JButton btn_consumidor_final;
     private javax.swing.JButton btn_guardar_fact;
     private javax.swing.JButton btn_imprimir;
@@ -1677,13 +1764,14 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1693,10 +1781,12 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbl_efectivo;
+    private javax.swing.JLabel lbl_efectivo1;
     private javax.swing.JLabel lbl_pagovaucher;
     private javax.swing.JLabel lbl_vaucher;
     private javax.swing.JTable tabla_producto;
@@ -1751,6 +1841,14 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             para.put("SUBTOTAL", txt_subtotal.getText());
             para.put("TOTAL", txt_total.getText());
             para.put("NOTA",txt_nota.getText());
+            para.put("IVA",txt_iva.getText());
+            para.put("DESCUENTO",txt_descto.getText());
+            para.put("VAUCHER",txt_vaucher.getText());
+            para.put("TOTALPAGADO",String.valueOf(totalpagadofinal));
+            para.put("CAMBIO",String.valueOf(cambiofinal));
+            
+            
+            
             
             order_list = (DefaultTableModel) Tabla_ventas.getModel();
             int numero_filas = order_list.getRowCount();
