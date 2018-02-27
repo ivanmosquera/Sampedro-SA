@@ -72,7 +72,7 @@
                   <Component id="jLabel2" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jTextField2" min="-2" pref="72" max="-2" attributes="0"/>
-                  <EmptySpace pref="629" max="32767" attributes="0"/>
+                  <EmptySpace pref="653" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -155,7 +155,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txt_telefono" pref="163" max="32767" attributes="0"/>
+                                          <Component id="txt_telefono" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -164,7 +164,9 @@
                       <Component id="txt_cedula" min="-2" pref="194" max="-2" attributes="0"/>
                       <Component id="txt_dir" min="-2" pref="194" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="460" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="buscar_Producto" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="372" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -202,6 +204,7 @@
                               <Component id="txt_vendedor" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="Combo_FORMA_PAGO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="buscar_Producto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -288,6 +291,14 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="buscar_Producto">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar Producto"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscar_ProductoActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -383,7 +394,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField11" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -527,6 +538,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

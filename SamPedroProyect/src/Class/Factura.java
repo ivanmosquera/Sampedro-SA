@@ -46,7 +46,7 @@ public class Factura {
                 float precio = rs.getFloat("Precio");
                 String talla = rs.getString("Talla");
                 prendas[i] = new Prenda(productid, detalle, talla, precio);
-                System.out.println("Codigo : " + prendas[i].Codigo + " Detalle: " + prendas[i].Detalle + " Precio: " + prendas[i].Precio + " Talla: " + prendas[i].Talla);
+                //System.out.println("Codigo : " + prendas[i].Codigo + " Detalle: " + prendas[i].Detalle + " Precio: " + prendas[i].Precio + " Talla: " + prendas[i].Talla);
                 //System.out.println("Codigo : " + productid + " Detalle: " + detalle + " Precio: " + precio + " Talla: " + talla);
 
                 i++;
