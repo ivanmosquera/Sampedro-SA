@@ -32,6 +32,7 @@ public class Prenda {
     public String Detalle;
     public String Talla;
     public float Precio;
+    public float PrecioMin;
 
     public Prenda() {
         
@@ -50,7 +51,7 @@ public class Prenda {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "INSERT INTO producto values(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO producto values(?,?,?,?,?,?,?,?,?,?)";
         Date date = new Date();
         //Caso 1: obtener la hora y salida por pantalla con formato:
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
@@ -61,18 +62,21 @@ public class Prenda {
         System.out.println(hora);
         System.out.println(dia);
         String formattedString = String.format(java.util.Locale.US,"%.2f", pr.getPrecio());
+        String formattedString2 = String.format(java.util.Locale.US,"%.2f", pr.getPrecioMin());
         float precio = Float.parseFloat(formattedString);
+        float precioMin= Float.parseFloat(formattedString2);
         try{
             pst = cn.prepareStatement(sql);
             pst.setString(1,codigo_producto);
             pst.setString(2,pr.getDetalle());
             pst.setFloat(3, precio);
-            pst.setString(4,pr.getTalla());
-            pst.setInt(5, categoria);
-            pst.setInt(6, usuario);
-            pst.setString(7,dia);
-            pst.setString(8,hora);
-            pst.setInt(9, 0);
+            pst.setFloat(4, precioMin);
+            pst.setString(5,pr.getTalla());
+            pst.setInt(6, categoria);
+            pst.setInt(7, usuario);
+            pst.setString(8,dia);
+            pst.setString(9,hora);
+            pst.setInt(10, 0);
             pst.execute();
             resul = "Prenda Ingresado Correctamente";
             System.out.println(resul);
@@ -169,7 +173,7 @@ public class Prenda {
   
         
         
-        String sql  = "SELECT id_Producto AS codigo , P.Descripcion ,Talla, C.Nombre AS Categoria , cantidad_total as Cantidad FROM producto P , categoria C WHERE fk_Categoria = id_Categoria ;";
+        String sql  = "SELECT id_Producto AS codigo , P.Descripcion ,Talla, C.Nombre AS Categoria , cantidad_total as Cantidad, Precio, Precio_Minimo FROM producto P , categoria C WHERE fk_Categoria = id_Categoria ;";
         
         try {
             pst = cn.prepareStatement(sql);
@@ -185,6 +189,8 @@ public class Prenda {
             modelo.addColumn("Talla");
             modelo.addColumn("Categoria");
             modelo.addColumn("Cantidad");
+            modelo.addColumn("Precio");
+            modelo.addColumn("Precio Mínimo");
             
             while(rs.next()){
                 

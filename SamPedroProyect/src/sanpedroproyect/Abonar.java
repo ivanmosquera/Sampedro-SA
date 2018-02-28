@@ -540,6 +540,7 @@ public class Abonar extends javax.swing.JFrame {
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             String cedu = txt_cedula.getText().toString();
             System.out.println("Aplasto ENter");
+            cbx_Nombre.removeAllItems();
                 String resul = null , lats = null;
                 ConnectionDB cc = new ConnectionDB();
                 Connection cn = cc.getConnection();
@@ -558,12 +559,18 @@ public class Abonar extends javax.swing.JFrame {
                 } catch (Exception ex){
                     System.out.println(ex);
                 }
-                m = rep.consultar_Saldos_cliente(codigo_cliente);
-                tabla_producto.setModel(m);
-                Dialog_buscar_pro.setSize(500, 500);
-                Dialog_buscar_pro.setLocationRelativeTo(null);
-                Dialog_buscar_pro.setVisible(true);
-                txt_abonar.setEditable(true);
+                System.out.println(cbx_Nombre.getEditor().getItem());
+                if(cbx_Nombre.getEditor().getItem()!=""){
+                    m = rep.consultar_Saldos_cliente(codigo_cliente);
+                    tabla_producto.setModel(m);
+                    Dialog_buscar_pro.setSize(500, 500);
+                    Dialog_buscar_pro.setLocationRelativeTo(null);
+                    Dialog_buscar_pro.setVisible(true);
+                    txt_abonar.setEditable(true); 
+                }else{
+                    JOptionPane.showMessageDialog(null, "NO EXISTE CLIENTE CON CEDULA INGRESADA" , "ERROR" , JOptionPane.ERROR_MESSAGE); 
+                }
+                
         }
     }//GEN-LAST:event_txt_cedulaKeyReleased
 
