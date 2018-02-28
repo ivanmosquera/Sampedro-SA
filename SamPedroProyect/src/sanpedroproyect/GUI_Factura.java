@@ -870,7 +870,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         });
 
         lbl_vaucher.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        lbl_vaucher.setText("Vaucher");
+        lbl_vaucher.setText("Adicional");
 
         txt_vaucher.setText("0");
         txt_vaucher.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1002,7 +1002,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel20.setText("$");
 
         btn_calcular.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        btn_calcular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
+        btn_calcular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proyecto-de-ley.png"))); // NOI18N
         btn_calcular.setText("Calcular Total");
         btn_calcular.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_calcular.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -1329,41 +1329,72 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private void btn_guardar_factActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_factActionPerformed
         // TODO add your handling code here:
         if(!txt_subtotal.getText().equals("")){
-        DefaultTableModel order_list_guardar = new DefaultTableModel();
-        subtotal_static = (Float.parseFloat(txt_subtotal.getText()));
-        Descuento_static = (Float.parseFloat(txt_descto.getText()));
-        Total_static = (Float.parseFloat(txt_total.getText()));
-        int i = 0;
-        String codigo_a_guardar;
-        int cantidad = 0 ;
-        int codigo_obtenido;
-        double pago_efectivo, pago_tarjeta;
-        pago_efectivo = Double.parseDouble(txt_efectivo.getText());
-        pago_tarjeta = Double.parseDouble(txt_vaucher_pago.getText());
-        String s = factura.Guardar_Factura(id_sumada,USUARIO,pago_efectivo,pago_tarjeta);     
-        System.out.println("" + s);
-        
-        codigo_obtenido = factura.Get_last_id_factura();
-        System.out.println("" + codigo_obtenido);
-        
-        
-        /*Neceista el id para guardar todos los productos de una factura*/
-        order_list_guardar = (DefaultTableModel) Tabla_ventas.getModel();
-        int numero_filas = order_list_guardar.getRowCount();
-            for(i=0;i<numero_filas;i++){
-                int cantidad_actual = 0;
-                int nueva_cantidad = 0;
-                codigo_a_guardar = Tabla_ventas.getValueAt(i, 0).toString();
-                cantidad = Integer.parseInt(Tabla_ventas.getValueAt(i, 3).toString());
-                factura.Guardar_Detalle_Factura(codigo_obtenido, codigo_a_guardar, cantidad); 
-                inv.Decremento_inventario(codigo_a_guardar,cantidad);
-                cantidad_actual = inv.get_cantidad_total_producto(codigo_a_guardar);
-                nueva_cantidad = (cantidad_actual - cantidad) ;
-                inv.Incremeneto_total_producto(codigo_a_guardar , nueva_cantidad );
-            }
-        
-        JOptionPane.showMessageDialog(null, "Factura Ingresada Correcatemente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
-        btn_imprimir.setEnabled(true);
+            DefaultTableModel order_list_guardar = new DefaultTableModel();
+
+                if(txt_subtotal.getText().equals("")){
+                    subtotal_static = 0;
+                }else{
+                    subtotal_static = (Float.parseFloat(txt_subtotal.getText()));
+                }
+
+
+                if(txt_descto.getText().equals("")){
+                    Descuento_static=0;
+                }else{
+                    Descuento_static = (Float.parseFloat(txt_descto.getText()));
+                }
+
+                if(txt_total.getText().equals("")){
+                   Total_static  =0;
+                }else{
+                    Total_static = (Float.parseFloat(txt_total.getText()));
+                }
+
+
+
+                if(txt_vaucher.getText().equals("")){
+                    Voucher_static=0;
+                }else{
+                    Voucher_static = (Float.parseFloat(txt_vaucher.getText()));
+                }
+
+
+                if(txt_iva.getText().equals("")){
+                    Iva_static = 0;
+                }else{
+                    Iva_static = (Float.parseFloat(txt_iva.getText()));
+                }
+
+            int i = 0;
+            String codigo_a_guardar;
+            int cantidad = 0 ;
+            int codigo_obtenido;
+            double pago_efectivo, pago_tarjeta;
+            pago_efectivo = Double.parseDouble(txt_efectivo.getText());
+            pago_tarjeta = Double.parseDouble(txt_vaucher_pago.getText());
+            String s = factura.Guardar_Factura(id_sumada,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static);     
+            System.out.println("" + s);
+            codigo_obtenido = factura.Get_last_id_factura();
+            System.out.println("" + codigo_obtenido);
+
+
+            /*Neceista el id para guardar todos los productos de una factura*/
+            order_list_guardar = (DefaultTableModel) Tabla_ventas.getModel();
+            int numero_filas = order_list_guardar.getRowCount();
+                for(i=0;i<numero_filas;i++){
+                    int cantidad_actual = 0;
+                    int nueva_cantidad = 0;
+                    codigo_a_guardar = Tabla_ventas.getValueAt(i, 0).toString();
+                    cantidad = Integer.parseInt(Tabla_ventas.getValueAt(i, 3).toString());
+                    factura.Guardar_Detalle_Factura(codigo_obtenido, codigo_a_guardar, cantidad); 
+                    inv.Decremento_inventario(codigo_a_guardar,cantidad);
+                    cantidad_actual = inv.get_cantidad_total_producto(codigo_a_guardar);
+                    nueva_cantidad = (cantidad_actual - cantidad) ;
+                    inv.Incremeneto_total_producto(codigo_a_guardar , nueva_cantidad );
+                }
+
+            JOptionPane.showMessageDialog(null, "Factura Ingresada Correcatemente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
+            btn_imprimir.setEnabled(true);
         
         }else{
            JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE); 
@@ -1667,10 +1698,37 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
         // TODO add your handling code here:
-         sub_total =(Double.parseDouble(txt_subtotal.getText())); 
-         iva = (Double.parseDouble(txt_iva.getText()));
-         vaucher = (Double.parseDouble(txt_vaucher.getText()));
+        if (txt_subtotal.getText().equals("")){
+            sub_total = 0;
+        }else{
+           sub_total =(Double.parseDouble(txt_subtotal.getText())); 
+        }
+        
+        if(txt_iva.getText().equals("")){
+            iva = 0;
+        }else{
+            iva = (Double.parseDouble(txt_iva.getText()));
+        }
+        
+        if(txt_vaucher.getText().equals("")){
+            vaucher = 0;
+        }else{
+            vaucher = (Double.parseDouble(txt_vaucher.getText()));
+        }
+         
+         
+         
          if(cmb_descuento.getSelectedItem().equals("$")){
+             if(txt_descto.getText().equals("")){
+                     desc = 0;
+                     sub_total =Double.parseDouble(txt_subtotal.getText());
+                     total = sub_total - desc ;
+                     sub_total_i = total;
+                     total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                     totalfin = total_i + vaucher;
+                     stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
+                     txt_total.setText(stotal);
+             }else{
                      desc = (Double.parseDouble(txt_descto.getText()));
                      sub_total =Double.parseDouble(txt_subtotal.getText());
                      total = sub_total - desc ;
@@ -1679,16 +1737,30 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                      totalfin = total_i + vaucher;
                      stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                      txt_total.setText(stotal);
+             }
+                     
             }else{
+             
+                if(txt_descto.getText().equals("")){
+                    desc = 0;
+                   sub_total =Double.parseDouble(txt_subtotal.getText());
+                   total = sub_total - ((sub_total * desc)/100) ;
+                   sub_total_i = total;
+                   total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                   totalfin = total_i + vaucher;
+                   stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
+                   txt_total.setText(stotal);
+                }else{
+                   desc = (Double.parseDouble(txt_descto.getText()));
+                   sub_total =Double.parseDouble(txt_subtotal.getText());
+                   total = sub_total - ((sub_total * desc)/100) ;
+                   sub_total_i = total;
+                   total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                   totalfin = total_i + vaucher;
+                   stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
+                   txt_total.setText(stotal);
+                }
                 
-                desc = (Double.parseDouble(txt_descto.getText()));
-                sub_total =Double.parseDouble(txt_subtotal.getText());
-                total = sub_total - ((sub_total * desc)/100) ;
-                sub_total_i = total;
-                total_i = sub_total_i + ((sub_total_i * iva)/100) ;
-                totalfin = total_i + vaucher;
-                stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
-                txt_total.setText(stotal);
             }
         Dialog_calculo.setSize(700, 500);
         Dialog_calculo.setLocationRelativeTo(null);
@@ -1716,10 +1788,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
        if(calculus > 0){
             dif = Totalpagar - tarjeta;
             cambio = efectivo - dif;
-           JOptionPane.showMessageDialog(null,"Su cambio es : "+cambio+" $ ","Su cambio",JOptionPane.INFORMATION_MESSAGE);
+           JOptionPane.showMessageDialog(null,"Su cambio es : "+(cambio *(-1))+" $ ","Su cambio",JOptionPane.INFORMATION_MESSAGE);
            btn_guardar_fact.setEnabled(true);
            Dialog_calculo.setVisible(false);
-           txt_efectivo.setText(String.valueOf(efectivo- cambio));
+           txt_efectivo.setText(String.valueOf(efectivo - cambio));
            cambiofinal = cambio;
        }else if(calculus < 0){
            JOptionPane.showMessageDialog(null,"Faltan  : "+calculus+" $ !!! ","OJO",JOptionPane.WARNING_MESSAGE);
@@ -1829,7 +1901,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         DefaultTableModel order_list = new DefaultTableModel();
         String codigo,descripcion,precio,talla,cantidad,total;
         InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/FACTURA_IMPRIMIR.jrxml");
-        
+        DateFormat hourFormatd = new SimpleDateFormat("HH:mm:ss");
+        final String horad = hourFormatd.format(date);
+        DateFormat dateFormatD = new SimpleDateFormat("yyyy/MM/dd");
+        String diaD = dateFormatD.format(date);
         try {
             int i = 0;
             JasperReport jr = JasperCompileManager.compileReport(is);
@@ -1846,6 +1921,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             para.put("VAUCHER",txt_vaucher.getText());
             para.put("TOTALPAGADO",String.valueOf(totalpagadofinal));
             para.put("CAMBIO",String.valueOf(cambiofinal));
+            para.put("HORA", horad);
+            para.put("FECHA", diaD);
             
             
             

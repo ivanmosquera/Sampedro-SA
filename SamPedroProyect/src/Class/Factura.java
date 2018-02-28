@@ -23,7 +23,7 @@ import sanpedroproyect.GUI_Factura;
  */
 public class Factura {
     static GUI_Factura  fact = new GUI_Factura();
-    public static String Guardar_Factura(int id , int user,double efectivo, double tarjeta){
+    public static String Guardar_Factura(int id , int user,double efectivo, double tarjeta, float vauch , float iva){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -48,8 +48,8 @@ public class Factura {
             pst.setInt(5,1);
             pst.setFloat(6,fact.getSubtotal_static());
             pst.setFloat(7,fact.getDescuento_static());
-            pst.setFloat(8,0);
-            pst.setFloat(9,0);
+            pst.setFloat(8,vauch);
+            pst.setFloat(9,iva);
             pst.setFloat(10, fact.getTotal_static());
             pst.setFloat(11, user);
             pst.setDouble(12, efectivo);
