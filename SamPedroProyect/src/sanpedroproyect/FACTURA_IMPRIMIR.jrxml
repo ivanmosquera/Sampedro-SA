@@ -15,6 +15,8 @@
 	<parameter name="VAUCHER" class="java.lang.String"/>
 	<parameter name="TOTALPAGADO" class="java.lang.String"/>
 	<parameter name="CAMBIO" class="java.lang.String"/>
+	<parameter name="FECHA" class="java.lang.String"/>
+	<parameter name="HORA" class="java.lang.String"/>
 	<field name="PRODUCTO" class="java.lang.String"/>
 	<field name="TALLA" class="java.lang.String"/>
 	<field name="PRECIO" class="java.lang.String"/>
@@ -37,14 +39,14 @@
 	<pageHeader>
 		<band height="113" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="10" width="70" height="20" uuid="d86a32dd-8f56-4424-833b-7bd86c46324b"/>
+				<reportElement x="0" y="26" width="70" height="20" uuid="d86a32dd-8f56-4424-833b-7bd86c46324b"/>
 				<textElement>
 					<font size="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{CLIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="10" width="62" height="20" uuid="352579f8-788b-4cd4-8748-aa564452bb4e"/>
+				<reportElement x="110" y="26" width="62" height="20" uuid="352579f8-788b-4cd4-8748-aa564452bb4e"/>
 				<textElement>
 					<font size="5"/>
 				</textElement>
@@ -63,6 +65,20 @@
 					<font size="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{TELEFONO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="70" height="20" uuid="af506953-7866-4f0b-a825-9f7bac713397"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="0" width="80" height="20" uuid="aa974839-4204-44a3-9fc2-348bb4b1a573"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HORA}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

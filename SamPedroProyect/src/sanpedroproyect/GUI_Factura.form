@@ -900,7 +900,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Vaucher"/>
+            <Property name="text" type="java.lang.String" value="Adicional"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_vaucher">
@@ -1164,7 +1164,7 @@
               <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/disco-flexible (1).png"/>
+              <Image iconType="3" name="/Imagenes/proyecto-de-ley.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Calcular Total"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
