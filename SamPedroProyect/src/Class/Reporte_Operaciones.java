@@ -164,7 +164,7 @@ public class Reporte_Operaciones {
         int col;
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
-        String sql  =  "SELECT id_Producto, Descripcion, Precio, Talla, cantidad_total FROM producto;";
+        String sql  =  "SELECT id_Producto, Descripcion, Precio, Precio_Minimo, Talla, cantidad_total FROM producto;";
         
         try {
             pst = cn.prepareStatement(sql);
@@ -204,7 +204,7 @@ public class Reporte_Operaciones {
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
          System.out.println(nombre);
-        String sql  =  "SELECT id_Producto, Descripcion, Precio, Talla FROM producto Where Descripcion = ? ";
+        String sql  =  "SELECT id_Producto, Descripcion, Precio, Precio_Minimo, Talla, cantidad_total FROM producto Where Descripcion = ? ";
         
         try {
             pst = cn.prepareStatement(sql);
@@ -242,7 +242,7 @@ public class Reporte_Operaciones {
         int col;
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
-        String sql  =  "SELECT id_Producto, Descripcion, Precio, Talla FROM producto Where id_Producto = ? ";
+        String sql  =  "SELECT id_Producto, Descripcion, Precio, Precio_Minimo, Talla, cantidad_total FROM producto Where id_Producto = ? ";
         
         try {
             pst = cn.prepareStatement(sql);

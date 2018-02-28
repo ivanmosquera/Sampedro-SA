@@ -96,13 +96,13 @@ public class Inventario_Totales extends javax.swing.JFrame {
 
         table_repor_inv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Descripcion", "Talla", "Categoria", "Cantidad"
+                "Codigo", "Descripcion", "Talla", "Categoria", "Cantidad", "Precio", "Precio Minimo"
             }
         ));
         jScrollPane1.setViewportView(table_repor_inv);

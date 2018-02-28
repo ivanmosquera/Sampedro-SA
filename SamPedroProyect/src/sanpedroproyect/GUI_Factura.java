@@ -526,13 +526,13 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
         jScrollPane2.setViewportView(tabla_producto);
@@ -934,7 +934,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
             },
             new String [] {
-                "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "TOTAL"
+                "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "PRECIO MINIMO", "TOTAL"
             }
         ));
         jScrollPane3.setViewportView(Tabla_ventas);
@@ -1432,7 +1432,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             }else{
                 resp = JOptionPane.showConfirmDialog(null, "¿Está Seguro de Quitar el Producto?","Eliminar",JOptionPane.YES_NO_OPTION);
                 if(resp == JOptionPane.YES_OPTION){
-                    importe = Float.parseFloat(Tabla_ventas.getValueAt(fsel,5).toString());
+                    importe = Float.parseFloat(Tabla_ventas.getValueAt(fsel,6).toString());
                     subtotal_actual = (Float.parseFloat(txt_subtotal.getText()) -  importe );
                     txt_subtotal.setText(String.valueOf(subtotal_actual));
                     m = (DefaultTableModel) Tabla_ventas.getModel();
@@ -1580,7 +1580,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         // TODO add your handling code here:
         int fsel = tabla_producto.getSelectedRow();
         try {
-            String codigo, descripcion, precio, cantidad,importe,talla;
+            String codigo, descripcion, precio, precio_min, cantidad,importe,talla;
             float x;
             float calcula;
             float iva;
@@ -1591,7 +1591,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             else if(Integer.parseInt(txt_can.getText())<=0){
                 JOptionPane.showMessageDialog(null,"Ingrese cantidad positiva","Advertencia",JOptionPane.WARNING_MESSAGE);
             }
-            else if(Integer.parseInt(txt_can.getText())>Integer.parseInt(tabla_producto.getValueAt(fsel, 4).toString())){
+            else if(Integer.parseInt(txt_can.getText())>Integer.parseInt(tabla_producto.getValueAt(fsel, 5).toString())){
                 JOptionPane.showMessageDialog(null,"No hay dicha cantidad en stock","Advertencia",JOptionPane.WARNING_MESSAGE);
             }
             else if(!(txt_can.getText().isEmpty())){
@@ -1599,14 +1599,15 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 codigo = tabla_producto.getValueAt(fsel, 0).toString();
                 descripcion = tabla_producto.getValueAt(fsel, 1).toString();
                 precio = tabla_producto.getValueAt(fsel, 2).toString();
-                talla = tabla_producto.getValueAt(fsel, 3).toString();
+                precio_min = tabla_producto.getValueAt(fsel, 3).toString();
+                talla = tabla_producto.getValueAt(fsel, 4).toString();
                 cantidad = txt_can.getText();
                 Dialog_buscar_pro.setVisible(false);
                 x = (Float.parseFloat(precio)) * Integer.parseInt(cantidad);
                 importe = String.format(java.util.Locale.US,"%.2f", x);
                 m = (DefaultTableModel) Tabla_ventas.getModel();
                 String filaElemento[] = {
-                    codigo,descripcion,talla,cantidad,precio,importe
+                    codigo,descripcion,talla,cantidad,precio,precio_min,importe
                 };
                 m.addRow(filaElemento);
                 calcula = (Float.parseFloat(importe));
@@ -1937,7 +1938,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 talla = Tabla_ventas.getValueAt(i, 2).toString();
                 cantidad = Tabla_ventas.getValueAt(i, 3).toString();
                 precio = Tabla_ventas.getValueAt(i,4).toString();
-                total = Tabla_ventas.getValueAt(i,5).toString();    
+                total = Tabla_ventas.getValueAt(i,6).toString();    
                 plist.add(new Productos(descripcion, talla, precio, cantidad, total));
   
             }
@@ -1985,7 +1986,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
             },
             new String [] {
-                "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "TOTAL"
+                "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "PRECIO MINIMO", "TOTAL"
             }
         ));
     }
