@@ -16,7 +16,7 @@ import static sanpedroproyect.Modificar_Eliminar_Cliente.Nombre;
  * @author Pantheon
  */
 public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
-    static String Cedula,Nombre,Apellido,Correo,Telefono,Direccion,Ciudad,Nota;
+    static String Cedula,Nombre,Apellido,Correo,Telefono,Celular,Direccion,Ciudad,Nota;
     Cliente c = new Cliente();
     /**
      * Creates new form Ingreso_Nueva_prenda
@@ -30,6 +30,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         SLetras(txt_nombre1);
         validarCedula(txtcedu1);
         SNumeros(txt_fono1);
+        SNumeros(txt_celular);
         
     }
 
@@ -97,6 +98,16 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         this.Nota = Nota;
     }
 
+    public String getCelular() {
+        return Celular;
+    }
+
+    public void setCelular(String Celular) {
+        this.Celular = Celular;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,6 +139,8 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         txt_fono1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel17 = new javax.swing.JLabel();
+        txt_celular = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -202,6 +215,9 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         jLabel16.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel16.setMinimumSize(new java.awt.Dimension(439, 14));
 
+        jLabel17.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel17.setText("Celular");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -224,22 +240,19 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel11)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(8, 8, 8)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel15))
+                                    .addComponent(jLabel15)
                                     .addGap(114, 114, 114)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(txt_fono1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                                             .addComponent(txt_dir1, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txt_ciu1, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txt_correo1, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtcedu1))
-                                        .addComponent(txt_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 101, Short.MAX_VALUE))
+                                        .addComponent(txt_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 127, Short.MAX_VALUE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -250,6 +263,12 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                 .addGap(73, 73, 73)
                 .addComponent(btn_salirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(102, 102, 102))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +277,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txt_nombre1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,11 +301,15 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txt_fono1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(26, 26, 26)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,6 +340,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         txt_correo1.setText("");
         txt_dir1.setText("");
         txt_fono1.setText("");
+        txt_celular.setText("");
         txt_nota1.setText("");
     }
     private void btn_salirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirClienteActionPerformed
@@ -341,10 +365,11 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "NUMERO DE CEDULA DEBE CONTENER 10 DIGITOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
             }
             else{
-                Nombre = txt_nombre1.getText();
+               Nombre = txt_nombre1.getText();
                Cedula = txtcedu1.getText();
                Direccion = txt_dir1.getText();
                Telefono = txt_fono1.getText();
+               Celular = txt_celular.getText();
                Ciudad = txt_ciu1.getText();
                Correo = txt_correo1.getText();
                Nota = txt_nota1.getText();
@@ -425,11 +450,13 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField txt_celular;
     private javax.swing.JTextField txt_ciu1;
     private javax.swing.JTextField txt_correo1;
     private javax.swing.JTextField txt_dir1;

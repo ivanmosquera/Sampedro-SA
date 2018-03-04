@@ -30,17 +30,18 @@ public class Cliente {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "INSERT INTO cliente values(null,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO cliente values(null,?,?,?,?,?,?,?,?,?)";
         try{
             pst = cn.prepareStatement(sql);
             pst.setString(1,cliente.getCedula());
             pst.setString(2,cliente.getNombre());
             pst.setString(3,cliente.getCorreo());
             pst.setString(4,cliente.getTelefono());
-            pst.setString(5,cliente.getDireccion());
-            pst.setString(6,cliente.getCiudad());
-            pst.setString(7,cliente.getNota());
-            pst.setString(8,"ACTIVO");
+            pst.setString(5,cliente.getCelular());
+            pst.setString(6,cliente.getDireccion());
+            pst.setString(7,cliente.getCiudad());
+            pst.setString(8,cliente.getNota());
+            pst.setString(9,"ACTIVO");
             pst.execute();
             resul = "CORRECTO INGRESO CLIENTE";
            
@@ -99,17 +100,18 @@ public class Cliente {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "UPDATE cliente SET Cedula= ? , Nombre= ? , Correo= ?, Telefono= ? , Direccion= ? , Ciudad= ? , Nota= ?   WHERE id_Cliente= ?;";
+        String sql = "UPDATE cliente SET Cedula= ? , Nombre= ? , Correo= ?, Telefono= ? , Celular= ?, Direccion= ? , Ciudad= ? , Nota= ?   WHERE id_Cliente= ?;";
         try{
             pst = cn.prepareStatement(sql);
             pst.setString(1,mod.getCedula());
             pst.setString(2,mod.getNombre());
             pst.setString(3,mod.getCorreo());
             pst.setString(4,mod.getTelefono());
-            pst.setString(5,mod.getDireccion());
-            pst.setString(6,mod.getCiudad());
-            pst.setString(7,mod.getNota());
-            pst.setInt(8,mod.getId_cliente());
+            pst.setString(5,mod.getCelular());
+            pst.setString(6,mod.getDireccion());
+            pst.setString(7,mod.getCiudad());
+            pst.setString(8,mod.getNota());
+            pst.setInt(9,mod.getId_cliente());
             pst.execute();
             resul = "Cliente Modificado Correctamente";
             System.out.println(resul);

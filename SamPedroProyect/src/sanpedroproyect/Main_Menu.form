@@ -7,15 +7,24 @@
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Factura"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu7">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Facturas"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="itemFactura_verFacturas">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Totales"/>
                   </Properties>
                   <Events>
@@ -24,6 +33,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemFactura_verFacturasFecha">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Por fecha"/>
                   </Properties>
                   <Events>
@@ -37,10 +49,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cliente"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemCliente_modificar_eliminar">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Modificar/Eliminar cliente"/>
               </Properties>
               <Events>
@@ -52,10 +70,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Producto"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemProducto_ingresarProducto">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ingresar producto"/>
               </Properties>
               <Events>
@@ -64,6 +88,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemProducto_abonar">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Abonar"/>
               </Properties>
               <Events>
@@ -72,6 +99,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemProducto_ingresarCategoria">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ingresar categor&#xed;a"/>
               </Properties>
               <Events>
@@ -83,10 +113,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu5">
           <Properties>
             <Property name="text" type="java.lang.String" value="Inventario"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemInventario_ingresoInventario">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ingreso Inventario"/>
               </Properties>
               <Events>
@@ -98,10 +134,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu6">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reportes"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="reporteinventario">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Reporte Inventarios"/>
               </Properties>
               <Events>
@@ -110,6 +152,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="reporteproducto">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Reporte Productos"/>
               </Properties>
               <Events>
@@ -118,6 +163,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="reporteseparados">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Reporte Separados"/>
               </Properties>
               <Events>
@@ -126,6 +174,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemReportes_ventaPrendas">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Reporte de Venta de prendas"/>
               </Properties>
               <Events>
@@ -137,10 +188,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Configuraci&#xf3;n"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemConfig_registrarUsuario">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Registrar Usuario"/>
               </Properties>
               <Events>
@@ -149,6 +206,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemConfig_modificarUsuario">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Modificar/Eliminar Usuario"/>
               </Properties>
               <Events>
@@ -157,6 +217,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemConfig_nuevoRol">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nuevo Perfil"/>
               </Properties>
               <Events>
@@ -165,6 +228,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemConfig_administrarRoles">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Administrar perfiles"/>
               </Properties>
               <Events>
@@ -173,6 +239,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemConfig_cerrarSesion">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
               </Properties>
               <Events>
@@ -247,16 +316,16 @@
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="btn_go_inventario" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btn_go_RegistroCliente" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btn_go_registroFactura" alignment="0" pref="144" max="32767" attributes="0"/>
+                                  <Component id="btn_go_registroFactura" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="640" max="32767" attributes="0"/>
+                          <EmptySpace pref="637" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="lbl_user_name" min="-2" pref="144" max="-2" attributes="0"/>
-                          <EmptySpace pref="164" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="lbl_nombreUsuario" min="-2" pref="144" max="-2" attributes="0"/>
@@ -294,7 +363,7 @@
                   <Component id="btn_go_reportes" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btn_go_cierreCaja" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -303,7 +372,7 @@
         <Component class="javax.swing.JButton" name="btn_go_inventario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="12" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/portapapeles.png"/>
@@ -319,7 +388,7 @@
         <Component class="javax.swing.JButton" name="btn_go_registroFactura">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="12" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/recepcion.png"/>
@@ -335,7 +404,7 @@
         <Component class="javax.swing.JButton" name="btn_go_anulaciones">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="12" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/archivo.png"/>
@@ -351,7 +420,7 @@
         <Component class="javax.swing.JButton" name="btn_go_separarPrenda">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="12" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/vestir.png"/>
@@ -367,7 +436,7 @@
         <Component class="javax.swing.JButton" name="btn_go_reportes">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="12" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/analitica.png"/>
@@ -383,7 +452,7 @@
         <Component class="javax.swing.JButton" name="btn_go_cierreCaja">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="12" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/proyecto-de-ley.png"/>
@@ -399,7 +468,7 @@
         <Component class="javax.swing.JButton" name="btn_go_RegistroCliente">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="12" style="1"/>
+              <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/usuario.png"/>
@@ -415,7 +484,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Usuario Actual  : "/>
           </Properties>
@@ -423,14 +492,14 @@
         <Component class="javax.swing.JLabel" name="lbl_user_name">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="18" style="1"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre  : "/>
           </Properties>
@@ -438,7 +507,7 @@
         <Component class="javax.swing.JLabel" name="lbl_nombreUsuario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Bookman Old Style" size="14" style="1"/>
+              <Font name="Bookman Old Style" size="18" style="1"/>
             </Property>
           </Properties>
         </Component>

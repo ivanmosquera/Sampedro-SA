@@ -144,24 +144,26 @@ return resultado;
         setMinimumSize(new java.awt.Dimension(530, 300));
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Usuario :");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText(" Usuario     :");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(235, 80, 80, 17);
+        jLabel1.setBounds(235, 80, 101, 22);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Contraseña :");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(240, 130, 80, 17);
+        jLabel2.setBounds(240, 130, 100, 22);
 
+        txt_usuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_usuarioActionPerformed(evt);
             }
         });
         getContentPane().add(txt_usuario);
-        txt_usuario.setBounds(340, 80, 130, 28);
+        txt_usuario.setBounds(340, 80, 130, 23);
 
+        txt_password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_passwordActionPerformed(evt);
@@ -173,8 +175,9 @@ return resultado;
             }
         });
         getContentPane().add(txt_password);
-        txt_password.setBounds(340, 130, 130, 28);
+        txt_password.setBounds(340, 130, 130, 23);
 
+        btn_Aceptar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_Aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accept.png"))); // NOI18N
         btn_Aceptar.setText("Aceptar");
         btn_Aceptar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -198,6 +201,7 @@ return resultado;
         getContentPane().add(btn_Aceptar);
         btn_Aceptar.setBounds(240, 180, 130, 40);
 
+        btn_Salir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_Salir.setText("Salir");
         btn_Salir.addActionListener(new java.awt.event.ActionListener() {

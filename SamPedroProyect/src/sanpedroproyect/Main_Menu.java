@@ -112,7 +112,7 @@ public class Main_Menu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btn_go_inventario.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_go_inventario.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_go_inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/portapapeles.png"))); // NOI18N
         btn_go_inventario.setText("Inventario");
         btn_go_inventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -123,7 +123,7 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
-        btn_go_registroFactura.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_go_registroFactura.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_go_registroFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/recepcion.png"))); // NOI18N
         btn_go_registroFactura.setText("Nueva Factura");
         btn_go_registroFactura.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -134,7 +134,7 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
-        btn_go_anulaciones.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_go_anulaciones.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_go_anulaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/archivo.png"))); // NOI18N
         btn_go_anulaciones.setText("Anulaciones");
         btn_go_anulaciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -145,7 +145,7 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
-        btn_go_separarPrenda.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_go_separarPrenda.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_go_separarPrenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vestir.png"))); // NOI18N
         btn_go_separarPrenda.setText("Separar Prenda");
         btn_go_separarPrenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -156,7 +156,7 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
-        btn_go_reportes.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_go_reportes.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_go_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/analitica.png"))); // NOI18N
         btn_go_reportes.setText("Reportes");
         btn_go_reportes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -167,7 +167,7 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
-        btn_go_cierreCaja.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_go_cierreCaja.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_go_cierreCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proyecto-de-ley.png"))); // NOI18N
         btn_go_cierreCaja.setText("Cierre De Caja");
         btn_go_cierreCaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -178,7 +178,7 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
-        btn_go_RegistroCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_go_RegistroCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_go_RegistroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
         btn_go_RegistroCliente.setText("Registro Cliente");
         btn_go_RegistroCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -189,15 +189,15 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel1.setText("Usuario Actual  : ");
 
-        lbl_user_name.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        lbl_user_name.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel2.setText("Nombre  : ");
 
-        lbl_nombreUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        lbl_nombreUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -216,13 +216,13 @@ public class Main_Menu extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(btn_go_inventario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn_go_RegistroCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_go_registroFactura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)))
-                        .addContainerGap(640, Short.MAX_VALUE))
+                                .addComponent(btn_go_registroFactura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(637, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(27, 27, 27)
                         .addComponent(lbl_user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(27, 27, 27)
                         .addComponent(lbl_nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,13 +253,16 @@ public class Main_Menu extends javax.swing.JFrame {
                 .addComponent(btn_go_reportes)
                 .addGap(18, 18, 18)
                 .addComponent(btn_go_cierreCaja)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Factura");
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenu7.setText("Ver Facturas");
+        jMenu7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        itemFactura_verFacturas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemFactura_verFacturas.setText("Totales");
         itemFactura_verFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,6 +271,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu7.add(itemFactura_verFacturas);
 
+        itemFactura_verFacturasFecha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemFactura_verFacturasFecha.setText("Por fecha");
         itemFactura_verFacturasFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,7 +285,9 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Cliente");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        itemCliente_modificar_eliminar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemCliente_modificar_eliminar.setText("Modificar/Eliminar cliente");
         itemCliente_modificar_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,7 +299,9 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Producto");
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        itemProducto_ingresarProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemProducto_ingresarProducto.setText("Ingresar producto");
         itemProducto_ingresarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,6 +310,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu3.add(itemProducto_ingresarProducto);
 
+        itemProducto_abonar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemProducto_abonar.setText("Abonar");
         itemProducto_abonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,6 +319,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu3.add(itemProducto_abonar);
 
+        itemProducto_ingresarCategoria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemProducto_ingresarCategoria.setText("Ingresar categoría");
         itemProducto_ingresarCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,7 +331,9 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu5.setText("Inventario");
+        jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        itemInventario_ingresoInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemInventario_ingresoInventario.setText("Ingreso Inventario");
         itemInventario_ingresoInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,7 +345,9 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Reportes");
+        jMenu6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        reporteinventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         reporteinventario.setText("Reporte Inventarios");
         reporteinventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,6 +356,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu6.add(reporteinventario);
 
+        reporteproducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         reporteproducto.setText("Reporte Productos");
         reporteproducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -350,6 +365,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu6.add(reporteproducto);
 
+        reporteseparados.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         reporteseparados.setText("Reporte Separados");
         reporteseparados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -358,6 +374,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu6.add(reporteseparados);
 
+        itemReportes_ventaPrendas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemReportes_ventaPrendas.setText("Reporte de Venta de prendas");
         itemReportes_ventaPrendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,7 +386,9 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu6);
 
         jMenu4.setText("Configuración");
+        jMenu4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        itemConfig_registrarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemConfig_registrarUsuario.setText("Registrar Usuario");
         itemConfig_registrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,6 +397,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu4.add(itemConfig_registrarUsuario);
 
+        itemConfig_modificarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemConfig_modificarUsuario.setText("Modificar/Eliminar Usuario");
         itemConfig_modificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,6 +406,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu4.add(itemConfig_modificarUsuario);
 
+        itemConfig_nuevoRol.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemConfig_nuevoRol.setText("Nuevo Perfil");
         itemConfig_nuevoRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,6 +415,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu4.add(itemConfig_nuevoRol);
 
+        itemConfig_administrarRoles.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemConfig_administrarRoles.setText("Administrar perfiles");
         itemConfig_administrarRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -402,6 +424,7 @@ public class Main_Menu extends javax.swing.JFrame {
         });
         jMenu4.add(itemConfig_administrarRoles);
 
+        itemConfig_cerrarSesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemConfig_cerrarSesion.setText("Cerrar sesión");
         itemConfig_cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -492,7 +515,7 @@ public class Main_Menu extends javax.swing.JFrame {
                   //System.out.println(Arrays.toString(permisos_usuario));
                     GUI_Factura ventana_factura = new GUI_Factura();
                     ventana_factura.setVisible(true);
-                    ventana_factura.setResizable(false);
+                    ventana_factura.setResizable(true);
                     acceso_permitido = 1;
                     
               }

@@ -25,7 +25,7 @@ import static sanpedroproyect.Ingreso_Nuevo_Cliente.Nombre;
  * @author kleberstevendiazcoello
  */
 public class Modificar_Eliminar_Cliente extends javax.swing.JFrame {
-static String Cedula,Nombre,Apellido,Correo,Telefono,Direccion,Ciudad,Nota;
+static String Cedula,Nombre,Apellido,Correo,Telefono,Celular,Direccion,Ciudad,Nota;
 static int id_cliente;
 Operaciones op = new Operaciones();
 Cliente c = new Cliente();
@@ -109,6 +109,15 @@ Cliente c = new Cliente();
         this.Nota = Nota;
     }
 
+    public String getCelular() {
+        return Celular;
+    }
+
+    public void setCelular(String Celular) {
+        this.Celular = Celular;
+    }
+
+    
     /**
      * Creates new form Modificar_Eliminar_Cliente
      */
@@ -119,6 +128,7 @@ Cliente c = new Cliente();
         SLetras(txt_ciu);
         SLetras(txt_dir);
         SNumeros(txt_fono);
+        SNumeros(txt_celular);
         Ingreso_Nuevo_Cliente.validarCedula(txtcedu);
         cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 
@@ -145,6 +155,7 @@ Cliente c = new Cliente();
                                txt_dir.setText(rs.getString("Direccion"));
                                txt_correo.setText(rs.getString("Correo"));
                                txt_fono.setText(rs.getString("Telefono"));
+                               txt_celular.setText(rs.getString("Celular"));
                                txt_nota.setText(rs.getString("Nota"));
                                txt_ciu.setText(rs.getString("Ciudad"));
                                lbl_cliente.setText(rs.getString("id_Cliente"));
@@ -214,6 +225,8 @@ Cliente c = new Cliente();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        txt_celular = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -305,6 +318,9 @@ Cliente c = new Cliente();
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel9.setText("Celular");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -312,30 +328,37 @@ Cliente c = new Cliente();
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8))
+                                .addGap(47, 47, 47)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_ciu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(56, 56, 56))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel10)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbx_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_cliente)
-                            .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_ciu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcedu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(85, 85, 85)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbx_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_cliente)
+                                    .addComponent(txt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtcedu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(94, 94, 94)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -373,32 +396,39 @@ Cliente c = new Cliente();
                         .addGap(89, 89, 89)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(txt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(jButton2)
+                                .addGap(75, 75, 75))
+                            .addComponent(btn_salirModificarCliente, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap(161, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_ciu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13)
+                        .addGap(15, 15, 15)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)))
-                    .addComponent(btn_salirModificarCliente, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                            .addComponent(jLabel8)
+                            .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -421,18 +451,19 @@ Cliente c = new Cliente();
         Cedula = txtcedu.getText();
         Direccion = txt_dir.getText();
         Telefono = txt_fono.getText();
+        Celular = txt_celular.getText();
         Ciudad = txt_ciu.getText();
         Correo = txt_correo.getText();
         Nota = txt_nota.getText();
         id_cliente = Integer.parseInt(lbl_cliente.getText());
         String msj = c.Modificar_Cliente();
         if(msj.equals("Cliente Modificado Correctamente")){
-          JOptionPane.showMessageDialog(null, "Cliente Modificado Correctamente" , "CLIENTE MODIFICADO" , JOptionPane.INFORMATION_MESSAGE); 
-          limpiar();
+            JOptionPane.showMessageDialog(null, "Cliente Modificado Correctamente" , "CLIENTE MODIFICADO" , JOptionPane.INFORMATION_MESSAGE);
+            limpiar();
         }else{
-          JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "REVISAR QUE TODOS LOS CAMPOS ESTEN CORRECTOS" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
         }
-        
+
         limpiar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -441,10 +472,10 @@ Cliente c = new Cliente();
         id_cliente = Integer.parseInt(lbl_cliente.getText());
         String msj = c.Eliminar_Cliente();
         if(msj.equals("CLIENTE ELIMINADO CORRECTAMENTE")){
-          JOptionPane.showMessageDialog(null, "Cliente Eliminado Correctamente" , "CLIENTE ELIMINADO" , JOptionPane.INFORMATION_MESSAGE); 
-          limpiar();
+            JOptionPane.showMessageDialog(null, "Cliente Eliminado Correctamente" , "CLIENTE ELIMINADO" , JOptionPane.INFORMATION_MESSAGE);
+            limpiar();
         }else{
-          JOptionPane.showMessageDialog(null, "Cliente no Eliminado" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Cliente no Eliminado" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -453,47 +484,46 @@ Cliente c = new Cliente();
         dispose();
     }//GEN-LAST:event_btn_salirModificarClienteActionPerformed
 
-    
-    private void txtceduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtceduActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtceduActionPerformed
-
     private void txtceduKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtceduKeyReleased
 
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             String cedu = txtcedu.getText().toString();
-                    System.out.println("Aplasto ENter");
-                        String resul = null , lats = null;
-                        ConnectionDB cc = new ConnectionDB();
-                        Connection cn = cc.getConnection();
-                        PreparedStatement pst =null;
-                        ResultSet rs = null;
-                        try{
-                           String sql = ("SELECT * FROM cliente where Cedula = ?");
-                           pst = cn.prepareStatement(sql);
-                           pst.setString(1,cedu);
-                           rs =pst.executeQuery();
-                           if (rs.next()){
-                               cbx_Nombre.getEditor().setItem(rs.getString("Nombre"));
-                               lbl_cliente.setText(rs.getString("id_Cliente"));
-                               txtcedu.setText(rs.getString("Cedula"));
-                               txt_dir.setText(rs.getString("Direccion"));
-                               txt_ciu.setText(rs.getString("Ciudad"));
-                               txt_correo.setText(rs.getString("Correo"));
-                               txt_fono.setText(rs.getString("Telefono"));
-                               txt_nota.setText(rs.getString("Nota"));
-                          
-                           }
+            System.out.println("Aplasto ENter");
+            String resul = null , lats = null;
+            ConnectionDB cc = new ConnectionDB();
+            Connection cn = cc.getConnection();
+            PreparedStatement pst =null;
+            ResultSet rs = null;
+            try{
+                String sql = ("SELECT * FROM cliente where Cedula = ?");
+                pst = cn.prepareStatement(sql);
+                pst.setString(1,cedu);
+                rs =pst.executeQuery();
+                if (rs.next()){
+                    cbx_Nombre.getEditor().setItem(rs.getString("Nombre"));
+                    lbl_cliente.setText(rs.getString("id_Cliente"));
+                    txtcedu.setText(rs.getString("Cedula"));
+                    txt_dir.setText(rs.getString("Direccion"));
+                    txt_ciu.setText(rs.getString("Ciudad"));
+                    txt_correo.setText(rs.getString("Correo"));
+                    txt_fono.setText(rs.getString("Telefono"));
+                    txt_celular.setText(rs.getString("Celular"));
+                    txt_nota.setText(rs.getString("Nota"));
 
-
-
-                        } catch (Exception ex){
-                            System.out.println(ex);
-                        }
-                    
                 }
+
+            } catch (Exception ex){
+                System.out.println(ex);
+            }
+
+        }
     }//GEN-LAST:event_txtceduKeyReleased
 
+    private void txtceduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtceduActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtceduActionPerformed
+
+    
     
      private void limpiar(){
         cbx_Nombre.getEditor().setItem("");
@@ -502,6 +532,7 @@ Cliente c = new Cliente();
         txt_correo.setText("");
         txt_dir.setText("");
         txt_fono.setText("");
+        txt_celular.setText("");
         txt_nota.setText("");
     }
 
@@ -552,10 +583,12 @@ Cliente c = new Cliente();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbl_cliente;
+    private javax.swing.JTextField txt_celular;
     private javax.swing.JTextField txt_ciu;
     private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_dir;
