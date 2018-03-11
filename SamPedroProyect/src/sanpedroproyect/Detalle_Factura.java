@@ -246,6 +246,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
         Tabla_ventas = new javax.swing.JTable();
         btn_guardar_fact = new javax.swing.JButton();
         cbx_Nombre = new javax.swing.JTextField();
+        btn_guardar_fact2 = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -465,6 +466,17 @@ public class Detalle_Factura extends javax.swing.JFrame {
 
         cbx_Nombre.setEditable(false);
 
+        btn_guardar_fact2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_guardar_fact2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar.png"))); // NOI18N
+        btn_guardar_fact2.setText("Cambio de prenda");
+        btn_guardar_fact2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_guardar_fact2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_guardar_fact2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardar_fact2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Factura_panelLayout = new javax.swing.GroupLayout(Factura_panel);
         Factura_panel.setLayout(Factura_panelLayout);
         Factura_panelLayout.setHorizontalGroup(
@@ -534,7 +546,8 @@ public class Detalle_Factura extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_guardar_fact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btn_Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_guardar_fact2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Factura_panelLayout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -596,7 +609,9 @@ public class Detalle_Factura extends javax.swing.JFrame {
                         .addGap(40, 40, 40)))
                 .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Factura_panelLayout.createSequentialGroup()
-                        .addGap(115, 115, 115)
+                        .addGap(9, 9, 9)
+                        .addComponent(btn_guardar_fact2)
+                        .addGap(40, 40, 40)
                         .addComponent(btn_Salir))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Factura_panelLayout.createSequentialGroup()
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -698,6 +713,46 @@ public class Detalle_Factura extends javax.swing.JFrame {
         dialog_motivo.dispose();
     }//GEN-LAST:event_btn_Salir1ActionPerformed
 
+    private void btn_guardar_fact2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_fact2ActionPerformed
+        // TODO add your handling code here:
+        String motivo = txt_motivo.getText().toString();
+        DefaultTableModel order_list_guardar = new DefaultTableModel();
+        subtotal_static = (Float.parseFloat(txt_subtotal.getText()));
+        Descuento_static = (Float.parseFloat(txt_descto.getText()));
+        Total_static = (Float.parseFloat(txt_total.getText()));
+        int i = 0;
+        String codigo_a_guardar;
+        int cantidad = 0 ;
+        int codigo_obtenido;
+        String s = factura.Eliminar_Factura(id_de_la_factura,USUARIO,motivo);  //FALATA PONER MOTIVO   
+        String s2 = factura.Update(id_de_la_factura);
+        System.out.println("" + s2);
+   
+        /*Neceista el id para guardar todos los productos de una factura*/
+        order_list_guardar = (DefaultTableModel) Tabla_ventas.getModel();
+        int numero_filas = order_list_guardar.getRowCount();
+            for(i=0;i<numero_filas;i++){
+                int cantidad_actual = 0;
+                int nueva_cantidad = 0;
+                codigo_a_guardar = Tabla_ventas.getValueAt(i, 0).toString();
+                cantidad = Integer.parseInt(Tabla_ventas.getValueAt(i, 3).toString());
+                //factura.Guardar_Detalle_Factura(codigo_obtenido, codigo_a_guardar, cantidad); 
+                inv.Ingresar_Inventario_Anulacion(codigo_a_guardar,cantidad);
+                cantidad_actual = inv.get_cantidad_total_producto(codigo_a_guardar);
+                nueva_cantidad = (cantidad_actual + cantidad) ;
+                inv.Incremeneto_total_producto(codigo_a_guardar , nueva_cantidad );
+            }
+         String totalsaldo =  txt_total.getText().toString();
+            
+        JOptionPane.showMessageDialog(null, "FACTURA ELIMINADA EXITOSAMENTE, SU SALDO A FAVOR ES :"+totalsaldo+"" , "SALDO A FAVOR" , JOptionPane.INFORMATION_MESSAGE);  
+        GUI_Factura_SALDO ve  = new GUI_Factura_SALDO(totalsaldo);
+        ve.setVisible(true);
+        ve.setLocationRelativeTo(null);
+        ve.setResizable(false);
+        dialog_motivo.dispose();
+        dispose();
+    }//GEN-LAST:event_btn_guardar_fact2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -716,6 +771,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
     private javax.swing.JButton btn_Salir1;
     private javax.swing.JButton btn_guardar_fact;
     private javax.swing.JButton btn_guardar_fact1;
+    private javax.swing.JButton btn_guardar_fact2;
     private javax.swing.JTextField cbx_Nombre;
     private javax.swing.JDialog dialog_motivo;
     private javax.swing.JLabel jLabel1;

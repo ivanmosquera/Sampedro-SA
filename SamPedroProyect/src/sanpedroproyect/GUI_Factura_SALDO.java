@@ -46,13 +46,13 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import static sanpedroproyect.GUI_Factura.total;
+import static sanpedroproyect.GUI_Factura_SALDO.total;
 
 /**
  *
  * @author Pantheon
  */
-public class GUI_Factura extends javax.swing.JFrame implements Printable{
+public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
     
     static Integer Codigo;
     Factura factura = new Factura();
@@ -64,13 +64,15 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     double sub_total = 0.0;
     double iva = 0;
     double desc = 0;
-    String stotal,stotal_i,stotal_v;
+    String stotal,stotal_i,stotal_v,stotal2;
     double  sub_total_i= 0;
     double total_i = 0;
     double vaucher= 0;
     double  sub_total_v= 0;
     double total_v = 0;
     double totalfin = 0;
+    double totalfin2 = 0;
+    
     int USUARIO;
     Main_Menu menu_Cod = new Main_Menu();
     static int codigo_cliente, id_estado;
@@ -79,6 +81,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     double tarjeta;
     double subpago,subpago_v;
     double cambio;
+    double saldofavor;
     String pago_cliente,pago_cliente_v;
     double total_encontrado;
     double Totalpagar;
@@ -93,7 +96,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     int id_factura_actual , id_sumada;
     Date date = new Date ();
     
-    public GUI_Factura() {
+    public GUI_Factura_SALDO(String totalsaldo) {
         initComponents();
         System.out.println(Login.rol_usuario);
         //btn_guardar_fact.setEnabled(false);
@@ -117,6 +120,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         txt_efectivo.setEnabled(false);
         btn_guardar_fact.setEnabled(false);
         txt_descto.setEnabled(false);
+        txt_saldofavor.setText(totalsaldo);
         verificar_Permisos();
         Ingreso_Nuevo_Cliente.SNumeros(txt_can);
         Ingreso_Nuevo_Cliente.SNumeros(txt_numFactura);
@@ -520,6 +524,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         jLabel17 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         btn_calcular = new javax.swing.JButton();
+        lbl_vaucher1 = new javax.swing.JLabel();
+        txt_saldofavor = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
 
         Dialog_buscar_pro.setTitle("Buscar Producto");
 
@@ -1066,6 +1073,21 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             }
         });
 
+        lbl_vaucher1.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
+        lbl_vaucher1.setText("Saldo a Favor");
+
+        txt_saldofavor.setEditable(false);
+        txt_saldofavor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_saldofavor.setText("0");
+        txt_saldofavor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_saldofavorKeyTyped(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
+        jLabel22.setText("$");
+
         javax.swing.GroupLayout Factura_panelLayout = new javax.swing.GroupLayout(Factura_panel);
         Factura_panel.setLayout(Factura_panelLayout);
         Factura_panelLayout.setHorizontalGroup(
@@ -1126,7 +1148,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                                         .addGap(11, 11, 11))
                                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addComponent(jLabel15)
-                                .addComponent(lbl_vaucher))
+                                .addComponent(lbl_vaucher)
+                                .addComponent(lbl_vaucher1))
                             .addGap(81, 81, 81)
                             .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txt_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1142,7 +1165,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                                             .addGap(6, 6, 6)
                                             .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel20)
-                                                .addComponent(jLabel17)))))))
+                                                .addComponent(jLabel17)
+                                                .addComponent(jLabel22)))))
+                                .addComponent(txt_saldofavor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(btn_calcular))
                     .addGroup(Factura_panelLayout.createSequentialGroup()
                         .addComponent(jLabel14)
@@ -1241,13 +1266,18 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                             .addComponent(txt_vaucher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_vaucher)
                             .addComponent(jLabel20))
-                        .addGap(42, 42, 42)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_vaucher1)
+                            .addComponent(txt_saldofavor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
+                        .addGap(10, 10, 10)
                         .addComponent(btn_calcular)
                         .addGap(64, 64, 64)
                         .addGroup(Factura_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1764,6 +1794,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
         // TODO add your handling code here:
+        saldofavor = (Double.parseDouble(txt_saldofavor.getText())); 
         if (txt_subtotal.getText().equals("")){
             sub_total = 0;
         }else{
@@ -1791,8 +1822,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                      total = sub_total - desc ;
                      sub_total_i = total;
                      total_i = sub_total_i + ((sub_total_i * iva)/100) ;
-                     totalfin = total_i + vaucher;
+                     totalfin = total_i + vaucher - saldofavor;
                      stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
+                     totalfin2 = total_i + vaucher;
+                     stotal2 = String.format(java.util.Locale.US,"%.2f", totalfin);
                      txt_total.setText(stotal);
              }else{
                      desc = (Double.parseDouble(txt_descto.getText()));
@@ -1800,8 +1833,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                      total = sub_total - desc ;
                      sub_total_i = total;
                      total_i = sub_total_i + ((sub_total_i * iva)/100) ;
-                     totalfin = total_i + vaucher;
+                     totalfin = total_i + vaucher - saldofavor;
                      stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
+                     totalfin2 = total_i + vaucher;
+                     stotal2 = String.format(java.util.Locale.US,"%.2f", totalfin);
                      txt_total.setText(stotal);
              }
                      
@@ -1813,18 +1848,22 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                    total = sub_total - ((sub_total * desc)/100) ;
                    sub_total_i = total;
                    total_i = sub_total_i + ((sub_total_i * iva)/100) ;
-                   totalfin = total_i + vaucher;
+                   totalfin = total_i + vaucher - saldofavor;
                    stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                    txt_total.setText(stotal);
+                   totalfin2 = total_i + vaucher;
+                   stotal2 = String.format(java.util.Locale.US,"%.2f", totalfin);
                 }else{
                    desc = (Double.parseDouble(txt_descto.getText()));
                    sub_total =Double.parseDouble(txt_subtotal.getText());
                    total = sub_total - ((sub_total * desc)/100) ;
                    sub_total_i = total;
                    total_i = sub_total_i + ((sub_total_i * iva)/100) ;
-                   totalfin = total_i + vaucher;
+                   totalfin = total_i + vaucher - saldofavor ;
                    stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                    txt_total.setText(stotal);
+                   totalfin2 = total_i + vaucher;
+                   stotal2 = String.format(java.util.Locale.US,"%.2f", totalfin);
                 }
                 
             }
@@ -1875,6 +1914,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         Dialog_calculo.dispose();
     }//GEN-LAST:event_btn_SalircalculoActionPerformed
 
+    private void txt_saldofavorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_saldofavorKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_saldofavorKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combo_FORMA_PAGO;
     private javax.swing.JDialog Dialog_buscar_pro;
@@ -1911,6 +1954,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1930,6 +1974,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private javax.swing.JLabel lbl_efectivo1;
     private javax.swing.JLabel lbl_pagovaucher;
     private javax.swing.JLabel lbl_vaucher;
+    private javax.swing.JLabel lbl_vaucher1;
     private javax.swing.JTable tabla_producto;
     private javax.swing.JTextField txt_can;
     private javax.swing.JTextField txt_cedula;
@@ -1941,6 +1986,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private javax.swing.JTextField txt_mail;
     private javax.swing.JTextArea txt_nota;
     private javax.swing.JTextField txt_numFactura;
+    private javax.swing.JTextField txt_saldofavor;
     private javax.swing.JTextField txt_subtotal;
     private javax.swing.JTextField txt_telefono;
     private javax.swing.JTextField txt_total;
@@ -1983,7 +2029,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             para.put("DIRECCION", txt_dir.getText());
             para.put("TELEFONO",txt_telefono.getText());
             para.put("SUBTOTAL", txt_subtotal.getText());
-            para.put("TOTAL", txt_total.getText());
+            para.put("TOTAL", stotal2);
             para.put("NOTA",txt_nota.getText());
             para.put("IVA",txt_iva.getText());
             para.put("DESCUENTO",txt_descto.getText());
@@ -2023,7 +2069,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
            
             
         } catch (JRException ex) {
-            Logger.getLogger(GUI_Factura.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_Factura_SALDO.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("El ERROES ES ESTE "+ex);
         }
         
