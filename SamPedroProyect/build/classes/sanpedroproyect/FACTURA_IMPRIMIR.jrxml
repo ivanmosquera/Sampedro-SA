@@ -17,6 +17,8 @@
 	<parameter name="CAMBIO" class="java.lang.String"/>
 	<parameter name="FECHA" class="java.lang.String"/>
 	<parameter name="HORA" class="java.lang.String"/>
+	<parameter name="VENDEDOR" class="java.lang.String"/>
+	<parameter name="FORMAPA" class="java.lang.String"/>
 	<field name="PRODUCTO" class="java.lang.String"/>
 	<field name="TALLA" class="java.lang.String"/>
 	<field name="PRECIO" class="java.lang.String"/>
@@ -60,7 +62,7 @@
 				<textFieldExpression><![CDATA[$P{DIRECCION}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="80" width="100" height="20" uuid="d5b21fdb-3fc4-44bf-8998-907b7a9524bf"/>
+				<reportElement x="0" y="66" width="100" height="14" uuid="d5b21fdb-3fc4-44bf-8998-907b7a9524bf"/>
 				<textElement>
 					<font size="5"/>
 				</textElement>
@@ -79,6 +81,20 @@
 					<font size="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{HORA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="80" width="80" height="9" uuid="f0ed9915-85cb-4669-b162-c25bf4192885"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{VENDEDOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="89" width="78" height="9" uuid="7e0672a2-a44e-4426-8de6-f022d33d018f"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FORMAPA}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
