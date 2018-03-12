@@ -725,7 +725,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
         int cantidad = 0 ;
         int codigo_obtenido;
         String s = factura.Eliminar_Factura(id_de_la_factura,USUARIO,motivo);  //FALATA PONER MOTIVO   
-        String s2 = factura.Update(id_de_la_factura);
+        String s2 = factura.UpdateCambio(id_de_la_factura);
         System.out.println("" + s2);
    
         /*Neceista el id para guardar todos los productos de una factura*/

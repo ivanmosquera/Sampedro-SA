@@ -1422,13 +1422,23 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                     Iva_static = (Float.parseFloat(txt_iva.getText()));
                 }
 
+                
+                 float  pago_efectivo, pago_tarjeta;
+                
+                if(txt_efectivo.getText().equals("")){
+                    pago_efectivo = 0;
+                }else{
+                    pago_efectivo = (Float.parseFloat(txt_efectivo.getText()));
+                }
+                if(txt_vaucher_pago.getText().equals("")){
+                    pago_tarjeta = 0;
+                }else{
+                    pago_tarjeta = (Float.parseFloat(txt_vaucher_pago.getText()));
+                }
             int i = 0;
             String codigo_a_guardar;
             int cantidad = 0 ;
             int codigo_obtenido;
-            double pago_efectivo, pago_tarjeta;
-            pago_efectivo = Double.parseDouble(txt_efectivo.getText());
-            pago_tarjeta = Double.parseDouble(txt_vaucher_pago.getText());
             String s = factura.Guardar_Factura(id_sumada,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static);     
             System.out.println("" + s);
             codigo_obtenido = factura.Get_last_id_factura();

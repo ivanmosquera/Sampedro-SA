@@ -23,7 +23,7 @@ import sanpedroproyect.GUI_Factura;
  */
 public class Factura {
     static GUI_Factura  fact = new GUI_Factura();
-    public static String Guardar_Factura(int id , int user,double efectivo, double tarjeta, float vauch , float iva){
+    public static String Guardar_Factura(int id , int user,float efectivo, float tarjeta, float vauch , float iva){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -42,7 +42,57 @@ public class Factura {
         try{
             pst = cn.prepareStatement(sql);
             pst.setInt(1,id);
-            pst.setInt(2,fact.getCodigo_cliente());
+            pst.setInt(2,15);
+            pst.setInt(3,1);
+            pst.setString(4,dia);
+            pst.setInt(5,1);
+            pst.setFloat(6,fact.getSubtotal_static());
+            pst.setFloat(7,fact.getDescuento_static());
+            pst.setFloat(8,vauch);
+            pst.setFloat(9,iva);
+            pst.setFloat(10, fact.getTotal_static());
+            pst.setFloat(11, user);
+            pst.setDouble(12, efectivo);
+            pst.setDouble(13, tarjeta);
+            
+            pst.execute();
+            resul = "Ingresado Correctamente Factura";
+           
+            
+            
+            
+            
+        }catch(SQLException e){
+            resul = "Error Error en guardar Factura: "+e; 
+            System.out.println(resul);
+        }
+        
+       cc.desconectar();
+        return resul;      
+ }
+    
+    
+     public static String Guardar_Factura_saldo(int id ,int codi, int user,float efectivo, float tarjeta, float vauch , float iva){
+        String resul = null , lats = null;
+        System.out.println("el codi es : "+codi+" ");
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql = "INSERT INTO factura values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Date date = new Date();
+        ResultSet rs = null;
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dia = dateFormat.format(date);
+        int flag = 0;
+        int id_ultimo;
+        try{
+            pst = cn.prepareStatement(sql);
+            pst.setInt(1,id);
+            pst.setInt(2,codi);
             pst.setInt(3,1);
             pst.setString(4,dia);
             pst.setInt(5,1);
@@ -270,6 +320,45 @@ public class Factura {
         try{
             pst = cn.prepareStatement(sql3);
             pst.setInt(1,3);
+            pst.setInt(2,id);
+
+            pst.execute();
+            resul = "UPDATE REALIZADO";
+           
+            
+            
+            
+            
+        }catch(SQLException e){
+            resul = "Error  en UPDATE: "+e; 
+            System.out.println(resul);
+        }
+        
+       cc.desconectar();
+        return resul;      
+        }
+        
+        
+        public static String UpdateCambio(int id){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql3 =  "UPDATE factura SET fk_Estado= ? WHERE id_Factura= ? ";
+        Date date = new Date();
+        ResultSet rs = null;
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+        System.out.println(hora);
+        System.out.println(dia);
+
+        try{
+            pst = cn.prepareStatement(sql3);
+            pst.setInt(1,4);
             pst.setInt(2,id);
 
             pst.execute();

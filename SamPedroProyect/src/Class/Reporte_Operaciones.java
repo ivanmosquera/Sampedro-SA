@@ -1093,7 +1093,7 @@ public class Reporte_Operaciones {
         //Caso 2: obtener la fecha y salida por pantalla con formato:
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dia = dateFormat.format(date);
-        String sql  = "Select id_Factura, F.Fecha, C.Nombre , Subtotal ,  Total,Efectivo , Tarjeta   From cliente c , factura F   Where fk_Cliente = id_Cliente and Fecha = ? and fk_Estado = 3;";
+        String sql  = "Select id_Factura, F.Fecha, C.Nombre , Subtotal ,  Total,Efectivo , Tarjeta   From cliente c , factura F   Where fk_Cliente = id_Cliente and Fecha = ? and fk_Estado = 3";
         
         try {
             pst = cn.prepareStatement(sql);
