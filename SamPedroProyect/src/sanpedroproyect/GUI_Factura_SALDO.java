@@ -72,6 +72,7 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
     double total_v = 0;
     double totalfin = 0;
     double totalfin2 = 0;
+    float saldofav;
     
     int USUARIO;
     Main_Menu menu_Cod = new Main_Menu();
@@ -1465,14 +1466,19 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
                 }else{
                     pago_tarjeta = (Float.parseFloat(txt_vaucher_pago.getText()));
                 }
-            
+            if(txt_saldofavor.getText().equals("")){
+                    saldofav = 0;
+                }else{
+                    saldofav = (Float.parseFloat(txt_saldofavor.getText()));
+                }
                 
             int i = 0;
             String codigo_a_guardar;
             int cantidad = 0 ;
             int codigo_obtenido;
-            
-            String s = factura.Guardar_Factura_saldo(id_sumada,codigo_cliente,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static);     
+            float totalpagar, subtotal;
+           
+            String s = factura.Guardar_Factura_saldo(id_sumada,codigo_cliente,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static,saldofav,Descuento_static,Total_static,subtotal_static);     
             System.out.println("" + s);
             codigo_obtenido = factura.Get_last_id_factura();
             System.out.println("" + codigo_obtenido);

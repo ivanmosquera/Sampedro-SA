@@ -1123,6 +1123,52 @@ public class Reporte_Operaciones {
     } 
      
        
+       
+       public DefaultTableModel consultar_Factura_fechaactual_anuladas_cambios(){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+        Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+        String sql  = "Select id_Factura, F.Fecha, C.Nombre , Subtotal ,  Total,Efectivo , Tarjeta   From cliente c , factura F   Where fk_Cliente = id_Cliente and Fecha = ? and fk_Estado = 4";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            pst.setString(1, dia);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+            for(int i = 1;i<=col;i++){
+                modelo.addColumn(rsmd.getColumnName(i));}
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    
+                }
+                modelo.addRow(filas);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+    } 
+       
     public double getTotal_pago_efectivo(){
          String resul = null , lats = null;
          ConnectionDB cc = new ConnectionDB();

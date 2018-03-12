@@ -72,6 +72,9 @@ public class Cierre_Caja extends javax.swing.JFrame {
         lbl_efectivo_hoy_a.setText(total_efectivo_double_a);
         lbl_tarjeta_hoy_a.setText(total_tarjeta_double_a);
         
+        anulaciones = rp.consultar_Factura_fechaactual_anuladas_cambios();
+        tbl_anuladas_cambios.setModel(anulaciones);
+        
         
         s = rp.consultar_abonos();
         tbl_abonos_hoy.setModel(s);
@@ -146,7 +149,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
         lbl_total = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tbl_anuladas_hoy1 = new javax.swing.JTable();
+        tbl_anuladas_cambios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -259,7 +262,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel10.setText("Anulaciones ");
 
-        tbl_anuladas_hoy1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_anuladas_cambios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -270,7 +273,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(tbl_anuladas_hoy1);
+        jScrollPane4.setViewportView(tbl_anuladas_cambios);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -504,8 +507,8 @@ public class Cierre_Caja extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_total_caja;
     private javax.swing.JLabel lbl_ventas_hoy;
     private javax.swing.JTable tbl_abonos_hoy;
+    private javax.swing.JTable tbl_anuladas_cambios;
     private javax.swing.JTable tbl_anuladas_hoy;
-    private javax.swing.JTable tbl_anuladas_hoy1;
     // End of variables declaration//GEN-END:variables
 private void priceInvoice(){
         //String sourcefile = "/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/FACTURA_IMPRIMIR.jrxml";
