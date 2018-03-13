@@ -42,7 +42,7 @@ public class Factura {
         try{
             pst = cn.prepareStatement(sql);
             pst.setInt(1,id);
-            pst.setInt(2,15);
+            pst.setInt(2,fact.getCodigo_cliente());
             pst.setInt(3,1);
             pst.setString(4,dia);
             pst.setInt(5,1);
