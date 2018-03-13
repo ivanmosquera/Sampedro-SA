@@ -98,6 +98,7 @@ public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
                 return false;
             }
         };
+        Tbl_ver_facturas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Tbl_ver_facturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -127,7 +128,7 @@ public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
             }
         });
 
-        btn_excel.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_excel.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_excel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon.png"))); // NOI18N
         btn_excel.setText("Exportar Excel");
         btn_excel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -138,15 +139,20 @@ public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        dateDesde.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        dateHasta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel12.setText("Desde :");
 
-        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel13.setText("Hasta :");
 
-        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel14.setText("Facturas Por Fecha ");
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Consultar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,17 +160,18 @@ public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel15.setText("TOTAL :");
 
-        lblTotalFecha.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        lblTotalFecha.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jLabel17.setText("$");
 
-        jLabel16.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel16.setText("Usuario :");
 
+        cmb_usuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmb_usuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Seleccione Usuario>" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -175,8 +182,8 @@ public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(352, 352, 352)
-                        .addComponent(btn_excel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
+                        .addComponent(btn_excel)
+                        .addGap(48, 48, 48)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
@@ -195,12 +202,13 @@ public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
                                     .addComponent(jLabel16))
                                 .addGap(29, 29, 29)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmb_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(99, 99, 99)
-                                        .addComponent(jButton2))
-                                    .addComponent(cmb_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(dateHasta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                            .addComponent(dateDesde, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(79, 79, 79)
+                                        .addComponent(jButton2))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(392, 392, 392)
                         .addComponent(jLabel14)))
@@ -228,7 +236,7 @@ public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
                             .addComponent(jLabel13)
                             .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

@@ -71,6 +71,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 return false;
             }
         };
+        Tbl_ver_facturas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Tbl_ver_facturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -100,7 +101,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
-        btn_excel.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_excel.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_excel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon.png"))); // NOI18N
         btn_excel.setText("Exportar Excel");
         btn_excel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -111,7 +112,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel14.setText("Facturas ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -122,8 +123,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(352, 352, 352)
-                        .addComponent(btn_excel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
+                        .addComponent(btn_excel)
+                        .addGap(48, 48, 48)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)

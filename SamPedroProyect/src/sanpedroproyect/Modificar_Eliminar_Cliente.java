@@ -233,6 +233,7 @@ Cliente c = new Cliente();
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        txtcedu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtcedu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtceduActionPerformed(evt);
@@ -244,48 +245,59 @@ Cliente c = new Cliente();
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        txt_fono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel8.setText("Correo");
 
-        jLabel6.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        txt_dir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        txt_correo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel6.setText("Ciudad");
         jLabel6.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel6.setMinimumSize(new java.awt.Dimension(439, 14));
 
-        jLabel7.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        txt_ciu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel7.setText("Nota");
         jLabel7.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel7.setMinimumSize(new java.awt.Dimension(439, 14));
 
         txt_nota.setColumns(20);
+        txt_nota.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_nota.setRows(5);
         jScrollPane1.setViewportView(txt_nota);
 
-        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel2.setText("Nombre");
 
-        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel3.setText("Cedula / RUC");
 
-        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel4.setText("Telefono");
 
-        jLabel5.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel5.setText("Dirección");
         jLabel5.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel5.setMinimumSize(new java.awt.Dimension(439, 14));
 
-        jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel10.setText("Codigo");
 
+        lbl_cliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbl_cliente.setText("Codigo_Cliente");
 
         cbx_Nombre.setEditable(true);
+        cbx_Nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel1.setText("MODIFICAR-ELIMINAR CLIENTE");
 
-        btn_salirModificarCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_salirModificarCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_salirModificarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_salirModificarCliente.setText("Salir");
         btn_salirModificarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -296,7 +308,7 @@ Cliente c = new Cliente();
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton-x.png"))); // NOI18N
         jButton2.setText("Eliminar");
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -307,7 +319,7 @@ Cliente c = new Cliente();
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar.png"))); // NOI18N
         jButton1.setText("Modificar");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -318,8 +330,10 @@ Cliente c = new Cliente();
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel9.setText("Celular");
+
+        txt_celular.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -328,16 +342,16 @@ Cliente c = new Cliente();
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8))
-                                .addGap(47, 47, 47)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_ciu, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,12 +360,11 @@ Cliente c = new Cliente();
                                     .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(56, 56, 56))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel10)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2))
                                 .addGap(34, 34, 34)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbx_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,19 +416,19 @@ Cliente c = new Cliente();
                                 .addComponent(jButton2)
                                 .addGap(75, 75, 75))
                             .addComponent(btn_salirModificarCliente, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap(161, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

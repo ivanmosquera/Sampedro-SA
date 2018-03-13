@@ -119,6 +119,7 @@ public class Reporte_Inventario extends javax.swing.JFrame {
             }
         });
 
+        table_repor_inv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         table_repor_inv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -133,7 +134,7 @@ public class Reporte_Inventario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table_repor_inv);
 
-        jButton3.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon.png"))); // NOI18N
         jButton3.setText("Exportar Excel");
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -158,7 +159,7 @@ public class Reporte_Inventario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(305, 305, 305)
                         .addComponent(jLabel1)))
-                .addGap(0, 390, Short.MAX_VALUE))
+                .addGap(0, 380, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1027, javax.swing.GroupLayout.PREFERRED_SIZE)

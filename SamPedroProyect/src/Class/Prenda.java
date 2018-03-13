@@ -30,6 +30,7 @@ public class Prenda {
     
     public int Codigo;
     public String Detalle;
+    public String Abreviacion;
     public String Talla;
     public float Precio;
     public float PrecioMin;
@@ -51,7 +52,7 @@ public class Prenda {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "INSERT INTO producto values(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO producto values(?,?,?,?,?,?,?,?,?,?,?)";
         Date date = new Date();
         //Caso 1: obtener la hora y salida por pantalla con formato:
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
@@ -69,14 +70,15 @@ public class Prenda {
             pst = cn.prepareStatement(sql);
             pst.setString(1,codigo_producto);
             pst.setString(2,pr.getDetalle());
-            pst.setFloat(3, precio);
-            pst.setFloat(4, precioMin);
-            pst.setString(5,pr.getTalla());
-            pst.setInt(6, categoria);
-            pst.setInt(7, usuario);
-            pst.setString(8,dia);
-            pst.setString(9,hora);
-            pst.setInt(10, 0);
+            pst.setString(3, pr.getAbreviacion());
+            pst.setFloat(4, precio);
+            pst.setFloat(5, precioMin);
+            pst.setString(6,pr.getTalla());
+            pst.setInt(7, categoria);
+            pst.setInt(8, usuario);
+            pst.setString(9,dia);
+            pst.setString(10,hora);
+            pst.setInt(11, 0);
             pst.execute();
             resul = "Prenda Ingresado Correctamente";
             System.out.println(resul);

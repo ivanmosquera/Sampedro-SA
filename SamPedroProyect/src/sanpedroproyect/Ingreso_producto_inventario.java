@@ -124,24 +124,28 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel2.setText("Codigo");
 
-        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel3.setText("Producto");
 
-        jLabel5.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        lbl_descripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel5.setText("Talla");
 
-        jLabel7.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        lbl_talla.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel7.setText("Cantidad a Ingresar");
 
-        jLabel8.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel8.setText("Usuario");
 
-        lbl_username.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lbl_username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        btn_guadar_inventario.setFont(new java.awt.Font("Bookman Old Style", 1, 13)); // NOI18N
+        btn_guadar_inventario.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_guadar_inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
         btn_guadar_inventario.setText("Guardar");
         btn_guadar_inventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -152,7 +156,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
             }
         });
 
-        btn_salirInventario.setFont(new java.awt.Font("Bookman Old Style", 1, 13)); // NOI18N
+        btn_salirInventario.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_salirInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_salirInventario.setText("Salir");
         btn_salirInventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -171,11 +175,14 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         jLabel4.setText("INGRESO INVENTARIO");
 
         txt_codigo_busqueda.setEditable(false);
+        txt_codigo_busqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_codigo_busqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_codigo_busquedaActionPerformed(evt);
             }
         });
+
+        txt_cant.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -196,6 +203,10 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel3))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl_username, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(358, 358, 358))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,14 +218,10 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
                                         .addComponent(lbl_talla, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(txt_codigo_busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_username, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(358, 358, 358))))))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_codigo_busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
@@ -249,7 +256,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(jLabel5)
                         .addComponent(lbl_talla, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

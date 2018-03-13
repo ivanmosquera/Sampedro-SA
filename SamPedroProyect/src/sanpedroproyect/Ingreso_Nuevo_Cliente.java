@@ -147,7 +147,11 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btn_limpiarCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        txt_dir1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+
+        txt_correo1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+
+        btn_limpiarCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_limpiarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escoba.png"))); // NOI18N
         btn_limpiarCliente.setText("Limpiar");
         btn_limpiarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -158,7 +162,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
             }
         });
 
-        btn_nc_guardar1.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_nc_guardar1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_nc_guardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
         btn_nc_guardar1.setText("Guardar");
         btn_nc_guardar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -170,7 +174,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
             }
         });
 
-        btn_salirCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_salirCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_salirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_salirCliente.setText("Salir");
         btn_salirCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -181,12 +185,14 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel9.setText("Ciudad");
         jLabel9.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel9.setMinimumSize(new java.awt.Dimension(439, 14));
 
-        jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        txt_ciu1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel10.setText("Nota");
         jLabel10.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel10.setMinimumSize(new java.awt.Dimension(439, 14));
@@ -195,28 +201,37 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         jLabel11.setText("Ingresar Nuevo Cliente");
 
         txt_nota1.setColumns(20);
+        txt_nota1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txt_nota1.setRows(5);
         jScrollPane2.setViewportView(txt_nota1);
 
-        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel12.setText("Nombre");
 
-        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel13.setText("Cedula / RUC");
 
-        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel14.setText("Correo");
 
-        jLabel15.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel15.setText("Telefono");
 
-        jLabel16.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel16.setText("Dirección");
         jLabel16.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel16.setMinimumSize(new java.awt.Dimension(439, 14));
 
-        jLabel17.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        txt_nombre1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+
+        txtcedu1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+
+        txt_fono1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel17.setText("Celular");
+
+        txt_celular.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -229,7 +244,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(jLabel13)
                     .addComponent(jLabel12))
-                .addGap(0, 431, Short.MAX_VALUE))
+                .addGap(0, 403, Short.MAX_VALUE))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +257,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel15)
                                     .addGap(114, 114, 114)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(txt_fono1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                                             .addComponent(txt_dir1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,9 +265,9 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                                             .addComponent(txt_correo1, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtcedu1))
                                         .addComponent(txt_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 127, Short.MAX_VALUE))
+                                        .addComponent(txt_celular)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)))))
+                        .addGap(0, 108, Short.MAX_VALUE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -277,7 +292,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txt_nombre1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

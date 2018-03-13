@@ -86,13 +86,14 @@ public class Modificar_Eliminar_Perfil extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel11.setText("Modificar Perfil");
 
-        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel12.setText("Nombre");
 
-        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel13.setText("Permisos");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         ckbox_Facturar.setText("Facturar");
         ckbox_Facturar.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +160,7 @@ public class Modificar_Eliminar_Perfil extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        btn_modificarPerfil.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_modificarPerfil.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_modificarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar.png"))); // NOI18N
         btn_modificarPerfil.setText("Modificar");
         btn_modificarPerfil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -170,7 +171,7 @@ public class Modificar_Eliminar_Perfil extends javax.swing.JFrame {
             }
         });
 
-        btn_salirModificarPerfil.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_salirModificarPerfil.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_salirModificarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_salirModificarPerfil.setText("Salir");
         btn_salirModificarPerfil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -182,6 +183,7 @@ public class Modificar_Eliminar_Perfil extends javax.swing.JFrame {
         });
 
         cb_selectRol.setEditable(true);
+        cb_selectRol.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb_selectRol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<seleccione Perfil>" }));
         cb_selectRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,10 +210,10 @@ public class Modificar_Eliminar_Perfil extends javax.swing.JFrame {
                             .addComponent(cb_selectRol, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_modificarPerfil)
-                            .addComponent(btn_salirModificarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_modificarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_salirModificarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -141,31 +141,38 @@ public class Modificar_Eliminar_Usuario extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        txtcedu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        txt_usuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        txt_password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel6.setText("Perfil");
         jLabel6.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel6.setMinimumSize(new java.awt.Dimension(439, 14));
 
-        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel2.setText("Nombre");
 
-        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel3.setText("Cedula");
 
-        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel4.setText("Usuario");
 
-        jLabel5.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel5.setText("Nueva contraseña");
         jLabel5.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel5.setMinimumSize(new java.awt.Dimension(439, 14));
 
         cbx_Nombre.setEditable(true);
+        cbx_Nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel1.setText("MODIFICAR-ELIMINAR USUARIO");
 
-        btn_salirModificarCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_salirModificarCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_salirModificarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_salirModificarCliente.setText("Salir");
         btn_salirModificarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -176,7 +183,7 @@ public class Modificar_Eliminar_Usuario extends javax.swing.JFrame {
             }
         });
 
-        btn_eliminarUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_eliminarUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_eliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton-x.png"))); // NOI18N
         btn_eliminarUsuario.setText("Eliminar");
         btn_eliminarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -187,7 +194,7 @@ public class Modificar_Eliminar_Usuario extends javax.swing.JFrame {
             }
         });
 
-        btn_modificarUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_modificarUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_modificarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar.png"))); // NOI18N
         btn_modificarUsuario.setText("Modificar");
         btn_modificarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -198,6 +205,7 @@ public class Modificar_Eliminar_Usuario extends javax.swing.JFrame {
             }
         });
 
+        cb_selectRol.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb_selectRol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<seleccione Perfil>" }));
         cb_selectRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,28 +220,25 @@ public class Modificar_Eliminar_Usuario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbx_Nombre, 0, 178, Short.MAX_VALUE)
-                            .addComponent(txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                            .addComponent(txt_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                            .addComponent(txtcedu, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                            .addComponent(cbx_Nombre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_password)
+                            .addComponent(txt_usuario)
+                            .addComponent(txtcedu)
                             .addComponent(cb_selectRol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(69, 69, 69)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_modificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_eliminarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_salirModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_salirModificarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -280,7 +285,7 @@ public class Modificar_Eliminar_Usuario extends javax.swing.JFrame {
                                 .addComponent(btn_eliminarUsuario)
                                 .addGap(75, 75, 75))
                             .addComponent(btn_salirModificarCliente, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(0, 63, Short.MAX_VALUE))
+                .addGap(0, 58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

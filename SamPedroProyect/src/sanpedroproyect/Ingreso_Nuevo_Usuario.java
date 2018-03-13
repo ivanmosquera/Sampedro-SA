@@ -80,7 +80,9 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btn_limpiarUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        txt_usuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        btn_limpiarUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_limpiarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escoba.png"))); // NOI18N
         btn_limpiarUsuario.setText("Limpiar");
         btn_limpiarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -91,7 +93,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
             }
         });
 
-        btn_guardarUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_guardarUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_guardarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
         btn_guardarUsuario.setText("Guardar");
         btn_guardarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -103,7 +105,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
             }
         });
 
-        btn_salirUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_salirUsuario.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_salirUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_salirUsuario.setText("Salir");
         btn_salirUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -114,34 +116,40 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel9.setText("Contraseña");
         jLabel9.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel9.setMinimumSize(new java.awt.Dimension(439, 14));
 
+        txt_password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jLabel11.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel11.setText("Ingresar Nuevo Usuario");
 
-        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel12.setText("Nombre");
 
-        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel13.setText("Cedula");
 
-        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel14.setText("Usuario");
 
+        txt_nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nombreActionPerformed(evt);
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        txt_cedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel10.setText("Perfil");
         jLabel10.setMaximumSize(new java.awt.Dimension(49, 14));
         jLabel10.setMinimumSize(new java.awt.Dimension(439, 14));
 
+        cb_selectRol.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cb_selectRol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<seleccione Perfil>" }));
         cb_selectRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +175,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addGap(155, 155, 155)
+                                .addGap(147, 147, 147)
                                 .addComponent(txt_nombre))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
@@ -177,7 +185,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
                                 .addComponent(btn_guardarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(71, 71, 71)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cb_selectRol, 0, 214, Short.MAX_VALUE)
+                                    .addComponent(cb_selectRol, 0, 222, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(btn_limpiarUsuario)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)

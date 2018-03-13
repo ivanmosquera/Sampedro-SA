@@ -57,6 +57,7 @@ public class Reporte_Separados extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        Tbl_separado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Tbl_separado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -78,7 +79,7 @@ public class Reporte_Separados extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel1.setText("Reporte De Prendas Separadas");
 
-        btn_salir.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_salir.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_salir.setText("Salir");
         btn_salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -89,7 +90,7 @@ public class Reporte_Separados extends javax.swing.JFrame {
             }
         });
 
-        btn_excel.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        btn_excel.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_excel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon.png"))); // NOI18N
         btn_excel.setText("Exportar Excel");
         btn_excel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -112,8 +113,8 @@ public class Reporte_Separados extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(369, 369, 369)
-                        .addComponent(btn_excel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(178, 178, 178)
+                        .addComponent(btn_excel)
+                        .addGap(169, 169, 169)
                         .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(398, 398, 398)
@@ -125,7 +126,7 @@ public class Reporte_Separados extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

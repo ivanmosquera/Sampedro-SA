@@ -62,13 +62,16 @@ public class Ingreso_Nuevo_Perfil extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel11.setText("Ingresar Nuevo Perfil");
 
-        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel12.setText("Nombre");
 
-        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        txt_nombrePerfil.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel13.setText("Permisos");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         ckbox_Facturar.setText("Facturar");
 
@@ -130,7 +133,7 @@ public class Ingreso_Nuevo_Perfil extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        btn_guardarPerfil.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_guardarPerfil.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_guardarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible (1).png"))); // NOI18N
         btn_guardarPerfil.setText("Guardar");
         btn_guardarPerfil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -142,7 +145,7 @@ public class Ingreso_Nuevo_Perfil extends javax.swing.JFrame {
             }
         });
 
-        btn_limpiarPerfil.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_limpiarPerfil.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_limpiarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escoba.png"))); // NOI18N
         btn_limpiarPerfil.setText("Limpiar");
         btn_limpiarPerfil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -153,7 +156,7 @@ public class Ingreso_Nuevo_Perfil extends javax.swing.JFrame {
             }
         });
 
-        btn_salirPerfil.setFont(new java.awt.Font("Bookman Old Style", 1, 11)); // NOI18N
+        btn_salirPerfil.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_salirPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
         btn_salirPerfil.setText("Salir");
         btn_salirPerfil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -190,7 +193,7 @@ public class Ingreso_Nuevo_Perfil extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txt_nombrePerfil)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +210,7 @@ public class Ingreso_Nuevo_Perfil extends javax.swing.JFrame {
                         .addComponent(txt_nombrePerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_limpiarPerfil)
                     .addComponent(btn_guardarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
