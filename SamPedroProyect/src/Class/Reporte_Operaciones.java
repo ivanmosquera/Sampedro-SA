@@ -74,6 +74,60 @@ public class Reporte_Operaciones {
         return modelo;
     }
     
+    
+    
+        public DefaultTableModel consultar_detalle_producto(){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        int col;
+        DefaultTableModel modelo = new DefaultTableModel();
+        ResultSetMetaData rsmd = null;
+        String sql  =  "SELECT d.fk_factura,u.Nombre,d.fecha,c.Nombre,"
+                + "p.id_Producto,p.Descripcion,p.Talla,d.Cantidad,p.Precio,d.Total"
+                + " From cliente c , detalle_productos d "
+                + ", usuario u, producto p"
+                + " WHERE id_Producto = fk_Producto and id_Usuario = fk_Usuario and id_Cliente =  fk_cliente";
+        
+        try {
+            pst = cn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            rsmd = rs.getMetaData();
+            col = rsmd.getColumnCount();
+            
+            modelo.addColumn("#Factura");
+            modelo.addColumn("Usuario");
+            modelo.addColumn("Fecha");
+            modelo.addColumn("Nombre");
+            modelo.addColumn("Codigo");
+            modelo.addColumn("Detalle");
+            modelo.addColumn("Talla");
+            modelo.addColumn("Cantidad");
+            modelo.addColumn("Precio");
+            modelo.addColumn("Total");
+            /*for(int i = 1;i<=col;i++){
+                modelo.addColumn(rsmd.getColumnName(i));}*/
+            while(rs.next()){
+                
+                String filas[]= new String[col];
+                for(int j = 0;j<col;j++){
+                    filas[j]=rs.getString(j+1);
+                    
+                }
+                modelo.addRow(filas);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            System.out.println("error : "+  e);
+        }
+        
+        return modelo;
+    }
+    
     public DefaultTableModel consultar_Saldos_cliente(int codigo_cliente){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();

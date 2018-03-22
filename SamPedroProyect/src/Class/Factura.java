@@ -235,6 +235,43 @@ public class Factura {
        cc.desconectar();
         return resul;      
         }
+    
+    
+     public static String Guardar_Detalle_X_Producto(int user,int id_factura,int cliente,String producto,int cantidad,float total){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        String sql3 = "INSERT INTO detalle_productos values(null,?,?,?,?,?,?,?)";
+        Date date = new Date();
+        ResultSet rs = null;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dia = dateFormat.format(date);
+        try{
+            pst = cn.prepareStatement(sql3);
+            pst.setInt(1,user);
+            pst.setInt(2, id_factura);
+            pst.setInt(3, cliente);
+            pst.setString(4, dia);
+            pst.setString(5,producto);
+            pst.setInt(6,cantidad);
+            pst.setFloat(7, total);
+            
+            pst.execute();
+            resul = "Ingresado Correctamente Detalle Productos";
+           
+            
+            
+            
+            
+        }catch(SQLException e){
+            resul = "Error  en detalle Productos: "+e; 
+            System.out.println(resul);
+        }
+        
+       cc.desconectar();
+        return resul;      
+        }
      
     public static String Eliminar_Factura(int id,int usuario,String Motivo){
         String resul = null , lats = null;
