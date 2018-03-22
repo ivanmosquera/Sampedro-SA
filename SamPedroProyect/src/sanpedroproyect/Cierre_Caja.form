@@ -410,7 +410,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bookman Old Style" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Total en Caja :"/>
+            <Property name="text" type="java.lang.String" value="Total en Efectivo:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_total_caja">

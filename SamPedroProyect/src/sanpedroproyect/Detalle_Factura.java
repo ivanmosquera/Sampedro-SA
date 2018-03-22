@@ -766,7 +766,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
 
     private void btn_guardar_fact2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_fact2ActionPerformed
         // TODO add your handling code here:
-        String motivo = txt_motivo.getText().toString();
+        String motivo = "La factura Anulada fue " + txt_numFactura.getText().toString();
         DefaultTableModel order_list_guardar = new DefaultTableModel();
         subtotal_static = (Float.parseFloat(txt_subtotal.getText()));
         Descuento_static = (Float.parseFloat(txt_descto.getText()));

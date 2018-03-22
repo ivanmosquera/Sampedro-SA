@@ -220,7 +220,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        jLabel6.setText("Total en Caja :");
+        jLabel6.setText("Total en Efectivo:");
 
         lbl_efectivo.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         lbl_efectivo.setText("Total en Efectivo de Ventas:");
