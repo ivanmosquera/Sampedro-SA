@@ -46,6 +46,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import static sanpedroproyect.GUI_Factura.codigo_cliente;
 import static sanpedroproyect.GUI_Factura_SALDO.total;
 
 /**
@@ -88,6 +89,7 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
     double Totalpagar;
     static double totalpagadofinal = 0;
     static double cambiofinal = 0;
+    float totalxproductos;
     
 
 
@@ -1477,6 +1479,8 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
             int cantidad = 0 ;
             int codigo_obtenido;
             float totalpagar, subtotal;
+            int id_factura = 0;
+            id_factura = Integer.parseInt(txt_numFactura.getText().toString());
            
             String s = factura.Guardar_Factura_saldo(id_sumada,codigo_cliente,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static,saldofav,Descuento_static,Total_static,subtotal_static);     
             System.out.println("" + s);
@@ -1490,9 +1494,12 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
                 for(i=0;i<numero_filas;i++){
                     int cantidad_actual = 0;
                     int nueva_cantidad = 0;
+                    totalxproductos= 0;
                     codigo_a_guardar = Tabla_ventas.getValueAt(i, 0).toString();
                     cantidad = Integer.parseInt(Tabla_ventas.getValueAt(i, 3).toString());
+                    totalxproductos = Float.parseFloat(Tabla_ventas.getValueAt(i, 6).toString());
                     factura.Guardar_Detalle_Factura(codigo_obtenido, codigo_a_guardar, cantidad); 
+                    factura.Guardar_Detalle_X_Producto(USUARIO,id_factura,codigo_cliente,codigo_a_guardar,cantidad,totalxproductos);
                     inv.Decremento_inventario(codigo_a_guardar,cantidad);
                     cantidad_actual = inv.get_cantidad_total_producto(codigo_a_guardar);
                     nueva_cantidad = (cantidad_actual - cantidad) ;
