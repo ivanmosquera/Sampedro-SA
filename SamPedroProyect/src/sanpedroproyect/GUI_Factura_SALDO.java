@@ -1478,11 +1478,11 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
             String codigo_a_guardar;
             int cantidad = 0 ;
             int codigo_obtenido;
-            float totalpagar, subtotal;
+            float totalpagar, subtotal,totalneto;
             int id_factura = 0;
             id_factura = Integer.parseInt(txt_numFactura.getText().toString());
-           
-            String s = factura.Guardar_Factura_saldo(id_sumada,codigo_cliente,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static,saldofav,Descuento_static,Total_static,subtotal_static);     
+            totalneto = saldofav + Total_static;
+            String s = factura.Guardar_Factura_saldo(id_sumada,codigo_cliente,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static,saldofav,Descuento_static,Total_static,subtotal_static,totalneto);     
             System.out.println("" + s);
             codigo_obtenido = factura.Get_last_id_factura();
             System.out.println("" + codigo_obtenido);
@@ -2066,6 +2066,8 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
             para.put("FECHA", diaD);
             para.put("VENDEDOR",txt_vendedor.getText());
             para.put("FORMAPA", Combo_FORMA_PAGO.getEditor().getItem().toString());
+            para.put("Saldo", txt_saldofavor.getText());
+            
             
             
             

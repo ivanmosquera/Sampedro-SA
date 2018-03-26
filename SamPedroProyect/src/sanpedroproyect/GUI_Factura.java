@@ -2004,12 +2004,13 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             para.put("IVA",txt_iva.getText());
             para.put("DESCUENTO",txt_descto.getText());
             para.put("VAUCHER",txt_vaucher.getText());
-            para.put("TOTALPAGADO",String.valueOf(totalpagadofinal));
+            para.put("TOTALPAGADO",txt_total.getText());
             para.put("CAMBIO",String.valueOf(cambiofinal));
             para.put("HORA", horad);
             para.put("FECHA", diaD);
             para.put("VENDEDOR",txt_vendedor.getText());
             para.put("FORMAPA", Combo_FORMA_PAGO.getEditor().getItem().toString());
+            para.put("Saldo", "0");
             
             
             

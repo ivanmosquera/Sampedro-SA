@@ -104,7 +104,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
                 txt_dir.setText(rs.getString("Direccion"));
                 txt_mail.setText(rs.getString("Correo"));
                 txt_telefono.setText(rs.getString("Telefono"));
-                txt_totalpag.setText(rs.getString("Total"));
+                txt_total.setText(rs.getString("Total"));
                 txt_subtotal.setText(rs.getString("Subtotal"));
                 txt_descto.setText(rs.getString("Descuento"));
                 txt_iva.setText(rs.getString("Iva"));
@@ -112,15 +112,16 @@ public class Detalle_Factura extends javax.swing.JFrame {
                 //txt_nota.setText(rs.getString("Nota"));
                 txt_vendedor.setText(rs.getString("Usuario"));
                 txt_saldo.setText(rs.getString("Saldo"));
+                txt_totalpag.setText(rs.getString("TotalPagado"));
                 USUARIO = rs.getInt("id_Usuario");         
                 }
             
-            float totalpg,saldo,totalan;
+            /*float totalpg,saldo,totalan;
             totalan = Float.parseFloat(txt_totalpag.getText());
             saldo =  Float.parseFloat(txt_saldo.getText());
             totalpg = totalan + saldo;
             String stotal = String.format(java.util.Locale.US,"%.2f", totalpg);
-            txt_total.setText(stotal);
+            txt_total.setText(stotal);*/
             
 
 

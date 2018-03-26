@@ -1292,6 +1292,40 @@ public class Reporte_Operaciones {
         return total;
      }
      
+       public double getTotal_Saldos(){
+         String resul = null , lats = null;
+         ConnectionDB cc = new ConnectionDB();
+         Connection cn = cc.getConnection();
+         PreparedStatement pst =null;
+         ResultSet rs = null;
+          Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String hora = hourFormat.format(date);
+        //Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dia = dateFormat.format(date);
+         String Desc;
+         float total = (float) 0.0;
+            try{
+               String sql = ("Select SUM(Saldo) From Factura Where Fecha= ? and fk_Estado = 1 ;");
+                pst = cn.prepareStatement(sql);
+                pst.setString(1, dia);
+                rs =pst.executeQuery();
+                if (rs.next()){
+                    total = rs.getFloat("SUM(Saldo)");
+                          
+                }
+
+
+
+            } catch (Exception ex){
+                            System.out.println(ex);
+            }
+                    
+        return total;
+     }
+     
      
      
      

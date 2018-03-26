@@ -28,7 +28,7 @@ public class Factura {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "INSERT INTO factura values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO factura values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Date date = new Date();
         ResultSet rs = null;
         //Caso 1: obtener la hora y salida por pantalla con formato:
@@ -55,6 +55,7 @@ public class Factura {
             pst.setDouble(12, efectivo);
             pst.setDouble(13, tarjeta);
             pst.setFloat(14, 0);
+            pst.setFloat(15, fact.getTotal_static());
             
             
             pst.execute();
@@ -74,13 +75,13 @@ public class Factura {
  }
     
     
-     public static String Guardar_Factura_saldo(int id ,int codi, int user,float efectivo, float tarjeta, float vauch , float iva,float saldo,float descuento, float total, float subtotal){
+     public static String Guardar_Factura_saldo(int id ,int codi, int user,float efectivo, float tarjeta, float vauch , float iva,float saldo,float descuento, float total, float subtotal,float totalneto){
         String resul = null , lats = null;
         System.out.println("el codi es : "+codi+" ");
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "INSERT INTO factura values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO factura values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Date date = new Date();
         ResultSet rs = null;
         //Caso 1: obtener la hora y salida por pantalla con formato:
@@ -102,11 +103,12 @@ public class Factura {
             pst.setFloat(7,descuento);
             pst.setFloat(8,vauch);
             pst.setFloat(9,iva);
-            pst.setFloat(10,total);
+            pst.setFloat(10,totalneto);
             pst.setFloat(11, user);
             pst.setDouble(12, efectivo);
             pst.setDouble(13, tarjeta);
             pst.setFloat(14, saldo);
+            pst.setFloat(15, total);
             
             pst.execute();
             resul = "Ingresado Correctamente Factura";
