@@ -106,7 +106,7 @@ public class Reporte_detalle_productos extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
-        jLabel1.setText("REPORTE DE INVENTARIO");
+        jLabel1.setText("REPORTE DE DETALLE PRODUCTOS");
 
         jButton2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida (2).png"))); // NOI18N
@@ -159,7 +159,7 @@ public class Reporte_detalle_productos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(305, 305, 305)
                         .addComponent(jLabel1)))
-                .addGap(0, 380, Short.MAX_VALUE))
+                .addGap(0, 328, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1027, javax.swing.GroupLayout.PREFERRED_SIZE)

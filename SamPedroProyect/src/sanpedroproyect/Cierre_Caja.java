@@ -268,7 +268,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
         jLabel9.setText("TOTAL:");
 
         jLabel10.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
-        jLabel10.setText("Anulaciones ");
+        jLabel10.setText("Anulaciones por cambio de prenda ");
 
         tbl_anuladas_cambios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

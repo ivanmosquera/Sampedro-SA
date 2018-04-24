@@ -137,7 +137,7 @@ public class Reporte_Operaciones {
         int col;
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
-        String sql  =  "Select id_Separado , id_Producto , P.Descripcion ,P.talla, S.Saldo  FROM separado S, detalle_separado , producto P WHERE fk_cliente = ? and id_separado = fk_separado and fk_producto =  id_Producto and fk_Estado = 1;";
+        String sql  =  "Select id_Separado , id_Producto , P.Descripcion ,P.talla,  Fecha_separado , Precio , S.Saldo  FROM separado S, detalle_separado , producto P WHERE fk_cliente = ? and id_separado = fk_separado and fk_producto =  id_Producto and fk_Estado = 1;";
         
         try {
             pst = cn.prepareStatement(sql);

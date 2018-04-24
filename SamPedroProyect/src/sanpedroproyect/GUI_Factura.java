@@ -13,6 +13,7 @@ import Class.Productos;
 import Class.Reporte_Operaciones;
 import DATABASE.ConnectionDB;
 import com.sun.glass.events.KeyEvent;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;
@@ -110,6 +111,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         //lbl_vaucher.setVisible(false);
         //txt_vaucher.setVisible(false);
         USUARIO = menu_Cod.getCodigo_usuario();
+        Combo_FORMA_PAGO.setSelectedItem("Efectivo");
         btn_imprimir.setToolTipText("Antes de Imprimir, Guarde la Factura");
         btn_imprimir.setEnabled(false);
         lbl_efectivo.setEnabled(false);
@@ -523,13 +525,14 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         btn_calcular = new javax.swing.JButton();
 
         Dialog_buscar_pro.setTitle("Buscar Producto");
+        Dialog_buscar_pro.setPreferredSize(new java.awt.Dimension(1000, 500));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         cmb_producto.setEditable(true);
         cmb_producto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        tabla_producto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tabla_producto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -583,7 +586,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         });
 
         jLabel19.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
-        jLabel19.setText("Busqueda Por :");
+        jLabel19.setText("Búsqueda Por :");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -863,6 +866,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
 
         Combo_FORMA_PAGO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Combo_FORMA_PAGO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" ,  "Efectivo", "Tarjeta Credito", "Tarjeta Débito","Mixto"}));
+        Combo_FORMA_PAGO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Combo_FORMA_PAGO.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 Combo_FORMA_PAGOItemStateChanged(evt);
@@ -1306,7 +1310,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         // TODO add your handling code here:
         m = rep.consultar_producto();
         tabla_producto.setModel(m);
-        Dialog_buscar_pro.setSize(700, 500);
+        tabla_producto.getTableHeader().setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); 
+        tabla_producto.getColumn("Descripcion").setPreferredWidth(150);
+        Dialog_buscar_pro.setSize(1000, 500);
         Dialog_buscar_pro.setLocationRelativeTo(null);
         Dialog_buscar_pro.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed

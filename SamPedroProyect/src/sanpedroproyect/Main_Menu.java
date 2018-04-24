@@ -72,7 +72,6 @@ public class Main_Menu extends javax.swing.JFrame {
         btn_go_registroFactura = new javax.swing.JButton();
         btn_go_anulaciones = new javax.swing.JButton();
         btn_go_separarPrenda = new javax.swing.JButton();
-        btn_go_reportes = new javax.swing.JButton();
         btn_go_cierreCaja = new javax.swing.JButton();
         btn_go_RegistroCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -82,18 +81,17 @@ public class Main_Menu extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
         itemFactura_verFacturas = new javax.swing.JMenuItem();
-        itemFactura_verFacturasFecha = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         itemCliente_modificar_eliminar = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         itemProducto_ingresarProducto = new javax.swing.JMenuItem();
+        itemInventario_ingresoInventario = new javax.swing.JMenuItem();
         itemProducto_abonar = new javax.swing.JMenuItem();
         itemProducto_ingresarCategoria = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        itemInventario_ingresoInventario = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        itemFactura_verFacturasFecha = new javax.swing.JMenuItem();
+        itemReportes_detalleProductos = new javax.swing.JMenuItem();
         reporteinventario = new javax.swing.JMenuItem();
         reporteproducto = new javax.swing.JMenuItem();
         reporteseparados = new javax.swing.JMenuItem();
@@ -156,17 +154,6 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
-        btn_go_reportes.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        btn_go_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/analitica.png"))); // NOI18N
-        btn_go_reportes.setText("Reportes");
-        btn_go_reportes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_go_reportes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_go_reportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_go_reportesActionPerformed(evt);
-            }
-        });
-
         btn_go_cierreCaja.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         btn_go_cierreCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proyecto-de-ley.png"))); // NOI18N
         btn_go_cierreCaja.setText("Cierre De Caja");
@@ -207,17 +194,17 @@ public class Main_Menu extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btn_go_reportes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_go_separarPrenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                                .addComponent(btn_go_cierreCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_go_anulaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btn_go_inventario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_go_RegistroCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_go_registroFactura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(637, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btn_go_separarPrenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_go_cierreCaja, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 623, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btn_go_RegistroCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_go_registroFactura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_go_inventario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_go_anulaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(27, 27, 27)
@@ -250,37 +237,21 @@ public class Main_Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btn_go_separarPrenda)
                 .addGap(18, 18, 18)
-                .addComponent(btn_go_reportes)
-                .addGap(18, 18, 18)
                 .addComponent(btn_go_cierreCaja)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Factura");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jMenu7.setText("Ver Facturas");
-        jMenu7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
         itemFactura_verFacturas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        itemFactura_verFacturas.setText("Totales");
+        itemFactura_verFacturas.setText("Ver Facturas Totales");
         itemFactura_verFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemFactura_verFacturasActionPerformed(evt);
             }
         });
-        jMenu7.add(itemFactura_verFacturas);
-
-        itemFactura_verFacturasFecha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        itemFactura_verFacturasFecha.setText("Por fecha");
-        itemFactura_verFacturasFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemFactura_verFacturasFechaActionPerformed(evt);
-            }
-        });
-        jMenu7.add(itemFactura_verFacturasFecha);
-
-        jMenu1.add(jMenu7);
+        jMenu1.add(itemFactura_verFacturas);
 
         jMenuBar1.add(jMenu1);
 
@@ -302,13 +273,22 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         itemProducto_ingresarProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        itemProducto_ingresarProducto.setText("Ingresar producto");
+        itemProducto_ingresarProducto.setText("Nuevo producto");
         itemProducto_ingresarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemProducto_ingresarProductoActionPerformed(evt);
             }
         });
         jMenu3.add(itemProducto_ingresarProducto);
+
+        itemInventario_ingresoInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        itemInventario_ingresoInventario.setText("Ingreso Inventario");
+        itemInventario_ingresoInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemInventario_ingresoInventarioActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemInventario_ingresoInventario);
 
         itemProducto_abonar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemProducto_abonar.setText("Abonar");
@@ -330,25 +310,29 @@ public class Main_Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu5.setText("Inventario");
-        jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        itemInventario_ingresoInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        itemInventario_ingresoInventario.setText("Ingreso Inventario");
-        itemInventario_ingresoInventario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemInventario_ingresoInventarioActionPerformed(evt);
-            }
-        });
-        jMenu5.add(itemInventario_ingresoInventario);
-
-        jMenuBar1.add(jMenu5);
-
         jMenu6.setText("Reportes");
         jMenu6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        itemFactura_verFacturasFecha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        itemFactura_verFacturasFecha.setText("Reporte de ventas");
+        itemFactura_verFacturasFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemFactura_verFacturasFechaActionPerformed(evt);
+            }
+        });
+        jMenu6.add(itemFactura_verFacturasFecha);
+
+        itemReportes_detalleProductos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        itemReportes_detalleProductos.setText("Reporte de detalle de productos");
+        itemReportes_detalleProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReportes_detalleProductosActionPerformed(evt);
+            }
+        });
+        jMenu6.add(itemReportes_detalleProductos);
+
         reporteinventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        reporteinventario.setText("Reporte Inventarios");
+        reporteinventario.setText("Historial");
         reporteinventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reporteinventarioActionPerformed(evt);
@@ -357,7 +341,7 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenu6.add(reporteinventario);
 
         reporteproducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        reporteproducto.setText("Reporte Productos");
+        reporteproducto.setText("Reporte de Inventario");
         reporteproducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reporteproductoActionPerformed(evt);
@@ -446,8 +430,8 @@ public class Main_Menu extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -600,14 +584,6 @@ public class Main_Menu extends javax.swing.JFrame {
        
     }//GEN-LAST:event_itemConfig_cerrarSesionActionPerformed
 
-    private void btn_go_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_reportesActionPerformed
-        Inventario_Totales tot = new Inventario_Totales();
-        tot.setVisible(true);
-        tot.setResizable(false);
-        tot.setLocationRelativeTo(null);
-
-    }//GEN-LAST:event_btn_go_reportesActionPerformed
-
     private void btn_go_anulacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_go_anulacionesActionPerformed
        // TODO add your handling code here:
         Ver_Facturas ventana_anulaciones = new Ver_Facturas();
@@ -686,6 +662,14 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_ingresoCategoria.setLocationRelativeTo(null);
     }//GEN-LAST:event_itemProducto_ingresarCategoriaActionPerformed
 
+    private void itemReportes_detalleProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportes_detalleProductosActionPerformed
+        // TODO add your handling code here:
+        Reporte_detalle_productos ventana_reporteDetalleProductos = new Reporte_detalle_productos();
+        ventana_reporteDetalleProductos.setVisible(true);
+        ventana_reporteDetalleProductos.setResizable(false);
+        ventana_reporteDetalleProductos.setLocationRelativeTo(null);
+    }//GEN-LAST:event_itemReportes_detalleProductosActionPerformed
+
     public  int getCodigo_usuario() {
         return codigo_usuario;
     }
@@ -709,7 +693,6 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btn_go_cierreCaja;
     private javax.swing.JButton btn_go_inventario;
     private javax.swing.JButton btn_go_registroFactura;
-    private javax.swing.JButton btn_go_reportes;
     private javax.swing.JButton btn_go_separarPrenda;
     private javax.swing.JMenuItem itemCliente_modificar_eliminar;
     private javax.swing.JMenuItem itemConfig_administrarRoles;
@@ -723,6 +706,7 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemProducto_abonar;
     private javax.swing.JMenuItem itemProducto_ingresarCategoria;
     private javax.swing.JMenuItem itemProducto_ingresarProducto;
+    private javax.swing.JMenuItem itemReportes_detalleProductos;
     private javax.swing.JMenuItem itemReportes_ventaPrendas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -730,9 +714,7 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
