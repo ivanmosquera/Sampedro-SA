@@ -1279,7 +1279,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
         //prenda = Factura.cargar_Productos();
         //Factura.cargar_Productos();
-        priceInvoice2();
+        priceInvoice();
        /*  Map<String , Object> parameters = new HashMap(); 
         parameters.put("CAJERO", "KLEBER");
         ArrayList<Productos> plist = new ArrayList<>();
