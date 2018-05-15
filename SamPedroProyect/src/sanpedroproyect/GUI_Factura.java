@@ -1279,7 +1279,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
         //prenda = Factura.cargar_Productos();
         //Factura.cargar_Productos();
-        priceInvoice();
+        priceInvoice2();
        /*  Map<String , Object> parameters = new HashMap(); 
         parameters.put("CAJERO", "KLEBER");
         ArrayList<Productos> plist = new ArrayList<>();
@@ -2052,6 +2052,37 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         
     }
     
+    
+    private void priceInvoice2(){
+        //String sourcefile = "/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/FACTURA_IMPRIMIR.jrxml";
+        
+        DefaultTableModel order_list = new DefaultTableModel();
+        String codigo,descripcion,precio,talla,cantidad,total;
+        InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/factest.jrxml");
+        try {
+            int i = 0;
+            JasperReport jr = JasperCompileManager.compileReport(is);
+            HashMap<String,Object> para = new HashMap<>();
+            order_list = (DefaultTableModel) Tabla_ventas.getModel();
+            int numero_filas = order_list.getRowCount();
+            ArrayList<Productos> plist = new ArrayList<>();
+
+          
+            
+            JRBeanCollectionDataSource jcs = new JRBeanCollectionDataSource(plist);
+            JasperPrint jp = JasperFillManager.fillReport(jr, para, jcs);
+            JasperViewer.viewReport(jp,false);
+            
+            
+            
+           
+            
+        } catch (JRException ex) {
+            Logger.getLogger(GUI_Factura.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("El ERROES ES ESTE "+ex);
+        }
+        
+    }
     
     private void limpiar(){
         id_factura_actual= factura.Get_last_id_factura();
