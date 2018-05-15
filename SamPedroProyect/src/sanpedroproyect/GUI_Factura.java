@@ -114,10 +114,10 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         Combo_FORMA_PAGO.setSelectedItem("Efectivo");
         btn_imprimir.setToolTipText("Antes de Imprimir, Guarde la Factura");
         btn_imprimir.setEnabled(false);
-        lbl_efectivo.setEnabled(false);
+        lbl_efectivo.setEnabled(true);
         txt_vaucher_pago.setEnabled(false);
         lbl_pagovaucher.setEnabled(false);
-        txt_efectivo.setEnabled(false);
+        txt_efectivo.setEnabled(true);
         btn_guardar_fact.setEnabled(false);
         txt_descto.setEnabled(false);
         verificar_Permisos();
