@@ -293,6 +293,11 @@ Cliente c = new Cliente();
 
         cbx_Nombre.setEditable(true);
         cbx_Nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbx_Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_NombreActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel1.setText("MODIFICAR-ELIMINAR CLIENTE");
@@ -540,6 +545,10 @@ Cliente c = new Cliente();
     private void txtceduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtceduActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtceduActionPerformed
+
+    private void cbx_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_NombreActionPerformed
 
     
     

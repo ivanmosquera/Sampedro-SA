@@ -89,6 +89,7 @@ public class Main_Menu extends javax.swing.JFrame {
         itemInventario_ingresoInventario = new javax.swing.JMenuItem();
         itemProducto_abonar = new javax.swing.JMenuItem();
         itemProducto_ingresarCategoria = new javax.swing.JMenuItem();
+        itemProducto_modificarCategoria = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         itemFactura_verFacturasFecha = new javax.swing.JMenuItem();
         itemReportes_detalleProductos = new javax.swing.JMenuItem();
@@ -307,6 +308,15 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
         jMenu3.add(itemProducto_ingresarCategoria);
+
+        itemProducto_modificarCategoria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        itemProducto_modificarCategoria.setText("Modificar categoría");
+        itemProducto_modificarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemProducto_modificarCategoriaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemProducto_modificarCategoria);
 
         jMenuBar1.add(jMenu3);
 
@@ -670,6 +680,14 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_reporteDetalleProductos.setLocationRelativeTo(null);
     }//GEN-LAST:event_itemReportes_detalleProductosActionPerformed
 
+    private void itemProducto_modificarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProducto_modificarCategoriaActionPerformed
+        // TODO add your handling code here:
+        Modificar_Categoria ventana_modificarCategoria = new Modificar_Categoria();
+        ventana_modificarCategoria.setVisible(true);
+        ventana_modificarCategoria.setResizable(false);
+        ventana_modificarCategoria.setLocationRelativeTo(null);
+    }//GEN-LAST:event_itemProducto_modificarCategoriaActionPerformed
+
     public  int getCodigo_usuario() {
         return codigo_usuario;
     }
@@ -706,6 +724,7 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemProducto_abonar;
     private javax.swing.JMenuItem itemProducto_ingresarCategoria;
     private javax.swing.JMenuItem itemProducto_ingresarProducto;
+    private javax.swing.JMenuItem itemProducto_modificarCategoria;
     private javax.swing.JMenuItem itemReportes_detalleProductos;
     private javax.swing.JMenuItem itemReportes_ventaPrendas;
     private javax.swing.JLabel jLabel1;
