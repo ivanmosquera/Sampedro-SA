@@ -33,7 +33,7 @@ public class Inventario_Totales extends javax.swing.JFrame {
     Prenda p = new Prenda();
     public Inventario_Totales() {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         //String nombre_fil = cb_producto.getEditor().getItem().toString();
         modelotabla = p.consultar_Producto_total();
@@ -86,7 +86,7 @@ public class Inventario_Totales extends javax.swing.JFrame {
         btn_salir = new javax.swing.JButton();
         btn_excel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

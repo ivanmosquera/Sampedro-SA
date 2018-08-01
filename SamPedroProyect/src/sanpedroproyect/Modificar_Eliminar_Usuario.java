@@ -136,7 +136,7 @@ public class Modificar_Eliminar_Usuario extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         cb_selectRol = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));

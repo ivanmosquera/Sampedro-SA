@@ -25,7 +25,7 @@ public class Ingreso_Nuevo_Perfil extends javax.swing.JFrame {
      */
     public Ingreso_Nuevo_Perfil() {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
 
@@ -56,7 +56,7 @@ public class Ingreso_Nuevo_Perfil extends javax.swing.JFrame {
         btn_limpiarPerfil = new javax.swing.JButton();
         btn_salirPerfil = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A");
 
         jLabel11.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N

@@ -23,7 +23,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
      */
     public Ingreso_Nuevo_Cliente() {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         SLetras(txt_ciu1);
         SLetras(txt_dir1);
@@ -142,7 +142,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         txt_celular = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -258,12 +258,11 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
                                     .addComponent(jLabel15)
                                     .addGap(114, 114, 114)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txt_fono1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                                            .addComponent(txt_dir1, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_ciu1, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_correo1, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtcedu1))
+                                        .addComponent(txt_fono1, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                                        .addComponent(txt_dir1)
+                                        .addComponent(txt_ciu1)
+                                        .addComponent(txt_correo1)
+                                        .addComponent(txtcedu1, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txt_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txt_celular)
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)))))
@@ -428,7 +427,7 @@ public class Ingreso_Nuevo_Cliente extends javax.swing.JFrame {
             public void keyTyped(java.awt.event.KeyEvent e) {
                  char c = e.getKeyChar();
                  String cadena = a.getText();
-                 if(Character.isLetter(c) || cadena.length()>=10){
+                 if(Character.isLetter(c) || cadena.length()>=13){
                      e.consume();
                  }
             }
