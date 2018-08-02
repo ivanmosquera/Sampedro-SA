@@ -82,7 +82,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
         Ingreso_Nuevo_Cliente.SNumeros(txt_numFactura);
         Ingreso_Nuevo_Cliente.SNumeros(txt_fecha);
         txt_numFactura.setText(String.valueOf(id_de_la_factura));
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         System.out.println("" + idFactura);
         String resul = null , lats = null;

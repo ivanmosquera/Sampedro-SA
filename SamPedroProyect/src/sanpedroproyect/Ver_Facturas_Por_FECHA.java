@@ -88,7 +88,7 @@ public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         cmb_usuario = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

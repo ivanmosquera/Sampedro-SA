@@ -82,7 +82,7 @@ Prenda p = new Prenda();
      */
     public Ingreso_Nueva_prenda() {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         USUARIO = menu_Cod.getCodigo_usuario();
         SLetras(txt_talla);
@@ -142,7 +142,7 @@ Prenda p = new Prenda();
         jLabel9 = new javax.swing.JLabel();
         txt_abrev = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

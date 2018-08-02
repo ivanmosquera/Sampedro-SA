@@ -56,7 +56,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
      */
     public Ingreso_Inventario() {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         USUARIO = menu_Cod.getCodigo_usuario();
         txt_usuario.setText(Main_Menu.nombre_usuario);
          this.setLocationRelativeTo(null);

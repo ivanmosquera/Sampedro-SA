@@ -30,7 +30,7 @@ public class prendasMVendidad extends javax.swing.JFrame {
     Reporte_Operaciones rp = new Reporte_Operaciones();
     public prendasMVendidad() {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         m = rp.consultar_mas_vendidos();
         tbl_mas_vendidas.setModel(m);
         TableRowFilterSupport.forTable(tbl_mas_vendidas).searchable(true).apply();
@@ -59,7 +59,7 @@ public class prendasMVendidad extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         lbl_menos_vendidas = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

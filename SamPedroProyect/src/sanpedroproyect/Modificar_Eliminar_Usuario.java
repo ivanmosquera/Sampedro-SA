@@ -369,12 +369,16 @@ public class Modificar_Eliminar_Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         //id_usuario = Integer.parseInt(lbl_cliente.getText());
-        String msj = Eliminar_Usuario();
-        if(msj.equals("USUARIO ELIMINADO CORRECTAMENTE")){
-            JOptionPane.showMessageDialog(null, "Usuario Eliminado Correctamente" , "USUARIO ELIMINADO" , JOptionPane.INFORMATION_MESSAGE);
-            limpiar();
-        }else{
-            JOptionPane.showMessageDialog(null, "Usuario no Eliminado" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+        int dialogResult = 1;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Está seguro/a que desea eliminar el usuario?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(dialogResult == 0){
+            String msj = Eliminar_Usuario();
+            if(msj.equals("USUARIO ELIMINADO CORRECTAMENTE")){
+                JOptionPane.showMessageDialog(null, "Usuario Eliminado Correctamente" , "USUARIO ELIMINADO" , JOptionPane.INFORMATION_MESSAGE);
+                limpiar();
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuario no Eliminado" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btn_eliminarUsuarioActionPerformed
 
