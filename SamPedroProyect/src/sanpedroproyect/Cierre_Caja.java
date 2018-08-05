@@ -159,7 +159,7 @@ public class Cierre_Caja extends javax.swing.JFrame {
         lbl_efectivo5 = new javax.swing.JLabel();
         txt_saldos_hoy = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

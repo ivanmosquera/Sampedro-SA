@@ -92,7 +92,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
     
     public Factura_Prenda_Separada( int id_cliente , String id_producto, int id_Separado) {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         id_factura_actual= factura.Get_last_id_factura();
         id_sumada = (id_factura_actual + 1 );

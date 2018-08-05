@@ -80,7 +80,7 @@ public class Modificar_Eliminar_Perfil extends javax.swing.JFrame {
         btn_salirModificarPerfil = new javax.swing.JButton();
         cb_selectRol = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A");
 
         jLabel11.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N

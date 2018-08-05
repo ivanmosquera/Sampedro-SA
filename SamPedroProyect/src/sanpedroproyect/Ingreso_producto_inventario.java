@@ -59,7 +59,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
      */
     public Ingreso_producto_inventario(String codigo_producto_obtenido) {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         USUARIO = menu_Cod.getCodigo_usuario();
         lbl_username.setText(Main_Menu.nombre_usuario);
         this.setLocationRelativeTo(null);
@@ -119,7 +119,7 @@ public class Ingreso_producto_inventario extends javax.swing.JFrame {
         txt_codigo_busqueda = new javax.swing.JTextField();
         txt_cant = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));

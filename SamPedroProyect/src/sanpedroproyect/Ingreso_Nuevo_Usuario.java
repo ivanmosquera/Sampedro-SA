@@ -25,7 +25,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
      */
     public Ingreso_Nuevo_Usuario() {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         Ingreso_Nuevo_Cliente.validarCedula(txt_cedula);
         String resul = null , lats = null;
@@ -76,7 +76,7 @@ public class Ingreso_Nuevo_Usuario extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         cb_selectRol = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

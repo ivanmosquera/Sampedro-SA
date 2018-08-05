@@ -42,7 +42,7 @@ public class Reporte_Inventario extends javax.swing.JFrame {
         modelotabla = rop.consultar_inventario();
         table_repor_inv.setModel(modelotabla);
         TableRowFilterSupport.forTable(table_repor_inv).searchable(true).apply();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         
             /*cb_producto.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
@@ -101,7 +101,7 @@ public class Reporte_Inventario extends javax.swing.JFrame {
 
         jButton1.setText("jButton1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

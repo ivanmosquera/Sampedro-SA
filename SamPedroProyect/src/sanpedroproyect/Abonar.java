@@ -50,7 +50,7 @@ public class Abonar extends javax.swing.JFrame {
     Main_Menu menu_Cod = new Main_Menu();
     public Abonar() {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         txt_abonar.setEditable(false);
         Ingreso_Nuevo_Cliente.validarCedula(txt_cedula);
@@ -273,7 +273,7 @@ public class Abonar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));

@@ -123,10 +123,10 @@ Cliente c = new Cliente();
      */
     public Modificar_Eliminar_Cliente() {
         initComponents();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         SLetras(txt_ciu);
-        SLetras(txt_dir);
+        //SLetras(txt_dir);
         SNumeros(txt_fono);
         SNumeros(txt_celular);
         Ingreso_Nuevo_Cliente.validarCedula(txtcedu);
@@ -228,7 +228,7 @@ Cliente c = new Cliente();
         jLabel9 = new javax.swing.JLabel();
         txt_celular = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -293,6 +293,11 @@ Cliente c = new Cliente();
 
         cbx_Nombre.setEditable(true);
         cbx_Nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbx_Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_NombreActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         jLabel1.setText("MODIFICAR-ELIMINAR CLIENTE");
@@ -482,14 +487,19 @@ Cliente c = new Cliente();
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        id_cliente = Integer.parseInt(lbl_cliente.getText());
-        String msj = c.Eliminar_Cliente();
-        if(msj.equals("CLIENTE ELIMINADO CORRECTAMENTE")){
-            JOptionPane.showMessageDialog(null, "Cliente Eliminado Correctamente" , "CLIENTE ELIMINADO" , JOptionPane.INFORMATION_MESSAGE);
-            limpiar();
-        }else{
-            JOptionPane.showMessageDialog(null, "Cliente no Eliminado" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+        int dialogResult = 1;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Está seguro/a que desea eliminar el cliente?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(dialogResult == 0){
+           id_cliente = Integer.parseInt(lbl_cliente.getText());
+            String msj = c.Eliminar_Cliente();
+            if(msj.equals("CLIENTE ELIMINADO CORRECTAMENTE")){
+                JOptionPane.showMessageDialog(null, "Cliente Eliminado Correctamente" , "CLIENTE ELIMINADO" , JOptionPane.INFORMATION_MESSAGE);
+                limpiar();
+            }else{
+                JOptionPane.showMessageDialog(null, "Cliente no Eliminado" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+            }
         }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btn_salirModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirModificarClienteActionPerformed
@@ -535,6 +545,10 @@ Cliente c = new Cliente();
     private void txtceduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtceduActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtceduActionPerformed
+
+    private void cbx_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_NombreActionPerformed
 
     
     

@@ -99,7 +99,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
         initComponents();
         System.out.println(Login.rol_usuario);
         //btn_guardar_fact.setEnabled(false);
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         id_factura_actual= factura.Get_last_id_factura();
         id_sumada = (id_factura_actual + 1 );
