@@ -85,7 +85,7 @@ Prenda p = new Prenda();
         //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         USUARIO = menu_Cod.getCodigo_usuario();
-        SLetras(txt_talla);
+        //SLetras(txt_talla);
         SLetras(txt_detalle);
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
@@ -359,12 +359,16 @@ Prenda p = new Prenda();
     private void btn_guardar_nuevaprendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_nuevaprendaActionPerformed
         // TODO add your handling code here:
         Codigo = txt_codigo.getText();
+        PrecioMin = Float.parseFloat(txt_precioMin.getText());
+        Precio = Float.parseFloat(txt_precio.getText());
         String existe = p.existe_producto(Codigo);
         if(existe.equals("Existe")){
              JOptionPane.showMessageDialog(null, "CODIGO EXISTENTE" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
         }else if (existe.equals("No Existe")){
                    if(txt_codigo.getText().equals("")||txt_detalle.getText().equals("")||txt_abrev.getText().equals("")||txt_precio.getText().equals("")||txt_precioMin.getText().equals("")||txt_talla.getText().equals("")){
                         JOptionPane.showMessageDialog(null, "LLENAR TODOS LOS CAMPOS" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
+                    }else if(PrecioMin >= Precio){
+                        JOptionPane.showMessageDialog(null, "Precio Minimo es mayor al Precio Normal" , "ERROR AL GUARDAR" , JOptionPane.ERROR_MESSAGE);
                     }else{
                         Codigo = txt_codigo.getText();
                         Detalle = txt_detalle.getText();

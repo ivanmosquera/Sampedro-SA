@@ -46,7 +46,7 @@ public class Abonar extends javax.swing.JFrame {
     Double saldo_g,abono, tot;
     double x;
     String stotal;
-    int USUARIO;
+    int USUARIO = 1;
     Main_Menu menu_Cod = new Main_Menu();
     public Abonar() {
         initComponents();
@@ -513,10 +513,20 @@ public class Abonar extends javax.swing.JFrame {
 
     private void btn_guardarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarproductoActionPerformed
         // TODO add your handling code here:
-        sp.Ingreso_nuevo_saldo(id_separado,Float.parseFloat(txt_nuevo_saldo.getText()));
-        sp.Guardar_Abono(id_separado,Float.parseFloat(txt_abonar.getText()),1);//falta agregar USUARIO
-         
-        JOptionPane.showMessageDialog(null, "ABONO INGRESADO CORRECTAMENTE" , "ABONO INGRESADO" , JOptionPane.INFORMATION_MESSAGE);
+        float control= Float.parseFloat(txt_nuevo_saldo.getText());
+        if(cbx_Nombre.getEditor().getItem().equals("")||txt_cedula.getText().equals("")||txt_nuevo_saldo.getText().equals("")
+                ||txt_saldo.getText().equals("")||txt_abonar.getText().equals("")||lblprenda.getText().equals("")||lbltalla.getText().equals("")){
+             JOptionPane.showMessageDialog(null, "LLENAR CAMPOS" , "ERROR" , JOptionPane.ERROR_MESSAGE);
+        }else{
+            if(control<0){
+            JOptionPane.showMessageDialog(null, "NUEVO SALFO NO PUEDE SER NEGATIVO, REVISAR OPERACIÒN" , "ERROR" , JOptionPane.ERROR_MESSAGE);
+            }else{
+               sp.Ingreso_nuevo_saldo(id_separado,Float.parseFloat(txt_nuevo_saldo.getText()));
+               sp.Guardar_Abono(id_separado,Float.parseFloat(txt_abonar.getText()),USUARIO);//falta agregar USUARIO
+               JOptionPane.showMessageDialog(null, "ABONO INGRESADO CORRECTAMENTE" , "ABONO INGRESADO" , JOptionPane.INFORMATION_MESSAGE);
+            }    
+        }
+        
         
         
     }//GEN-LAST:event_btn_guardarproductoActionPerformed

@@ -497,17 +497,23 @@ public class abono_report extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_generar_facActionPerformed
 
     private void btn_eliminar_separadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminar_separadoActionPerformed
-        a.Eliminar_Separado(id_Separado);
-        int total_anterior = i.get_cantidad_total_producto(id_producto_viejo);
-        int cantidad = total_anterior + 1;
-        i.Incremeneto_total_producto(id_producto_viejo , cantidad);
-        i.Aumento_inventario_Devolucion_Separado(id_producto_viejo, 1);
-        Reporte_Separados rs = new Reporte_Separados();
-        rs.setVisible(true);
-        rs.setLocationRelativeTo(null);
-        rs.setResizable(false);
-        dispose();
-       
+        
+        int dialogResult = 1;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Está seguro/a que desea eliminar el cliente?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(dialogResult == 0){
+                a.Eliminar_Separado(id_Separado);
+                int total_anterior = i.get_cantidad_total_producto(id_producto_viejo);
+                int cantidad = total_anterior + 1;
+                i.Incremeneto_total_producto(id_producto_viejo , cantidad);
+                i.Aumento_inventario_Devolucion_Separado(id_producto_viejo, 1);
+                Reporte_Separados rs = new Reporte_Separados();
+                rs.setVisible(true);
+                rs.setLocationRelativeTo(null);
+                rs.setResizable(false);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Cliente no Eliminado" , "INCORRECTO" , JOptionPane.ERROR_MESSAGE);
+         }
         
         
     }//GEN-LAST:event_btn_eliminar_separadoActionPerformed
