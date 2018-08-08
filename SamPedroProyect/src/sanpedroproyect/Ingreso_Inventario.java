@@ -138,6 +138,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         txt_cant = new javax.swing.JTextField();
 
         Dialog_buscar.setTitle("Buscar");
+        Dialog_buscar.setSize(new java.awt.Dimension(1200, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -151,6 +152,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
             }
         });
 
+        tabla_producto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -164,7 +166,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla_producto);
 
-        btn_agregar_producto.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_agregar_producto.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         btn_agregar_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/anadir.png"))); // NOI18N
         btn_agregar_producto.setText("AGREGAR");
         btn_agregar_producto.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +175,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton3.setText("SALIR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +213,7 @@ public class Ingreso_Inventario extends javax.swing.JFrame {
                 .addGap(170, 170, 170)
                 .addComponent(btn_agregar_producto)
                 .addGap(66, 66, 66)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

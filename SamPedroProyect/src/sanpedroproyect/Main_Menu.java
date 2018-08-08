@@ -87,6 +87,7 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         itemProducto_ingresarProducto = new javax.swing.JMenuItem();
         itemInventario_ingresoInventario = new javax.swing.JMenuItem();
+        itemInventario_reducirInventario = new javax.swing.JMenuItem();
         itemProducto_abonar = new javax.swing.JMenuItem();
         itemProducto_ingresarCategoria = new javax.swing.JMenuItem();
         itemProducto_modificarCategoria = new javax.swing.JMenuItem();
@@ -283,13 +284,22 @@ public class Main_Menu extends javax.swing.JFrame {
         jMenu3.add(itemProducto_ingresarProducto);
 
         itemInventario_ingresoInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        itemInventario_ingresoInventario.setText("Ingreso Inventario");
+        itemInventario_ingresoInventario.setText("Ingresar Inventario");
         itemInventario_ingresoInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemInventario_ingresoInventarioActionPerformed(evt);
             }
         });
         jMenu3.add(itemInventario_ingresoInventario);
+
+        itemInventario_reducirInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        itemInventario_reducirInventario.setText("Reducir Inventario");
+        itemInventario_reducirInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemInventario_reducirInventarioActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemInventario_reducirInventario);
 
         itemProducto_abonar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         itemProducto_abonar.setText("Abonar");
@@ -688,6 +698,14 @@ public class Main_Menu extends javax.swing.JFrame {
         ventana_modificarCategoria.setLocationRelativeTo(null);
     }//GEN-LAST:event_itemProducto_modificarCategoriaActionPerformed
 
+    private void itemInventario_reducirInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInventario_reducirInventarioActionPerformed
+        // TODO add your handling code here:
+        Reducir_Inventario ventana_reducirInventario = new Reducir_Inventario();
+        ventana_reducirInventario.setVisible(true);
+        ventana_reducirInventario.setResizable(false);
+        ventana_reducirInventario.setLocationRelativeTo(null);
+    }//GEN-LAST:event_itemInventario_reducirInventarioActionPerformed
+
     public  int getCodigo_usuario() {
         return codigo_usuario;
     }
@@ -721,6 +739,7 @@ public class Main_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemFactura_verFacturas;
     private javax.swing.JMenuItem itemFactura_verFacturasFecha;
     private javax.swing.JMenuItem itemInventario_ingresoInventario;
+    private javax.swing.JMenuItem itemInventario_reducirInventario;
     private javax.swing.JMenuItem itemProducto_abonar;
     private javax.swing.JMenuItem itemProducto_ingresarCategoria;
     private javax.swing.JMenuItem itemProducto_ingresarProducto;

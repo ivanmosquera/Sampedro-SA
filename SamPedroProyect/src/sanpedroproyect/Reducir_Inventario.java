@@ -140,17 +140,20 @@ public class Reducir_Inventario extends javax.swing.JFrame {
         Dialog_buscar.setTitle("Buscar");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(40000, 40000));
 
-        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel1.setText("BUSCAR POR: ");
 
         cmb_producto.setEditable(true);
+        cmb_producto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmb_producto.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmb_productoItemStateChanged(evt);
             }
         });
 
+        tabla_producto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -164,7 +167,7 @@ public class Reducir_Inventario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla_producto);
 
-        btn_agregar_producto.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        btn_agregar_producto.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         btn_agregar_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/anadir.png"))); // NOI18N
         btn_agregar_producto.setText("AGREGAR");
         btn_agregar_producto.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +176,7 @@ public class Reducir_Inventario extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         jButton3.setText("SALIR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +185,7 @@ public class Reducir_Inventario extends javax.swing.JFrame {
             }
         });
 
+        cmb_CodoPre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmb_CodoPre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Seleccione Busqueda>", "Descripcion", "Codigo" }));
         cmb_CodoPre.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -202,16 +206,16 @@ public class Reducir_Inventario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(35, 35, 35)
                         .addComponent(cmb_CodoPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cmb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(170, 170, 170)
                 .addComponent(btn_agregar_producto)
                 .addGap(66, 66, 66)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -228,18 +232,22 @@ public class Reducir_Inventario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_agregar_producto)
                     .addComponent(jButton3))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Dialog_buscarLayout = new javax.swing.GroupLayout(Dialog_buscar.getContentPane());
         Dialog_buscar.getContentPane().setLayout(Dialog_buscarLayout);
         Dialog_buscarLayout.setHorizontalGroup(
             Dialog_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Dialog_buscarLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Dialog_buscarLayout.setVerticalGroup(
             Dialog_buscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Dialog_buscarLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -425,13 +433,16 @@ public class Reducir_Inventario extends javax.swing.JFrame {
         System.out.println("Test :" + msj );
         totalbuscado = i.get_cantidad_total_producto(Codigo_Producto);
         nuevototal = (totalbuscado - Cantidad);
-        if(nuevototal<0){
-          JOptionPane.showMessageDialog(null, "ERROR" , "CANTIDAD ACTUAL ES :"+totalbuscado+", NO SE PUEDE REDUCIR A UN NUMERO NEGATIVO" , JOptionPane.ERROR_MESSAGE);
+        if(Cantidad<=0){
+            JOptionPane.showMessageDialog(null, "INGRESE UNA CANTIDAD POSITIVA A REDUCIR" , "ERROR" , JOptionPane.ERROR_MESSAGE);
+        }
+        else if(nuevototal<0){
+          JOptionPane.showMessageDialog(null, "CANTIDAD ACTUAL ES :"+totalbuscado+", NO SE PUEDE REDUCIR A UN NUMERO NEGATIVO", "ERROR"  , JOptionPane.ERROR_MESSAGE);
         }else{
             String test = i.Incremeneto_total_producto(Codigo_Producto,nuevototal);
             System.out.println("Test :" + test );
             if(msj.equals("Inventario Ingresado Correctamente")){
-              JOptionPane.showMessageDialog(null, "Inventario Ingresado Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE); 
+              JOptionPane.showMessageDialog(null, "Inventario Reducido Correctamente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE); 
               limpiar();
 
             }else{
