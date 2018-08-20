@@ -9,6 +9,7 @@ package sanpedroproyect;
 import Class.EXPORTAREXCEL;
 import Class.Mirender;
 import Class.Reporte_Operaciones;
+import Class.SepararPrenda;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,7 @@ public class Reporte_Separados extends javax.swing.JFrame {
     /**
      * Creates new form Reporte_Separados
      */
+    SepararPrenda sp = new SepararPrenda();
     DefaultTableModel m  = new DefaultTableModel();
     Reporte_Operaciones rp = new Reporte_Operaciones();
     public Reporte_Separados() {
@@ -53,6 +55,9 @@ public class Reporte_Separados extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_salir = new javax.swing.JButton();
         btn_excel = new javax.swing.JButton();
+        txt_if_buscar = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -102,6 +107,17 @@ public class Reporte_Separados extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jButton2.setText("Ir ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        jLabel2.setText("Ingrese Id  del Separado ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,13 +129,20 @@ public class Reporte_Separados extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(398, 398, 398)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(369, 369, 369)
                         .addComponent(btn_excel)
                         .addGap(169, 169, 169)
                         .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(398, 398, 398)
-                        .addComponent(jLabel1)))
+                        .addGap(332, 332, 332)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_if_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -127,9 +150,14 @@ public class Reporte_Separados extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(txt_if_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_excel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_salir, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -158,7 +186,7 @@ public class Reporte_Separados extends javax.swing.JFrame {
     private void Tbl_separadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_separadoMouseClicked
         // TODO add your handling code here:
  
-           int index= Tbl_separado.getSelectedRow();
+           /*int index= Tbl_separado.getSelectedRow();
            TableModel model = Tbl_separado.getModel();
            int id_sepa = Integer.parseInt(model.getValueAt(index, 0).toString());
            System.out.println("" + id_sepa);
@@ -166,7 +194,7 @@ public class Reporte_Separados extends javax.swing.JFrame {
            de.setVisible(true);
            de.setResizable(false);
            de.setLocationRelativeTo(null);
-           dispose();
+           dispose();*/
         
     }//GEN-LAST:event_Tbl_separadoMouseClicked
 
@@ -180,13 +208,40 @@ public class Reporte_Separados extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_excelActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        if(txt_if_buscar.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Ingrese el Id de la factura que desea revisar" , "ERROR" , JOptionPane.INFORMATION_MESSAGE);
+
+        }else{
+            int ultimo_id = sp.Get_last_id_separado();
+            int IDFACTURA = Integer.parseInt(txt_if_buscar.getText().toString());
+            if(ultimo_id >= IDFACTURA){
+                abono_report de = new abono_report(IDFACTURA);
+                de.setVisible(true);
+                de.setResizable(false);
+                de.setLocationRelativeTo(null);
+                dispose();
+            }else{
+                 JOptionPane.showMessageDialog(null, "Factura no Existente, Favor Que sea una de la Tabla" , "ERROR" , JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tbl_separado;
     private javax.swing.JButton btn_excel;
     private javax.swing.JButton btn_salir;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txt_if_buscar;
     // End of variables declaration//GEN-END:variables
 }

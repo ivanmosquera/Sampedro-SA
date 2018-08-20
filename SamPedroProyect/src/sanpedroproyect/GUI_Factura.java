@@ -86,7 +86,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     static double totalpagadofinal = 0;
     static double cambiofinal = 0;
     float totalxproductos;
-    
+    double iva_usado = 0;
+    double iva_total = 0;
 
 
     /**
@@ -1277,33 +1278,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
-        //prenda = Factura.cargar_Productos();
-        //Factura.cargar_Productos();
+   
         priceInvoice();
-       /*  Map<String , Object> parameters = new HashMap(); 
-        parameters.put("CAJERO", "KLEBER");
-        ArrayList<Productos> plist = new ArrayList<>();
-        
-        
-        try {
-            String source ="/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/FACTURA_IMPRIMIR.jrxml";
-            //JasperReport jr = null;
-            InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/FACTURA_IMPRIMIR.jrxml");
-            JasperDesign design = JRXmlLoader.load(is);
-            //jr = (JasperReport) JRLoader.loadObject(source);
-            JasperReport jcm = JasperCompileManager.compileReport(design);
-            JRBeanCollectionDataSource jcs = new JRBeanCollectionDataSource(plist);
-            JasperPrint jp = JasperFillManager.fillReport(jcm ,parameters ,jcs);
-            JasperViewer jv = new JasperViewer(jp);
-            jv.setVisible(true);
-            //jv.setTitle(source);
-            
-            
-            
-        } catch (JRException ex) {
-            Logger.getLogger(GUI_Factura.class.getName()).log(Level.SEVERE, null, ex);
-        }
-     */
+     
     }//GEN-LAST:event_btn_imprimirActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -1393,6 +1370,8 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
     private void btn_guardar_factActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_factActionPerformed
         // TODO add your handling code here:
         if(!txt_subtotal.getText().equals("")){
+            int modo_pago = 0 ;
+            
             DefaultTableModel order_list_guardar = new DefaultTableModel();
 
                 if(txt_subtotal.getText().equals("")){
@@ -1442,13 +1421,20 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                 }else{
                     pago_tarjeta = (Float.parseFloat(txt_vaucher_pago.getText()));
                 }
+               if(Combo_FORMA_PAGO.getEditor().getItem().toString().equals("Efectivo")){
+                    modo_pago = 1;
+                }else if(Combo_FORMA_PAGO.getEditor().getItem().toString().equals("Tarjeta")){
+                    modo_pago = 2;
+                }else{
+                    modo_pago = 3;
+                }
             int i = 0;
             String codigo_a_guardar;
             int cantidad = 0 ;
             int codigo_obtenido;
             int id_factura = 0;
             id_factura = Integer.parseInt(txt_numFactura.getText().toString());
-            String s = factura.Guardar_Factura(id_sumada,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static);     
+            String s = factura.Guardar_Factura(id_sumada,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static,modo_pago);     
             System.out.println("" + s);
             codigo_obtenido = factura.Get_last_id_factura();
             System.out.println("" + codigo_obtenido);
@@ -1812,7 +1798,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                      sub_total =Double.parseDouble(txt_subtotal.getText());
                      total = sub_total - desc ;
                      sub_total_i = total;
-                     total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                     iva_total = ((sub_total_i * iva)/100);
+                     total_i = sub_total_i + iva_total ;
+                     iva_usado= iva_total;
                      totalfin = total_i + vaucher;
                      stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                      txt_total.setText(stotal);
@@ -1821,7 +1809,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                      sub_total =Double.parseDouble(txt_subtotal.getText());
                      total = sub_total - desc ;
                      sub_total_i = total;
-                     total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                     iva_total = ((sub_total_i * iva)/100);
+                     total_i = sub_total_i + iva_total ;
+                     iva_usado= iva_total;
                      totalfin = total_i + vaucher;
                      stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                      txt_total.setText(stotal);
@@ -1834,7 +1824,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                    sub_total =Double.parseDouble(txt_subtotal.getText());
                    total = sub_total - ((sub_total * desc)/100) ;
                    sub_total_i = total;
-                   total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                   iva_total = ((sub_total_i * iva)/100);
+                   total_i = sub_total_i + iva_total ;
+                   iva_usado = iva_total;
                    totalfin = total_i + vaucher;
                    stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                    txt_total.setText(stotal);
@@ -1843,7 +1835,9 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
                    sub_total =Double.parseDouble(txt_subtotal.getText());
                    total = sub_total - ((sub_total * desc)/100) ;
                    sub_total_i = total;
-                   total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                   iva_total = ((sub_total_i * iva)/100);
+                   total_i = sub_total_i + iva_total ;
+                   iva_usado = iva_total;
                    totalfin = total_i + vaucher;
                    stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                    txt_total.setText(stotal);
@@ -2008,6 +2002,7 @@ public class GUI_Factura extends javax.swing.JFrame implements Printable{
             para.put("TOTAL", txt_total.getText());
             para.put("NOTA",txt_nota.getText());
             para.put("IVA",txt_iva.getText());
+            para.put("IVAUSADO",String.valueOf(iva_usado));
             para.put("DESCUENTO",txt_descto.getText());
             para.put("VAUCHER",txt_vaucher.getText());
             para.put("TOTALPAGADO",txt_total.getText());

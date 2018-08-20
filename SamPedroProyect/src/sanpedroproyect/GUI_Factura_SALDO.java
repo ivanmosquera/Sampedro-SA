@@ -46,6 +46,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import static sanpedroproyect.Detalle_Factura.codigo_cliente;
 import static sanpedroproyect.GUI_Factura.codigo_cliente;
 import static sanpedroproyect.GUI_Factura_SALDO.total;
 
@@ -90,6 +91,11 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
     static double totalpagadofinal = 0;
     static double cambiofinal = 0;
     float totalxproductos;
+    int facturar_anterior_obtenida , id_usuario_obtenida;
+    ArrayList<String> codigo_p_obtenido;
+    ArrayList<Integer> cantidad_p_obtenido;
+    double iva_usado ;
+    double iva_total;
     
 
 
@@ -99,7 +105,7 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
     int id_factura_actual , id_sumada;
     Date date = new Date ();
     
-    public GUI_Factura_SALDO(String totalsaldo) {
+    public GUI_Factura_SALDO(String totalsaldo,int factura_anterior, int id_cliente, String cedula_obtenida, ArrayList<String> codigo_producto,ArrayList<Integer> cantidad_producto) {
         initComponents();
         System.out.println(Login.rol_usuario);
         //btn_guardar_fact.setEnabled(false);
@@ -109,11 +115,18 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
         id_sumada = (id_factura_actual + 1 );
         txt_numFactura.setText(String.valueOf(id_sumada));
         txt_vendedor.setText(menu_Cod.getNombre_usuario());
+        facturar_anterior_obtenida = factura_anterior;
+        id_usuario_obtenida = id_cliente;
+        cantidad_p_obtenido = cantidad_producto;
+        codigo_p_obtenido = codigo_producto;
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         String dia = dateFormat.format(date);
         txt_fecha.setText(dia);
-        //lbl_vaucher.setVisible(false);
-        //txt_vaucher.setVisible(false);
+        this.setLocationRelativeTo(null);
+        codigo_cliente = id_cliente;
+        set_clientes(cedula_obtenida);
+        System.out.println("el id del cliente es "+ id_cliente);
+        /*separacion */
         USUARIO = menu_Cod.getCodigo_usuario();
         btn_imprimir.setToolTipText("Antes de Imprimir, Guarde la Factura");
         btn_imprimir.setEnabled(false);
@@ -129,9 +142,8 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
         Ingreso_Nuevo_Cliente.SNumeros(txt_numFactura);
         Ingreso_Nuevo_Cliente.validarCedula(txt_cedula);
         
-        
-     
-        cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+          
+       /* cbx_Nombre.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
         
           
             @Override
@@ -187,227 +199,7 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
                 }
             }
           
-        });
-       /* txt_descto.getDocument().addDocumentListener(new DocumentListener() {
-        
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                
-                if(cmb_descuento.getSelectedItem().equals("$")){
-                     desc = (Double.parseDouble(txt_descto.getText()));
-                     sub_total =Double.parseDouble(txt_subtotal.getText());
-                     total = sub_total - desc ;
-                     stotal = String.format(java.util.Locale.US,"%.2f", total);
-                     txt_total.setText(stotal);
-                }else{
-                
-                desc = (Double.parseDouble(txt_descto.getText()));
-                sub_total =Double.parseDouble(txt_subtotal.getText());
-                total = sub_total - ((sub_total * desc)/100) ;
-                stotal = String.format(java.util.Locale.US,"%.2f", total);
-                txt_total.setText(stotal);
-                }
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                if(cmb_descuento.getSelectedItem().equals("$")){
-                    
-                    if(txt_descto.getText().isEmpty()){
-                        desc = 0;
-                    }else{
-                       desc = (Double.parseDouble(txt_descto.getText()));
-                    }
-                    sub_total =Double.parseDouble(txt_subtotal.getText());
-                    total = sub_total - desc ;
-                    stotal = String.format(java.util.Locale.US,"%.2f", total);
-                    txt_total.setText(stotal);
-
-                    if(txt_descto.getText().isEmpty()){
-                        txt_total.setText(txt_subtotal.getText());
-                    }
-                    
-                }else{
-
-                    if(txt_descto.getText().isEmpty()){
-                        desc = 0;
-                    }else{
-                       desc = (Double.parseDouble(txt_descto.getText()));
-                    }
-                    sub_total =Double.parseDouble(txt_subtotal.getText());
-                    total = sub_total - ((sub_total * desc)/100);
-                    stotal = String.format(java.util.Locale.US,"%.2f", total);
-                    txt_total.setText(stotal);
-                    if(txt_descto.getText().isEmpty()){
-                        txt_total.setText(txt_subtotal.getText());
-                    }
-                }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-              
-            } ); 
-        
-        
-        txt_iva.getDocument().addDocumentListener(new DocumentListener() {
-
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                                
-                iva = (Double.parseDouble(txt_iva.getText()));
-                sub_total_i = total;
-                total_i = sub_total_i + ((sub_total_i * iva)/100) ;
-                stotal_i = String.format(java.util.Locale.US,"%.2f", total_i);
-                txt_total.setText(stotal_i);
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                    if(txt_iva.getText().isEmpty()){
-                        iva = 0;
-                    }else{
-                       iva= (Double.parseDouble(txt_iva.getText()));
-                    }
-                     sub_total_i = total;
-                     total_i = sub_total_i + ((sub_total_i * iva)/100) ;
-                     stotal_i = String.format(java.util.Locale.US,"%.2f", total_i);
-                     txt_total.setText(stotal_i);
-                    if(txt_iva.getText().isEmpty()){
-                        stotal = String.format(java.util.Locale.US,"%.2f", total);
-                        txt_total.setText(stotal);
-                    }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
-        
-        
-        txt_vaucher.getDocument().addDocumentListener(new DocumentListener() {
-
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                vaucher = (Double.parseDouble(txt_vaucher.getText()));
-                sub_total_v = (Double.parseDouble(txt_total.getText()));
-                total_v = sub_total_v + vaucher ;
-                stotal_v = String.format(java.util.Locale.US,"%.2f", total_v);
-                txt_total.setText(stotal_v);
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                    if(txt_vaucher.getText().isEmpty()){
-                        vaucher = 0;
-                    }else{
-                       vaucher= (Double.parseDouble(txt_vaucher.getText()));
-                    }
-                     sub_total_v = (Double.parseDouble(txt_total.getText()));
-                     total_v = sub_total_v + vaucher ;
-                     stotal_v = String.format(java.util.Locale.US,"%.2f", total_v);
-                     txt_total.setText(stotal_v);
-                    if(txt_vaucher.getText().isEmpty()){
-                         if(txt_iva.getText().isEmpty()){
-                            stotal = String.format(java.util.Locale.US,"%.2f", total);
-                            txt_total.setText(stotal);
-                            }
-                         else{
-                             stotal_i = String.format(java.util.Locale.US,"%.2f", total_i);
-                             txt_total.setText(stotal_i);
-                         }
-                    }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });*/
-        
-        /*txt_efectivo.getDocument().addDocumentListener(new DocumentListener() {
-        
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-     
-                efectivo = (Double.parseDouble(txt_efectivo.getText()));
-                total_encontrado =Double.parseDouble(txt_total.getText());
-                subpago = total_encontrado - efectivo ;
-                pago_cliente = String.format(java.util.Locale.US,"%.2f", subpago);
-                total_pagado.setText(pago_cliente);
-                
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
- 
-
-                if(txt_efectivo.getText().isEmpty()){
-                    efectivo = 0;
-                }else{
-                    efectivo = (Double.parseDouble(txt_efectivo.getText()));
-                }
-                    sub_total =Double.parseDouble(txt_subtotal.getText());
-                    total_encontrado =Double.parseDouble(txt_total.getText());
-                    subpago = total_encontrado - efectivo ;
-                    pago_cliente = String.format(java.util.Locale.US,"%.2f", subpago);
-                        total_pagado.setText(pago_cliente);
-                if(txt_efectivo.getText().isEmpty()){
-                        total_pagado.setText(txt_efectivo.getText());
-                    }
-                }
-            
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-              
-            } ); 
-        txt_vaucher_pago.getDocument().addDocumentListener(new DocumentListener() {
-        
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-     
-                tarjeta = (Double.parseDouble(txt_vaucher_pago.getText()));
-                total_encontrado =Double.parseDouble(total_pagado.getText());
-                subpago_v = total_encontrado - tarjeta ;
-                pago_cliente_v = String.format(java.util.Locale.US,"%.2f", subpago_v);
-                total_pagado.setText(pago_cliente_v);
-                
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
- 
-
-                if(txt_vaucher_pago.getText().isEmpty()){
-                    tarjeta = 0;
-                }else{
-                    tarjeta = (Double.parseDouble(txt_vaucher_pago.getText()));
-                }
-                    sub_total =Double.parseDouble(txt_subtotal.getText());
-                    total_encontrado =Double.parseDouble(total_pagado.getText());
-                    subpago_v = total_encontrado - tarjeta ;
-                    pago_cliente_v = String.format(java.util.Locale.US,"%.2f", subpago_v);
-                    total_pagado.setText(pago_cliente_v);
-                if(txt_vaucher_pago.getText().isEmpty()){
-                        total_pagado.setText(txt_vaucher_pago.getText());
-                    }
-                }
-            
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-              
-            } ); 
-        
-        
-     
-        */
-        
+        }); */ 
     }
     private void verificar_Permisos(){
         if(Login.rol_usuario == 1){
@@ -417,25 +209,7 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
         for(i=0;i<Login.permisos_usuario.length;i++){
             if(Login.permisos_usuario[i].equals("RealizarDescuentos")){
                 txt_descto.setEnabled(true);
-            }/*else if(permisos_usuario[i].equals("Facturar")){
-                btn_go_registroFactura.setEnabled(true);
-                itemFactura_nuevaFactura.setEnabled(true);
-            }else if(permisos_usuario[i].equals("Anular")){
-                btn_go_anulaciones.setEnabled(true);
-                itemFactura_verFacturas.setEnabled(true);
-            }else if(permisos_usuario[i].equals("GenerarReportesCierreDeCaja")){
-                btn_go_cierreCaja.setEnabled(true);
-            }else if(permisos_usuario[i].equals("IngresoInventario")){
-                btn_go_inventario.setEnabled(true);
-                itemInventario_ingresoInventario.setEnabled(true);
-            }else if(permisos_usuario[i].equals("RegistrarCliente")){
-                btn_go_RegistroCliente.setEnabled(true);
-                itemCliente_registrarCliente.setEnabled(true);
-            }else if(permisos_usuario[i].equals("ModificarCliente")){
-                itemCliente_modificar_eliminar.setEnabled(true);
-            }else if(permisos_usuario[i].equals("IngresarProducto")){
-                itemProducto_ingresarProducto.setEnabled(true);
-            }*/
+            }
 
         }
     }
@@ -1306,33 +1080,9 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
-        //prenda = Factura.cargar_Productos();
-        //Factura.cargar_Productos();
+
         priceInvoice();
-       /*  Map<String , Object> parameters = new HashMap(); 
-        parameters.put("CAJERO", "KLEBER");
-        ArrayList<Productos> plist = new ArrayList<>();
-        
-        
-        try {
-            String source ="/Users/kleberstevendiazcoello/Documents/GitHub/Sampedro-SA/SamPedroProyect/src/sanpedroproyect/FACTURA_IMPRIMIR.jrxml";
-            //JasperReport jr = null;
-            InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/FACTURA_IMPRIMIR.jrxml");
-            JasperDesign design = JRXmlLoader.load(is);
-            //jr = (JasperReport) JRLoader.loadObject(source);
-            JasperReport jcm = JasperCompileManager.compileReport(design);
-            JRBeanCollectionDataSource jcs = new JRBeanCollectionDataSource(plist);
-            JasperPrint jp = JasperFillManager.fillReport(jcm ,parameters ,jcs);
-            JasperViewer jv = new JasperViewer(jp);
-            jv.setVisible(true);
-            //jv.setTitle(source);
-            
-            
-            
-        } catch (JRException ex) {
-            Logger.getLogger(GUI_Factura.class.getName()).log(Level.SEVERE, null, ex);
-        }
-     */
+  
     }//GEN-LAST:event_btn_imprimirActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -1346,33 +1096,6 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
 
     private void btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LimpiarActionPerformed
         // TODO add your handling code here:
-        /*
-        id_factura_actual= factura.Get_last_id_factura();
-        id_sumada = (id_factura_actual + 1 );
-        txt_numFactura.setText(String.valueOf(id_sumada));
-        txt_cedula.setText("");
-        txt_dir.setText("");
-        txt_can.setText("");
-        txt_mail.setText("");
-        txt_subtotal.setText("");
-        sub_total = 0;
-        txt_telefono.setText("");
-        txt_descto.setText("");
-        txt_iva.setText("");
-        txt_vaucher.setText("");
-        txt_vaucher_pago.setText("");
-        txt_efectivo.setText("");
-        txt_total.setText("");
-        txt_nota.setText("");
-        cbx_Nombre.removeAllItems();
-        Tabla_ventas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "CODIGO", "DESCRIPCION", "TALLA", "CANTIDAD", "PRECIO", "TOTAL"
-            }
-        ));*/
         limpiar();
         
     }//GEN-LAST:event_btn_LimpiarActionPerformed
@@ -1395,7 +1118,7 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
                         ResultSet rs = null;
                         String Desc;
                         try{
-                           String sql = ("SELECT * FROM cliente where Nombre = ?");
+                           String sql = ("SELECT * FROM cliente where id_Cliente = ?");
                            pst = cn.prepareStatement(sql);
                            pst.setString(1, "Consumidor Final");
                            rs =pst.executeQuery();
@@ -1419,7 +1142,9 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
 
     private void btn_guardar_factActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_factActionPerformed
         // TODO add your handling code here:
+        
         if(!txt_subtotal.getText().equals("")){
+            int modo_pago = 0;
             DefaultTableModel order_list_guardar = new DefaultTableModel();
 
                 if(txt_subtotal.getText().equals("")){
@@ -1473,20 +1198,41 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
                 }else{
                     saldofav = (Float.parseFloat(txt_saldofavor.getText()));
                 }
+            if(Combo_FORMA_PAGO.getEditor().getItem().toString().equals("Efectivo")){
+                    modo_pago = 1;
+                }else if(Combo_FORMA_PAGO.getEditor().getItem().toString().equals("Tarjeta")){
+                    modo_pago = 2;
+                }else{
+                    modo_pago = 3;
+            }
                 
             int i = 0;
-            String codigo_a_guardar;
+            String codigo_a_guardar , codigo_p_cambio;
             int cantidad = 0 ;
+            int cantidadelim = 0;
             int codigo_obtenido;
             float totalpagar, subtotal,totalneto;
             int id_factura = 0;
             id_factura = Integer.parseInt(txt_numFactura.getText().toString());
             totalneto = saldofav + Total_static;
-            String s = factura.Guardar_Factura_saldo(id_sumada,codigo_cliente,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static,saldofav,Descuento_static,Total_static,subtotal_static,totalneto);     
-            System.out.println("" + s);
+            String s = factura.Guardar_Factura_saldo(id_sumada,codigo_cliente,USUARIO,pago_efectivo,pago_tarjeta,Voucher_static,Iva_static,saldofav,Descuento_static,Total_static,subtotal_static,totalneto,modo_pago);     
+            System.out.println("Estado de Factura" + s);
             codigo_obtenido = factura.Get_last_id_factura();
-            System.out.println("" + codigo_obtenido);
-
+            System.out.println("el cod " + codigo_obtenido);
+            
+           /* HARA LA DEVOLUCION DE LOS PRODUCTOS */
+            int numero_filas_s = codigo_p_obtenido.size();
+            for(i=0;i<numero_filas_s;i++){
+                int cantidad_actual_s = 0;
+                int nueva_cantidad_s = 0;
+                codigo_p_cambio =  codigo_p_obtenido.get(i).toString();
+                cantidadelim = cantidad_p_obtenido.get(i);
+              
+                inv.Ingresar_Inventario_Anulacion(codigo_p_cambio,cantidadelim);
+                cantidad_actual_s = inv.get_cantidad_total_producto(codigo_p_cambio);
+                nueva_cantidad_s = (cantidad_actual_s + cantidadelim) ;
+                inv.Incremeneto_total_producto(codigo_p_cambio , nueva_cantidad_s );
+            }
 
             /*Neceista el id para guardar todos los productos de una factura*/
             order_list_guardar = (DefaultTableModel) Tabla_ventas.getModel();
@@ -1505,8 +1251,10 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
                     nueva_cantidad = (cantidad_actual - cantidad) ;
                     inv.Incremeneto_total_producto(codigo_a_guardar , nueva_cantidad );
                 }
-
-            JOptionPane.showMessageDialog(null, "Factura Ingresada Correcatemente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
+            String eliminar = factura.Eliminar_Factura(facturar_anterior_obtenida,id_usuario_obtenida,"Cambio de Prenda Factura");  //FALATA PONER MOTIVO   
+            String s2 = factura.UpdateCambio(facturar_anterior_obtenida);
+            System.out.println("" + s2);
+            JOptionPane.showMessageDialog(null, "Anterior Factura Anulada y Factura Ingresada Correcatemente" , "Guardado Exitoso" , JOptionPane.INFORMATION_MESSAGE);
             btn_imprimir.setEnabled(true);
         
         }else{
@@ -1847,7 +1595,9 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
                      sub_total =Double.parseDouble(txt_subtotal.getText());
                      total = sub_total - desc ;
                      sub_total_i = total;
-                     total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                     iva_total = ((sub_total_i * iva)/100);
+                     total_i = sub_total_i + iva_total ;
+                     iva_total= iva_usado;
                      totalfin = total_i + vaucher - saldofavor;
                      stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                      totalfin2 = total_i + vaucher;
@@ -1858,7 +1608,9 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
                      sub_total =Double.parseDouble(txt_subtotal.getText());
                      total = sub_total - desc ;
                      sub_total_i = total;
-                     total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                     iva_total = ((sub_total_i * iva)/100);
+                     total_i = sub_total_i + iva_total ;
+                     iva_usado = iva_total;
                      totalfin = total_i + vaucher - saldofavor;
                      stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                      totalfin2 = total_i + vaucher;
@@ -1873,7 +1625,9 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
                    sub_total =Double.parseDouble(txt_subtotal.getText());
                    total = sub_total - ((sub_total * desc)/100) ;
                    sub_total_i = total;
-                   total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                   iva_total = ((sub_total_i * iva)/100);
+                   total_i = sub_total_i + iva_total ;
+                   iva_usado = iva_total;
                    totalfin = total_i + vaucher - saldofavor;
                    stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                    txt_total.setText(stotal);
@@ -1884,7 +1638,9 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
                    sub_total =Double.parseDouble(txt_subtotal.getText());
                    total = sub_total - ((sub_total * desc)/100) ;
                    sub_total_i = total;
-                   total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                   iva_total = ((sub_total_i * iva)/100);
+                   total_i = sub_total_i + iva_total ;
+                   iva_usado = iva_total;
                    totalfin = total_i + vaucher - saldofavor ;
                    stotal = String.format(java.util.Locale.US,"%.2f", totalfin);
                    txt_total.setText(stotal);
@@ -2058,6 +1814,7 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
             para.put("TOTAL", stotal2);
             para.put("NOTA",txt_nota.getText());
             para.put("IVA",txt_iva.getText());
+            para.put("IVAUSADO",String.valueOf(iva_usado));
             para.put("DESCUENTO",txt_descto.getText());
             para.put("VAUCHER",txt_vaucher.getText());
             para.put("TOTALPAGADO",String.valueOf(totalpagadofinal));
@@ -2136,6 +1893,35 @@ public class GUI_Factura_SALDO extends javax.swing.JFrame implements Printable{
         ));
     }
     
+        private void set_clientes(String cedula){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String Desc;
+        try{
+            String sql = ("SELECT * FROM cliente where Cedula = ?");
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,cedula);
+            rs =pst.executeQuery();
+            if (rs.next()){
+                codigo_cliente = rs.getInt("id_Cliente");
+                txt_cedula.setText(rs.getString("Cedula"));
+                txt_dir.setText(rs.getString("Direccion"));
+                txt_mail.setText(rs.getString("Correo"));
+                txt_telefono.setText(rs.getString("Telefono"));
+                cbx_Nombre.getEditor().setItem(rs.getString("Nombre"));
+                txt_nota.setText(rs.getString("Nota"));
+                          
+                }
+
+
+
+            } catch (Exception ex){
+               System.out.println(ex);
+            }
+    }
     
     
     public int getCodigo_cliente() {

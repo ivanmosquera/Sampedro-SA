@@ -23,7 +23,7 @@ import sanpedroproyect.GUI_Factura;
  */
 public class Factura {
     static GUI_Factura  fact = new GUI_Factura();
-    public static String Guardar_Factura(int id , int user,float efectivo, float tarjeta, float vauch , float iva){
+    public static String Guardar_Factura(int id , int user,float efectivo, float tarjeta, float vauch , float iva, int modo_pago){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -51,7 +51,7 @@ public class Factura {
             pst.setFloat(8,vauch);
             pst.setFloat(9,iva);
             pst.setFloat(10, fact.getTotal_static());
-            pst.setFloat(11, user);
+            pst.setInt(11, user);
             pst.setDouble(12, efectivo);
             pst.setDouble(13, tarjeta);
             pst.setFloat(14, 0);
@@ -59,7 +59,8 @@ public class Factura {
             
             
             pst.execute();
-            resul = "Ingresado Correctamente Factura";
+            resul = "Ingresado Correctamente detalle x Factura";
+            System.out.println(resul);
            
             
             
@@ -75,7 +76,7 @@ public class Factura {
  }
     
     
-     public static String Guardar_Factura_saldo(int id ,int codi, int user,float efectivo, float tarjeta, float vauch , float iva,float saldo,float descuento, float total, float subtotal,float totalneto){
+     public static String Guardar_Factura_saldo(int id ,int codi, int user,float efectivo, float tarjeta, float vauch , float iva,float saldo,float descuento, float total, float subtotal,float totalneto,int modo_pago){
         String resul = null , lats = null;
         System.out.println("el codi es : "+codi+" ");
         ConnectionDB cc = new ConnectionDB();
@@ -104,7 +105,7 @@ public class Factura {
             pst.setFloat(8,vauch);
             pst.setFloat(9,iva);
             pst.setFloat(10,totalneto);
-            pst.setFloat(11, user);
+            pst.setInt(11, user);
             pst.setDouble(12, efectivo);
             pst.setDouble(13, tarjeta);
             pst.setFloat(14, saldo);
@@ -118,19 +119,19 @@ public class Factura {
             
             
         }catch(SQLException e){
-            resul = "Error Error en guardar Factura: "+e; 
+            resul = "Error Error en guardar Factura: "+ e; 
             System.out.println(resul);
         }
         
        cc.desconectar();
         return resul;      
  }
-        public static String Guardar_Factura_SEPARADOS(int id ,int codigo_cliente, int user,double efectivo, double tarjeta,float subtotal,float descuento,float total,float iva, float vaucher){
+        public static String Guardar_Factura_SEPARADOS(int id ,int codigo_cliente, int user,double efectivo, double tarjeta,float subtotal,float descuento,float total,float iva, float vaucher, int modo_pago){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "INSERT INTO factura values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO factura values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Date date = new Date();
         ResultSet rs = null;
         //Caso 1: obtener la hora y salida por pantalla con formato:
@@ -153,9 +154,12 @@ public class Factura {
             pst.setFloat(8,iva);
             pst.setFloat(9,vaucher);
             pst.setFloat(10, total);
-            pst.setFloat(11, user);
+            pst.setInt(11, user);
             pst.setDouble(12, efectivo);
             pst.setDouble(13, tarjeta);
+            pst.setFloat(14,0);
+            pst.setFloat(15,total);
+            
             
             pst.execute();
             resul = "Ingresado Correctamente Factura";

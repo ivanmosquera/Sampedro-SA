@@ -181,7 +181,8 @@ public class SepararPrenda {
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
         ResultSet rs = null;
-        String sql = "UPDATE `San Pedro`.`separado` SET `Saldo`= ? WHERE `id_Separado`= ? ";
+        String sql = "UPDATE separado SET Saldo= ? WHERE id_Separado= ? ";
+        //String sql = "UPDATE `San Pedro`.`separado` SET `Saldo`= ? WHERE `id_Separado`= ? ";
         try{
             pst = cn.prepareStatement(sql);
             pst.setFloat(1,nuevo_saldo);
@@ -245,7 +246,7 @@ public class SepararPrenda {
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
         ResultSet rs = null;
-        String sql = "UPDATE `San Pedro`.`detalle_separado` SET `fk_Producto`= ? WHERE `fk_Separado`= ?; ";
+        String sql = "UPDATE detalle_separado SET fk_Producto= ? WHERE fk_Separado = ?; ";
         try{
             pst = cn.prepareStatement(sql);
             pst.setString(1,codigo);
@@ -355,6 +356,34 @@ public class SepararPrenda {
         
        cc.desconectar();
         return resul;   
+        
+    } 
+     
+     public static int Get_last_id_Separado(){
+        String resul = null , lats = null;
+        ConnectionDB cc = new ConnectionDB();
+        Connection cn = cc.getConnection();
+        PreparedStatement pst =null;
+        ResultSet rs = null;
+        String sql2 = "SELECT MAX(id_Separado) FROM separado";
+        int id_ultimo = 0 ;
+        try{
+         
+            pst = cn.prepareStatement(sql2);
+            rs =pst.executeQuery();
+            if (rs.next()){
+                id_ultimo = rs.getInt("MAX(id_Separado)");
+            }
+            
+            
+            
+            
+        }catch(SQLException e){
+            resul = "Error en id Separado : "+e; 
+            System.out.println(resul);
+        }
+        
+        return id_ultimo;
         
     } 
     

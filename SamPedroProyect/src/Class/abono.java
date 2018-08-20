@@ -114,7 +114,7 @@ public class abono {
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
         PreparedStatement pst =null;
-        String sql = "UPDATE `San Pedro`.`separado` SET `fk_Estado`= ? WHERE `id_Separado`= ? ;";
+        String sql = "UPDATE separado SET fk_Estado= ? WHERE id_Separado= ? ;";
         try{
             pst = cn.prepareStatement(sql);
             pst.setInt(1,3);

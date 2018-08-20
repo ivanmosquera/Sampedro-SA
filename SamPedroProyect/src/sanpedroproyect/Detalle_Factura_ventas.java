@@ -47,14 +47,14 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import static sanpedroproyect.Detalle_Factura.total;
+import static sanpedroproyect.Detalle_Factura_ventas.total;
 import static sanpedroproyect.GUI_Factura.codigo_cliente;
 
 /**
  *
  * @author Pantheon
  */
-public class Detalle_Factura extends javax.swing.JFrame {
+public class Detalle_Factura_ventas extends javax.swing.JFrame {
     
     static Integer Codigo;
     Factura factura = new Factura();
@@ -83,7 +83,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
      * Creates new form GUI_Factura
      * @param idFactura
      */
-    public Detalle_Factura(int idFactura) {
+    public Detalle_Factura_ventas(int idFactura) {
         initComponents();
         id_de_la_factura = idFactura;
         Ingreso_Nuevo_Cliente.SNumeros(txt_numFactura);
@@ -724,7 +724,7 @@ public class Detalle_Factura extends javax.swing.JFrame {
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
         //System.exit(0); 
-        Ver_Facturas ve = new Ver_Facturas();
+        Ver_Facturas_Por_FECHA ve = new Ver_Facturas_Por_FECHA();
         ve.setVisible(true);
         ve.setLocationRelativeTo(null);
         ve.setResizable(false);

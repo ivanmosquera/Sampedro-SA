@@ -602,7 +602,7 @@ public class Reporte_Operaciones {
      }
       
       
-       public DefaultTableModel consultar_mas_vendidos(){
+       public DefaultTableModel consultar_mas_vendidos(String desde , String hasta){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -612,11 +612,13 @@ public class Reporte_Operaciones {
         DefaultTableModel modelo = new DefaultTableModel();
         ResultSetMetaData rsmd = null;
         String sql  =  "SELECT id_Producto, Descripcion , Talla ,Sum(Cantidad) "
-                + "FROM inventario , producto where id_Producto = fk_Producto "
+                + "FROM inventario , producto where id_Producto = fk_Producto and  (Fecha between \""+desde+"\" and \""+hasta+"\") "
                 + "and mov = 'Salida' group by fk_Producto order by Sum(Cantidad) desc";
         
         try {
             pst = cn.prepareStatement(sql);
+            //pst.setString(1,desde);
+            //pst.setString(2,hasta);
             rs = pst.executeQuery();
             rsmd = rs.getMetaData();
             col = rsmd.getColumnCount();

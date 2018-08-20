@@ -205,7 +205,7 @@ public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
                                     .addComponent(cmb_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(dateHasta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                            .addComponent(dateHasta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(dateDesde, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(79, 79, 79)
                                         .addComponent(jButton2))))))
@@ -269,7 +269,7 @@ public class Ver_Facturas_Por_FECHA extends javax.swing.JFrame {
         int index= Tbl_ver_facturas.getSelectedRow();
         TableModel model = Tbl_ver_facturas.getModel();
         int IDFACTURA = Integer.parseInt(model.getValueAt(index, 0).toString());
-        Detalle_Factura de = new Detalle_Factura(IDFACTURA);
+        Detalle_Factura_ventas de = new Detalle_Factura_ventas(IDFACTURA);
         de.setVisible(true);
         de.setResizable(false);
         de.setLocationRelativeTo(null);

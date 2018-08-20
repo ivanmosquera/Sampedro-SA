@@ -49,7 +49,9 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import static sanpedroproyect.Factura_Prenda_Separada.total;
+import static sanpedroproyect.GUI_Factura.cambiofinal;
 import static sanpedroproyect.GUI_Factura.codigo_cliente;
+import static sanpedroproyect.GUI_Factura_SALDO.subtotal_static;
 
 /**
  *
@@ -79,6 +81,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
     static float subtotal_static,Descuento_static,Voucher_static,Iva_static,Total_static;
     DefaultTableModel detalle_abono_t = new DefaultTableModel();
     abono a = new abono();
+    double iva_usado;
 
 
     /**
@@ -186,6 +189,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
                 iva = (Double.parseDouble(txt_iva.getText()));
                 sub_total_i = total;
                 total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                iva_usado = ((sub_total_i * iva)/100);
                 stotal_i = String.format(java.util.Locale.US,"%.2f", total_i);
                 txt_total.setText(stotal_i);
             }
@@ -199,6 +203,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
                     }
                      sub_total_i = total;
                      total_i = sub_total_i + ((sub_total_i * iva)/100) ;
+                     iva_usado = ((sub_total_i * iva)/100) ;
                      stotal_i = String.format(java.util.Locale.US,"%.2f", total_i);
                      txt_total.setText(stotal_i);
                     if(txt_iva.getText().isEmpty()){
@@ -520,7 +525,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         jLabel8.setText("Forma De Pago");
 
         Combo_FORMA_PAGO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Combo_FORMA_PAGO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" ,  "Efectivo", "Tarjeta Credito", "Tarjeta Débito","Mixto"}));
+        Combo_FORMA_PAGO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" ,  "Efectivo", "Tarjeta","Mixto"}));
         Combo_FORMA_PAGO.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 Combo_FORMA_PAGOItemStateChanged(evt);
@@ -554,6 +559,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         jLabel11.setText("Descuento");
 
         txt_descto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_descto.setText("0");
 
         lbl_vaucher.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         lbl_vaucher.setText("Recargo");
@@ -569,6 +575,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
 
         txt_total.setEditable(false);
         txt_total.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_total.setText("0");
 
         jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel13.setText("Total");
@@ -649,6 +656,7 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         txt_efectivo.setText("0");
 
         txt_vaucher_pago.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_vaucher_pago.setText("0");
         txt_vaucher_pago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_vaucher_pagoActionPerformed(evt);
@@ -986,7 +994,56 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
 
     private void btn_guardar_factActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_factActionPerformed
         // TODO add your handling code here:
-        
+         float  pago_efectivo, pago_tarjeta;
+         int modo_pago = 0;
+        if(txt_subtotal.getText().equals("")){
+                    subtotal_static = 0;
+                }else{
+                    subtotal_static = (Float.parseFloat(txt_subtotal.getText()));
+                }
+
+
+                if(txt_descto.getText().equals("")){
+                    Descuento_static=0;
+                }else{
+                    Descuento_static = (Float.parseFloat(txt_descto.getText()));
+                }
+
+                if(txt_total.getText().equals("")){
+                   Total_static  =0;
+                }else{
+                    Total_static = (Float.parseFloat(txt_total.getText()));
+                }
+
+
+
+                if(txt_vaucher.getText().equals("")){
+                    Voucher_static=0;
+                }else{
+                    Voucher_static = (Float.parseFloat(txt_vaucher.getText()));
+                }
+
+
+                if(txt_iva.getText().equals("")){
+                    Iva_static = 0;
+                }else{
+                    Iva_static = (Float.parseFloat(txt_iva.getText()));
+                }
+
+                
+                
+                if(txt_efectivo.getText().equals("")){
+                    pago_efectivo = 0;
+                }else{
+                    pago_efectivo = (Float.parseFloat(txt_efectivo.getText()));
+                }
+                if(txt_vaucher_pago.getText().equals("")){
+                    pago_tarjeta = 0;
+                }else{
+                    pago_tarjeta = (Float.parseFloat(txt_vaucher_pago.getText()));
+                }
+           
+         
          a.Eliminar_Separado(id_separado_actual);
         int total_anterior = inv.get_cantidad_total_producto(id_producto_actual);
         int cantidad = total_anterior + 1;
@@ -994,19 +1051,18 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         inv.Aumento_inventario__genracion_factura_separado(id_producto_actual, 1);
         DefaultTableModel order_list_guardar = new DefaultTableModel();
         
-        subtotal_static = (Float.parseFloat(txt_subtotal.getText()));
-        Descuento_static = (Float.parseFloat(txt_descto.getText()));
-        Total_static = (Float.parseFloat(txt_total.getText()));
-        Voucher_static = (Float.parseFloat(txt_vaucher.getText()));
-        Iva_static = (Float.parseFloat(txt_vaucher.getText()));
+        if(Combo_FORMA_PAGO.getEditor().getItem().toString().equals("Efectivo")){
+            modo_pago = 1;
+        }else if(Combo_FORMA_PAGO.getEditor().getItem().toString().equals("Tarjeta")){
+            modo_pago = 2;
+        }else{
+            modo_pago = 3;
+        }
         int i = 0;
         String codigo_a_guardar;
         int cantidads = 0 ;
         int codigo_obtenido;
-        double pago_efectivo, pago_tarjeta;
-        pago_efectivo = Double.parseDouble(txt_efectivo.getText());
-        pago_tarjeta = Double.parseDouble(txt_vaucher_pago.getText());
-        String s = factura.Guardar_Factura_SEPARADOS(id_sumada,id_cliente_actual,1,pago_efectivo,pago_tarjeta,subtotal_static,Descuento_static,Total_static,Iva_static,Voucher_static);     
+        String s = factura.Guardar_Factura_SEPARADOS(id_sumada,id_cliente_actual,1,pago_efectivo,pago_tarjeta,subtotal_static,Descuento_static,Total_static,Iva_static,Voucher_static,modo_pago);     
         System.out.println("" + s);
         
         codigo_obtenido = factura.Get_last_id_factura();
@@ -1170,7 +1226,11 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
         DefaultTableModel order_list = new DefaultTableModel();
         DefaultTableModel order_list2 = new DefaultTableModel();
         String codigo="",descripcion="",precio="",talla="",cantidad="",total = "";
-        InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/FACTURA_IMPRIMIR_SEPARADOS.jrxml");
+        InputStream is = (InputStream)this.getClass().getClassLoader().getResourceAsStream("sanpedroproyect/FACTURA_IMPRIMIR_SEPARADOSE.jrxml");
+        DateFormat hourFormatd = new SimpleDateFormat("HH:mm:ss");
+        final String horad = hourFormatd.format(date);
+        DateFormat dateFormatD = new SimpleDateFormat("yyyy/MM/dd");
+        String diaD = dateFormatD.format(date);
         
         try {
             int i = 0;
@@ -1196,28 +1256,37 @@ public class Factura_Prenda_Separada extends javax.swing.JFrame implements Print
             para.put("SUBTOTAL", txt_subtotal.getText());
             para.put("TOTAL", txt_total.getText());
             para.put("NOTA",txt_nota.getText());
-            para.put("DESCRIPCION", descripcion);
-            para.put("TALLA", talla);
-            para.put("PRECIO", precio);
-            para.put("CANTIDAD", cantidad);
-            para.put("TOTAL", total);
+            para.put("IVA",txt_iva.getText());
+            para.put("IVAUSADO",String.valueOf(iva_usado));
+            para.put("DESCUENTO",txt_descto.getText());
+            para.put("VAUCHER",txt_vaucher.getText());
+            para.put("TOTALPAGADO",txt_total.getText());
+            para.put("CAMBIO",0);
+            para.put("HORA", horad);
+            para.put("FECHA", diaD);
+            para.put("VENDEDOR",txt_vendedor.getText());
+            para.put("FORMAPA", Combo_FORMA_PAGO.getEditor().getItem().toString());
+            para.put("Saldo", "0");
             
-            order_list = (DefaultTableModel) detalle_abono.getModel();
+            
+            order_list = (DefaultTableModel) Tabla_ventas.getModel();
             int numero_filas = order_list.getRowCount();
-            ArrayList<Abono_Factura> plistabono = new ArrayList<>();
+            ArrayList<Productos> plist = new ArrayList<>();
 
             for(i=0;i<numero_filas;i++){
-                valor =  detalle_abono.getValueAt(i, 0).toString();
-                Fecha = detalle_abono.getValueAt(i, 1).toString();
-                plistabono.add(new Abono_Factura(valor, Fecha));
+                codigo = Tabla_ventas.getValueAt(i, 0).toString();
+                descripcion = Tabla_ventas.getValueAt(i, 1).toString();
+                talla = Tabla_ventas.getValueAt(i, 2).toString();
+                cantidad = Tabla_ventas.getValueAt(i, 3).toString();
+                precio = Tabla_ventas.getValueAt(i,4).toString();
+                total = Tabla_ventas.getValueAt(i,6).toString();    
+                plist.add(new Productos(descripcion, talla, precio, cantidad, total));
   
             }
             
-           
             
             
-            
-            JRBeanCollectionDataSource jcs = new JRBeanCollectionDataSource(plistabono);
+            JRBeanCollectionDataSource jcs = new JRBeanCollectionDataSource(plist);
             JasperPrint jp = JasperFillManager.fillReport(jr, para, jcs);
             JasperViewer.viewReport(jp,false);
             

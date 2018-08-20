@@ -12,6 +12,9 @@ import DATABASE.ConnectionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import org.oxbow.swingbits.table.filter.TableRowFilterSupport;
@@ -31,11 +34,9 @@ public class prendasMVendidad extends javax.swing.JFrame {
     public prendasMVendidad() {
         initComponents();
         //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        m = rp.consultar_mas_vendidos();
-        tbl_mas_vendidas.setModel(m);
-        TableRowFilterSupport.forTable(tbl_mas_vendidas).searchable(true).apply();
-        mas_vendida();
-        menos_vendida();
+        
+        //mas_vendida();
+        //menos_vendida();
         
         
     }
@@ -58,6 +59,11 @@ public class prendasMVendidad extends javax.swing.JFrame {
         lbl_masvendida = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lbl_menos_vendidas = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        dateDesde = new com.toedter.calendar.JDateChooser();
+        jLabel13 = new javax.swing.JLabel();
+        dateHasta = new com.toedter.calendar.JDateChooser();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAMPEDRO S.A.");
@@ -101,62 +107,97 @@ public class prendasMVendidad extends javax.swing.JFrame {
 
         lbl_menos_vendidas.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
 
+        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
+        jLabel12.setText("Desde :");
+
+        dateDesde.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
+        jLabel13.setText("Hasta :");
+
+        dateHasta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setText("Consultar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(552, 552, 552)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_masvendida, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_menos_vendidas, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(306, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(283, 283, 283)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(521, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(68, 68, 68)))
+                    .addComponent(lbl_menos_vendidas, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel12))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateDesde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dateHasta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(jButton2)))
+                        .addGap(285, 285, 285))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addGap(91, 91, 91))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(105, 105, 105)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dateDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13)
+                            .addComponent(dateHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_masvendida, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138)
+                        .addGap(158, 158, 158)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl_menos_vendidas, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_menos_vendidas, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addComponent(btn_Salir)
                 .addGap(14, 14, 14))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(25, 25, 25)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                    .addGap(501, 501, 501)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(136, 136, 136)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(404, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,9 +221,31 @@ public class prendasMVendidad extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_SalirActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+            Date date = new Date(); 
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            date = dateDesde.getDate();
+            String desde = dateFormat.format(date);
+            System.out.println(desde);
+            date = dateHasta.getDate();
+            String hasta = dateFormat.format(date);
+            System.out.println(hasta);
+            m = rp.consultar_mas_vendidos(desde, hasta);
+            tbl_mas_vendidas.setModel(m);
+            TableRowFilterSupport.forTable(tbl_mas_vendidas).searchable(true).apply();
+            mas_vendida(desde,hasta);
+            menos_vendida(desde,hasta);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Salir;
+    private com.toedter.calendar.JDateChooser dateDesde;
+    private com.toedter.calendar.JDateChooser dateHasta;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
@@ -192,7 +255,7 @@ public class prendasMVendidad extends javax.swing.JFrame {
     private javax.swing.JTable tbl_mas_vendidas;
     // End of variables declaration//GEN-END:variables
 
-    public void mas_vendida(){
+    public void mas_vendida(String desde , String hasta){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -200,7 +263,7 @@ public class prendasMVendidad extends javax.swing.JFrame {
         ResultSet rs = null;
         String Desc;
         try{
-            String sql = ("SELECT id_Producto, Descripcion , Talla ,Sum(Cantidad) FROM inventario , producto where id_Producto = fk_Producto and mov = 'Salida' group by fk_Producto order by Sum(Cantidad) desc limit 1;");
+            String sql = ("SELECT id_Producto, Descripcion , Talla ,Sum(Cantidad) FROM inventario , producto where id_Producto = fk_Producto and  (Fecha between \""+desde+"\" and \""+hasta+"\") and mov = 'Salida' group by fk_Producto order by Sum(Cantidad) desc limit 1;");
             pst = cn.prepareStatement(sql);
             rs =pst.executeQuery();
             if (rs.next()){
@@ -215,7 +278,7 @@ public class prendasMVendidad extends javax.swing.JFrame {
     }
     
     
-    public void menos_vendida(){
+    public void menos_vendida(String desde, String hasta){
         String resul = null , lats = null;
         ConnectionDB cc = new ConnectionDB();
         Connection cn = cc.getConnection();
@@ -223,7 +286,7 @@ public class prendasMVendidad extends javax.swing.JFrame {
         ResultSet rs = null;
         String Desc;
         try{
-            String sql = ("SELECT id_Producto, Descripcion , Talla ,Sum(Cantidad) FROM inventario , producto where id_Producto = fk_Producto and mov = 'Salida' group by fk_Producto order by Sum(Cantidad) asc limit 1;");
+            String sql = ("SELECT id_Producto, Descripcion , Talla ,Sum(Cantidad) FROM inventario , producto where id_Producto = fk_Producto and  (Fecha between \""+desde+"\" and \""+hasta+"\") and mov = 'Salida' group by fk_Producto order by Sum(Cantidad) asc limit 1;");
             pst = cn.prepareStatement(sql);
             rs =pst.executeQuery();
             if (rs.next()){
