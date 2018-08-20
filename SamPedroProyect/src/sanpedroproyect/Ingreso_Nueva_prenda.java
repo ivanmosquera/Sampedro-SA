@@ -208,7 +208,7 @@ Prenda p = new Prenda();
         jLabel2.setText("Codigo");
 
         jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
-        jLabel1.setText("Ingresar Nueva Prenda");
+        jLabel1.setText("Ingresar Nuevo Item");
 
         jLabel7.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel7.setText("Talla");
